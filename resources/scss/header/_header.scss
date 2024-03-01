@@ -88,6 +88,7 @@ header {
             & .header-action-btn {
                 position: relative;
                 display: flex;
+                flex-direction: column;
                 text-decoration: none;
                 color: #000;
                 transition: $baseTransition;
@@ -121,6 +122,11 @@ header {
                     background-color: $theme-color;
                     width: 21px;
                     height: 21px;
+                }
+                & .header-action-order {
+                    font-size: 13px;
+                    color: $theme-color;
+                    line-height: 1px;
                 }
                 & .cart-amount {
                     display: block;
@@ -270,7 +276,7 @@ header {
                         }
                         &:hover {
                             .sub-menu.sub-menu-2 {
-                                transform: translateY(-41px);
+                                transform: translateY(-185px);
                                 opacity: 1;
                                 visibility: visible;
                             }

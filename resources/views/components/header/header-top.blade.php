@@ -1,12 +1,22 @@
 <div class="header-top">
     <div class="container">
         <div class="row justify-content-between align-items-center">
-            <div class="col">
+            <div class="col-auto">
                 <div class="welcome-text">
-                    <p>Москва (Пн.-Пт. 10:00-20:00)</p>
+                    <p>Москва (Пн.-Пт. 10:00-18:00)</p>
                 </div>
             </div>
+
             <div class="col d-none d-lg-block">
+                <div class="top-nav">
+                    <ul>
+                        <li><a href="#">Оплата и доставка</a></li>
+                        <li><a href="#">Возврат и замена</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-auto d-none d-lg-block">
                 <div class="top-nav">
                     <ul>
                         <li><a href="tel:79999999999"><i class="fa fa-phone"></i> +7 999 999-99-99</a></li>

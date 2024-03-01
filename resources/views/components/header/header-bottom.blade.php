@@ -4,7 +4,6 @@
             <div class="col-lg-3 col">
                 <div class="header-logo">
                     <a href="{{ route('home') }}">
-                        {{-- <img src="assets/images/logo/logo.png" alt="Site Logo" /> --}}
                         <h3>Agat Ceramic</h3>
                     </a>
                 </div>
@@ -20,8 +19,12 @@
             <div class="col-lg-3 col">
                 <div class="header-actions">
                     <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                        <i class="pe-7s-shopbag"></i>
-                        <span class="header-action-num">01</span>
+                        <div class="">
+                            <span>Корзина</span>
+                            <i class="pe-7s-cart"></i>
+                            <span class="header-action-num">01</span>
+                        </div>
+                        <span class="header-action-order">Оформить заказ</span>
                     </a>
                     <a href="#offcanvas-mobile-menu"
                         class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
