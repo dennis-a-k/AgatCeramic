@@ -9,16 +9,17 @@
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Hmart-Smart Product eCommerce html Template">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <!-- CSS
     ============================================ -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/font.awesome.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/pe-icon-7-stroke.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/venobox.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font.awesome.css">
+    <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="build/assets/app.css">
 
     @yield('css')
 
@@ -2004,16 +2005,16 @@
     <!-- Global Vendor, plugins JS -->
     <!-- JS Files
     ============================================ -->
-    <script src="{{ URL::asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/jquery.countdown.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/scrollUp.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/venobox.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="assets/js/plugins/scrollUp.js"></script>
+    <script src="assets/js/plugins/venobox.min.js"></script>
+    <script src="assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="assets/js/plugins/mailchimp-ajax.js"></script>
 
     <!-- Minify Version -->
     <!-- <script src="{{ URL::asset('assets/js/vendor.min.js') }}"></script>
@@ -2021,7 +2022,8 @@
     <script src="{{ URL::asset('assets/js/main.min.js') }}"></script> -->
 
     <!--Main JS (Common Activation Codes)-->
-    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="build/assets/app.js"></script>
 
     @yield('js')
 </body>
