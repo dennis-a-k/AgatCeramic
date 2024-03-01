@@ -20,7 +20,7 @@
             <div class="col-lg-3 col">
                 <div class="header-actions">
                     <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                        <i class="pe-7s-shopbag"></i>
+                        <i class="pe-7s-cart"></i>
                         <span class="header-action-num">01</span>
                     </a>
                     <a href="#offcanvas-mobile-menu"

@@ -19,7 +19,7 @@
             <div class="col-lg-3 col">
                 <div class="header-actions">
                     <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                        <div class="">
+                        <div>
                             <span>Корзина</span>
                             <i class="pe-7s-cart"></i>
                             <span class="header-action-num">01</span>
