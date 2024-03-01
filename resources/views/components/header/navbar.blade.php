@@ -5,41 +5,153 @@
                 <ul>
                     <li class="dropdown "><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
-                            <li class="dropdown position-static"><a href="blog-grid-left-sidebar.html">Blog Grid
+                            <li class="dropdown position-static"><a href="blog-grid-left-sidebar.html">Керамогранит
                                     <i class="fa fa-angle-right"></i></a>
                                 <ul class="sub-menu sub-menu-2">
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="blog-grid-left-sidebar.html">Blog Grid Left Sidebar</a>
-                                    </li>
-                                    <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a>
-                                    </li>
+                                    <li><a href="blog-grid.html">Под дерево</a></li>
+                                    <li><a href="blog-grid.html">Под мрамор</a></li>
+                                    <li><a href="blog-grid.html">Под ламинат</a></li>
+                                    <li><a href="blog-grid.html">Под паркет</a></li>
+                                    <li><a href="blog-grid.html">Под камень</a></li>
+                                    <li><a href="blog-grid.html">Под бетон</a></li>
+                                    <li><a href="blog-grid.html">Рисунок</a></li>
+                                    <li><a href="blog-grid.html">Монотон</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Blog List
-                                    <i class="fa fa-angle-right"></i></a>
-                                <ul class="sub-menu sub-menu-2">
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
-                                    </li>
-                                    <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a>
-                                    </li>
-                                </ul>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Плитка</a></li>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Мозаика</a></li>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Клинкер</a></li>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Ступени</a></li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Затирка для плитки</a>
                             </li>
-                            <li class="dropdown position-static"><a href="blog-single-left-sidebar.html">Single
-                                    Blog <i class="fa fa-angle-right"></i></a>
-                                <ul class="sub-menu sub-menu-2">
-                                    <li><a href="blog-single.html">Single Blog</a>
-                                    <li><a href="blog-single-left-sidebar.html">Single Blog Left
-                                            Sidebar</a>
-                                    </li>
-                                    <li><a href="blog-single-right-sidebar.html">Single Blog Right
-                                            Sidebar</a>
-                                    </li>
-                                </ul>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Клеевые смеси</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown position-static"><a href="#">Все фабрики <i
+
+                    <li class="dropdown "><a href="#">Сантехника <i class="fa fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Ванны</a></li>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Унитазы</a></li>
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Раковины</a></li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Кухонные мойки</a>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Смесители</a>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Инсталляции</a>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Душевые кабины</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown "><a href="#">Услуги <i class="fa fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Резка</a></li>
+                            <li class="dropdown position-static">
+                                <a href="blog-list-left-sidebar.html">Роспись плитки</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- <li class="dropdown position-static"><a href="#">Все фабрики <i
+                                class="fa fa-angle-down"></i></a>
+                        <ul class="mega-menu-2 d-block">
+                            <li class="d-flex">
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">A</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">B</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">C</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">D</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">E</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">F</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">G</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">H</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">I</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">J</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">K</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">L</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">M</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">N</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">O</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">P</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">Q</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">R</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">S</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">T</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">U</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">V</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">W</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">X</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">Y</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class="title text-center"><a href="#">Z</a></li>
+                                </ul>
+                                <ul class="d-block p-0">
+                                    <li class="title text-center"><a href="#">0-9</a></li>
+                                </ul>
+                                <ul class="d-block p-0 border-0">
+                                    <li class="title text-center"><a href="#">А-Я</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li> --}}
+                    {{-- <li class="dropdown position-static"><a href="#">Все фабрики <i
                                 class="fa fa-angle-down"></i></a>
                         <ul class="mega-menu d-block">
                             <li class="d-flex">
@@ -86,8 +198,10 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
+                    <li><a href="contact.html">Дизайнерам</a></li>
                     <li><a href="contact.html">Оплата и доставка</a></li>
+                    <li><a href="contact.html">Возврат и замена</a></li>
                     <li><a href="contact.html">Контакты</a></li>
                 </ul>
             </div>

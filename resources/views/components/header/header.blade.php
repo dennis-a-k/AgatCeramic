@@ -8,8 +8,11 @@
     <!-- Header mobile area -->
     @include('components.header.header-mobile')
 
-    <!-- header navigation area -->
+    <!-- Header navigation area -->
     @include('components.header.navbar')
+
+    <!-- Header nav-alphabet area -->
+    @include('components.header.nav-alphabet')
 
     <div class="mobile-search-box d-lg-none">
         <div class="container">

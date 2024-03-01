@@ -3,7 +3,7 @@
         <div class="row justify-content-between align-items-center">
             <div class="col">
                 <div class="welcome-text">
-                    <p>Москва и МО (Пн.-Пт. 10:00-20:00)</p>
+                    <p>Москва (Пн.-Пт. 10:00-20:00)</p>
                 </div>
             </div>
             <div class="col d-none d-lg-block">

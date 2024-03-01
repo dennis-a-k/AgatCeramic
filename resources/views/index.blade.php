@@ -273,7 +273,7 @@
                 <div class="swiper-wrapper">
                     <!-- Single slider item -->
                     <div class="hero-slide-item slider-height swiper-slide bg-color1"
-                        data-bg-image="assets/images/hero/bg/hero-bg-1.webp">
+                        data-bg-image="assets/images/hero/bg/hero-bg-1.jpeg">
                         <div class="container h-100">
                             <div class="row h-100">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
@@ -299,7 +299,7 @@
                     </div>
                     <!-- Single slider item -->
                     <div class="hero-slide-item slider-height swiper-slide bg-color1"
-                        data-bg-image="assets/images/hero/bg/hero-bg-1.webp">
+                        data-bg-image="assets/images/hero/bg/hero-bg-2.jpg">
                         <div class="container h-100">
                             <div class="row h-100">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
