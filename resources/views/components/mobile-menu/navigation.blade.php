@@ -79,7 +79,7 @@
             </ul>
         </div>
 
-        <div class="offcanvas-social mt-auto">
+        <div class="offcanvas-social">
             <ul>
                 <li>
                     <a href="#"><i class="fa fa-telegram"></i></a>
