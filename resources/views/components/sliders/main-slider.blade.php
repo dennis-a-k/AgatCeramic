@@ -16,9 +16,7 @@
                     Перейти к покупкам
                 </x-slot>
 
-                <x-slot name="img">
-                    <img src="assets/images/hero/inner-img/hero-1-1.jpg" alt="hero-1" />
-                </x-slot>
+                <x-slot name="img" src="assets/images/hero/inner-img/hero-1-1.jpg" alt="hero-1"></x-slot>
             </x-sliders.hero-slide>
 
             <x-sliders.hero-slide data-bg-image="assets/images/hero/bg/hero-bg-2.jpg">
@@ -36,9 +34,7 @@
                     Shop All Devices
                 </x-slot>
 
-                <x-slot name="img">
-                    <img src="assets/images/hero/inner-img/hero-1-2.jpg" alt="hero-1-2" />
-                </x-slot>
+                <x-slot name="img" src="assets/images/hero/inner-img/hero-1-2.jpg" alt="hero-1-2"></x-slot>
             </x-sliders.hero-slide>
         </div>
 
