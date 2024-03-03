@@ -1,7 +1,5 @@
-(function($) {
+(function ($) {
     "use strict";
-
-
 
     /*---------------------------
        Commons Variables
@@ -10,19 +8,30 @@
         $body = $("body");
 
     /*----------------------------------------
-            Background Image             
+            Background Image
     -------------------------------------------*/
 
-    $('[data-bg-image]').each(function() {
+    $("[data-bg-image]").each(function () {
         var $this = $(this),
-            $image = $this.data('bg-image');
-        $this.css('background-image', 'url(' + $image + ')');
+            $image = $this.data("bg-image");
+        $this.css("background-image", "url(" + $image + ")");
+    });
+
+    $("[data-bg-banner]").each(function () {
+        var $this = $(this),
+            $image = $this.data("bg-banner");
+        $this.css(
+            "background",
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(" +
+                $image +
+                ")"
+        );
     });
 
     /*---------------------------
        Menu Fixed On Scroll Active
     ------------------------------ */
-    $(window).on("scroll", function(e) {
+    $(window).on("scroll", function (e) {
         var window_top = $(window).scrollTop() + 1;
         if (window_top > 250) {
             $(".sticky-nav").addClass("menu_fixed animated fadeInDown");
@@ -32,28 +41,28 @@
     });
 
     /*----------------------------------------
-                Bootstrap dropdown               
+                Bootstrap dropdown
         -------------------------------------------*/
 
     // Add slideDown animation to Bootstrap dropdown when expanding.
 
-    $('.dropdown').on('show.bs.dropdown', function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+    $(".dropdown").on("show.bs.dropdown", function () {
+        $(this).find(".dropdown-menu").first().stop(true, true).slideDown();
     });
     // Add slideUp animation to Bootstrap dropdown when collapsing.
-    $('.dropdown').on('hide.bs.dropdown', function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+    $(".dropdown").on("hide.bs.dropdown", function () {
+        $(this).find(".dropdown-menu").first().stop(true, true).slideUp();
     });
 
     /*---------------------------------
         Off Canvas Function
     -----------------------------------*/
-    (function() {
+    (function () {
         var $offCanvasToggle = $(".offcanvas-toggle"),
             $offCanvas = $(".offcanvas"),
             $offCanvasOverlay = $(".offcanvas-overlay"),
             $mobileMenuToggle = $(".mobile-menu-toggle");
-        $offCanvasToggle.on("click", function(e) {
+        $offCanvasToggle.on("click", function (e) {
             e.preventDefault();
             var $this = $(this),
                 $target = $this.attr("href");
@@ -64,7 +73,7 @@
                 $this.addClass("close");
             }
         });
-        $(".offcanvas-close, .offcanvas-overlay").on("click", function(e) {
+        $(".offcanvas-close, .offcanvas-overlay").on("click", function (e) {
             e.preventDefault();
             $body.removeClass("offcanvas-open");
             $offCanvas.removeClass("offcanvas-open");
@@ -81,10 +90,12 @@
             $offCanvasNavSubMenu = $offCanvasNav.find(".sub-menu");
 
         /*Add Toggle Button With Off Canvas Sub Menu*/
-        $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"></span>');
+        $offCanvasNavSubMenu
+            .parent()
+            .prepend('<span class="menu-expand"></span>');
 
         /*Category Sub Menu Toggle*/
-        $offCanvasNav.on("click", "li a, .menu-expand", function(e) {
+        $offCanvasNav.on("click", "li a, .menu-expand", function (e) {
             var $this = $(this);
             if ($this.attr("href") === "#" || $this.hasClass("menu-expand")) {
                 e.preventDefault();
@@ -95,8 +106,17 @@
                     $this.parent("li").find("ul:visible").slideUp();
                 } else {
                     $this.parent("li").addClass("active");
-                    $this.closest("li").siblings("li").removeClass("active").find("li").removeClass("active");
-                    $this.closest("li").siblings("li").find("ul:visible").slideUp();
+                    $this
+                        .closest("li")
+                        .siblings("li")
+                        .removeClass("active")
+                        .find("li")
+                        .removeClass("active");
+                    $this
+                        .closest("li")
+                        .siblings("li")
+                        .find("ul:visible")
+                        .slideUp();
                     $this.siblings("ul").slideDown();
                 }
             }
@@ -108,7 +128,7 @@
         Hero Slider
      ---------------------- */
 
-    var heroSlider = new Swiper('.hero-slider.swiper-container', {
+    var heroSlider = new Swiper(".hero-slider.swiper-container", {
         loop: true,
         speed: 2000,
         effect: "fade",
@@ -118,26 +138,24 @@
         },
         // Navigation arrows
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
-
-
 
     /*---------------------
         Category Slider
      ---------------------- */
 
-    var categorySlider = new Swiper('.tab-slider.swiper-container', {
+    var categorySlider = new Swiper(".tab-slider.swiper-container", {
         loop: true,
         slidesPerView: 6,
         spaceBetween: 30,
         speed: 1500,
         // Navigation arrows
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
         breakpoints: {
             0: {
@@ -162,10 +180,10 @@
     });
 
     /*---------------------------
-        Testimonial Slider 
+        Testimonial Slider
     ------------------------------ */
 
-    var testiSlider = new Swiper('.content-top', {
+    var testiSlider = new Swiper(".content-top", {
         slidesPerView: 2,
         spaceBetween: 30,
         speed: 1500,
@@ -204,7 +222,7 @@
         Feature Product Slider
      -------------------------------- */
 
-    var productSlider = new Swiper('.feature-product-slider.swiper-container', {
+    var productSlider = new Swiper(".feature-product-slider.swiper-container", {
         slidesPerView: 2,
         spaceBetween: 30,
         speed: 1500,
@@ -243,7 +261,7 @@
         New Product Slider
      ---------------------- */
 
-    var productSlider = new Swiper('.new-product-slider.swiper-container', {
+    var productSlider = new Swiper(".new-product-slider.swiper-container", {
         slidesPerView: 4,
         spaceBetween: 30,
         speed: 1500,
@@ -279,30 +297,30 @@
     });
 
     /*---------------------------
-        Quick view Slider 
+        Quick view Slider
     ------------------------------ */
-    var galleryThumb = new Swiper('.gallery-thumbs', {
+    var galleryThumb = new Swiper(".gallery-thumbs", {
         spaceBetween: 10,
         slidesPerView: 3,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
-        centerMood:true,
+        centerMood: true,
     });
-    var galleryTop = new Swiper('.gallery-top', {
+    var galleryTop = new Swiper(".gallery-top", {
         spaceBetween: 0,
         loop: true,
         slidesPerView: 1,
-        centerMood:true,
+        centerMood: true,
         thumbs: {
-            swiper: galleryThumb
-        }
+            swiper: galleryThumb,
+        },
     });
 
     /*---------------------------
-        Product Details Slider 
+        Product Details Slider
     ------------------------------ */
-    var zoomThumb = new Swiper('.zoom-thumbs', {
+    var zoomThumb = new Swiper(".zoom-thumbs", {
         spaceBetween: 18,
         slidesPerView: 3,
         freeMode: true,
@@ -315,41 +333,41 @@
             prevEl: ".swiper-button-prev",
         },
     });
-    var zoomTop = new Swiper('.zoom-top', {
+    var zoomTop = new Swiper(".zoom-top", {
         spaceBetween: 0,
         slidesPerView: 1,
-        effect: 'fade',
+        effect: "fade",
         fadeEffect: {
             crossFade: true,
         },
         thumbs: {
-            swiper: zoomThumb
-        }
+            swiper: zoomThumb,
+        },
     });
 
     /*---------------------------
-            Product Details Slider 
+            Product Details Slider
         ------------------------------ */
-    var zoomThumb = new Swiper('.zoom-thumbs-2', {
+    var zoomThumb = new Swiper(".zoom-thumbs-2", {
         spaceBetween: 20,
         slidesPerView: 5,
-        direction: 'vertical',
+        direction: "vertical",
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
     });
-    var zoomTop = new Swiper('.zoom-top-2', {
+    var zoomTop = new Swiper(".zoom-top-2", {
         spaceBetween: 0,
         loop: true,
         thumbs: {
-            swiper: zoomThumb
-        }
+            swiper: zoomThumb,
+        },
     });
 
     /*---------------------------
-        Quick view Slider 
+        Quick view Slider
     ------------------------------ */
-    var galleryThumb = new Swiper('.gallery-thumbs', {
+    var galleryThumb = new Swiper(".gallery-thumbs", {
         spaceBetween: 10,
         slidesPerView: 3,
         freeMode: true,
@@ -362,15 +380,13 @@
             prevEl: ".swiper-button-prev",
         },
     });
-    var galleryTop = new Swiper('.gallery-top', {
+    var galleryTop = new Swiper(".gallery-top", {
         spaceBetween: 0,
         loop: true,
         thumbs: {
-            swiper: galleryThumb
-        }
+            swiper: galleryThumb,
+        },
     });
-
-
 
     /*----------------------------
         Cart Plus Minus Button
@@ -378,7 +394,7 @@
     var CartPlusMinus = $(".cart-plus-minus");
     CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
     CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-    $(".qtybutton").on("click", function() {
+    $(".qtybutton").on("click", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
         if ($button.text() === "+") {
@@ -393,7 +409,6 @@
         }
         $button.parent().find("input").val(newVal);
     });
-
 
     /*------------------------------
             Single Product Slider
@@ -435,14 +450,13 @@
     /*-------------------------------
         Create an account toggle
     ---------------------------------*/
-    $(".checkout-toggle2").on("click", function() {
+    $(".checkout-toggle2").on("click", function () {
         $(".open-toggle2").slideToggle(1000);
     });
 
-    $(".checkout-toggle").on("click", function() {
+    $(".checkout-toggle").on("click", function () {
         $(".open-toggle").slideToggle(1000);
     });
-
 
     /*---------------------
         Scroll Up
@@ -456,16 +470,20 @@
     /*---------------------
         Countdown
     --------------------- */
-    $("[data-countdown]").each(function() {
+    $("[data-countdown]").each(function () {
         var $this = $(this),
             finalDate = $(this).data("countdown");
-        $this.countdown(finalDate, function(event) {
-            $this.html(event.strftime('<span class="cdown hour"><span class="cdown-1">%-H</span><p>Hrs</p></span> <span class="cdown minutes"><span class="cdown-1">%M</span> <p>Min</p></span> <span class="cdown second"><span class="cdown-1"> %S</span> <p>Sec</p></span>'));
+        $this.countdown(finalDate, function (event) {
+            $this.html(
+                event.strftime(
+                    '<span class="cdown hour"><span class="cdown-1">%-H</span><p>Hrs</p></span> <span class="cdown minutes"><span class="cdown-1">%M</span> <p>Min</p></span> <span class="cdown second"><span class="cdown-1"> %S</span> <p>Sec</p></span>'
+                )
+            );
         });
     });
 
     /*-----------------------------
-        Blog Gallery Slider 
+        Blog Gallery Slider
     -------------------------------- */
     var swiper = new Swiper(".blog-post-media.swiper-container", {
         slidesPerView: 1,
@@ -484,7 +502,7 @@
     /*---------------------------
             Brand Logo
       ------------------------------ */
-    var companyLogoSlider = new Swiper('.brand-slider.swiper-container', {
+    var companyLogoSlider = new Swiper(".brand-slider.swiper-container", {
         slidesPerView: 4,
         speed: 1500,
         loop: true,
@@ -493,7 +511,6 @@
             disableOnInteraction: false,
         },
         breakpoints: {
-
             0: {
                 slidesPerView: 1,
             },
@@ -509,13 +526,11 @@
             1200: {
                 slidesPerView: 4,
             },
-        }
+        },
     });
 
     /*---------------------
         venobox
     --------------------- */
-    $('.venobox').venobox();
-
-
+    $(".venobox").venobox();
 })(jQuery);
