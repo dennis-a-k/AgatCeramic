@@ -173,6 +173,7 @@
             font-weight: 300;
             &:hover {
                 color: $theme-color;
+                text-decoration: underline;
             }
         }
         & i {
