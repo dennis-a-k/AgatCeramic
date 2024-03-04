@@ -222,17 +222,17 @@
 
             color: #ffffff;
             border-radius: 5px;
-            background-color: #707070;
+            background-color: $theme-color;
             font-size: 24px;
             & + .action {
                 margin-left: 10px;
             }
             &:hover {
                 color: #fff;
-                background: $theme-color;
+                background: $body-color;
             }
             &.active {
-                background: $theme-color;
+                background: $body-color;
             }
         }
     }
