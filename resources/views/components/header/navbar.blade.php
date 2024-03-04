@@ -37,7 +37,10 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown "><a href="#">Керамогранит <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown ">
+                        <a href="{{ route('keramogranit.list') }}">
+                            Керамогранит <i class="fa fa-angle-down"></i>
+                        </a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static">
                                 <a href="blog-list-left-sidebar.html">Под дерево</a>

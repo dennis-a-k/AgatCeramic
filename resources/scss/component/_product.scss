@@ -287,7 +287,7 @@
         }
         & .title {
             font-size: 16px;
-            margin: 10px 0 15px;
+            margin: 10px 0 20px;
             font-family: $Poppins;
             & a {
                 text-decoration: none;
@@ -303,14 +303,15 @@
             }
         }
         & .price {
-            font-size: 18px;
+            font-size: 20px;
             font-family: $Poppins;
             line-height: 1;
             font-weight: 500;
-            color: #666666;
-            &:not(:last-child) {
-                margin-bottom: 20px;
-            }
+            color: $theme-color;
+            margin-top: 10px;
+            // &:not(:last-child) {
+            //     margin-bottom: 20px;
+            // }
             & span {
                 &.new {
                     font-weight: 500;
