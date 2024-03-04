@@ -22,22 +22,26 @@
                                 <div class="footer-row">
                                     <ul class="align-items-center">
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Керамогранит</a>
+                                            <a class="single-link" href="{{ route('keramogranit.list') }}">
+                                                Керамогранит
+                                            </a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Плитка</a>
+                                            <a class="single-link" href="{{ route('plitka.list') }}">Плитка</a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Мозаика</a>
+                                            <a class="single-link" href="{{ route('mozaika.list') }}">Мозаика</a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Дизайнерам</a>
+                                            <a class="single-link" href="{{ route('partnerships') }}">
+                                                Дизайнерам
+                                            </a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Доставка</a>
+                                            <a class="single-link" href="{{ route('delivery') }}">Доставка</a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="my-account.html">Возврат</a>
+                                            <a class="single-link" href="{{ route('return') }}">Возврат</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -84,7 +88,9 @@
                             </div>
                         </div>
                         <div class="col-md-6 text-center text-md-start">
-                            <p class="copy-text"> © <?= date('Y') ?> <strong>Agat Ceramic</strong></p>
+                            <p class="copy-text"> © <?= date('Y') ?> <strong>Agat Ceramic</strong>
+                                <a href="{{ route('policy') }}" class="company-name">Политика конфиденциальности</a>
+                            </p>
                         </div>
                     </div>
                 </div>

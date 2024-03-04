@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class KeramogranitController extends Controller
 {
     public function index()
     {
-        return view('pages.goods');
+        return view('pages.goods', ['title' => 'Керамогранит']);
     }
 }

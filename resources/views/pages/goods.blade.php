@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('title', ' | Керамогранит')
+@section('title')
+    | {{ $title }}
+@endsection
 
 @section('content')
     <div class="shop-category-area pt-100px pb-100px">

@@ -10,8 +10,8 @@
             <div class="col d-none d-lg-block">
                 <div class="top-nav">
                     <ul>
-                        <li><a href="#">Оплата и доставка</a></li>
-                        <li><a href="#">Возврат и замена</a></li>
+                        <li><a href="{{ route('delivery') }}">Оплата и доставка</a></li>
+                        <li><a href="{{ route('return') }}">Возврат и замена</a></li>
                     </ul>
                 </div>
             </div>

@@ -5,16 +5,23 @@
                 <ul>
                     <li class="dropdown "><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Клинкер</a></li>
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Ступени</a></li>
                             <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Затирка для плитки</a>
+                                <a href="{{ route('klinker.list') }}">Клинкер</a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Клеевые смеси</a>
+                                <a href="{{ route('stupeni.list') }}">Ступени</a>
                             </li>
-                            <li class="dropdown position-static"><a href="blog-grid-left-sidebar.html">Сантехника
-                                    <i class="fa fa-angle-right"></i></a>
+                            <li class="dropdown position-static">
+                                <a href="{{ route('zatirka.list') }}">Затирка для плитки</a>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="{{ route('kleevye-smesi.list') }}">Клеевые смеси</a>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="{{ route('santekhnika.list') }}">
+                                    Сантехника
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
                                 <ul class="sub-menu sub-menu-2">
                                     <li><a href="blog-grid.html">Ванны</a></li>
                                     <li><a href="blog-grid.html">Унитазы</a></li>
@@ -30,9 +37,9 @@
 
                     <li class="dropdown "><a href="#">Услуги <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Резка</a></li>
+                            <li class="dropdown position-static"><a href="{{ route('rezka') }}">Резка</a></li>
                             <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Роспись плитки</a>
+                                <a href="{{ route('rospis') }}">Роспись плитки</a>
                             </li>
                         </ul>
                     </li>
@@ -65,11 +72,11 @@
                         </ul>
                     </li>
 
-                    <li><a href="contact.html">Плитка</a></li>
-                    <li><a href="contact.html">Мозаика</a></li>
+                    <li><a href="{{ route('plitka.list') }}">Плитка</a></li>
+                    <li><a href="{{ route('mozaika.list') }}">Мозаика</a></li>
 
-                    <li><a href="contact.html">Дизайнерам</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
+                    <li><a href="{{ route('contact') }}">Контакты</a></li>
                 </ul>
             </div>
         </div>

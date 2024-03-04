@@ -14,7 +14,7 @@
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4">
             <ul>
-                <li><a href="#"><span class="menu-text">Керамогранит</span></a>
+                <li><a href="{{ route('keramogranit.list') }}"><span class="menu-text">Керамогранит</span></a>
                     <ul class="sub-menu">
                         <li>
                             <a href="blog-list-left-sidebar.html"><span class="menu-text">Под дерево</span></a>
@@ -39,26 +39,26 @@
                     </ul>
                 </li>
 
-                <li><a href="about.html">Плитка</a></li>
-                <li><a href="about.html">Мозаика</a></li>
+                <li><a href="{{ route('plitka.list') }}">Плитка</a></li>
+                <li><a href="{{ route('mozaika.list') }}">Мозаика</a></li>
 
                 <li>
                     <a href="#"><span class="menu-text">Услуги</span></a>
                     <ul class="sub-menu">
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Резка</span></a></li>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Роспись плитки</span></a></li>
+                        <li><a href="{{ route('rezka') }}"><span class="menu-text">Резка</span></a></li>
+                        <li><a href="{{ route('rospis') }}"><span class="menu-text">Роспись плитки</span></a></li>
                     </ul>
                 </li>
 
                 <li><a href="#"><span class="menu-text">Каталог</span></a>
                     <ul class="sub-menu">
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Клинкер</span></a></li>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Ступени</span></a></li>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Затирка для плитки</span></a>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Клеевые смеси</span></a>
+                        <li><a href="{{ route('klinker.list') }}"><span class="menu-text">Клинкер</span></a></li>
+                        <li><a href="{{ route('stupeni.list') }}"><span class="menu-text">Ступени</span></a></li>
+                        <li><a href="{{ route('zatirka.list') }}"><span class="menu-text">Затирка для плитки</span></a>
+                        <li><a href="{{ route('kleevye-smesi.list') }}"><span class="menu-text">Клеевые смеси</span></a>
                         </li>
                         <li>
-                            <a href="#"><span class="menu-text">Сантехника</span></a>
+                            <a href="{{ route('santekhnika.list') }}"><span class="menu-text">Сантехника</span></a>
                             <ul class="sub-menu">
                                 <li><a href="shop-3-column.html">Ванны</a></li>
                                 <li><a href="shop-3-column.html">Унитазы</a></li>
@@ -72,10 +72,10 @@
                     </ul>
                 </li>
 
-                <li><a href="contact.html">Дизайнерам</a></li>
-                <li><a href="contact.html">Оплата и доставка</a></li>
-                <li><a href="contact.html">Возврат и замена</a></li>
-                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
+                <li><a href="{{ route('delivery') }}">Оплата и доставка</a></li>
+                <li><a href="{{ route('return') }}">Возврат и замена</a></li>
+                <li><a href="{{ route('contact') }}">Контакты</a></li>
             </ul>
         </div>
 
