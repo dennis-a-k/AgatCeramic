@@ -13,7 +13,7 @@
                     производителей
                 </x-slot>
 
-                <x-slot name="url" href="https://ya.ru"></x-slot>
+                <x-slot name="url" href="{{ route('keramogranit.list') }}"></x-slot>
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
@@ -25,7 +25,7 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="https://google.ru"></x-slot>
+                <x-slot name="url" href="{{ route('plitka.list') }}"></x-slot>
             </x-banner.single-banner>
         </div>
 
@@ -39,7 +39,7 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="https://mail.ru"></x-slot>
+                <x-slot name="url" href="{{ route('mozaika.list') }}"></x-slot>
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
@@ -51,7 +51,7 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="https://google.ru"></x-slot>
+                <x-slot name="url" href="{{ route('santekhnika.list') }}"></x-slot>
             </x-banner.single-banner>
         </div>
     </div>
