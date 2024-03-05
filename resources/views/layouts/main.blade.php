@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/venobox.css">
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
-    {{-- <link rel="stylesheet" href="build/assets/app-CzBvGoRt.css"> --}}
+    <link rel="stylesheet" href="build/assets/app-0qVJYrli.css">
 
     @yield('css')
 
