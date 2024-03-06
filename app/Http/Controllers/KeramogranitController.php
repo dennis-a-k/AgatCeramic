@@ -8,4 +8,9 @@ class KeramogranitController extends Controller
     {
         return view('pages.goods', ['title' => 'Керамогранит']);
     }
+
+    public function show()
+    {
+        return view('pages.product');
+    }
 }
