@@ -10,9 +10,9 @@
 
             <x-slot name="price">100</x-slot>
 
-            <x-slot name="urlProduct" href="https://ya.ru"></x-slot>
+            <x-slot name="urlProduct" href="{{ route('keramogranit.show') }}"></x-slot>
 
-            <x-slot name="urlCategory" href="https://mail.ru"></x-slot>
+            <x-slot name="urlCategory" href="{{ route('keramogranit') }}"></x-slot>
         </x-goods.product-card>
 
         <!-- Single Prodect -->
