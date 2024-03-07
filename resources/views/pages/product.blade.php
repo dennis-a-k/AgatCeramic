@@ -8,13 +8,13 @@
     <div class="product-details-area pt-100px pb-100px">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
 
                     @include('components.swiper.swiper')
 
                     @include('components.swiper.swiper-slider')
                 </div>
-                <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-7 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                     <div class="product-details-content quickview-content ml-25px">
                         <h2>Керамогранит розовый розовый розовый розовый розовый розовый розовыйрозовыйрозовый розовый
                             розовый

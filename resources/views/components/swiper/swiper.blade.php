@@ -1,4 +1,4 @@
-<div class="swiper-container zoom-top">
+<div class="swiper zoom-top">
     <div class="swiper-wrapper">
         <x-swiper.swiper-slide>
             <x-slot name="url">assets/images/product-image/01.jpg</x-slot>

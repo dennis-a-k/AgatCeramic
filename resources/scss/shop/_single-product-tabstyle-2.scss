@@ -42,18 +42,15 @@
     }
 }
 
-.zoom-top {
-    & .swiper-wrapper {
-        & .swiper-slide {
-            height: 670px;
+.small-nav {
+    .swiper-wrapper {
+        .swiper-slide {
+            height: 144px;
         }
     }
 }
 
-.small-nav {
-    & .swiper-wrapper {
-        & .swiper-slide {
-            height: 144px;
-        }
-    }
+.swiper {
+    max-width: 550px;
+    max-height: 550px;
 }
