@@ -20,6 +20,12 @@
                             розовый
                         </h2>
 
+                        <div class="pricing-meta">
+                            <ul class="d-flex">
+                                <li class="new-price">20.90 &#8381;</li>
+                            </ul>
+                        </div>
+
                         @include('components.product.information-product')
 
                         <div class="pro-details-quality">
