@@ -335,6 +335,9 @@
 .description-review-wrapper {
     margin-top: 25px;
     margin-left: 25px;
+    @media #{$tablet-device, $large-mobile} {
+        margin-left: 0px;
+    }
 }
 .description-review-topbar {
     &.nav {
