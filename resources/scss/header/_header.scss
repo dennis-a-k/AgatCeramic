@@ -67,6 +67,11 @@ header {
         @media #{$tablet-device, $large-mobile} {
             padding: 15px 0;
         }
+        .header-logo {
+            h3 {
+                font-family: $font-logo;
+            }
+        }
         //header action
         .header-actions {
             display: flex;

@@ -75,6 +75,7 @@
                 <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
                 <li><a href="{{ route('delivery') }}">Оплата и доставка</a></li>
                 <li><a href="{{ route('return') }}">Возврат и замена</a></li>
+                <li><a href="{{ route('return') }}">Заказать звонок</a></li>
                 <li><a href="{{ route('contact') }}">Контакты</a></li>
             </ul>
         </div>
