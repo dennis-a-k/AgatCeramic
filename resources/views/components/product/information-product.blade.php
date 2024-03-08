@@ -8,28 +8,24 @@
 </div>
 
 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-    <span>Цвет: </span>
+    <span>Код товара: </span>
     <ul class="d-flex">
         <li>
-            Розовый
+            88888888
         </li>
     </ul>
 </div>
 
 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-    <span>Размер: </span>
+    <span>Производитель: </span>
     <ul class="d-flex">
-        <li>
-            120х70 мм
-        </li>
+        <li><a href="">Антил</a></li>
     </ul>
 </div>
 
 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-    <span>Поверхность: </span>
+    <span>Коллекция: </span>
     <ul class="d-flex">
-        <li>
-            Матовая
-        </li>
+        <li><a href="">Ыывапп</a></li>
     </ul>
 </div>
