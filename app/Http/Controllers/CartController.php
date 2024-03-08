@@ -8,4 +8,9 @@ class CartController extends Controller
     {
         return view('pages.cart');
     }
+
+    public function checkout()
+    {
+        return view('pages.checkout');
+    }
 }

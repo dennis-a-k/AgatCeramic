@@ -75,7 +75,7 @@
                             <div class="col-lg-12">
                                 <div class="cart-shiping-update-wrapper justify-content-end">
                                     <div class="cart-clear">
-                                        <a href="#">Оформить заказ</a>
+                                        <a href="{{ route('checkout') }}">Оформить заказ</a>
                                     </div>
                                 </div>
                             </div>
