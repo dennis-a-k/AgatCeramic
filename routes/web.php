@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__.'/pages.php';
+require __DIR__.'/cart.php';
 
 require __DIR__.'/keramogranit.php';
 require __DIR__.'/plitka.php';

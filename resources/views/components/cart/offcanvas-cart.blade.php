@@ -11,7 +11,7 @@
                             alt="Cart product Image"></a>
                     <div class="content">
                         <a href="single-product.html" class="title">Modern Smart Phone</a>
-                        <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
+                        <span class="quantity-price">1 x <span class="amount">18.86 &#8381;</span></span>
                         <a href="#" class="remove">×</a>
                     </div>
                 </li>
@@ -20,7 +20,7 @@
                             alt="Cart product Image"></a>
                     <div class="content">
                         <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                        <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
+                        <span class="quantity-price">1 x <span class="amount">43.28 &#8381;</span></span>
                         <a href="#" class="remove">×</a>
                     </div>
                 </li>
@@ -29,7 +29,7 @@
                             alt="Cart product Image"></a>
                     <div class="content">
                         <a href="single-product.html" class="title">Smart Music Box</a>
-                        <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
+                        <span class="quantity-price">1 x <span class="amount">37.34 &#8381;</span></span>
                         <a href="#" class="remove">×</a>
                     </div>
                 </li>
@@ -37,7 +37,7 @@
         </div>
         <div class="foot">
             <div class="buttons mt-30px">
-                <a href="cart.html" class="btn mb-30px">Перейти в корзину</a>
+                <a href="{{ route('cart') }}" class="btn mb-30px">Перейти в корзину</a>
                 <a href="checkout.html" class="btn current-btn">Оформить заказ</a>
             </div>
         </div>
