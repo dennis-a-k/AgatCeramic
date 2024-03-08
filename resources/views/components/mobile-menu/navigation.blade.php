@@ -2,6 +2,7 @@
     <button class="offcanvas-close"></button>
     <div class="user-panel">
         <ul>
+            <li><a href="">Заказать звонок</a></li>
             <li><a href="tel:79999999999"><i class="fa fa-phone"></i> +7 999 999-99-99</a></li>
             <li>
                 <a href="mailto:zakaz@agatceramic.ru">
@@ -75,7 +76,6 @@
                 <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
                 <li><a href="{{ route('delivery') }}">Оплата и доставка</a></li>
                 <li><a href="{{ route('return') }}">Возврат и замена</a></li>
-                <li><a href="{{ route('return') }}">Заказать звонок</a></li>
                 <li><a href="{{ route('contact') }}">Контакты</a></li>
             </ul>
         </div>

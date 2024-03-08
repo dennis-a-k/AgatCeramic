@@ -46,11 +46,44 @@
     .swiper-wrapper {
         .swiper-slide {
             height: 144px;
+            @media #{$desktop-device} {
+                height: 75px;
+            }
+            @media #{$tablet-device} {
+                max-width: 150px;
+                height: 149px;
+            }
+            @media #{$large-mobile} {
+                height: 113px;
+            }
+            @media #{$extra-small-mobile} {
+                height: 90px;
+            }
         }
     }
 }
 
-.swiper {
-    max-width: 550px;
-    max-height: 550px;
+.zoom-top {
+    & .swiper-wrapper {
+        & .swiper-slide {
+            max-width: 550px;
+            height: 550px;
+            @media #{$laptop-device} {
+                height: 470px;
+            }
+            @media #{$desktop-device} {
+                height: 370px;
+            }
+            @media #{$tablet-device} {
+                max-width: 690px;
+                height: 690px;
+            }
+            @media #{$large-mobile} {
+                height: 510px;
+            }
+            @media #{$extra-small-mobile} {
+                height: 440px;
+            }
+        }
+    }
 }

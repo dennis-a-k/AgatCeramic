@@ -53,6 +53,9 @@
                         <div class="single-wedge">
                             <h4 class="footer-herading">Контакты</h4>
                             <div class="footer-links">
+                                <p class="mail">
+                                    <a href="">Заказать звонок</a>
+                                </p>
                                 <p class="phone">
                                     <i class="fa fa-phone"></i>
                                     <a href="tel:79999999999"> +7 (999) 999-99-99</a>
