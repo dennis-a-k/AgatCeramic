@@ -26,6 +26,10 @@ Route::get('/policy', function () {
     return view('pages.policy');
 })->name('policy');
 
+Route::get('/personal-data', function () {
+    return view('pages.personal-data');
+})->name('personal-data');
+
 Route::get('/rezka', function () {
     return view('pages.rezka');
 })->name('rezka');
