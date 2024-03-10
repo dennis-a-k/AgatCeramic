@@ -13,3 +13,5 @@ require __DIR__.'/zatirka.php';
 require __DIR__.'/kleevye-smesi.php';
 
 require __DIR__.'/santekhnika.php';
+
+require __DIR__.'/goods.php';
