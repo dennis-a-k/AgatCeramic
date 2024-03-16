@@ -13,5 +13,16 @@ class Product extends Model
         'sku',
         'title',
         'price',
+        'product_code',
+        'category_id',
+        'size_id',
+        'color_id',
+        'pattern_id',
+        'texture_id',
+        'brand_id',
+        'collection_id',
+        'country_id',
+        'image_id',
+        'description',
     ];
 }
