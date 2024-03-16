@@ -21,3 +21,6 @@ yarn-error.log
 docker-compose.yml
 public_html
 deploy.sh
+.DS_Store
+/.DS_Store
+.DS_Store/*
