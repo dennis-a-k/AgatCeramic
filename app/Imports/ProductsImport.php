@@ -41,7 +41,6 @@ class ProductsImport implements  ToCollection, WithHeadingRow
 
     public function collection(Collection $rows)
     {
-        // dd($rows);
         foreach ($rows as $row)
         {
             if(isset($row['artikul']) && $row['artikul'] != null) {

@@ -15,8 +15,8 @@ class GoodsController extends Controller
         return redirect()->back();
     }
 
-    public function export(Request $request)
+    public function export()
     {
-        return Excel::download(new ProductsExport, 'goods.xlsx');
+        return Excel::download(new ProductsExport, 'goods-AC.xlsx');
     }
 }
