@@ -10,8 +10,6 @@
         }
     </style>
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/jsgrid/jsgrid.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/jsgrid/jsgrid-theme.min.css') }}">
 @endsection
 
 @section('content-header')
@@ -84,7 +82,7 @@
                             </tbody>
                         </table>
 
-                        <div id="jsGrid1"></div>
+
                     </div>
                 </div>
             @endif
@@ -112,45 +110,6 @@
             modal.find('.modal-title').text('Удаление товара арт: ' + product['article']);
             modal.find('.modal-text').text('Удалить ' + product['title'] + '?');
             modal.find('.modal-id').attr('value', product['id']);
-        });
-
-        $("#jsGrid1").jsGrid({
-            height: "100%",
-            width: "100%",
-
-            sorting: true,
-            paging: true,
-
-            data: db.clients,
-
-            fields: [{
-                    name: "Name",
-                    type: "text",
-                    width: 150
-                },
-                {
-                    name: "Age",
-                    type: "number",
-                    width: 50
-                },
-                {
-                    name: "Address",
-                    type: "text",
-                    width: 200
-                },
-                {
-                    name: "Country",
-                    type: "select",
-                    items: db.countries,
-                    valueField: "Id",
-                    textField: "Name"
-                },
-                {
-                    name: "Married",
-                    type: "checkbox",
-                    title: "Is Married"
-                }
-            ]
         });
     </script>
 @endsection
