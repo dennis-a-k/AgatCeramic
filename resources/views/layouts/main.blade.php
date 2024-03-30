@@ -8,17 +8,17 @@
 
     <title>Agat Ceramic @yield('title')</title>
 
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow">
     <meta name="description" content="Hmart-Smart Product eCommerce html Template">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/font.awesome.css" />
-    <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/venobox.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/font.awesome.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/venobox.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.min.css') }}">
 
     <link rel="stylesheet" href="{{ URL::asset('assets/css/app-z-EbYdqb.css') }}">
 
