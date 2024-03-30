@@ -43,6 +43,6 @@ Route::get('/rospis', function () {
 
 
 
-Route::get('/prosto', function () {
+Route::get('/admin/prosto', function () {
     return view('pages.prosto');
 })->name('prosto');
