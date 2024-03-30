@@ -8,8 +8,6 @@
 
     <title>Agat Ceramic @yield('title')</title>
 
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
 
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">

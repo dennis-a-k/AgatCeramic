@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-{{-- @section('content-header')
+@section('content-header')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection
 
 @section('content')
     <div class="row">
