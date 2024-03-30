@@ -44,5 +44,5 @@ Route::get('/rospis', function () {
 
 
 Route::get('/admin/prosto', function () {
-    return view('pages.prosto');
+    return view('pages.admin.dashboard');
 })->name('prosto');
