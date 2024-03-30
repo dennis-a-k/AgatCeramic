@@ -16,4 +16,4 @@ require __DIR__.'/santekhnika.php';
 
 require __DIR__.'/goods.php';
 
-require __DIR__.'/admin/dashboard.php';
+require __DIR__.'/dashboard.php';
