@@ -5,14 +5,14 @@
 @section('content')
     <div class="shop-category-area pt-100px pb-100px">
         <div class="container">
-            <form action="{{ route('goods.import') }}" method="POST" enctype="multipart/form-data">
+            {{-- <form action="{{ route('goods.import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <input type="file" name="files">
                 <button class="btn-dark" type="submit">Send</button>
-            </form>
+            </form> --}}
 
-            <a href="{{ route('goods.export') }}" class="btn-dark">Скачать</a>
+            <a href="{{ route('admin.dashboard') }}" class="btn-dark">Админка</a>
         </div>
     </div>
 @endsection
