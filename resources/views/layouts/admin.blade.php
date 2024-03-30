@@ -12,12 +12,12 @@
     <meta name="description" content="Hmart-Smart Product eCommerce html Template">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
 
-    {{-- <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/fontawesome-free/css/all.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     @yield('css')
 
-    {{-- <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/dist/css/adminlte.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/dist/css/adminlte.min.css') }}">
 
     {{-- <link rel="stylesheet" href="assets/css/app-z-EbYdqb.css"> --}}
 
@@ -29,8 +29,7 @@
 
         @include('components.admin.header.header')
 
-        <!-- Main Sidebar Container -->
-        {{-- @include('components.sidebar') --}}
+        @include('components.admin.sidebar.sidebar')
 
         <main class="content-wrapper">
 
@@ -44,15 +43,11 @@
                 </div>
             </section>
         </main>
-
-        <!-- Footer -->
-        {{-- @include('components.footer') --}}
-        <!-- /.footer -->
     </div>
 
-    {{-- <script src="{{ URL::asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/adminlte/dist/js/adminlte.min.js') }}"></script> --}}
+    <script src="{{ URL::asset('assets/adminlte/dist/js/adminlte.min.js') }}"></script>
 
     @yield('js')
 </body>
