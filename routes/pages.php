@@ -37,12 +37,3 @@ Route::get('/rezka', function () {
 Route::get('/rospis', function () {
     return view('pages.rospis');
 })->name('rospis');
-
-
-
-
-
-
-Route::get('/admin/prosto', function () {
-    return view('pages.admin.dashboard');
-})->name('prosto');
