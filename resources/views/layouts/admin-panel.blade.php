@@ -3,17 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Agat Ceramic Админка @yield('title')</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+
     <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     @yield('css')
 
     <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/dist/css/adminlte.min.css') }}">
+
+    {{-- <link rel="stylesheet" href="assets/css/app-z-EbYdqb.css"> --}}
+
+    @vite(['resources/scss/admin/app.scss'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
