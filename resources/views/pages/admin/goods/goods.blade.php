@@ -30,17 +30,18 @@
                 <h5 class="text-info text-center mt-2">Список товаров пуст</h5>
             @else
                 <div class="card">
-                    <div class="card-body p-0">
-                        <table class="table table-sm">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap table-sm">
                             <thead>
                                 <tr>
-                                    <th style="width: 10%">Артикул</th>
-                                    <th style="width: auto">Наименование</th>
-                                    <th>Серия</th>
-                                    <th>Остаток</th>
+                                    <th>Артикул</th>
+                                    <th>Наименование</th>
+                                    <th>Код товара</th>
+                                    <th>Коллекция</th>
+                                    <th>Категория</th>
                                     <th>Цена</th>
                                     <th>Статус</th>
-                                    <th style="width: 10%"></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,16 +51,23 @@
                                         <td>
                                             <a href="#" target="_blank">{{ $product->title }}</a>
                                         </td>
-                                        {{-- <td>{{ $product->category->title }}</td>
+                                        <td>{{ $product->product_code }}</td>
+                                        @if (!$product->collection)
+                                            <td>---</td>
+                                        @else
+                                            <td>{{ $product->collection->title }}</td>
+                                        @endif
+                                        @if (!$product->category)
+                                            <td>---</td>
+                                        @else
+                                            <td>{{ $product->category->title }}</td>
+                                        @endif
                                         <td>
-                                            @include('components.goods.count-product-modal')
+                                            @include('components.admin.goods.price-product-modal')
                                         </td>
                                         <td>
-                                            @include('components.goods.price-product-modal')
+                                            @include('components.admin.goods.published-product-modal')
                                         </td>
-                                        <td>
-                                            @include('components.goods.published-product-modal')
-                                        </td> --}}
                                         <td>
                                             <div class="btn-group btn-group-xs">
                                                 <a href="{{ route('admin.dashboard', $product->id) }}"
@@ -74,7 +82,7 @@
                                                 </button>
                                             </div>
 
-                                            {{-- @include('components.goods.delete-product-modal') --}}
+                                            @include('components.admin.goods.delete-product-modal')
                                         </td>
                                     </tr>
                                 @endforeach
@@ -89,19 +97,17 @@
 
 @section('js')
     <script type="text/javascript">
-        //всплывающие подсказки над кнопками
         $('.btn-msg').popover({
             placement: 'top',
             trigger: 'hover',
         });
 
-        //модалка для удаления категории
         $('#modalDelete').on('show.bs.modal', function(event) {
             const button = $(event.relatedTarget);
             const product = button.data('product');
 
             const modal = $(this);
-            modal.find('.modal-title').text('Удаление товара арт: ' + product['article']);
+            modal.find('.modal-title').text('Удаление товара арт: ' + product['sku']);
             modal.find('.modal-text').text('Удалить ' + product['title'] + '?');
             modal.find('.modal-id').attr('value', product['id']);
         });

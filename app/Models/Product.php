@@ -25,4 +25,14 @@ class Product extends Model
         'image_id',
         'description',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function collection()
+    {
+        return $this->belongsTo(Collection::class, 'collection_id', 'id');
+    }
 }
