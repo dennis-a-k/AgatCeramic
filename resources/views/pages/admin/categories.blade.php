@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Категории')
+@section('title', '| Категории')
 
 @section('css')
     <style type="text/css">
