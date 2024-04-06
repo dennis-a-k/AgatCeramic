@@ -18,4 +18,4 @@ require __DIR__.'/goods.php';
 
 require __DIR__.'/admin/dashboard.php';
 require __DIR__.'/admin/goods.php';
-
+require __DIR__.'/admin/category.php';

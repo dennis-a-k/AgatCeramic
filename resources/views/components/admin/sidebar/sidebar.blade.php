@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('category.list') }}" class="nav-link">
                                 <i class="fas fa-tags nav-icon"></i>
                                 <p>Категории</p>
                             </a>
