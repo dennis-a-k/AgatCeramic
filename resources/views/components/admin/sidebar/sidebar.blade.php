@@ -60,6 +60,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('sizes.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Размеры</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-plus-square nav-icon"></i>
                                 <p>Добавить товар</p>
