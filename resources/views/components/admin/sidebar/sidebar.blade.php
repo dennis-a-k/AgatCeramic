@@ -77,6 +77,18 @@
                                 <p>Поверхность</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('texture.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Цвет</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('texture.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Производитель</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
