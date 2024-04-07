@@ -45,29 +45,41 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('category.list') }}" class="nav-link">
-                        <i class="fas fa-tags nav-icon"></i>
-                        <p>Категории</p>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Характеристики
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('category.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Категории</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sizes.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Размеры</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pattern.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Узор</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('texture.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Поверхность</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('sizes.list') }}" class="nav-link">
-                        <i class="fas fa-tags nav-icon"></i>
-                        <p>Размеры</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('pattern.list') }}" class="nav-link">
-                        <i class="fas fa-tags nav-icon"></i>
-                        <p>Узор</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('texture.list') }}" class="nav-link">
-                        <i class="fas fa-tags nav-icon"></i>
-                        <p>Поверхность</p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="far fa-plus-square nav-icon"></i>
