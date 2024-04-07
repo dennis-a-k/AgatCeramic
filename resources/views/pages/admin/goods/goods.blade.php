@@ -108,7 +108,7 @@
 
             const modal = $(this);
             modal.find('.modal-title').text('Удаление товара арт: ' + product['sku']);
-            modal.find('.modal-text').text('Удалить ' + product['title'] + '?');
+            modal.find('.modal-text').text('Удалить «' + product['title'] + '»?');
             modal.find('.modal-id').attr('value', product['id']);
         });
     </script>

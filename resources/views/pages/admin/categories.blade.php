@@ -95,7 +95,7 @@
             const category = button.data('category');
 
             const modal = $(this);
-            modal.find('.modal-text').text('Удалить ' + category['title'] + '?')
+            modal.find('.modal-text').text('Удалить «' + category['title'] + '»?')
             modal.find('.modal-id').attr('value', category['id']);
         })
     </script>

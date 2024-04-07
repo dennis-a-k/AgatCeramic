@@ -95,7 +95,7 @@
             const size = button.data('size');
 
             const modal = $(this);
-            modal.find('.modal-text').text('Удалить ' + size['title'] + '?')
+            modal.find('.modal-text').text('Удалить «' + size['title'] + '»?')
             modal.find('.modal-id').attr('value', size['id']);
         })
     </script>
