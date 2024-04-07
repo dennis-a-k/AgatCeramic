@@ -39,55 +39,43 @@
 
                 <li class="nav-header">Товары</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('goods.list') }}" class="nav-link">
                         <i class="fas fa-layer-group nav-icon"></i>
-                        <p>
-                            Ассортимент
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p>Список товаров</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('goods.list') }}" class="nav-link">
-                                <i class="fas fa-tshirt nav-icon"></i>
-                                <p>Список товаров</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
-                                <p>Категории</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('sizes.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
-                                <p>Размеры</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-plus-square nav-icon"></i>
-                                <p>Добавить товар</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('category.list') }}" class="nav-link">
+                        <i class="fas fa-tags nav-icon"></i>
+                        <p>Категории</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('sizes.list') }}" class="nav-link">
+                        <i class="fas fa-tags nav-icon"></i>
+                        <p>Размеры</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('pattern.list') }}" class="nav-link">
+                        <i class="fas fa-tags nav-icon"></i>
+                        <p>Узор</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-plus-square nav-icon"></i>
+                        <p>Добавить товар</p>
+                    </a>
                 </li>
 
+                <li class="nav-header">Заказы</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">
                         <i class="fas fa-list-ul nav-icon"></i>
                         <p>
-                            Заказы
+                            Список заказов
                             <span class="badge badge-info right">2</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Gallery
                         </p>
                     </a>
                 </li>

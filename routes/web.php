@@ -20,3 +20,4 @@ require __DIR__.'/admin/dashboard.php';
 require __DIR__.'/admin/goods.php';
 require __DIR__.'/admin/category.php';
 require __DIR__.'/admin/sizes.php';
+require __DIR__.'/admin/pattern.php';
