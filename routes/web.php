@@ -23,3 +23,4 @@ require __DIR__.'/admin/sizes.php';
 require __DIR__.'/admin/pattern.php';
 require __DIR__.'/admin/texture.php';
 require __DIR__.'/admin/collection.php';
+require __DIR__.'/admin/country.php';
