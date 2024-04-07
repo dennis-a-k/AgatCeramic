@@ -89,6 +89,12 @@
                                 <p>Производитель</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('collection.list') }}" class="nav-link">
+                                <i class="fas fa-tags nav-icon"></i>
+                                <p>Коллекция</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
