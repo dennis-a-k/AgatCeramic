@@ -56,13 +56,13 @@
                         <li class="nav-item">
                             <a href="{{ route('category.list') }}" class="nav-link">
                                 <i class="fas fa-tags nav-icon"></i>
-                                <p>Категории</p>
+                                <p>Категория</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('sizes.list') }}" class="nav-link">
                                 <i class="fas fa-tags nav-icon"></i>
-                                <p>Размеры</p>
+                                <p>Размер</p>
                             </a>
                         </li>
                         <li class="nav-item">

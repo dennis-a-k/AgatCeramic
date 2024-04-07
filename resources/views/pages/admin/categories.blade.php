@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '| Категории')
+@section('title', '| Категория')
 
 @section('css')
     <style type="text/css">
@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категории</h1>
+                    <h1 class="m-0">Категория</h1>
                 </div>
             </div>
         </div>
