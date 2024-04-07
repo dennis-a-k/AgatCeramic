@@ -12,4 +12,9 @@ class Texture extends Model
     protected $fillable = [
         'title',
     ];
+
+    public function goods()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

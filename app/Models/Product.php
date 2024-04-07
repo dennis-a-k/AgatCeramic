@@ -35,4 +35,34 @@ class Product extends Model
     {
         return $this->belongsTo(Collection::class, 'collection_id', 'id');
     }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(Color::class, 'color_id', 'id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function pattern()
+    {
+        return $this->belongsTo(Pattern::class, 'pattern_id', 'id');
+    }
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class, 'size_id', 'id');
+    }
+
+    public function texture()
+    {
+        return $this->belongsTo(Texture::class, 'texture_id', 'id');
+    }
 }
