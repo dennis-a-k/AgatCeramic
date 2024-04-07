@@ -4,7 +4,7 @@ use App\Http\Controllers\PatternController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => '/admin/patterns',
+    'prefix' => '/admin-panel/patterns',
     // 'middleware' => 'auth',
 ], function () {
     Route::get('/', [PatternController::class, 'index'])->name('pattern.list');

@@ -4,7 +4,7 @@ use App\Http\Controllers\TextureController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => '/admin/textures',
+    'prefix' => '/admin-panel/textures',
     // 'middleware' => 'auth',
 ], function () {
     Route::get('/', [TextureController::class, 'index'])->name('texture.list');

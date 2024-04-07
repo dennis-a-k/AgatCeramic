@@ -4,7 +4,7 @@ use App\Http\Controllers\CollectionController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => '/admin/collections',
+    'prefix' => '/admin-panel/collections',
     // 'middleware' => 'auth',
 ], function () {
     Route::get('/', [CollectionController::class, 'index'])->name('collection.list');

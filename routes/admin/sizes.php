@@ -4,7 +4,7 @@ use App\Http\Controllers\SizesController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => '/admin/sizes',
+    'prefix' => '/admin-panel/sizes',
     // 'middleware' => 'auth',
 ], function () {
     Route::get('/', [SizesController::class, 'index'])->name('sizes.list');
