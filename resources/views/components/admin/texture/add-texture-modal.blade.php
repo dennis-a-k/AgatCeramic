@@ -19,8 +19,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <div>
-                            <label for="inputtexture">Поверхность</label>
-                            <input type="text" id="inputtexture"
+                            <label for="inputTexture">Поверхность</label>
+                            <input type="text" id="inputTexture"
                                 class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title"
                                 value="{{ old('title') }}" required autofocus autocomplete="title">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
