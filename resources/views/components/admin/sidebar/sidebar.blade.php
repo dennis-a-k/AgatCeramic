@@ -46,7 +46,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="fas fa-list-ul nav-icon"></i>
                         <p>
                             Характеристики
                             <i class="fas fa-angle-left right"></i>
@@ -78,7 +78,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('texture.list') }}" class="nav-link">
+                            <a href="{{ route('color.list') }}" class="nav-link">
                                 <i class="fas fa-tags nav-icon"></i>
                                 <p>Цвет</p>
                             </a>
@@ -114,7 +114,7 @@
                 <li class="nav-header">Заказы</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">
-                        <i class="fas fa-list-ul nav-icon"></i>
+                        <i class="fas fa-boxes nav-icon"></i>
                         <p>
                             Список заказов
                             <span class="badge badge-info right">2</span>
