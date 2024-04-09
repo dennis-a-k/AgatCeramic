@@ -13,6 +13,8 @@
             display: block;
             width: 50px;
             height: 30px;
+            border: 1px solid #C0C0C0;
+            border-radius: 8px;
         }
     </style>
 @endsection
@@ -60,8 +62,7 @@
                                         <td>{{ $color->title }}</td>
                                         <td>#{{ $color->code }}</td>
                                         <td>
-                                            <span class="square-color border border-dark"
-                                                style="background-color: #{{ $color->code }}">
+                                            <span class="square-color" style="background-color: #{{ $color->code }}">
                                             </span>
                                         </td>
                                         <td>

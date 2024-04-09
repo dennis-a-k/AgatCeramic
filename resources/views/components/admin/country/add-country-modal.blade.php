@@ -19,8 +19,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <div>
-                            <label for="inputCollection">Страна</label>
-                            <input type="text" id="inputCollection"
+                            <label for="inputCountry">Страна</label>
+                            <input type="text" id="inputCountry"
                                 class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name"
                                 value="{{ old('name') }}" required autofocus autocomplete="name">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('name')" /> --}}
