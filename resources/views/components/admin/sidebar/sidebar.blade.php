@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('texture.list') }}" class="nav-link">
+                            <a href="{{ route('brand.list') }}" class="nav-link">
                                 <i class="fas fa-tags nav-icon"></i>
                                 <p>Производитель</p>
                             </a>

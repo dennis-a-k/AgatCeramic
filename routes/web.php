@@ -25,3 +25,4 @@ require __DIR__.'/admin/texture.php';
 require __DIR__.'/admin/collection.php';
 require __DIR__.'/admin/country.php';
 require __DIR__.'/admin/color.php';
+require __DIR__.'/admin/brand.php';
