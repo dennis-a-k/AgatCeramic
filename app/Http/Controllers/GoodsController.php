@@ -4,7 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Collection;
+use App\Models\Color;
+use App\Models\Country;
+use App\Models\Pattern;
 use App\Models\Product;
+use App\Models\Size;
+use App\Models\Texture;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -26,6 +34,47 @@ class GoodsController extends Controller
         $goods = Product::query()->orderBy('sku', 'ASC')->get();
         return view('pages.admin.goods.goods', ['goods' => $goods]);
     }
+
+    public function create()
+    {
+        $categories = Category::all();
+        $sizes = Size::all();
+        $patterns = Pattern::all();
+        $textures = Texture::all();
+        $colors = Color::all();
+        $brands = Brand::all();
+        $collections = Collection::all();
+        $countries = Country::all();
+        return view('pages.admin.goods.add-product', compact(
+            'categories',
+            'sizes',
+            'patterns',
+            'textures',
+            'colors',
+            'brands',
+            'collections',
+            'countries',
+        ));
+    }
+
+    // public function store(ProductRequest $request)
+    // {
+    //     $data = $request->validated();
+    //     $product = Product::create($data);
+    //     if (isset($data['imgs'])) {
+    //         foreach ($data['imgs'] as $key => $img) {
+    //             $name = $product->article . '_' . $key . '.' . $img->getClientOriginalExtension();
+    //             $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
+    //             Image::create([
+    //                 'product_id' => $product->id,
+    //                 'img' => $filePath,
+    //                 'url' => url('/storage/' . $filePath),
+    //             ]);
+    //         }
+    //         unset($data['imgs']);
+    //     }
+    //     return back()->with('status', 'product-created');
+    // }
 
     public function destroy(Request $request)
     {

@@ -8,7 +8,7 @@
         @method('PATCH')
         <div class="input-group">
             <input type="number" class="form-control" name="price" value="{{ $product->price }}" min="0.00"
-                step="0.01" pattern="^\d+(?:\.\d{5,2})?$" required>
+                step="0.01" pattern="^\d+(?:\.\d{10,2})?$" required>
             <div class="input-group-append">
                 <button class="btn btn-info btn-sm" type="submit">
                     <i class="fas fa-pencil-alt"></i>
