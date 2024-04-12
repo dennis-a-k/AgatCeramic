@@ -32,8 +32,8 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
                     @include('components.admin.color.add-color-modal')

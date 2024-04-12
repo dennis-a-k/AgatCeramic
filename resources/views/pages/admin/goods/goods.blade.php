@@ -52,16 +52,20 @@
                                             <a href="#" target="_blank">{{ $product->title }}</a>
                                         </td>
                                         <td>{{ $product->product_code }}</td>
-                                        @if (!$product->collection)
-                                            <td>---</td>
-                                        @else
-                                            <td>{{ $product->collection->title }}</td>
-                                        @endif
-                                        @if (!$product->category)
-                                            <td>---</td>
-                                        @else
-                                            <td>{{ $product->category->title }}</td>
-                                        @endif
+                                        <td>
+                                            @if (!$product->collection)
+                                                ---
+                                            @else
+                                                {{ $product->collection->title }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (!$product->category)
+                                                ---
+                                            @else
+                                                {{ $product->category->title }}
+                                            @endif
+                                        </td>
                                         <td>
                                             @include('components.admin.goods.price-product-modal')
                                         </td>
