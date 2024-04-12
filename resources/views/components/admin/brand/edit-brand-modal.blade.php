@@ -27,6 +27,21 @@
                                 name="title" value="" required autofocus autocomplete="title">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
+
+                        <div class="mt-3">
+                            <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse"
+                                data-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
+                                Фото производителя
+                            </button>
+                            <div class="custom-file collapse mt-3" id="collapseBrand">
+                                <input type="file" class="custom-file-input" id="brandImg"
+                                    accept="image/png, image/jpeg, image/jpg, image/webp" name="img">
+                                <label class="custom-file-label" for="brandImg" data-browse="Выбрать">
+                                    Загрузите фото
+                                </label>
+                                {{-- <x-input-error class="ml-2" :messages="$errors->get('img')" /> --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

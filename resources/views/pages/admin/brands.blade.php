@@ -56,7 +56,7 @@
                                                 ---
                                             @else
                                                 <img src="{{ URL::asset('storage/' . $brand->img) }}"
-                                                    alt="{{ $brand->title }}" width="90px">
+                                                    alt="{{ $brand->title }}" height="35px">
                                             @endif
 
                                         </td>

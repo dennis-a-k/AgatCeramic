@@ -32,7 +32,7 @@ class BrandController extends Controller
         if ($request->hasFile('img')) {
             $slug = Str::slug($brand->title );
             $name = $slug . '_brand' . '.' . $data['img']->getClientOriginalExtension();
-            $brand->img = Storage::disk('public')->putFileAs('/brands', $data['img'], $name);;
+            $brand->img = Storage::disk('public')->putFileAs('/brands', $data['img'], $name);
         }
 
         $brand->save();
@@ -46,11 +46,23 @@ class BrandController extends Controller
      */
     public function update(BrandRequest $request)
     {
-        $request->validated();
-        Brand::where('id', $request->id)->update([
-            'title' => $request->title,
-            'img' => $request->img,
-        ]);
+        $data = $request->validated();
+
+        $brand = Brand::findOrFail($request->id);
+        $brand->title = $data['title'];
+
+        if ($request->hasFile('img')) {
+            if ($brand->img) {
+                Storage::delete($brand->img);
+            }
+
+            $slug = Str::slug($brand->title );
+            $name = $slug . '_brand' . '.' . $data['img']->getClientOriginalExtension();
+            $brand->img = Storage::disk('public')->putFileAs('/brands', $data['img'], $name);
+        }
+
+        $brand->save();
+
         return back()->with('status', 'brand-updated');
     }
 
