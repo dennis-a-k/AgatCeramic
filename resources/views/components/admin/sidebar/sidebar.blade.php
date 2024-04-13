@@ -55,49 +55,49 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('category.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Категория</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('sizes.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Размер</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('pattern.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Узор</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('texture.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Поверхность</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('color.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Цвет</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('brand.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Производитель</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('collection.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Коллекция</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('country.list') }}" class="nav-link">
-                                <i class="fas fa-tags nav-icon"></i>
+                                <i class="fas fa-genderless nav-icon"></i>
                                 <p>Страна</p>
                             </a>
                         </li>
