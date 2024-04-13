@@ -13,6 +13,7 @@ class Product extends Model
         'sku',
         'title',
         'price',
+        'unit',
         'product_code',
         'category_id',
         'size_id',
@@ -22,7 +23,6 @@ class Product extends Model
         'brand_id',
         'collection_id',
         'country_id',
-        'image_id',
         'description',
     ];
 
@@ -64,5 +64,10 @@ class Product extends Model
     public function texture()
     {
         return $this->belongsTo(Texture::class, 'texture_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }

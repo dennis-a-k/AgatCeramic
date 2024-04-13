@@ -9,9 +9,9 @@
                 <div>
                     <label for="inputArticle">Артикул <small class="text-red">(обязательно)</small></label>
                     <input type="text" id="inputArticle"
-                        class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="article"
-                        value="{{ old('article') }}" required autofocus autocomplete="article">
-                    {{-- <x-input-error class="ml-2" :messages="$errors->get('article')" /> --}}
+                        class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="sku"
+                        value="{{ old('sku') }}" required autofocus autocomplete="sku">
+                    {{-- <x-input-error class="ml-2" :messages="$errors->get('sku')" /> --}}
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <label for="inputProductCode">Код товара</label>
                     <input type="text" id="inputProductCode"
                         class="form-control {{ $errors->has('product_code') ? 'is-invalid' : '' }}" name="product_code"
-                        value="{{ old('product_code') }}" required autocomplete="product_code">
+                        value="{{ old('product_code') }}" autocomplete="product_code">
                     {{-- <x-input-error class="ml-2" :messages="$errors->get('product_code')" /> --}}
                 </div>
             </div>
@@ -41,14 +41,26 @@
                     <input type="number" id="inputPrice"
                         class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price"
                         value="{{ old('price') }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$"
-                        required autocomplete="price">
+                        autocomplete="price">
                     {{-- <x-input-error class="ml-2" :messages="$errors->get('price')" /> --}}
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="summernote">Описание</label>
-                <textarea class="form-control" id="summernote" name="description"></textarea>
+                <textarea class="form-control" id="summernote" name="description" rows="9">{{ old('description') }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio1" name="unit" value="шт">
+                    <label for="customRadio1" class="custom-control-label">штука</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="customRadio2" name="unit" value="м2"
+                        checked>
+                    <label for="customRadio2" class="custom-control-label">метр квадратный</label>
+                </div>
             </div>
         </div>
     </div>

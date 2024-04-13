@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
+use App\Http\Requests\ProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Color;
 use App\Models\Country;
+use App\Models\Image;
 use App\Models\Pattern;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Texture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class GoodsController extends Controller
@@ -57,24 +60,23 @@ class GoodsController extends Controller
         ));
     }
 
-    // public function store(ProductRequest $request)
-    // {
-    //     $data = $request->validated();
-    //     $product = Product::create($data);
-    //     if (isset($data['imgs'])) {
-    //         foreach ($data['imgs'] as $key => $img) {
-    //             $name = $product->article . '_' . $key . '.' . $img->getClientOriginalExtension();
-    //             $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
-    //             Image::create([
-    //                 'product_id' => $product->id,
-    //                 'img' => $filePath,
-    //                 'url' => url('/storage/' . $filePath),
-    //             ]);
-    //         }
-    //         unset($data['imgs']);
-    //     }
-    //     return back()->with('status', 'product-created');
-    // }
+    public function store(ProductRequest $request)
+    {
+        $data = $request->validated();
+        $product = Product::create($data);
+        if (isset($data['imgs'])) {
+            foreach ($data['imgs'] as $key => $img) {
+                $name = $product->sku . '_' . $key . '.' . $img->getClientOriginalExtension();
+                $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
+                Image::create([
+                    'product_id' => $product->id,
+                    'title' => $filePath,
+                ]);
+            }
+            unset($data['imgs']);
+        }
+        return back()->with('status', 'product-created');
+    }
 
     public function destroy(Request $request)
     {

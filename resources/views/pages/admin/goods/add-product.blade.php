@@ -32,7 +32,10 @@
             @include('components.admin.goods.add-product-information')
 
             @include('components.admin.goods.add-product-select')
-            {{-- @include('components.goods.add-product-images') --}}
+        </div>
+
+        <div class="row">
+            @include('components.admin.goods.add-product-images')
         </div>
 
         <div class="row pb-4">

@@ -40,6 +40,7 @@
                                     <th>Коллекция</th>
                                     <th>Категория</th>
                                     <th>Цена</th>
+                                    <th>ед.изм</th>
                                     <th>Статус</th>
                                     <th></th>
                                 </tr>
@@ -68,6 +69,13 @@
                                         </td>
                                         <td>
                                             @include('components.admin.goods.price-product-modal')
+                                        </td>
+                                        <td>
+                                            @if ($product->unit === 'м2')
+                                                М<sup>2</sup>
+                                            @elseif ($product->unit === 'шт')
+                                                шт.
+                                            @endif
                                         </td>
                                         <td>
                                             @include('components.admin.goods.published-product-modal')
