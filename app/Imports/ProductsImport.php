@@ -12,11 +12,16 @@ use App\Models\Product;
 use App\Models\Size;
 use App\Models\Texture;
 use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ProductsImport implements  ToCollection, WithHeadingRow
+class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows
 {
+    use Importable;
+
     private $categories;
     private $sizes;
     private $colors;
@@ -61,6 +66,7 @@ class ProductsImport implements  ToCollection, WithHeadingRow
                     'price' => $row['cena'],
                     'product_code' => $row['kod_tovara'] ?? NULL,
                     'description' => $row['opisanie'] ?? NULL,
+                    'unit' => $row['edinica_izmereniia'] ?? NULL,
                     'category_id' => $category->id ?? NULL,
                     'size_id' => $size->id ?? NULL,
                     'color_id' => $color->id ?? NULL,
@@ -72,5 +78,25 @@ class ProductsImport implements  ToCollection, WithHeadingRow
                 ]);
             }
         }
+    }
+
+    public function rules(): array
+    {
+        return [
+            'artikul' => ['required', 'alpha_num', 'unique:products,sku', 'max:8'],
+            'naimenovanie' => ['required', 'string', 'max:255'],
+            'cena' => ['required', 'numeric', 'between:0.00,99999999.99'],
+            'edinica_izmereniia' => ['nullable', 'string'],
+            'kod_tovara' => ['nullable', 'alpha_num'],
+            'opisanie' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
+            'kategoriia' => ['nullable', 'string'],
+            'razmer' => ['nullable', 'string'],
+            'cvet' => ['nullable', 'string'],
+            'uzor' => ['nullable', 'string'],
+            'poverxnost' => ['nullable', 'string'],
+            'proizvoditel' => ['nullable', 'string'],
+            'kollekciia' => ['nullable', 'string'],
+            'strana' => ['nullable', 'string'],
+        ];
     }
 }

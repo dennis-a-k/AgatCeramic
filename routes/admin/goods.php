@@ -13,7 +13,10 @@ Route::group([
     // Route::get('/{id}', [GoodsController::class, 'show'])->name('product.show');
     // Route::get('/{id}/edit', [GoodsController::class, 'edit'])->name('product.edit');
     // Route::patch('/{id}', [GoodsController::class, 'update'])->name('product.update');
-    Route::patch('/product/{id}/update_published', [GoodsController::class, 'updatePublished'])->name('product.update.published');
-    Route::patch('/product/{id}/update_price', [GoodsController::class, 'updatePrice'])->name('product.update.price');
+    Route::patch('/product/{id}/update-published', [GoodsController::class, 'updatePublished'])->name('product.update.published');
+    Route::patch('/product/{id}/update-price', [GoodsController::class, 'updatePrice'])->name('product.update.price');
     Route::delete('/product', [GoodsController::class, 'destroy'])->name('product.destroy');
+
+    Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
+    Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
 });

@@ -47,5 +47,10 @@
                 <td>{{ $country->name }}</td>
             @endforeach
         </tr>
+
+        <tr>
+            <td>шт</td>
+            <td>м2</td>
+        </tr>
     </tbody>
 </table>

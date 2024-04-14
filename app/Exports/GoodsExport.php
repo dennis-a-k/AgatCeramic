@@ -15,7 +15,7 @@ class GoodsExport implements WithEvents, WithTitle, FromView
 {
     private function listСharacteristics($getData, $insertData, $sheet)
     {
-        for ($i = 3; $i < 1003; $i++) {
+        for ($i = 2; $i < 1002; $i++) {
             $sheet->setCellValue($insertData . $i, '');
             $objValidation = $sheet->getCell($insertData . $i)->getDataValidation();
             $objValidation->setType(DataValidation::TYPE_LIST);
@@ -53,6 +53,7 @@ class GoodsExport implements WithEvents, WithTitle, FromView
                 $this->listСharacteristics('!$6:$6', 'K', $sheet);
                 $this->listСharacteristics('!$7:$7', 'L', $sheet);
                 $this->listСharacteristics('!$8:$8', 'M', $sheet);
+                $this->listСharacteristics('!$9:$9', 'N', $sheet);
 
                 $styleHead = [
                     'font' => [
@@ -76,7 +77,7 @@ class GoodsExport implements WithEvents, WithTitle, FromView
                         'size' => 12,
                         'strikethrough' => false,
                         'color' => [
-                            'rgb' => 'CC0700'
+                            'rgb' => 'FFFFFF'
                         ]
                     ],
                     'alignment' => [
@@ -96,9 +97,9 @@ class GoodsExport implements WithEvents, WithTitle, FromView
                     ],
                 ];
 
-                $sheet->getDelegate()->getStyle('A1:M1')->applyFromArray($styleHead);
-                $sheet->getDelegate()->getStyle('A2:M2')->applyFromArray($styleText);
-                $sheet->getDelegate()->getStyle('A3:N1003')->applyFromArray($styleBorders);
+                $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
+                $sheet->getDelegate()->getStyle('D1:N1')->applyFromArray($styleHead);
+                $sheet->getDelegate()->getStyle('A2:O2')->applyFromArray($styleBorders);
             }
         ];
     }

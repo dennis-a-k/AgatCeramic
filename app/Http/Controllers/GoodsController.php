@@ -21,17 +21,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class GoodsController extends Controller
 {
-    public function import(Request $request)
-    {
-        Excel::import(new ProductsImport, $request->file('files'));
-        return redirect()->back();
-    }
-
-    public function export()
-    {
-        return Excel::download(new ProductsExport, 'goods-AC.xlsx');
-    }
-
     public function index()
     {
         $goods = Product::query()->orderBy('sku', 'ASC')->get();
@@ -100,5 +89,16 @@ class GoodsController extends Controller
         ]);
         Product::where('id', $id)->update(['is_published' => $request->is_published]);
         return back();
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new ProductsImport, $request->file('fileExcel'));
+        return redirect()->back()->with('status', 'template-loaded');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'goods-AC.xlsx');
     }
 }
