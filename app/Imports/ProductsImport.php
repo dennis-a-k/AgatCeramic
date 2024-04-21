@@ -16,9 +16,10 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows
+class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
 {
     use Importable;
 
@@ -42,6 +43,13 @@ class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, S
         $this->collections = ModelsCollection::select('id', 'title')->get();
         $this->countries = Country::select('id', 'name')->get();
 
+    }
+
+    public function sheets(): array
+    {
+        return [
+            0 => $this,
+        ];
     }
 
     public function collection(Collection $rows)
@@ -83,7 +91,7 @@ class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, S
     public function rules(): array
     {
         return [
-            'artikul' => ['required', 'alpha_num', 'unique:products,sku', 'max:8'],
+            'artikul' => ['required', 'alpha_num', 'max:8'],
             'naimenovanie' => ['required', 'string', 'max:255'],
             'cena' => ['required', 'numeric', 'between:0.00,99999999.99'],
             'edinica_izmereniia' => ['nullable', 'string'],

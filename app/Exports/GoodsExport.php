@@ -99,7 +99,7 @@ class GoodsExport implements WithEvents, WithTitle, FromView
 
                 $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
                 $sheet->getDelegate()->getStyle('D1:N1')->applyFromArray($styleHead);
-                $sheet->getDelegate()->getStyle('A2:O2')->applyFromArray($styleBorders);
+                $sheet->getDelegate()->getStyle('A2:O1002')->applyFromArray($styleBorders);
             }
         ];
     }
