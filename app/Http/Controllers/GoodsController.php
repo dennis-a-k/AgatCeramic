@@ -67,6 +67,37 @@ class GoodsController extends Controller
         return back()->with('status', 'product-created');
     }
 
+    public function edit(string $id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
+        $sizes = Size::all();
+        $patterns = Pattern::all();
+        $textures = Texture::all();
+        $colors = Color::all();
+        $brands = Brand::all();
+        $collections = Collection::all();
+        $countries = Country::all();
+        return view('pages.admin.goods.edit-product', compact(
+            'product',
+            'categories',
+            'sizes',
+            'patterns',
+            'textures',
+            'colors',
+            'brands',
+            'collections',
+            'countries',
+        ));
+    }
+
+    public function update(ProductRequest $request, string $id)
+    {
+        $data = $request->validated();
+        Product::where('id', $id)->update($data);
+        return back();
+    }
+
     public function destroy(Request $request)
     {
         Product::find($request->id)->delete();
