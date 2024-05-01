@@ -7,7 +7,8 @@
         <div class="card-body">
             <div class="form-group">
                 <div>
-                    <label for="inputArticle">Артикул <small class="text-red">(обязательно)</small></label>
+                    <label class="text-black-50" for="inputArticle">Артикул <small
+                            class="text-red">(обязательно)</small></label>
                     <input type="text" id="inputArticle"
                         class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="sku"
                         value="{{ old('sku') }}" required autofocus autocomplete="sku">
@@ -17,7 +18,8 @@
 
             <div class="form-group">
                 <div>
-                    <label for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
+                    <label class="text-black-50" for="inputTitle">Наименование <small
+                            class="text-red">(обязательно)</small></label>
                     <input type="text" id="inputTitle"
                         class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title"
                         value="{{ old('title') }}" required autocomplete="title">
@@ -27,7 +29,7 @@
 
             <div class="form-group">
                 <div>
-                    <label for="inputProductCode">Код товара</label>
+                    <label class="text-black-50" for="inputProductCode">Код товара</label>
                     <input type="text" id="inputProductCode"
                         class="form-control {{ $errors->has('product_code') ? 'is-invalid' : '' }}" name="product_code"
                         value="{{ old('product_code') }}" autocomplete="product_code">
@@ -37,7 +39,7 @@
 
             <div class="form-group">
                 <div>
-                    <label for="inputPrice">Цена</label>
+                    <label class="text-black-50" for="inputPrice">Цена</label>
                     <input type="number" id="inputPrice"
                         class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price"
                         value="{{ old('price') }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$"
@@ -47,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label for="summernote">Описание</label>
+                <label class="text-black-50" for="summernote">Описание</label>
                 <textarea class="form-control" id="summernote" name="description" rows="9">{{ old('description') }}</textarea>
             </div>
 

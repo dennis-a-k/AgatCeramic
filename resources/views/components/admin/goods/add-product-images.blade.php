@@ -9,7 +9,7 @@
 
         <div class="card-body">
             <div class="form-group">
-                <label for="customFile">Главное фото</label>
+                <label class="text-black-50" for="customFile">Главное фото</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile"
                         accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="form-group">
-                <label for="file2">Фото №2</label>
+                <label class="text-black-50" for="file2">Фото №2</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file2"
                         accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group">
-                <label for="file3">Фото №3</label>
+                <label class="text-black-50" for="file3">Фото №3</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file3"
                         accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group">
-                <label for="file4">Фото №4</label>
+                <label class="text-black-50" for="file4">Фото №4</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file4"
                         accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]">
@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label for="file5">Фото №5</label>
+                <label class="text-black-50" for="file5">Фото №5</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file5"
                         accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]">

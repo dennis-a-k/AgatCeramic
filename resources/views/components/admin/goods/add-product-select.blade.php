@@ -6,7 +6,7 @@
 
         <div class="card-body">
             <div class="form-group">
-                <label for="selectCategories">Категория</label>
+                <label class="text-black-50" for="selectCategories">Категория</label>
                 <select class="form-control select2" style="width: 100%;" id="selectCategories" name="category_id">
                     <option selected="selected" disabled>Выберете категорию</option>
                     @foreach ($categories as $category)
@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectSizes">Размер</label>
+                <label class="text-black-50" for="selectSizes">Размер</label>
                 <select class="form-control select2" style="width: 100%;" id="selectSizes" name="size_id">
                     <option selected="selected" disabled>Выберете размер</option>
                     @foreach ($sizes as $size)
@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectPattern">Узор</label>
+                <label class="text-black-50" for="selectPattern">Узор</label>
                 <select class="form-control select2" style="width: 100%;" id="selectPattern" name="pattern_id">
                     <option selected="selected" disabled>Выберете узор</option>
                     @foreach ($patterns as $pattern)
@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectTexture">Поверхность</label>
+                <label class="text-black-50" for="selectTexture">Поверхность</label>
                 <select class="form-control select2" style="width: 100%;" id="selectTexture" name="texture_id">
                     <option selected="selected" disabled>Выберете поверхность</option>
                     @foreach ($textures as $texture)
@@ -46,7 +46,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectColors">Цвет</label>
+                <label class="text-black-50" for="selectColors">Цвет</label>
                 <select class="form-control select2" style="width: 100%;" id="selectColors" name="color_id">
                     <option selected="selected" disabled>Выберете цвет</option>
                     @foreach ($colors as $color)
@@ -56,7 +56,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectBrands">Производитель</label>
+                <label class="text-black-50" for="selectBrands">Производитель</label>
                 <select class="form-control select2" style="width: 100%;" id="selectBrands" name="brand_id">
                     <option selected="selected" disabled>Выберете производителя</option>
                     @foreach ($brands as $brand)
@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectCollection">Коллекция</label>
+                <label class="text-black-50" for="selectCollection">Коллекция</label>
                 <select class="form-control select2" style="width: 100%;" id="selectCollection" name="collection_id">
                     <option selected="selected" disabled>Выберете коллекцию</option>
                     @foreach ($collections as $collection)
@@ -78,7 +78,7 @@
             </div>
 
             <div class="form-group">
-                <label for="selectCountry">Страна</label>
+                <label class="text-black-50" for="selectCountry">Страна</label>
                 <select class="form-control select2" style="width: 100%;" id="selectCountry" name="country_id">
                     <option selected="selected" disabled>Выберете страну</option>
                     @foreach ($countries as $country)
