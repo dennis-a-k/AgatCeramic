@@ -26,15 +26,38 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        @include('components.admin.goods.edit-product-information')
+    <form method="POST" action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PATCH')
 
-        @include('components.admin.goods.edit-product-select')
-    </div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        <div class="row">
+            @include('components.admin.goods.edit-product-information')
 
-    <div class="row">
-        @include('components.admin.goods.edit-product-images')
-    </div>
+            @include('components.admin.goods.edit-product-select')
+        </div>
+
+        <div class="row">
+            @include('components.admin.goods.edit-product-images')
+        </div>
+
+        <div class="row pb-4">
+            <div class="col-12">
+                @if (session('status') === 'product-updated')
+                    <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                        class="text-sm text-info text-align-center mr-2">Товар изменён</span>
+                @endif
+
+                <button type="submit" class="btn btn-info float-right">Изменить</button>
+            </div>
+        </div>
+    </form>
 @endsection
 
 @section('js')

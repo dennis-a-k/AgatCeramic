@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\UpdatProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Brand;
 use App\Models\Category;
@@ -91,11 +92,36 @@ class GoodsController extends Controller
         ));
     }
 
-    public function update(ProductRequest $request, string $id)
+    public function update(UpdatProductRequest $request, string $id)
     {
         $data = $request->validated();
-        Product::where('id', $id)->update($data);
-        return back();
+        $product = Product::find($id);
+        $product->update([
+            'title' => $data['title'],
+            'unit' => $data['unit'],
+            'product_code' => $data['product_code'],
+            'description' => $data['description'],
+            'category_id' => $data['category_id'],
+            'size_id' => $data['size_id'],
+            'color_id' => $data['color_id'],
+            'pattern_id' => $data['pattern_id'],
+            'texture_id' => $data['texture_id'],
+            'brand_id' => $data['brand_id'],
+            'collection_id' => $data['collection_id'],
+            'country_id' => $data['country_id'],
+        ]);
+        if (isset($data['imgs'])) {
+            foreach ($data['imgs'] as $key => $img) {
+                $name = $product->sku . '_' . $key . '.' . $img->getClientOriginalExtension();
+                $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
+                Image::where('title', $filePath)->updateOrCreate([
+                    'product_id' => $product->id,
+                    'title' => $filePath,
+                ]);
+            }
+            unset($data['imgs']);
+        }
+        return back()->with('status', 'product-updated');
     }
 
     public function destroy(Request $request)
