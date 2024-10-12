@@ -16,6 +16,8 @@ Route::group([
     Route::patch('/product/{id}/update-price', [GoodsController::class, 'updatePrice'])->name('product.update.price');
     Route::delete('/product', [GoodsController::class, 'destroy'])->name('product.destroy');
 
+    Route::delete('/images/{image}', [GoodsController::class, 'deleteImage'])->name('images.destroy');
+
     Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
     Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
 });

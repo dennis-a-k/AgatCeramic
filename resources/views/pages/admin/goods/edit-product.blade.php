@@ -3,9 +3,8 @@
 @section('title', '| Редактирование товара')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/adminlte/plugins/select2/css/select2.min.css') }}">
-
-    <style type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/adminlte/plugins/select2/css/select2.min.css') }}">
+    <style>
         .error-login {
             font-size: 80%;
             color: #dc3545;
@@ -26,7 +25,7 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -37,9 +36,9 @@
                 @endforeach
             </ul>
         @endif
+
         <div class="row">
             @include('components.admin.goods.edit-product-information')
-
             @include('components.admin.goods.edit-product-select')
         </div>
 
@@ -53,19 +52,27 @@
                     <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
                         class="text-sm text-info text-align-center mr-2">Товар изменён</span>
                 @endif
-
                 <button type="submit" class="btn btn-info float-right">Изменить</button>
             </div>
         </div>
     </form>
+    <form id="delete-image-form" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
 @endsection
 
 @section('js')
-    <script src="{{ URL::asset('assets/adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/bs-custom-file-input.min.js') }}"></script>
-
-    <script type="text/javascript">
+    <script src="{{ asset('assets/adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bs-custom-file-input.min.js') }}"></script>
+    <script>
         $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $('.images').popover({
                 placement: 'bottom',
                 content: 'Размер изображения: не более 50Мб и не должен превышать 1200х1200px',
@@ -73,8 +80,20 @@
             });
 
             bsCustomFileInput.init();
-
             $('.select2').select2();
-        })
+
+            // Обработчик удаления изображения
+            $('.delete-image').on('click', function(e) {
+                e.preventDefault();
+                const imageId = $(this).data('image-id');
+                const deleteUrl = '{{ route('images.destroy', ':id') }}'.replace(':id', imageId);
+
+                if (confirm('Вы уверены, что хотите удалить это изображение?')) {
+                    const form = $('#delete-image-form');
+                    form.attr('action', deleteUrl);
+                    form.submit();
+                }
+            });
+        });
     </script>
 @endsection

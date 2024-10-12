@@ -12,6 +12,7 @@ class Image extends Model
     protected $fillable = [
         'title',
         'product_id',
+        'order',
     ];
 
     public function product()

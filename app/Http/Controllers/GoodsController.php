@@ -54,16 +54,13 @@ class GoodsController extends Controller
     {
         $data = $request->validated();
         $product = Product::create($data);
-        if (isset($data['imgs'])) {
-            foreach ($data['imgs'] as $key => $img) {
-                $name = $product->sku . '_' . $key . '.' . $img->getClientOriginalExtension();
-                $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
-                Image::create([
-                    'product_id' => $product->id,
-                    'title' => $filePath,
-                ]);
+        if ($request->hasFile('imgs')) {
+            foreach ($request->file('imgs') as $index => $img) {
+                if ($index >= 5) break; // Ограничение до 5 изображений
+                $filename = $product->sku . '_' . $index . '.' . $img->getClientOriginalExtension();
+                $img->storeAs('public/images', $filename);
+                $product->images()->create(['title' => $filename,'order' => $index]);
             }
-            unset($data['imgs']);
         }
         return back()->with('status', 'product-created');
     }
@@ -79,6 +76,7 @@ class GoodsController extends Controller
         $brands = Brand::all();
         $collections = Collection::all();
         $countries = Country::all();
+        $currentImageCount = $product->images->count();
         return view('pages.admin.goods.edit-product', compact(
             'product',
             'categories',
@@ -89,6 +87,7 @@ class GoodsController extends Controller
             'brands',
             'collections',
             'countries',
+            'currentImageCount',
         ));
     }
 
@@ -96,37 +95,39 @@ class GoodsController extends Controller
     {
         $data = $request->validated();
         $product = Product::find($id);
-        $product->update([
-            'title' => $data['title'],
-            'unit' => $data['unit'],
-            'product_code' => $data['product_code'],
-            'description' => $data['description'],
-            'category_id' => $data['category_id'],
-            'size_id' => $data['size_id'],
-            'color_id' => $data['color_id'],
-            'pattern_id' => $data['pattern_id'],
-            'texture_id' => $data['texture_id'],
-            'brand_id' => $data['brand_id'],
-            'collection_id' => $data['collection_id'],
-            'country_id' => $data['country_id'],
-        ]);
-        if (isset($data['imgs'])) {
-            foreach ($data['imgs'] as $key => $img) {
-                $name = $product->sku . '_' . $key . '.' . $img->getClientOriginalExtension();
-                $filePath = Storage::disk('public')->putFileAs('/images', $img, $name);
-                Image::where('title', $filePath)->updateOrCreate([
-                    'product_id' => $product->id,
-                    'title' => $filePath,
+        $product->fill($data)->save();
+        // Обновление порядка существующих изображений
+        if ($request->has('image_order')) {
+            foreach ($request->image_order as $imageId => $order) {
+                $image = Image::find($imageId);
+                if ($image && $image->product_id == $product->id) {
+                    $image->update(['order' => $order]);
+                }
+            }
+        }
+        // Добавление новых изображений
+        if ($request->hasFile('imgs')) {
+            $currentImageCount = $product->images->count();
+            foreach ($request->file('imgs') as $index => $img) {
+                if ($currentImageCount + $index >= 5) break; // Максимум 5 изображений
+                $filename = $product->sku . '_' . $currentImageCount + $index . '.' . $img->getClientOriginalExtension();
+                $img->storeAs('public/images', $filename);
+                $product->images()->create([
+                    'title' => $filename,
+                    'order' => $currentImageCount + $index
                 ]);
             }
-            unset($data['imgs']);
         }
         return back()->with('status', 'product-updated');
     }
 
     public function destroy(Request $request)
     {
-        Product::find($request->id)->delete();
+        $product = Product::find($request->id)->get();
+        foreach ($product->images as $image) {
+            Storage::delete('public/images/' . $image->title);
+        }
+        $product->delete();
         return back();
     }
 
@@ -136,6 +137,13 @@ class GoodsController extends Controller
             'price' => ['required', 'numeric', 'between:0.00,99999.99'],
         ]);
         Product::where('id', $id)->update(['price' => $request->price]);
+        return back();
+    }
+
+    public function deleteImage(Image $image)
+    {
+        Storage::delete('public/images/' . $image->title);
+        $image->delete();
         return back();
     }
 

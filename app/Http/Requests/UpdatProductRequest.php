@@ -43,6 +43,7 @@ class UpdatProductRequest extends FormRequest
                 'dimensions:max_width=1200,max_height=1200',
                 'max:50000',
             ],
+            'image_order.*' => 'integer|min:0|max:4',
         ];
     }
 }
