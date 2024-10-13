@@ -79,6 +79,11 @@
                 trigger: 'hover',
             });
 
+            $('.delete-image').popover({
+                placement: 'top',
+                trigger: 'hover',
+            });
+
             bsCustomFileInput.init();
             $('.select2').select2();
 

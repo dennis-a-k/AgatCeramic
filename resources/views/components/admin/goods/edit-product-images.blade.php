@@ -9,28 +9,63 @@
 
         <div class="card-body">
             @for ($i = 5 - $currentImageCount; $i > 0; $i--)
-                <label for="images">Добавить картинку:</label>
-                <input type="file" name="imgs[]" id="images" multiple
-                    accept="image/png, image/jpeg, image/jpg, image/webp"><br><br>
-            @endfor
-
-            @foreach ($product->images as $index => $image)
-                <div>
-                    <img src="{{ asset('storage/images/' . $image->title) }}" alt="Product Image" style="width: 100px;">
-                    <select name="image_order[{{ $image->id }}]">
-                        @for ($i = 0; $i < 5; $i++)
-                            <option value="{{ $i }}" {{ $image->order == $i ? 'selected' : '' }}>
-                                {{ $i + 1 }}
-                            </option>
-                        @endfor
-                    </select>
-
-                    <button type="button" class="btn btn-danger btn-sm delete-image"
-                        data-image-id="{{ $image->id }}">
-                        Удалить картинку
-                    </button>
+                <div class="row align-items-center">
+                    <div class="col form-group">
+                        <label class="text-black-50" for="customFile">Добавить картинку</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile"
+                                accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]" multiple>
+                            <label class="custom-file-label" for="customFile" data-browse="Выбрать">
+                                Загрузите картинку
+                            </label>
+                            {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                        </div>
+                    </div>
                 </div>
-            @endforeach
+            @endfor
+        </div>
+
+        <div class="card-footer">
+            <div class="row justify-content-between">
+                @if (!isset($product->images[0]))
+                    <div class="w-100">
+                        <h5 class="text-info text-center">Изображений товара нет</h5>
+                    </div>
+                @else
+                    <div class="w-100">
+                        <p class="text-secondary text-center mb-3">Выберите порядок изображений</p>
+                    </div>
+                    @foreach ($product->images as $index => $image)
+                        <div class="col-auto mb-3">
+                            <div class="row">
+                                <div class="rounded"
+                                    style="width: 100px; height: 100px; align-content: center; border: 1px solid #e5e5e5;">
+                                    <img src="{{ asset('storage/images/' . $image->title) }}" class="rounded"
+                                        style="width: 100%;" alt="{{ $image->title }}">
+                                </div>
+
+                                <div class="ml-2">
+                                    <button type="button" class="btn btn-danger btn-sm delete-image mb-1 w-100"
+                                        data-image-id="{{ $image->id }}" data-content="Удалить">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+
+                                    <div class="">
+                                        <select class="form-control" name="image_order[{{ $image->id }}]">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <option value="{{ $i }}"
+                                                    {{ $image->order == $i ? 'selected' : '' }}>
+                                                    {{ $i + 1 }}
+                                                </option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
         </div>
     </div>
 </section>
