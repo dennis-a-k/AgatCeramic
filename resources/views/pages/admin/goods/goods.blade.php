@@ -82,9 +82,8 @@
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
-                                                <a href="{{ route('product.edit', $product->id) }}"
-                                                    class="btn btn-info btn-xs btn-msg" data-content="Редактировать"
-                                                    target="_blank">
+                                                <a href="#" class="btn btn-info btn-xs btn-msg"
+                                                    data-content="Редактировать" target="_blank">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 
