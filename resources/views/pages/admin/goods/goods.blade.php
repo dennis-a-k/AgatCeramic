@@ -110,7 +110,7 @@
 
 @section('js')
     <script type="text/javascript">
-        $('.btn-msg').popover({
+        $('.btn-xs').popover({
             placement: 'top',
             trigger: 'hover',
         });
