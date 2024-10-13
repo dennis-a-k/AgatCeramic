@@ -110,10 +110,10 @@
 
 @section('js')
     <script>
-        $('.goods-popover').popover({
-            placement: 'top',
-            trigger: 'hover',
-        });
+        // $('.goods-popover').popover({
+        //     placement: 'top',
+        //     trigger: 'hover',
+        // });
 
         $('#modalDelete').on('show.bs.modal', function(event) {
             const button = $(event.relatedTarget);
