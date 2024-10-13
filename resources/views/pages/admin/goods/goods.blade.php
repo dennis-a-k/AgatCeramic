@@ -83,14 +83,14 @@
                                         <td>
                                             <div class="btn-group btn-group-xs">
                                                 <a href="{{ route('product.edit', $product->id) }}"
-                                                    class="btn btn-info btn-xs btn-xs" data-content="Редактировать"
-                                                    target="_blank">
+                                                    class="btn btn-info btn-xs btn-xs goods-popover" id=""
+                                                    data-content="Редактировать" target="_blank">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 
-                                                <button class="btn btn-danger btn-xs btn-xs" data-toggle="modal"
-                                                    data-target="#modalDelete" data-product="{{ $product }}"
-                                                    data-content="Удалить">
+                                                <button class="btn btn-danger btn-xs btn-xs goods-popover" id=""
+                                                    data-toggle="modal" data-target="#modalDelete"
+                                                    data-product="{{ $product }}" data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
@@ -109,8 +109,8 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-        $('.btn-xs').popover({
+    <script>
+        $('.goods-popover').popover({
             placement: 'top',
             trigger: 'hover',
         });
