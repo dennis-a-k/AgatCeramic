@@ -82,12 +82,13 @@
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
-                                                <a href="#" class="btn btn-info btn-xs btn-msg"
-                                                    data-content="Редактировать" target="_blank">
+                                                <a href="{{ route('product.edit', $product->id) }}"
+                                                    class="btn btn-info btn-xs btn-xs" data-content="Редактировать"
+                                                    target="_blank">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 
-                                                <button class="btn btn-danger btn-xs btn-msg" data-toggle="modal"
+                                                <button class="btn btn-danger btn-xs btn-xs" data-toggle="modal"
                                                     data-target="#modalDelete" data-product="{{ $product }}"
                                                     data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
@@ -119,7 +120,7 @@
             const product = button.data('product');
 
             const modal = $(this);
-            modal.find('.modal-title').text('Удаление товара арт: ' + product['sku']);
+            modal.find('.modal-title').text('Удаление артикула: ' + product['sku']);
             modal.find('.modal-text').text('Удалить «' + product['title'] + '»?');
             modal.find('.modal-id').attr('value', product['id']);
         });
