@@ -1,8 +1,8 @@
 <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
     <div class="product">
-        <span class="badges">
+        {{-- <span class="badges">
             <span class="new">Sale</span>
-        </span>
+        </span> --}}
         <div class="thumb">
             <a {{ $urlProduct->attributes }} class="image">
                 <img {{ $img->attributes }} />
