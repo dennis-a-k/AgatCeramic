@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PatternRequest;
 use App\Models\Pattern;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PatternController extends Controller
 {
@@ -13,8 +14,8 @@ class PatternController extends Controller
      */
     public function index()
     {
-        $patterns = Pattern::query()->orderBy('title', 'ASC')->get();
-        return view('pages.admin.patterns', ['patterns' => $patterns]);
+        $patterns = Pattern::orderBy('title', 'ASC')->get();
+        return view('pages.admin.patterns', compact('patterns'));
     }
 
     /**
@@ -22,19 +23,24 @@ class PatternController extends Controller
      */
     public function store(PatternRequest $request)
     {
-        $request->validated();
-        Pattern::create(['title' => $request->title]);
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+
+        Pattern::create($data);
+
         return back()->with('status', 'patterns-created');
     }
-
 
     /**
      * Update the specified resource in storage.
      */
     public function update(PatternRequest $request)
     {
-        $request->validated();
-        Pattern::where('id', $request->id)->update(['title' => $request->title]);
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+
+        Pattern::where('id', $request->id)->update($data);
+
         return back()->with('status', 'patterns-updated');
     }
 
@@ -44,6 +50,6 @@ class PatternController extends Controller
     public function destroy(Request $request)
     {
         Pattern::find($request->id)->delete();
-        return back();
+        return back()->with('status', 'patterns-deleted');
     }
 }
