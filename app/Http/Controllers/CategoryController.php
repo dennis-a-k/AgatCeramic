@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -22,8 +23,9 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $request->validated();
-        Category::create(['title' => $request->title]);
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+        Category::create($data);
         return back()->with('status', 'category-created');
     }
 
@@ -33,8 +35,9 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request)
     {
-        $request->validated();
-        Category::where('id', $request->id)->update(['title' => $request->title]);
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+        Category::where('id', $request->id)->update($data);
         return back()->with('status', 'category-updated');
     }
 
