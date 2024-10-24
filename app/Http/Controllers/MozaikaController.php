@@ -12,6 +12,7 @@ class MozaikaController extends Controller
         $category = Category::where('title', 'Мозаика')->first();
         if ($category) {
             $goods = Product::where('category_id', $category->id)
+                ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')
                 ->get();
         } else {

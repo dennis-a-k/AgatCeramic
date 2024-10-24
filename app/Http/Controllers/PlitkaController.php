@@ -12,6 +12,7 @@ class PlitkaController extends Controller
         $category = Category::where('title', 'Плитка')->first();
         if ($category) {
             $goods = Product::where('category_id', $category->id)
+                ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')
                 ->get();
         } else {
