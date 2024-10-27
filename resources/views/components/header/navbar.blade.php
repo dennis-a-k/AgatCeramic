@@ -49,28 +49,14 @@
                             Керамогранит <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="sub-menu">
+                            @foreach ($patterns as $key => $pattern)
                             <li class="dropdown position-static">
                                 <a
-                                    href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => 'pod-derevo']) }}">Под
-                                    дерево</a>
+                                    href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => $pattern->slug]) }}">
+                                    {{ $pattern->title }}
+                                </a>
                             </li>
-                            <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под мрамор</a>
-                            </li>
-                            <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под ламинат</a>
-                            </li>
-                            <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под паркет</a>
-                            </li>
-                            <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под камень</a>
-                            </li>
-                            <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под бетон</a>
-                            </li>
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Рисунок</a></li>
-                            <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Монотон</a></li>
+                            @endforeach
                         </ul>
                     </li>
 
