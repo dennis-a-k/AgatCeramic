@@ -21,6 +21,6 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['layouts.main', 'pages.*'], PatternComposer::class);
+        View::composer(['layouts.main'], PatternComposer::class);
     }
 }
