@@ -10,7 +10,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="{{ route('category.destroy') }}">
+            <form method="POST" action="{{ route('categories.destroy') }}">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body">

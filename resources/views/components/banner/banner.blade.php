@@ -13,7 +13,7 @@
                     производителей
                 </x-slot>
 
-                <x-slot name="url" href="{{ route('keramogranit.list') }}"></x-slot>
+                <x-slot name="url" href="{{ route('category.list', 'keramogranit') }}"></x-slot>
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">

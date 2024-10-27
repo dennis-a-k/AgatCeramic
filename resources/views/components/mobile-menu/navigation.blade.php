@@ -15,7 +15,8 @@
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4">
             <ul>
-                <li><a href="{{ route('keramogranit.list') }}"><span class="menu-text">Керамогранит</span></a>
+                <li><a href="{{ route('category.list', 'keramogranit') }}"><span
+                            class="menu-text">Керамогранит</span></a>
                     <ul class="sub-menu">
                         <li>
                             <a href="blog-list-left-sidebar.html"><span class="menu-text">Под дерево</span></a>

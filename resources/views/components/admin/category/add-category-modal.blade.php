@@ -14,7 +14,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="{{ route('category.store') }}">
+            <form method="POST" action="{{ route('categories.store') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -23,7 +23,8 @@
                             <input type="text" id="inputCategory"
                                 class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title"
                                 value="{{ old('title') }}" required autofocus autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            {{--
+                            <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
                     </div>
                 </div>

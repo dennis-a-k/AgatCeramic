@@ -22,7 +22,7 @@
                                 <div class="footer-row">
                                     <ul class="align-items-center">
                                         <li class="li">
-                                            <a class="single-link" href="{{ route('keramogranit.list') }}">
+                                            <a class="single-link" href="{{ route('category.list', 'keramogranit') }}">
                                                 Керамогранит
                                             </a>
                                         </li>
@@ -71,8 +71,8 @@
                                             class="fa fa-telegram" aria-hidden="true"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" rel="noopener noreferrer" href="#"><i
-                                            class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-whatsapp"
+                                            aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -91,7 +91,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 text-center text-md-start">
-                            <p class="copy-text"> © <?= date('Y') ?> <strong>Agat Ceramic</strong>
+                            <p class="copy-text"> ©
+                                <?= date('Y') ?> <strong>Agat Ceramic</strong>
                                 <a href="{{ route('policy') }}" class="company-name">Политика конфиденциальности</a>
                             </p>
                         </div>

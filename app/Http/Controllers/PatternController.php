@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatternRequest;
+use App\Models\Category;
 use App\Models\Pattern;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -25,9 +27,7 @@ class PatternController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
-
         Pattern::create($data);
-
         return back()->with('status', 'patterns-created');
     }
 
@@ -38,9 +38,7 @@ class PatternController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
-
         Pattern::where('id', $request->id)->update($data);
-
         return back()->with('status', 'patterns-updated');
     }
 
@@ -51,5 +49,22 @@ class PatternController extends Controller
     {
         Pattern::find($request->id)->delete();
         return back()->with('status', 'patterns-deleted');
+    }
+
+    public function filterProducts(string $categorySlug, string $patternSlug)
+    {
+        $category = Category::where('slug', $categorySlug)->firstOrFail();
+        $title = $category->title;
+        $pattern = Pattern::where('slug', $patternSlug)->firstOrFail();
+        if ($category && $pattern) {
+            $goods = Product::where('category_id', $category->id)
+                ->where('pattern_id', $pattern->id)
+                ->where('is_published', true)
+                ->orderBy('title', 'ASC')
+                ->get();
+        } else {
+            $goods = collect(); // Пустая коллекция, если категория не найдена
+        }
+        return view('pages.goods', compact('goods', 'category', 'title'));
     }
 }

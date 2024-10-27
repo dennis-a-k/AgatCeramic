@@ -15,7 +15,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="{{ route('category.update') }}">
+            <form method="POST" action="{{ route('categories.update') }}">
                 @csrf
                 @method('PATCH')
                 <div class="modal-body">
@@ -25,7 +25,8 @@
                             <input type="text" id="inputCategory"
                                 class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title"
                                 name="title" value="" required autofocus autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            {{--
+                            <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
                     </div>
                 </div>

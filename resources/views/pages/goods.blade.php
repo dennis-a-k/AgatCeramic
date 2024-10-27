@@ -35,7 +35,9 @@
 
                                             <x-slot name="urlProduct" href="{{ route('keramogranit.show') }}"></x-slot>
 
-                                            <x-slot name="urlCategory" href="{{ route($url . '.list') }}"></x-slot>
+                                            <x-slot name="urlCategory"
+                                                href="{{ route('category.list', $category->slug) }}">
+                                            </x-slot>
                                         </x-goods.product-card>
                                         @endforeach
                                         @endif

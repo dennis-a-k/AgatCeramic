@@ -45,12 +45,14 @@
                     </li>
 
                     <li class="dropdown ">
-                        <a href="{{ route('keramogranit.list') }}">
+                        <a href="{{ route('category.list', 'keramogranit') }}">
                             Керамогранит <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static">
-                                <a href="blog-list-left-sidebar.html">Под дерево</a>
+                                <a
+                                    href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => 'pod-derevo']) }}">Под
+                                    дерево</a>
                             </li>
                             <li class="dropdown position-static">
                                 <a href="blog-list-left-sidebar.html">Под мрамор</a>

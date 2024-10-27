@@ -15,6 +15,7 @@ require __DIR__.'/kleevye-smesi.php';
 require __DIR__.'/santekhnika.php';
 
 require __DIR__.'/goods.php';
+require __DIR__.'/categories&patterns.php';
 
 require __DIR__.'/admin/dashboard.php';
 require __DIR__.'/admin/goods.php';

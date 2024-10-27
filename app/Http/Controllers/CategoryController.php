@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -48,5 +49,20 @@ class CategoryController extends Controller
     {
         Category::find($request->id)->delete();
         return back();
+    }
+
+    public function filterProducts(string $categorySlug)
+    {
+        $category = Category::where('slug', $categorySlug)->first();
+        $title = $category->title;
+        if ($category) {
+            $goods = Product::where('category_id', $category->id)
+                ->where('is_published', true)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        } else {
+            $goods = collect(); // Пустая коллекция, если категория не найдена
+        }
+        return view('pages.goods', compact('goods', 'category', 'title'));
     }
 }

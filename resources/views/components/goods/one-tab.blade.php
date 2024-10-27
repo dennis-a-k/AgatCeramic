@@ -12,7 +12,7 @@
 
             <x-slot name="urlProduct" href="{{ route('keramogranit.show') }}"></x-slot>
 
-            <x-slot name="urlCategory" href="{{ route('keramogranit.list') }}"></x-slot>
+            <x-slot name="urlCategory" href="{{ route('category.list', 'keramogranit') }}"></x-slot>
         </x-goods.product-card>
 
         <!-- Single Prodect -->
