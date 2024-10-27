@@ -51,11 +51,11 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function filterProducts(string $categorySlug)
+    public function filterProducts(string $categorySlug, string $title = '')
     {
         $category = Category::where('slug', $categorySlug)->first();
-        $title = $category->title;
         if ($category) {
+            $title = $category->title;
             $goods = Product::where('category_id', $category->id)
                 ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')

@@ -51,12 +51,12 @@ class PatternController extends Controller
         return back()->with('status', 'patterns-deleted');
     }
 
-    public function filterProducts(string $categorySlug, string $patternSlug)
+    public function filterProducts(string $categorySlug, string $patternSlug, string $title = '')
     {
         $category = Category::where('slug', $categorySlug)->firstOrFail();
-        $title = $category->title;
         $pattern = Pattern::where('slug', $patternSlug)->firstOrFail();
         if ($category && $pattern) {
+            $title = $category->title;
             $goods = Product::where('category_id', $category->id)
                 ->where('pattern_id', $pattern->id)
                 ->where('is_published', true)
