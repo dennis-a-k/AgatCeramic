@@ -18,26 +18,14 @@
                 <li><a href="{{ route('category.list', 'keramogranit') }}"><span
                             class="menu-text">Керамогранит</span></a>
                     <ul class="sub-menu">
+                        @foreach ($patterns as $key => $pattern)
                         <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под дерево</span></a>
+                            <a
+                                href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => $pattern->slug]) }}">
+                                <span class="menu-text">{{ $pattern->title }}</span>
+                            </a>
                         </li>
-                        <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под мрамор</span></a>
-                        </li>
-                        <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под ламинат</span></a>
-                        </li>
-                        <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под паркет</span></a>
-                        </li>
-                        <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под камень</span></a>
-                        </li>
-                        <li>
-                            <a href="blog-list-left-sidebar.html"><span class="menu-text">Под бетон</span></a>
-                        </li>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Рисунок</span></a></li>
-                        <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Монотон</span></a></li>
+                        @endforeach
                     </ul>
                 </li>
 
