@@ -37,3 +37,7 @@ Route::get('/rezka', function () {
 Route::get('/rospis', function () {
     return view('pages.rospis');
 })->name('rospis');
+
+Route::fallback(function () {
+    return view('errors.404');
+});
