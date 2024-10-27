@@ -6,16 +6,28 @@
                     <li class="dropdown "><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static">
-                                <a href="{{ route('klinker.list') }}">Клинкер</a>
+                                <a
+                                    href="{{ $categories->contains('title', 'Клинкер') ? route('category.list', $categories->firstWhere('title', 'Клинкер')->slug) : 404 }}">
+                                    Клинкер
+                                </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ route('stupeni.list') }}">Ступени</a>
+                                <a
+                                    href="{{ $categories->contains('title', 'Ступени') ? route('category.list', $categories->firstWhere('title', 'Ступени')->slug) : 404 }}">
+                                    Ступени
+                                </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ route('zatirka.list') }}">Затирка для плитки</a>
+                                <a
+                                    href="{{ $categories->contains('title', 'Затирка для плитки') ? route('category.list', $categories->firstWhere('title', 'Затирка для плитки')->slug) : 404 }}">
+                                    Затирка для плитки
+                                </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ route('kleevye-smesi.list') }}">Клеевые смеси</a>
+                                <a
+                                    href="{{ $categories->contains('title', 'Клеевые смеси') ? route('category.list', $categories->firstWhere('title', 'Клеевые смеси')->slug) : 404 }}">
+                                    Клеевые смеси
+                                </a>
                             </li>
                             <li class="dropdown position-static">
                                 <a href="{{ route('santekhnika.list') }}">
@@ -44,8 +56,9 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown ">
-                        <a href="{{ route('category.list', 'keramogranit') }}">
+                    <li class="dropdown">
+                        <a
+                            href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
                             Керамогранит <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="sub-menu">
@@ -60,8 +73,18 @@
                         </ul>
                     </li>
 
-                    <li><a href="{{ route('plitka.list') }}">Плитка</a></li>
-                    <li><a href="{{ route('mozaika.list') }}">Мозаика</a></li>
+                    <li>
+                        <a
+                            href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                            Плитка
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                            Мозаика
+                        </a>
+                    </li>
 
                     <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
