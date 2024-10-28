@@ -41,3 +41,7 @@ Route::get('/rospis', function () {
 Route::fallback(function () {
     return view('errors.404');
 });
+
+Route::fallback(function () {
+    return view('errors.500');
+});
