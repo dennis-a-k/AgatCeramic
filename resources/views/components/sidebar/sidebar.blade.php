@@ -4,26 +4,13 @@
             <h4 class="sidebar-title">Рисунок</h4>
             <div class="sidebar-widget-category">
                 <ul>
+                    @foreach ($patterns as $pattern)
                     <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под дерево</a>
+                        <a href="blog-list-left-sidebar.html">
+                            {{ $pattern->title }}
+                        </a>
                     </li>
-                    <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под мрамор</a>
-                    </li>
-                    <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под ламинат</a>
-                    </li>
-                    <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под паркет</a>
-                    </li>
-                    <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под камень</a>
-                    </li>
-                    <li class="dropdown position-static">
-                        <a href="blog-list-left-sidebar.html">Под бетон</a>
-                    </li>
-                    <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Рисунок</a></li>
-                    <li class="dropdown position-static"><a href="blog-list-left-sidebar.html">Монотон</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -32,7 +19,10 @@
             <h4 class="sidebar-title">Цвет</h4>
             <div class="sidebar-widget-color">
                 <ul class="d-flex flex-wrap">
-                    <li><a href="#" class="color-1"></a></li>
+                    @foreach ($colors as $color)
+                    <li><a href="#" style="background-color: #{{ $color->code }};"></a></li>
+                    @endforeach
+                    {{-- <li><a href="#" class="color-1"></a></li>
                     <li><a href="#" class="color-2"></a></li>
                     <li><a href="#" class="color-3"></a></li>
                     <li><a href="#" class="color-4"></a></li>
@@ -45,7 +35,18 @@
                     <li><a href="#" class="color-11"></a></li>
                     <li><a href="#" class="color-12"></a></li>
                     <li><a href="#" class="color-13"></a></li>
-                    <li><a href="#" class="color-14"></a></li>
+                    <li><a href="#" class="color-14"></a></li> --}}
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-widget">
+            <h4 class="sidebar-title">Поверхность</h4>
+            <div class="sidebar-widget-size">
+                <ul>
+                    @foreach ($textures as $texture)
+                    <li><a href="#">{{ $texture->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -54,12 +55,9 @@
             <h4 class="sidebar-title">Размер</h4>
             <div class="sidebar-widget-size">
                 <ul>
-                    <li><a href="#" class="">120х120</a></li>
-                    <li><a href="#" class="">120х240</a></li>
-                    <li><a href="#" class="">120х260</a></li>
-                    <li><a href="#" class="">120х270</a></li>
-                    <li><a href="#" class="">120х278</a></li>
-                    <li><a href="#" class="">120х280</a></li>
+                    @foreach ($sizes as $size)
+                    <li><a href="#">{{ $size->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -68,18 +66,9 @@
             <h4 class="sidebar-title">Производитель</h4>
             <div class="sidebar-widget-brand">
                 <ul>
-                    <li><a href="#" class="selected m-0">Lakmeeto</a>
-                    </li>
-                    <li><a href="#" class="">Lakmeeto</a>
-                    </li>
-                    <li><a href="#" class="">Lakmeeto</a>
-                    </li>
-                    <li><a href="#" class="">Lakmeeto</a>
-                    </li>
-                    <li><a href="#" class="">Lakmeeto</a>
-                    </li>
-                    <li><a href="#" class="">Lakmeeto</a>
-                    </li>
+                    @foreach ($brands as $brand)
+                    <li><a href="#">{{ $brand->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
