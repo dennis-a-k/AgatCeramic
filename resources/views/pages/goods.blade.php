@@ -17,30 +17,24 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="shop-grid">
                                     <div class="row mb-n-30px">
-                                        @if (!isset($goods[0]))
-                                        <h5 class="text-center mt-2">Список товаров пуст</h5>
-                                        @else
-                                        @foreach ($goods as $key => $product)
+                                        @forelse ($goods as $product)
                                         <x-goods.product-card>
-                                            <x-slot name="img"
-                                                src="{{ $product->images->first() ? asset('storage/images/' . $product->images->first()->title) : asset('assets/images/stock/stock-image.png') }}"
+                                            <x-slot name="img" src="{{ $product->images->first()
+                                                ? asset('storage/images/' . $product->images->first()->title)
+                                                : asset('assets/images/stock/stock-image.png') }}"
                                                 alt="{{ $product->title }}">
                                             </x-slot>
-
                                             <x-slot name="category">{{ $title }}</x-slot>
-
                                             <x-slot name="title">{{ $product->title }}</x-slot>
-
                                             <x-slot name="price">{{ $product->price }}</x-slot>
-
-                                            <x-slot name="urlProduct" href="{{ route('keramogranit.show') }}"></x-slot>
-
-                                            <x-slot name="urlCategory"
-                                                href="{{ route('category.list', $category->slug) }}">
+                                            <x-slot name="urlProduct" href="{{ route('product.show', $product->sku) }}">
                                             </x-slot>
+                                            <x-slot name="urlCategory"
+                                                href="{{ route('category.list', $category->slug) }}"></x-slot>
                                         </x-goods.product-card>
-                                        @endforeach
-                                        @endif
+                                        @empty
+                                        <h5 class="text-center mt-2">Список товаров пуст</h5>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>

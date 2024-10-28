@@ -50,7 +50,8 @@
                         <tr>
                             <td>{{ $product->sku }}</td>
                             <td>
-                                <a href="#" target="_blank">{{ $product->title }}</a>
+                                <a href="{{ route('product.show', $product->sku) }}" target="_blank">{{ $product->title
+                                    }}</a>
                             </td>
                             <td>
                                 @if (!$product->product_code)

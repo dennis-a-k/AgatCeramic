@@ -12,42 +12,37 @@
                     <li><span>Цвет:</span></li>
                     <li><span>Поверхность:</span></li>
                     <li><span>Узор:</span></li>
-                    <li><span>Производитель:</span></li>
-                    <li><span>Коллекция:</span></li>
-                    <li><span>Код товара:</span></li>
                     <li><span>Страна:</span></li>
-                    <li><span>Кратность отгрузки:</span></li>
-                    <li><span>Количество в упаковке:</span></li>
-                    <li><span>Вес упаковки:</span></li>
-                    <li class="product-anotherinfo-img"><a href=""><img src="assets/images/partner/03.png"
-                                alt="partner"></a></li>
+                    <li class="product-anotherinfo-img">
+                        @if (!$product->brand?->img)
+                        <span></span>
+                        @else
+                        <a href="">
+                            <img src="{{ asset('storage/brands/' . $product->brand->img) }}"
+                                alt="{{ $product->brand->title }}">
+                        </a>
+                        @endif
+                    </li>
                 </ul>
 
                 <ul>
-                    <li><a href="">Керамогранит</a></li>
-                    <li>120х70 мм</li>
-                    <li>Розовый</li>
-                    <li>Матовая</li>
-                    <li>Под мрамор</a></li>
-                    <li><a href="">Антил</a></li>
-                    <li><a href="">Ыывапп</a></li>
-                    <li>88888888</li>
-                    <li>Россия</li>
-                    <li>1 упаковка (1,6 м2)</li>
-                    <li>10 шт.</li>
-                    <li>28,14 кг</li>
+                    <li>
+                        <a
+                            href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
+                            {{ $product->category?->title ?? '---' }}
+                        </a>
+                    </li>
+                    <li>{{ $product->size?->title ?? '---' }}</li>
+                    <li>{{ $product->color?->title ?? '---' }}</li>
+                    <li>{{ $product->texture?->title ?? '---' }}</li>
+                    <li>{{ $product->pattern?->title ?? '---' }}</li>
+                    <li>{{ $product->country?->name ?? '---' }}</li>
                 </ul>
             </div>
         </div>
         <div id="des-details1" class="tab-pane active">
             <div class="product-description-wrapper">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius tempor incidid
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip efgx ea co consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occae cupidatat non proident, sunt in culpa qui
-                </p>
+                <p>{{ $product->description ?? '' }}</p>
             </div>
         </div>
     </div>

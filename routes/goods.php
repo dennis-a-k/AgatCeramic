@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\ProductContoller;
 use Illuminate\Support\Facades\Route;
 
-// Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
-// Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
+Route::get('/product/{product}', [ProductContoller::class, 'show'])->name('product.show');
