@@ -2,16 +2,16 @@
 
 namespace App\View\Composers\ViewComposers;
 
-use App\Models\Pattern;
+use App\Models\Brand;
 use Illuminate\View\View;
 
-class PatternComposer
+class BrandComposer
 {
     public function compose(View $view)
     {
-        $patterns = Pattern::orderBy('id', 'ASC')->get();
+        $brands = Brand::all();
         $view->with([
-            'patterns' => $patterns,
+            'brands' => $brands,
         ]);
     }
 }

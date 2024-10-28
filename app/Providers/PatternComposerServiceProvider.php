@@ -6,7 +6,7 @@ use App\View\Composers\ViewComposers\PatternComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class ViewComposerServiceProvider extends ServiceProvider
+class PatternComposerServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -23,9 +23,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         View::composer([
             'components.header.navbar',
-            'components.footer.footer',
             'components.mobile-menu.navigation',
-            'components.banner.banner',
         ], PatternComposer::class);
     }
 }

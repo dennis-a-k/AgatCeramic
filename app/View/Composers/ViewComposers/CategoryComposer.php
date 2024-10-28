@@ -2,16 +2,16 @@
 
 namespace App\View\Composers\ViewComposers;
 
-use App\Models\Pattern;
+use App\Models\Category;
 use Illuminate\View\View;
 
-class PatternComposer
+class CategoryComposer
 {
     public function compose(View $view)
     {
-        $patterns = Pattern::orderBy('id', 'ASC')->get();
+        $categories = Category::all();
         $view->with([
-            'patterns' => $patterns,
+            'categories' => $categories,
         ]);
     }
 }
