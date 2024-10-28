@@ -15,8 +15,11 @@
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4">
             <ul>
-                <li><a href="{{ route('category.list', 'keramogranit') }}"><span
-                            class="menu-text">Керамогранит</span></a>
+                <li>
+                    <a
+                        href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                        <span class="menu-text">Керамогранит</span>
+                    </a>
                     <ul class="sub-menu">
                         @foreach ($patterns as $key => $pattern)
                         <li>
@@ -29,8 +32,18 @@
                     </ul>
                 </li>
 
-                <li><a href="{{ route('plitka.list') }}">Плитка</a></li>
-                <li><a href="{{ route('mozaika.list') }}">Мозаика</a></li>
+                <li>
+                    <a
+                        href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                        Плитка
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                        Мозаика
+                    </a>
+                </li>
 
                 <li>
                     <a href="#"><span class="menu-text">Услуги</span></a>
@@ -42,8 +55,18 @@
 
                 <li><a href="#"><span class="menu-text">Каталог</span></a>
                     <ul class="sub-menu">
-                        <li><a href="{{ route('klinker.list') }}"><span class="menu-text">Клинкер</span></a></li>
-                        <li><a href="{{ route('stupeni.list') }}"><span class="menu-text">Ступени</span></a></li>
+                        <li>
+                            <a
+                                href="{{ $categories->contains('title', 'Клинкер') ? route('category.list', $categories->firstWhere('title', 'Клинкер')->slug) : 404 }}">
+                                <span class="menu-text">Клинкер</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="{{ $categories->contains('title', 'Ступени') ? route('category.list', $categories->firstWhere('title', 'Ступени')->slug) : 404 }}">
+                                <span class="menu-text">Ступени</span>
+                            </a>
+                        </li>
                         <li><a href="{{ route('zatirka.list') }}"><span class="menu-text">Затирка для плитки</span></a>
                         <li><a href="{{ route('kleevye-smesi.list') }}"><span class="menu-text">Клеевые смеси</span></a>
                         </li>

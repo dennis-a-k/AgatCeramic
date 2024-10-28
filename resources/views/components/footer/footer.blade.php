@@ -22,15 +22,22 @@
                                 <div class="footer-row">
                                     <ul class="align-items-center">
                                         <li class="li">
-                                            <a class="single-link" href="{{ route('category.list', 'keramogranit') }}">
+                                            <a class="single-link"
+                                                href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
                                                 Керамогранит
                                             </a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="{{ route('plitka.list') }}">Плитка</a>
+                                            <a class="single-link"
+                                                href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                                                Плитка
+                                            </a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="{{ route('mozaika.list') }}">Мозаика</a>
+                                            <a class="single-link"
+                                                href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                                                Мозаика
+                                            </a>
                                         </li>
                                         <li class="li">
                                             <a class="single-link" href="{{ route('partnerships') }}">

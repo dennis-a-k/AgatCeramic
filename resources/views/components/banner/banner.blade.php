@@ -13,7 +13,9 @@
                     производителей
                 </x-slot>
 
-                <x-slot name="url" href="{{ route('category.list', 'keramogranit') }}"></x-slot>
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                </x-slot>
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
@@ -25,7 +27,9 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="{{ route('plitka.list') }}"></x-slot>
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                </x-slot>
             </x-banner.single-banner>
         </div>
 
@@ -39,7 +43,9 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="{{ route('mozaika.list') }}"></x-slot>
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                </x-slot>
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
