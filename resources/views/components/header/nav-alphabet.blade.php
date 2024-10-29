@@ -7,7 +7,7 @@
                 <li class="dropdown position-static"><a href="#">{{ $letter }}</a>
                     <ul class="mega-menu">
                         @foreach ($brands as $brand)
-                        <li><a href="shop-3-column.html">{{ ucfirst($brand->title) }}</a></li>
+                        <li><a href="{{ route('brand.list', $brand->slug) }}">{{ ucfirst($brand->title) }}</a></li>
                         @endforeach
                     </ul>
                 </li>
