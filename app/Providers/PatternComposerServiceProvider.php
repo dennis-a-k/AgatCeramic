@@ -23,7 +23,7 @@ class PatternComposerServiceProvider extends ServiceProvider
     {
         View::composer([
             'components.header.navbar',
-            'components.mobile-menu.navigation'
+            'components.mobile-menu.navigation',
         ], PatternComposer::class);
     }
 }
