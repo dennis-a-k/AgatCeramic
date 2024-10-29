@@ -24,13 +24,13 @@
                                                 : asset('assets/images/stock/stock-image.png') }}"
                                                 alt="{{ $product->title }}">
                                             </x-slot>
-                                            <x-slot name="category">{{ $title }}</x-slot>
+                                            <x-slot name="category">{{ $product->category->title }}</x-slot>
                                             <x-slot name="title">{{ $product->title }}</x-slot>
                                             <x-slot name="price">{{ $product->price }}</x-slot>
                                             <x-slot name="urlProduct" href="{{ route('product.show', $product->sku) }}">
                                             </x-slot>
                                             <x-slot name="urlCategory"
-                                                href="{{ route('category.list', $category->slug) }}"></x-slot>
+                                                href="{{ route('category.list', $product->category->slug) }}"></x-slot>
                                         </x-goods.product-card>
                                         @empty
                                         <h5 class="text-center mt-2">Список товаров пуст</h5>
