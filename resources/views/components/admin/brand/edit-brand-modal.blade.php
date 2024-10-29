@@ -15,7 +15,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="{{ route('brand.update') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('brands.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="modal-body">
@@ -25,7 +25,8 @@
                             <input type="text" id="inputBrand"
                                 class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title"
                                 name="title" value="" required autofocus autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            {{--
+                            <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
 
                         <div class="mt-3">
@@ -39,7 +40,8 @@
                                 <label class="custom-file-label" for="brandImg" data-browse="Выбрать">
                                     Загрузите фото
                                 </label>
-                                {{-- <x-input-error class="ml-2" :messages="$errors->get('img')" /> --}}
+                                {{--
+                                <x-input-error class="ml-2" :messages="$errors->get('img')" /> --}}
                             </div>
                         </div>
                     </div>
