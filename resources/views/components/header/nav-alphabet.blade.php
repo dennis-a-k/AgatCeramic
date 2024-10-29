@@ -6,7 +6,7 @@
 
                 <li class="dropdown position-static"><a href="#">A</a>
                     <ul class="mega-menu">
-                        <li><a href="shop-3-column.html">Shop 3 Column</a></li>
+                        <li><a href="shop-3-column.html">{{ $brands }}</a></li>
                         <li><a href="shop-3-column.html">Shop 3 Column</a></li>
                         <li><a href="shop-3-column.html">Shop 3 Column Column Column</a></li>
                         <li><a href="shop-3-column.html">Shop 3 Column</a></li>
