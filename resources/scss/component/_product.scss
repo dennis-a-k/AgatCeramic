@@ -208,7 +208,7 @@
         z-index: 11;
         // border-radius: 0 0 13px 13px;
         width: 100%;
-        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         & .action {
             display: flex;
             align-items: center;
@@ -342,7 +342,7 @@
     &:hover {
         transform: scaleY(1.05);
         z-index: 1;
-        box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
         & .badges {
             z-index: 111;
         }

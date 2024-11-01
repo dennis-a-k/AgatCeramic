@@ -36,7 +36,7 @@
                                         'category_slug' => isset($category) ? $category->slug : null,
                                     ]),
                                 ) }}"
-                                    style="background-color: #{{ $color->code }};">
+                                    style="background-color: #{{ $color->code }}; filter: brightness(95%);">
                                 </a>
                             </li>
                         @endforeach
