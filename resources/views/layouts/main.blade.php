@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/venobox.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.min.css') }}">
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/app-z-EbYdqb.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/app-CWxBUQwK.css') }}">
 
     @yield('css')
 
@@ -162,7 +162,8 @@
                                 </div>
                                 <div class="pro-details-quality">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                            value="1" />
                                     </div>
                                     <div class="pro-details-cart">
                                         <button class="add-cart"> Add To
