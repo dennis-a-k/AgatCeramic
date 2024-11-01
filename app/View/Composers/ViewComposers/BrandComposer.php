@@ -25,7 +25,13 @@ class BrandComposer
         })->sortKeys();
         // Сортируем бренды внутри групп
         $groupedBrands = $groupedBrands->map(function($brands) {
-            return $brands->sortBy('title');
+            return $brands->sortBy(fn($brand) => mb_strtolower($brand->title))
+                          ->map(function($brand) {
+                              // Делаем первую букву заглавной
+                              $brand->title = mb_strtoupper(mb_substr($brand->title, 0, 1)) . mb_substr($brand->title, 1);
+                              return $brand;
+                          })
+                          ->values();
         });
         $view->with([
             'groupedBrands' => $groupedBrands,
