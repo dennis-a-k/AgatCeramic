@@ -1,6 +1,6 @@
 <div class="col-lg-3 order-lg-first col-md-12 order-md-last">
     <div class="shop-sidebar-wrap">
-        @if ($patterns->count())
+        @if (isset($patterns) && $patterns->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Рисунок</h4>
                 <div class="sidebar-widget-category">
@@ -24,7 +24,7 @@
             </div>
         @endif
 
-        @if ($colors->count())
+        @if (isset($colors) && $colors->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Цвет</h4>
                 <div class="sidebar-widget-color">
@@ -48,7 +48,7 @@
             </div>
         @endif
 
-        @if ($textures->count())
+        @if (isset($textures) && $textures->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Поверхность</h4>
                 <div class="sidebar-widget-size">
@@ -72,7 +72,7 @@
             </div>
         @endif
 
-        @if ($sizes->count())
+        @if (isset($sizes) && $sizes->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Размер</h4>
                 <div class="sidebar-widget-size">
@@ -96,7 +96,7 @@
             </div>
         @endif
 
-        @if ($brands->count())
+        @if (isset($brands) && $brands->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Производитель</h4>
                 <div class="sidebar-widget-brand">

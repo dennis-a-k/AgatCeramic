@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class FilterController extends Controller
 {
-    public function filter(Request $request, string $title = '')
+    public function filter(Request $request)
     {
         $query = Product::query()->where('is_published', true);
+        $title = '';
         // Сохраняем или получаем категорию из сессии
         if ($request->has('category_slug')) {
             session(['current_category_slug' => $request->category_slug]);
