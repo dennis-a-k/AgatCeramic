@@ -170,7 +170,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BrandComposerServiceProvider::class,
         App\Providers\CategoryComposerServiceProvider::class,
-        App\Providers\PatternComposerServiceProvider::class,
     ])->toArray(),
 
     /*

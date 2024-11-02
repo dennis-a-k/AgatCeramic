@@ -18,18 +18,8 @@
                 <li>
                     <a
                         href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
-                        <span class="menu-text">Керамогранит</span>
+                        Керамогранит
                     </a>
-                    <ul class="sub-menu">
-                        @foreach ($patterns as $key => $pattern)
-                        <li>
-                            <a
-                                href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => $pattern->slug]) }}">
-                                <span class="menu-text">{{ $pattern->title }}</span>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
                 </li>
 
                 <li>
@@ -38,6 +28,7 @@
                         Плитка
                     </a>
                 </li>
+
                 <li>
                     <a
                         href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
@@ -53,7 +44,8 @@
                     </ul>
                 </li>
 
-                <li><a href="#"><span class="menu-text">Каталог</span></a>
+                <li>
+                    <a href="#"><span class="menu-text">Каталог</span></a>
                     <ul class="sub-menu">
                         <li>
                             <a
@@ -71,7 +63,7 @@
                         <li><a href="{{ route('kleevye-smesi.list') }}"><span class="menu-text">Клеевые смеси</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('santekhnika.list') }}"><span class="menu-text">Сантехника</span></a>
+                            <a href="#"><span class="menu-text">Сантехника</span></a>
                             <ul class="sub-menu">
                                 <li><a href="shop-3-column.html">Ванны</a></li>
                                 <li><a href="shop-3-column.html">Унитазы</a></li>

@@ -3,7 +3,7 @@
         <div class="header-nav">
             <div class="main-menu position-relative">
                 <ul>
-                    <li class="dropdown "><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown"><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static">
                                 <a
@@ -30,7 +30,7 @@
                                 </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ route('santekhnika.list') }}">
+                                <a href="#">
                                     Сантехника
                                     <i class="fa fa-angle-right"></i>
                                 </a>
@@ -47,7 +47,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown "><a href="#">Услуги <i class="fa fa-angle-down"></i></a>
+                    <li class="dropdown"><a href="#">Услуги <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static"><a href="{{ route('rezka') }}">Резка</a></li>
                             <li class="dropdown position-static">
@@ -56,21 +56,11 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
+                    <li>
                         <a
                             href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
-                            Керамогранит <i class="fa fa-angle-down"></i>
+                            Керамогранит
                         </a>
-                        <ul class="sub-menu">
-                            @foreach ($patterns as $key => $pattern)
-                            <li class="dropdown position-static">
-                                <a
-                                    href="{{ route('category.pattern', ['category' => 'keramogranit','pattern' => $pattern->slug]) }}">
-                                    {{ $pattern->title }}
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
                     </li>
 
                     <li>
@@ -79,6 +69,7 @@
                             Плитка
                         </a>
                     </li>
+
                     <li>
                         <a
                             href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
@@ -87,6 +78,7 @@
                     </li>
 
                     <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
+
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
                 </ul>
             </div>
