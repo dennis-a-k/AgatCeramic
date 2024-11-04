@@ -69,34 +69,45 @@ class BrandController extends Controller
     {
         $brand = Brand::where('slug', $brandSlug)->first();
         if ($brand) {
-            $title = $brand->title;
+            $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8');
             $goods = Product::where('brand_id', $brand->id)
                 ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')
-                ->with(['color', 'pattern', 'brand', 'texture', 'size'])
+                ->with(['color', 'pattern', 'brand', 'texture', 'size', 'category'])
                 ->get();
             // Получаем уникальные значения через связанные таблицы
-            $colors = $goods->pluck('color')->flatten()->filter()->unique('id');
-            $brands = $goods->pluck('brand')->flatten()->filter()->unique('id');
-            $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id');
-            $textures = $goods->pluck('texture')->flatten()->filter()->unique('id');
-            $sizes = $goods->pluck('size')->flatten()->filter()->unique('id');
+            $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
+                return $color->title;
+            });
+            $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
+                return $pattern->title;
+            });
+            $textures = $goods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
+                return $texture->title;
+            });
+            $sizes = $goods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
+                return $size->title;
+            });
+            $categories = $goods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
+                return $category->title;
+            });
         } else {
             $goods = collect();
             $colors = collect();
-            $brands = collect();
             $patterns = collect();
             $textures = collect();
             $sizes = collect();
+            $categories = collect();
         }
-        return view('pages.goods', compact(
+        return view('pages.goods-brand', compact(
             'goods',
+            'brand',
             'title',
             'colors',
-            'brands',
             'patterns',
             'textures',
             'sizes',
+            'categories'
         ));
     }
 }
