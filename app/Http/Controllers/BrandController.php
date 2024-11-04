@@ -73,7 +73,7 @@ class BrandController extends Controller
             $goods = Product::where('brand_id', $brand->id)
                 ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')
-                ->with(['color', 'pattern', 'brand', 'texture', 'size', 'category'])
+                ->with(['color', 'pattern', 'texture', 'size', 'category'])
                 ->get();
             // Получаем уникальные значения через связанные таблицы
             $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {

@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
-use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Color;
-use App\Models\Pattern;
 use App\Models\Product;
-use App\Models\Size;
-use App\Models\Texture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -60,7 +55,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('slug', $categorySlug)->first();
         if ($category) {
-            $title = $category->title;
+            $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($category->title, 1, null, 'UTF-8');
             $goods = Product::where('category_id', $category->id)
                 ->where('is_published', true)
                 ->orderBy('created_at', 'DESC')

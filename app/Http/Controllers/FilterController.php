@@ -58,6 +58,7 @@ class FilterController extends Controller
             'title',
         ));
     }
+
     public function filters(Request $request)
     {
         $query = Product::query()->where('is_published', true);
@@ -108,4 +109,72 @@ class FilterController extends Controller
             'brand',
         ));
     }
+
+    // public function filter(Request $request)
+    // {
+    //     return $this->applyFilters($request, 'category');
+    // }
+
+    // public function filters(Request $request)
+    // {
+    //     return $this->applyFilters($request, 'brand');
+    // }
+
+    // private function applyFilters(Request $request, string $type)
+    // {
+    //     $query = Product::query()->where('is_published', true);
+    //     $brand = '';
+    //     $title = '';
+
+    //     // Сохраняем или получаем категорию/бренд из сессии
+    //     $slugKey = $type === 'category' ? 'category_slug' : 'brand_slug';
+    //     session()->put("current_{$type}_slug", $request->input($slugKey));
+
+    //     $slug = session("current_{$type}_slug");
+    //     if ($slug) {
+    //         $model = $type === 'category' ? Category::class : Brand::class;
+    //         $item = $model::where('slug', $slug)->firstOrFail();
+    //         $brand = $item;
+    //         $query->where("{$type}_id", $item->id);
+    //         $title = $item->title;
+    //     }
+
+    //     // Применяем дополнительные фильтры
+    //     $filters = ['pattern_id', 'color_id', 'texture_id', 'size_id'];
+    //     if ($type === 'category') {
+    //         $filters[] = 'brand_id';
+    //     } else {
+    //         $filters[] = 'category_id';
+    //     }
+
+    //     foreach ($filters as $filter) {
+    //         if ($request->has($filter)) {
+    //             $query->where($filter, $request->input($filter));
+    //         }
+    //     }
+
+    //     $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size', 'category'])->get();
+
+    //     // Получаем все возможные значения для фильтров
+    //     $colors = $this->getUniqueSorted($goods, 'color');
+    //     $patterns = $this->getUniqueSorted($goods, 'pattern');
+    //     $textures = $this->getUniqueSorted($goods, 'texture');
+    //     $sizes = $this->getUniqueSorted($goods, 'size');
+    //     $categories = $this->getUniqueSorted($goods, 'category');
+
+    //     // Если тип фильтра - категория, получаем категории, иначе - бренды
+    //     $additionalData = $type === 'category' ? ['brands' => $this->getUniqueSorted($goods, 'brand')] : ['categories' => $this->getUniqueSorted($goods, 'category')];
+
+    //     return view($type === 'category' ? 'pages.goods' : 'pages.goods-brand', array_merge(
+    //         compact('goods', 'colors', 'patterns', 'textures', 'sizes',  'categories', 'title', 'brand'),
+    //         $additionalData
+    //     ));
+    // }
+
+    // private function getUniqueSorted($goods, $relation)
+    // {
+    //     return $goods->pluck($relation)->flatten()->filter()->unique('id')->sortBy(function ($item) {
+    //         return $item->title;
+    //     });
+    // }
 }
