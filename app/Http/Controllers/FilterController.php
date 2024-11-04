@@ -32,11 +32,21 @@ class FilterController extends Controller
         }
         $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size'])->get();
         // Получаем все возможные значения для фильтров
-        $colors = $goods->pluck('color')->flatten()->filter()->unique('id');
-        $brands = $goods->pluck('brand')->flatten()->filter()->unique('id');
-        $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id');
-        $textures = $goods->pluck('texture')->flatten()->filter()->unique('id');
-        $sizes = $goods->pluck('size')->flatten()->filter()->unique('id');
+        $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
+            return $color->title;
+        });
+        $brands = $goods->pluck('brand')->flatten()->filter()->unique('id')->sortBy(function ($brand) {
+            return $brand->title;
+        });
+        $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
+            return $pattern->title;
+        });
+        $textures = $goods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
+            return $texture->title;
+        });
+        $sizes = $goods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
+            return $size->title;
+        });
         return view('pages.goods', compact(
             'goods',
             'colors',

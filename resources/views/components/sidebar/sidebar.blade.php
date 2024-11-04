@@ -15,7 +15,7 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ $pattern->title }}
+                                    {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($pattern->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
@@ -39,7 +39,7 @@
                                     ]),
                                 ) }}"
                                     style="background-color: #{{ $color->code }};" class="colors-filter"
-                                    data-color="{{ $color->title }}">
+                                    data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}"">
                                 </a>
                             </li>
                         @endforeach
@@ -51,7 +51,7 @@
         @if (isset($textures) && $textures->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Поверхность</h4>
-                <div class="sidebar-widget-size">
+                <div class="sidebar-widget-category">
                     <ul>
                         @foreach ($textures as $texture)
                             <li>
@@ -63,7 +63,7 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ $texture->title }}
+                                    {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texture->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
@@ -99,7 +99,7 @@
         @if (isset($brands) && $brands->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Производитель</h4>
-                <div class="sidebar-widget-brand">
+                <div class="sidebar-widget-category">
                     <ul>
                         @foreach ($brands as $brand)
                             <li>
@@ -111,7 +111,7 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ $brand->title }}
+                                    {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
