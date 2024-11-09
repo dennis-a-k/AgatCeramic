@@ -79,25 +79,26 @@ class BrandController extends Controller
             $query = $this->applySorting($query, $request->input('sort'));
             // Получаем товары
             $goods = $query->with(['color', 'pattern', 'texture', 'size', 'category'])
-                ->get();
-            // Получаем уникальные значения через связанные таблицы
-            $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
+                ->paginate(40);
+            // Получаем уникальные значения через связанные таблицы (используем базовый запрос без пагинации)
+            $allGoods = $query->get();
+            $colors = $allGoods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
                 return $color->title;
             });
-            $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
+            $patterns = $allGoods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
                 return $pattern->title;
             });
-            $textures = $goods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
+            $textures = $allGoods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
                 return $texture->title;
             });
-            $sizes = $goods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
+            $sizes = $allGoods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
                 return $size->title;
             });
-            $categories = $goods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
+            $categories = $allGoods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
                 return $category->title;
             });
         } else {
-            $goods = collect();
+            $goods = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 40);
             $colors = collect();
             $patterns = collect();
             $textures = collect();

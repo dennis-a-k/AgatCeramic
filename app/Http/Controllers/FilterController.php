@@ -37,21 +37,22 @@ class FilterController extends Controller
         // Применяем сортировку
         $query = $this->applySorting($query, $request->input('sort'));
         // Получаем товары
-        $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size'])->get();
-        // Получаем все возможные значения для фильтров
-        $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
+        $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size'])->paginate(40);
+        // Получаем все возможные значения для фильтров из полного набора данных
+        $allGoods = $query->get();
+        $colors = $allGoods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
             return $color->title;
         });
-        $brands = $goods->pluck('brand')->flatten()->filter()->unique('id')->sortBy(function ($brand) {
+        $brands = $allGoods->pluck('brand')->flatten()->filter()->unique('id')->sortBy(function ($brand) {
             return $brand->title;
         });
-        $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
+        $patterns = $allGoods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
             return $pattern->title;
         });
-        $textures = $goods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
+        $textures = $allGoods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
             return $texture->title;
         });
-        $sizes = $goods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
+        $sizes = $allGoods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
             return $size->title;
         });
         return view('pages.goods', compact(
@@ -90,21 +91,22 @@ class FilterController extends Controller
         // Применяем сортировку
         $query = $this->applySorting($query, $request->input('sort'));
         // Получаем товары
-        $goods = $query->with(['color', 'pattern', 'category', 'texture', 'size'])->get();
-        // Получаем все возможные значения для фильтров
-        $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
+        $goods = $query->with(['color', 'pattern', 'category', 'texture', 'size'])->paginate(40);
+        // Получаем все возможные значения для фильтров из полного набора данных
+        $allGoods = $query->get();
+        $colors = $allGoods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
             return $color->title;
         });
-        $categories = $goods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
+        $categories = $allGoods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
             return $category->title;
         });
-        $patterns = $goods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
+        $patterns = $allGoods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
             return $pattern->title;
         });
-        $textures = $goods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
+        $textures = $allGoods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
             return $texture->title;
         });
-        $sizes = $goods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
+        $sizes = $allGoods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
             return $size->title;
         });
         return view('pages.goods-brand', compact(
