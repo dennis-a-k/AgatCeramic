@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\SortableProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    use SortableProducts;
+
     /**
      * Display a listing of the resource.
      */
@@ -51,15 +54,17 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function filterProducts(string $categorySlug, string $title = '')
+    public function filterProducts(string $categorySlug, Request $request, string $title = '')
     {
         $category = Category::where('slug', $categorySlug)->first();
         if ($category) {
             $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($category->title, 1, null, 'UTF-8');
-            $goods = Product::where('category_id', $category->id)
-                ->where('is_published', true)
-                ->orderBy('created_at', 'DESC')
-                ->with(['color', 'brand', 'pattern', 'texture', 'size'])
+            $query = Product::where('category_id', $category->id)
+                ->where('is_published', true);
+            // Применяем сортировку
+            $query = $this->applySorting($query, $request->input('sort'));
+            // Получаем товары
+            $goods = $query->with(['color', 'brand', 'pattern', 'texture', 'size'])
                 ->get();
             // Получаем уникальные значения через связанные таблицы
             $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {

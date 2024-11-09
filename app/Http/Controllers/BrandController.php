@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use App\Models\Product;
+use App\Traits\SortableProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
+    use SortableProducts;
+
     public function index()
     {
         $brands = Brand::orderBy('title', 'ASC')->get();
@@ -65,15 +68,17 @@ class BrandController extends Controller
         }
     }
 
-    public function filterProducts(string $brandSlug, string $title = '')
+    public function filterProducts(string $brandSlug, Request $request, string $title = '')
     {
         $brand = Brand::where('slug', $brandSlug)->first();
         if ($brand) {
             $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8');
-            $goods = Product::where('brand_id', $brand->id)
-                ->where('is_published', true)
-                ->orderBy('created_at', 'DESC')
-                ->with(['color', 'pattern', 'texture', 'size', 'category'])
+            $query = Product::where('brand_id', $brand->id)
+                ->where('is_published', true);
+            // Применяем сортировку
+            $query = $this->applySorting($query, $request->input('sort'));
+            // Получаем товары
+            $goods = $query->with(['color', 'pattern', 'texture', 'size', 'category'])
                 ->get();
             // Получаем уникальные значения через связанные таблицы
             $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {

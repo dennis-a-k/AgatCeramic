@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\SortableProducts;
 use Illuminate\Http\Request;
 
 class FilterController extends Controller
 {
+    use SortableProducts;
+
     public function filter(Request $request)
     {
         $query = Product::query()->where('is_published', true);
@@ -31,6 +34,9 @@ class FilterController extends Controller
                 $query->where($filter, $request->input($filter));
             }
         }
+        // Применяем сортировку
+        $query = $this->applySorting($query, $request->input('sort'));
+        // Получаем товары
         $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size'])->get();
         // Получаем все возможные значения для фильтров
         $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
@@ -81,6 +87,9 @@ class FilterController extends Controller
                 $query->where($filter, $request->input($filter));
             }
         }
+        // Применяем сортировку
+        $query = $this->applySorting($query, $request->input('sort'));
+        // Получаем товары
         $goods = $query->with(['color', 'pattern', 'category', 'texture', 'size'])->get();
         // Получаем все возможные значения для фильтров
         $colors = $goods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
