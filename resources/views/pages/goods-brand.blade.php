@@ -135,5 +135,14 @@
             opacity: 1;
             visibility: visible;
         }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .disabled a {
+            background-color: #e1e1e1;
+        }
     </style>
 @endsection
