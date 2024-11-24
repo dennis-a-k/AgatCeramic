@@ -73,30 +73,58 @@ class BrandController extends Controller
         $brand = Brand::where('slug', $brandSlug)->first();
         if ($brand) {
             $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8');
-            $query = Product::where('brand_id', $brand->id)
+            $baseQuery = Product::where('brand_id', $brand->id)
                 ->where('is_published', true);
-            // Применяем сортировку
-            $query = $this->applySorting($query, $request->input('sort'));
-            // Получаем товары
-            $goods = $query->with(['color', 'pattern', 'texture', 'size', 'category'])
+            // Клонируем запрос для получения всех характеристик
+            $characteristicsQuery = clone $baseQuery;
+
+            // Получаем все товары для извлечения характеристик (без пагинации)
+            $allBrandProducts = $characteristicsQuery->with([
+                'color', 'category', 'pattern', 'texture', 'size'
+            ])->get();
+
+            // Получаем все характеристики
+            $colors = $allBrandProducts->pluck('color')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $categories = $allBrandProducts->pluck('category')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $patterns = $allBrandProducts->pluck('pattern')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $textures = $allBrandProducts->pluck('texture')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $sizes = $allBrandProducts->pluck('size')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            // Применяем сортировку к базовому запросу
+            $query = $this->applySorting($baseQuery, $request->input('sort'));
+
+            // Получаем товары с пагинацией
+            $goods = $query->with(['color', 'category', 'pattern', 'texture', 'size'])
                 ->paginate(40);
-            // Получаем уникальные значения через связанные таблицы (используем базовый запрос без пагинации)
-            $allGoods = $query->get();
-            $colors = $allGoods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
-                return $color->title;
-            });
-            $patterns = $allGoods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
-                return $pattern->title;
-            });
-            $textures = $allGoods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
-                return $texture->title;
-            });
-            $sizes = $allGoods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
-                return $size->title;
-            });
-            $categories = $allGoods->pluck('category')->flatten()->filter()->unique('id')->sortBy(function ($category) {
-                return $category->title;
-            });
         } else {
             $goods = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 40);
             $colors = collect();

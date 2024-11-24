@@ -1,5 +1,5 @@
 <?php
-
+// CategoryController.php
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
@@ -13,18 +13,12 @@ class CategoryController extends Controller
 {
     use SortableProducts;
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categories = Category::query()->orderBy('title', 'ASC')->get();
         return view('pages.admin.categories', ['categories' => $categories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CategoryRequest $request)
     {
         $data = $request->validated();
@@ -33,10 +27,6 @@ class CategoryController extends Controller
         return back()->with('status', 'category-created');
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(CategoryRequest $request)
     {
         $data = $request->validated();
@@ -45,9 +35,6 @@ class CategoryController extends Controller
         return back()->with('status', 'category-updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request)
     {
         Category::find($request->id)->delete();
@@ -56,33 +43,67 @@ class CategoryController extends Controller
 
     public function filterProducts(string $categorySlug, Request $request, string $title = '')
     {
+        // Получаем категорию
         $category = Category::where('slug', $categorySlug)->first();
+
         if ($category) {
-            $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($category->title, 1, null, 'UTF-8');
-            $query = Product::where('category_id', $category->id)
+            $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') .
+                    mb_substr($category->title, 1, null, 'UTF-8');
+
+            // Базовый запрос для всех товаров категории
+            $baseQuery = Product::where('category_id', $category->id)
                 ->where('is_published', true);
-            // Применяем сортировку
-            $query = $this->applySorting($query, $request->input('sort'));
-            // Получаем товары
+
+            // Клонируем запрос для получения всех характеристик
+            $characteristicsQuery = clone $baseQuery;
+
+            // Получаем все товары для извлечения характеристик (без пагинации)
+            $allCategoryProducts = $characteristicsQuery->with([
+                'color', 'brand', 'pattern', 'texture', 'size'
+            ])->get();
+
+            // Получаем все характеристики
+            $colors = $allCategoryProducts->pluck('color')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $brands = $allCategoryProducts->pluck('brand')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $patterns = $allCategoryProducts->pluck('pattern')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $textures = $allCategoryProducts->pluck('texture')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            $sizes = $allCategoryProducts->pluck('size')
+                ->flatten()
+                ->filter()
+                ->unique('id')
+                ->sortBy('title')
+                ->values();
+
+            // Применяем сортировку к базовому запросу
+            $query = $this->applySorting($baseQuery, $request->input('sort'));
+
+            // Получаем товары с пагинацией
             $goods = $query->with(['color', 'brand', 'pattern', 'texture', 'size'])
                 ->paginate(40);
-            // Получаем уникальные значения через связанные таблицы (используем базовый запрос без пагинации)
-            $allGoods = $query->get();
-            $colors = $allGoods->pluck('color')->flatten()->filter()->unique('id')->sortBy(function ($color) {
-                return $color->title;
-            });
-            $brands = $allGoods->pluck('brand')->flatten()->filter()->unique('id')->sortBy(function ($brand) {
-                return $brand->title;
-            });
-            $patterns = $allGoods->pluck('pattern')->flatten()->filter()->unique('id')->sortBy(function ($pattern) {
-                return $pattern->title;
-            });
-            $textures = $allGoods->pluck('texture')->flatten()->filter()->unique('id')->sortBy(function ($texture) {
-                return $texture->title;
-            });
-            $sizes = $allGoods->pluck('size')->flatten()->filter()->unique('id')->sortBy(function ($size) {
-                return $size->title;
-            });
         } else {
             $goods = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 40);
             $colors = collect();
@@ -91,6 +112,7 @@ class CategoryController extends Controller
             $textures = collect();
             $sizes = collect();
         }
+
         return view('pages.goods', compact(
             'goods',
             'category',
@@ -99,7 +121,7 @@ class CategoryController extends Controller
             'brands',
             'patterns',
             'textures',
-            'sizes',
+            'sizes'
         ));
     }
 }
