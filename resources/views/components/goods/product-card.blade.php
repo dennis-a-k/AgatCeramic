@@ -26,7 +26,7 @@
             </button>
 
             <button class="action quickview" data-link-action="quickview" title="Посмотреть"
-                data-id="{{ $id }}" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                data-id="{{ $id ?? null }}" data-bs-toggle="modal" data-bs-target="#modalProduct">
                 <i class="pe-7s-look"></i>
             </button>
         </div>
