@@ -4,7 +4,9 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/01.jpg" alt="Product"></x-slot>
 
-            {{-- <x-slot name="id">{{ $product->id }}</x-slot> --}}
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Керамогранит</x-slot>
 
@@ -17,10 +19,12 @@
             <x-slot name="urlCategory" href="{{ route('category.list', 'keramogranit') }}"></x-slot>
         </x-goods.product-card>
 
-        <!-- Single Prodect -->
-
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/02.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Керамогранит</x-slot>
 
@@ -37,6 +41,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/03.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Керамогранит</x-slot>
 
             <x-slot name="title">Керамогранит тёмно-серый</x-slot>
@@ -50,6 +58,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/04.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Керамогранит</x-slot>
 
@@ -65,6 +77,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/05.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Керамогранит</x-slot>
 
             <x-slot name="title">Керамогранит с узором</x-slot>
@@ -78,6 +94,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/06.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Керамогранит</x-slot>
 
@@ -93,6 +113,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/07.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Керамогранит</x-slot>
 
             <x-slot name="title">Керамогранит серый песок</x-slot>
@@ -106,6 +130,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/08.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Керамогранит</x-slot>
 

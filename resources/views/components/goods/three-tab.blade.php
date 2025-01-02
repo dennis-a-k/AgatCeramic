@@ -3,6 +3,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/09.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Плитка</x-slot>
 
             <x-slot name="title">Плитка серый</x-slot>
@@ -18,6 +22,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/10.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Плитка</x-slot>
 
             <x-slot name="title">Плитка розовый</x-slot>
@@ -31,6 +39,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/11.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Плитка</x-slot>
 
@@ -46,6 +58,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/12.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Плитка</x-slot>
 
             <x-slot name="title">Плитка песочный</x-slot>
@@ -59,6 +75,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/13.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Плитка</x-slot>
 
@@ -74,6 +94,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/14.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Плитка</x-slot>
 
             <x-slot name="title">Плитка серый мрамор</x-slot>
@@ -88,6 +112,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/15.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Плитка</x-slot>
 
             <x-slot name="title">Плитка серый песок</x-slot>
@@ -101,6 +129,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/16.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Плитка</x-slot>
 

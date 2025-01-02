@@ -3,6 +3,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/17.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Мозаика</x-slot>
 
             <x-slot name="title">Мозаика серый</x-slot>
@@ -18,6 +22,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/18.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Мозаика</x-slot>
 
             <x-slot name="title">Мозаика розовый</x-slot>
@@ -31,6 +39,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/19.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Мозаика</x-slot>
 
@@ -46,6 +58,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/20.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Мозаика</x-slot>
 
             <x-slot name="title">Мозаика песочный</x-slot>
@@ -59,6 +75,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/21.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Мозаика</x-slot>
 
@@ -74,6 +94,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/22.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Мозаика</x-slot>
 
             <x-slot name="title">Мозаика серый мрамор</x-slot>
@@ -88,6 +112,10 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/23.jpg" alt="Product"></x-slot>
 
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
+
             <x-slot name="category">Мозаика</x-slot>
 
             <x-slot name="title">Мозаика серый песок</x-slot>
@@ -101,6 +129,10 @@
 
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/24.jpg" alt="Product"></x-slot>
+
+            <x-slot name="id">1</x-slot>
+
+            <x-slot name="sale">1</x-slot>
 
             <x-slot name="category">Мозаика</x-slot>
 
