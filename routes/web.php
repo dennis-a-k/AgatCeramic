@@ -14,6 +14,7 @@ require __DIR__.'/brand.php';
 
 require __DIR__.'/search.php';
 require __DIR__.'/filters.php';
+require __DIR__.'/sale.php';
 
 require __DIR__.'/admin/dashboard.php';
 require __DIR__.'/admin/goods.php';

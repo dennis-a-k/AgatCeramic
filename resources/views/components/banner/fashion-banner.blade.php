@@ -3,7 +3,7 @@
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 text-center">
                 <h2 class="title"> <span>Распродажа</span>Успейти купить</h2>
-                <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize m-auto">
+                <a href="{{ route('sale') }}" class="btn btn-primary text-capitalize m-auto">
                     Распродажа
                 </a>
             </div>
