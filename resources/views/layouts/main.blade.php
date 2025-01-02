@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/venobox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/app-CWxBUQwK.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app-DeEXQlpE.css') }}">
 
     @yield('css')
 </head>
