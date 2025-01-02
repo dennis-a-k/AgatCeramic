@@ -89,7 +89,7 @@
                                             @include('components.admin.goods.published-product-modal')
                                         </td>
                                         <td>
-                                            @include('components.admin.goods.sail-product-modal')
+                                            @include('components.admin.goods.sale-product-modal')
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
