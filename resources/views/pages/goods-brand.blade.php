@@ -33,6 +33,7 @@
                                                             : asset('assets/images/stock/stock-image.png') }}"
                                                         alt="{{ $product->title }}">
                                                     </x-slot>
+                                                    <x-slot name="id">{{ $product->id }}</x-slot>
                                                     <x-slot name="category">{{ $product->category->title }}</x-slot>
                                                     <x-slot name="title">{{ $product->title }}</x-slot>
                                                     <x-slot name="price">{{ $product->price }}</x-slot>
@@ -51,7 +52,7 @@
                             </div>
                         </div>
 
-                        @include('components.pagination.pagination')
+                        {{ $goods->withQueryString()->links('components.pagination.pagination') }}
                     </div>
                 </div>
 

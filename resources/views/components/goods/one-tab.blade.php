@@ -4,6 +4,8 @@
         <x-goods.product-card>
             <x-slot name="img" src="assets/images/product-image/01.jpg" alt="Product"></x-slot>
 
+            {{-- <x-slot name="id">{{ $product->id }}</x-slot> --}}
+
             <x-slot name="category">Керамогранит</x-slot>
 
             <x-slot name="title">Керамогранит серый</x-slot>

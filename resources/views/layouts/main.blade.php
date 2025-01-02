@@ -8,17 +8,17 @@
 
     <title>Agat Ceramic @yield('title')</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/font.awesome.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/pe-icon-7-stroke.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/venobox.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font.awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/venobox.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/app-CWxBUQwK.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app-CWxBUQwK.css') }}">
 
     @yield('css')
 </head>
@@ -42,18 +42,19 @@
 
     @include('components.modal.modal-product')
 
-    <script src="{{ URL::asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/jquery.countdown.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/scrollUp.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/venobox.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/scrollUp.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/venobox.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
-    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/app-Dpeb6JbE.js') }}"></script>
 
     @yield('js')
 </body>
