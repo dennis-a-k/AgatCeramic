@@ -29,6 +29,7 @@
                                                     <x-slot name="id">{{ $product->id }}</x-slot>
                                                     <x-slot name="title">{{ $product->title }}</x-slot>
                                                     <x-slot name="price">{{ $product->price }}</x-slot>
+                                                    <x-slot name="sale">{{ $product->sale }}</x-slot>
                                                     <x-slot name="urlProduct"
                                                         href="{{ route('product.show', $product->sku) }}">
                                                     </x-slot>

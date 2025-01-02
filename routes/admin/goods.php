@@ -13,6 +13,7 @@ Route::group([
     Route::get('/product/{id}/edit', [GoodsController::class, 'edit'])->name('product.edit');
     Route::patch('/product/{id}', [GoodsController::class, 'update'])->name('product.update');
     Route::patch('/product/{id}/update-published', [GoodsController::class, 'updatePublished'])->name('product.update.published');
+    Route::patch('/product/{id}/update-sale', [GoodsController::class, 'updateSale'])->name('product.update.sale');
     Route::patch('/product/{id}/update-price', [GoodsController::class, 'updatePrice'])->name('product.update.price');
     Route::delete('/product', [GoodsController::class, 'destroy'])->name('product.destroy');
 

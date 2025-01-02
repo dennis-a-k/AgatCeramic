@@ -156,6 +156,15 @@ class GoodsController extends Controller
         return back();
     }
 
+    public function updateSale(Request $request, string $id)
+    {
+        $request->validate([
+            'sale' => ['required', 'string'],
+        ]);
+        Product::where('id', $id)->update(['sale' => $request->sale]);
+        return back();
+    }
+
     public function import(Request $request)
     {
         Excel::import(new ProductsImport, $request->file('fileExcel'));
