@@ -30,7 +30,7 @@
                 <div class="sidebar-widget-color">
                     <ul class="d-flex flex-wrap">
                         @foreach ($colors as $color)
-                            <li>
+                            <li style="z-index: 8;">
                                 <a href="{{ route(
                                     'filter',
                                     array_merge(request()->query(), [
