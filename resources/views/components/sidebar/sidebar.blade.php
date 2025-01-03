@@ -15,7 +15,8 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($pattern->title, 1, null, 'UTF-8') }}
+                                    {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') .
+                                        mb_substr($pattern->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
@@ -30,7 +31,7 @@
                 <div class="sidebar-widget-color">
                     <ul class="d-flex flex-wrap">
                         @foreach ($colors as $color)
-                            <li style="z-index: 8;">
+                            <li class="color-list">
                                 <a href="{{ route(
                                     'filter',
                                     array_merge(request()->query(), [
@@ -39,7 +40,7 @@
                                     ]),
                                 ) }}"
                                     style="background-color: #{{ $color->code }};" class="colors-filter"
-                                    data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}"">
+                                    data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
                                 </a>
                             </li>
                         @endforeach
@@ -63,7 +64,8 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texture->title, 1, null, 'UTF-8') }}
+                                    {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') .
+                                        mb_substr($texture->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach

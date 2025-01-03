@@ -52,7 +52,7 @@
                 <div class="sidebar-widget-color">
                     <ul class="d-flex flex-wrap">
                         @foreach ($colors as $color)
-                            <li>
+                            <li class="color-list">
                                 <a href="{{ route(
                                     'sale.filter',
                                     array_merge(request()->query(), [

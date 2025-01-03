@@ -83,14 +83,14 @@
         }
 
         .colors-filter {
-            position: relative;
             filter: brightness(95%);
         }
 
+        /* Стили тултипа */
         .colors-filter::after {
             content: attr(data-color);
             position: absolute;
-            top: 120%;
+            top: -130%;
             left: 50%;
             transform: translateX(-50%);
             background-color: #788da3;
@@ -98,32 +98,34 @@
             padding: 5px 10px;
             border-radius: 4px;
             white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
+            display: none;
             transition: opacity 0.3s ease;
-            z-index: 10;
             pointer-events: none;
         }
 
+        /* Треугольник под тултипом */
         .colors-filter::before {
             content: "";
             position: absolute;
-            top: 80%;
+            top: -25%;
             left: 50%;
             transform: translateX(-50%);
             border-width: 5px;
             border-style: solid;
-            border-color: transparent transparent #788da3 transparent;
-            opacity: 0;
-            visibility: hidden;
+            border-color: #788da3 transparent transparent transparent;
+            display: none;
             transition: opacity 0.3s ease;
-            z-index: 10;
         }
 
+        /* Показ тултипа и треугольника при наведении */
         .colors-filter:hover::after,
         .colors-filter:hover::before {
-            opacity: 1;
-            visibility: visible;
+            display: block;
+        }
+
+        .color-list {
+            position: relative;
+            display: inline-block;
         }
 
         .disabled {
