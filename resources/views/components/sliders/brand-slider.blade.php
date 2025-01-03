@@ -2,18 +2,12 @@
     <div class="container">
         <div class="brand-slider swiper-container">
             <div class="swiper-wrapper align-items-center">
+                @forelse ($brands as $brand)
                 <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/partner/01.png" alt="brand" /></a>
+                    <a href="{{ asset('brand/' . $brand->slug) }}"><img class=" img-fluid"
+                            src="{{ asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}" /></a>
                 </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/partner/02.png" alt="brand" /></a>
-                </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/partner/03.png" alt="brand" /></a>
-                </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#"><img class=" img-fluid" src="assets/images/partner/04.png" alt="brand" /></a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

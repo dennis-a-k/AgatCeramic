@@ -144,4 +144,12 @@ class BrandController extends Controller
             'categories'
         ));
     }
+
+    public function slider()
+    {
+        $brands = Brand::whereNotNull('img')
+        ->where('img', '!=', '')
+        ->get();
+        return view('index', compact('brands'));
+    }
 }

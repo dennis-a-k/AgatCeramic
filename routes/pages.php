@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [BrandController::class, 'slider'])->name('home');
 
 Route::get('/delivery', function () {
     return view('pages.delivery');
