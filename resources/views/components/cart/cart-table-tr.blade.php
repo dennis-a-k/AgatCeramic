@@ -1,4 +1,4 @@
-<tr>
+<tr data-product-id="{{ $id }}">
     <td class="product-thumbnail">
         <a {{ $url->attributes }}><img class="img-responsive ml-15px" {{ $img->attributes }} /></a>
     </td>
