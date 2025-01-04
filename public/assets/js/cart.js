@@ -133,7 +133,13 @@ function removeFromCart(productId) {
                 row.remove();
             }
             updateCartTotal(data.total);
+            updateCartCount(data.cart_count); // Добавьте эту строку
             showNotification(data.message);
+
+            // Если корзина пуста, перезагрузите страницу для отображения сообщения о пустой корзине
+            if (data.cart_count === 0) {
+                window.location.reload();
+            }
         })
         .catch((error) => console.error("Ошибка:", error));
 }

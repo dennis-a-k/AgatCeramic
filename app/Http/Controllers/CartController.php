@@ -38,7 +38,11 @@ class CartController extends Controller
     public function remove(Request $request)
     {
         $this->cartService->removeItem($request->product_id);
-        return response()->json(['message' => 'Товар удален из корзины']);
+        return response()->json([
+            'message' => 'Товар удален из корзины',
+            'total' => $this->cartService->getTotal(),
+            'cart_count' => count($this->cartService->getCart())
+        ]);
     }
 
     public function index()
