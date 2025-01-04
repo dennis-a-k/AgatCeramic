@@ -55,7 +55,7 @@
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/app-BaaygeRj.js') }}"></script>
+    <script src="{{ asset('assets/js/app-CFl6ezxR.js') }}"></script>
 
     {{-- удалить --}}
     {{-- <script src="{{ asset('assets/js/product-modal-cart.js') }}"></script>
