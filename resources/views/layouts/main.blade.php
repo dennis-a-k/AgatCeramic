@@ -55,12 +55,11 @@
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/app-BMyoboYp.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/app-BaaygeRj.js') }}"></script>
 
     {{-- удалить --}}
-    {{-- <script src="{{ asset('assets/js/app-Dpeb6JbE.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/product-modal-cart.js') }}"></script>
-    <script src="{{ asset('assets/js/cart.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/product-modal-cart.js') }}"></script>
+    <script src="{{ asset('assets/js/cart.js') }}"></script> --}}
 
     @yield('js')
 </body>
