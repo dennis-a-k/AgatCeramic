@@ -23,24 +23,10 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($cart as $id => $product)
-                                            <x-cart.cart-table-tr>
-                                                <x-slot name="id">{{ $id }}</x-slot>
-
-                                                <x-slot name="img"
-                                                    src="{{ $product['image']->first()
-                                                        ? asset('storage/images/' . $product['image']->first()->title)
-                                                        : asset('assets/images/stock/stock-image.png') }}"
-                                                    alt="{{ $product['title'] }}"></x-slot>
-
-                                                <x-slot name="url" href="{{ route('product.show', $product['sku']) }}">
-                                                </x-slot>
-
-                                                <x-slot name="title">{{ $product['title'] }}</x-slot>
-
-                                                <x-slot name="price">{{ $product['price'] }}</x-slot>
-
-                                                <x-slot name="quantity">{{ $product['quantity'] }}</x-slot>
-                                            </x-cart.cart-table-tr>
+                                            <x-cart.cart-table-tr :id="$id" :img="$product['image']->first()
+                                                ? asset('storage/images/' . $product['image']->first()->title)
+                                                : asset('assets/images/stock/stock-image.png')" :url="route('product.show', $product['sku'])"
+                                                :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -49,7 +35,7 @@
                                             <td></td>
                                             <td></td>
                                             <th>Общая стоимость:</th>
-                                            <th>60.00 &#8381;</th>
+                                            <th class="cart-total">{{ $total }} &#8381;</th>
                                             <td></td>
                                         </tr>
                                     </tfoot>

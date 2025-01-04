@@ -48,7 +48,7 @@ class CartController extends Controller
     public function index()
     {
         $cart = $this->cartService->getCart();
-        dump($cart);
-        return view('pages.cart', compact('cart'));
+        $total = $this->cartService->getTotal(); // получаем общую сумму
+        return view('pages.cart', compact('cart', 'total')); // передаем total вместо cartService
     }
 }

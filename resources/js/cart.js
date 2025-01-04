@@ -156,14 +156,14 @@ function showNotification(message) {
 }
 
 function updateCartCount(count) {
-    const cartCounter = document.querySelector(".cart-count");
+    const cartCounter = document.querySelector(".product-subtotal");
     if (cartCounter) {
         cartCounter.textContent = count;
     }
 }
 
 function updateCartTotal(total) {
-    const totalElement = document.querySelector(".product-subtotal");
+    const totalElement = document.querySelector(".cart-total");
     if (totalElement) {
         totalElement.textContent = `${total} ₽`;
     }
