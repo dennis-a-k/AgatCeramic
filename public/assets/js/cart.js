@@ -110,6 +110,7 @@ function updateCartQuantity(productId, quantity) {
         .then((response) => response.json())
         .then((data) => {
             updateCartTotal(data.total);
+            updateProductSubtotal(productId, quantity);
         })
         .catch((error) => console.error("Ошибка:", error));
 }
@@ -163,8 +164,22 @@ function updateCartCount(count) {
 }
 
 function updateCartTotal(total) {
-    const totalElement = document.querySelector(".cart-total");
-    if (totalElement) {
-        totalElement.textContent = `${total} ₽`;
+    const cartTotalElement = document.querySelector(".cart-total");
+    if (cartTotalElement) {
+        cartTotalElement.textContent = `${total} ₽`;
+    }
+}
+
+function updateProductSubtotal(productId, quantity) {
+    const row = document.querySelector(`tr[data-product-id="${productId}"]`);
+    if (row) {
+        const productSubtotal = row.querySelector(".product-subtotal");
+        const productPrice = parseFloat(
+            row.querySelector(".product-price-cart .amount").textContent
+        );
+        if (productSubtotal && !isNaN(productPrice)) {
+            const itemTotal = productPrice * quantity;
+            productSubtotal.textContent = `${itemTotal.toFixed(1)} ₽`;
+        }
     }
 }
