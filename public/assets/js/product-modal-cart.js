@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
+            // Установить значение qtybutton в 1
+            document.querySelector(".cart-plus-minus-box").value = 1;
+
             const productId = this.getAttribute("data-id");
 
             // Clear modal content
