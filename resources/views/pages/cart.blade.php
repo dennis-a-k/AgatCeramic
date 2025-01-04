@@ -25,7 +25,7 @@
                                         <x-slot name="img" src="assets/images/product-image/01.jpg"
                                             alt="Product"></x-slot>
 
-                                        <x-slot name="url" href="{{ route('keramogranit.show') }}"></x-slot>
+                                        <x-slot name="url" href="#"></x-slot>
 
                                         <x-slot name="title">Керамогранит серый</x-slot>
 
@@ -38,7 +38,7 @@
                                         <x-slot name="img" src="assets/images/product-image/25.jpg"
                                             alt="Product"></x-slot>
 
-                                        <x-slot name="url" href="{{ route('keramogranit.show') }}"></x-slot>
+                                        <x-slot name="url" href="#"></x-slot>
 
                                         <x-slot name="title">Керамогранит серый</x-slot>
 
@@ -50,7 +50,7 @@
                                         <x-slot name="img" src="assets/images/product-image/08.jpg"
                                             alt="Product"></x-slot>
 
-                                        <x-slot name="url" href="{{ route('keramogranit.show') }}"></x-slot>
+                                        <x-slot name="url" href="#"></x-slot>
 
                                         <x-slot name="title">Керамогранит серый</x-slot>
 

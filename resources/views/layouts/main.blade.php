@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Agat Ceramic @yield('title')</title>
 
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/venobox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/app-DeEXQlpE.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app-BC2UYkPk.css') }}">
 
     @yield('css')
 </head>
@@ -54,7 +55,12 @@
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/app-Dpeb6JbE.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/app-BMyoboYp.js') }}"></script> --}}
+
+    {{-- удалить --}}
+    {{-- <script src="{{ asset('assets/js/app-Dpeb6JbE.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/product-modal-cart.js') }}"></script>
+    <script src="{{ asset('assets/js/cart.js') }}"></script>
 
     @yield('js')
 </body>
