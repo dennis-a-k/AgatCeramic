@@ -2,15 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CartService;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
 class CartController extends Controller
 {
-    public function index()
+    protected $cartService;
+
+    public function __construct(CartService $cartService)
     {
-        return view('pages.cart');
+        $this->cartService = $cartService;
     }
 
-    public function checkout()
+    public function add(Request $request)
     {
-        return view('pages.checkout');
+        $product = Product::findOrFail($request->product_id);
+        $this->cartService->addToCart($product, $request->quantity);
+
+        return response()->json([
+            'message' => 'Товар добавлен в корзину',
+            'cart_count' => count($this->cartService->getCart())
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->cartService->updateQuantity($request->product_id, $request->quantity);
+        return response()->json([
+            'message' => 'Количество обновлено',
+            'total' => $this->cartService->getTotal()
+        ]);
+    }
+
+    public function remove(Request $request)
+    {
+        $this->cartService->removeItem($request->product_id);
+        return response()->json(['message' => 'Товар удален из корзины']);
+    }
+
+    public function index()
+    {
+        $cart = $this->cartService->getCart();
+        dump($cart);
+        return view('pages.cart', compact('cart'));
     }
 }

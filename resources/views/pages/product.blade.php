@@ -44,7 +44,7 @@
                                 @endif
                             </p>
                             <div class="pro-details-cart">
-                                <button class="add-cart">В корзину</button>
+                                <button class="add-cart" data-product-id="{{ $product->id }}">В корзину</button>
                             </div>
                         </div>
                     </div>

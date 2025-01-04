@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         data.images && data.images.length > 0
                             ? data.images
                             : [{ title: null }];
+                    const elementId = document.querySelector(
+                        "#modalProduct .pro-details-cart .add-cart"
+                    );
 
                     // Update modal content
                     document.querySelector(
@@ -66,9 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.querySelector(
                         "#modalProduct .modal-body .new-description"
                     ).innerText = description;
-                    document
-                        .getElementsByClassName("add-catr")
-                        .setAttribute("data-product-id", productId);
+                    elementId.setAttribute("data-product-id", data.id);
 
                     // Update images with correct base URL
                     document.querySelector(

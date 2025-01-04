@@ -24,7 +24,7 @@
             </h5>
         </div>
         <div class="actions">
-            <button title="Купить" class="action add-to-cart">
+            <button class="action add-cart" data-product-id="{{ $id }}">
                 <i class="pe-7s-cart"></i>
             </button>
 

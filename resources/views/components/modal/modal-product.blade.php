@@ -54,10 +54,14 @@
                                 <p class="new-unit">
                                 </p>
                                 <div class="pro-details-cart">
-                                    <button class="add-cart">В корзину</button>
+                                    <button class="add-cart" data-product-id="">
+                                        В корзину
+                                    </button>
                                 </div>
                             </div>
-                            <p class="new-description">description</p>
+                            <p class="new-description">
+                                Описание
+                            </p>
                         </div>
                     </div>
                 </div>
