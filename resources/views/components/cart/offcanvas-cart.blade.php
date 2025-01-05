@@ -6,40 +6,42 @@
         </div>
         <div class="body customScroll">
             <ul class="minicart-product-list">
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp"
-                            alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Modern Smart Phone</a>
-                        <span class="quantity-price">1 x <span class="amount">18.86 &#8381;</span></span>
-                        <a href="#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp"
-                            alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                        <span class="quantity-price">1 x <span class="amount">43.28 &#8381;</span></span>
-                        <a href="#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp"
-                            alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Smart Music Box</a>
-                        <span class="quantity-price">1 x <span class="amount">37.34 &#8381;</span></span>
-                        <a href="#" class="remove">×</a>
-                    </div>
-                </li>
+                @forelse($cart as $item)
+                    <li data-product-id="{{ $item['id'] }}">
+                        <a href="{{ route('product.show', $item['sku']) }}" class="image">
+                            <img src="{{ asset(
+                                $item['image']->first()
+                                    ? asset('storage/images/' . $item['image']->first()->title)
+                                    : asset('assets/images/stock/stock-image.png'),
+                            ) }}"
+                                alt="{{ $item['title'] }}">
+                        </a>
+                        <div class="content">
+                            <a href="{{ route('product.show', $item['sku']) }}" class="title">
+                                {{ $item['title'] }}
+                            </a>
+                            <span class="quantity-price">
+                                {{ $item['quantity'] }} x <span class="amount">{{ $item['price'] }} &#8381;</span>
+                            </span>
+                            <a href="#" class="remove" data-product-id="{{ $item['id'] }}">×</a>
+                        </div>
+                    </li>
+                @empty
+                    <li class="empty-cart">Корзина пуста</li>
+                @endforelse
             </ul>
         </div>
-        <div class="foot">
-            <div class="buttons mt-30px">
-                <a href="{{ route('cart') }}" class="btn mb-30px">Перейти в корзину</a>
-                <a href="checkout.html" class="btn current-btn">Оформить заказ</a>
+        @if (count($cart) > 0)
+            <div class="foot">
+                <div class="sub-total">
+                    <strong>Итого:</strong>
+                    <span class="amount">{{ $total }} &#8381;</span>
+                </div>
+                <div class="buttons mt-30px">
+                    <a href="{{ route('cart') }}" class="btn mb-30px">Перейти в корзину</a>
+                    <a href="{{ route('checkout') }}" class="btn current-btn">Оформить заказ</a>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>

@@ -1,9 +1,9 @@
 <header>
     @include('components.header.header-top')
 
-    @include('components.header.header-bottom')
+    @include('components.header.header-bottom', ['cart' => $cart])
 
-    @include('components.header.header-mobile')
+    @include('components.header.header-mobile', ['cart' => $cart])
 
     @include('components.header.navbar')
 

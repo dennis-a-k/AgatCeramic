@@ -51,4 +51,16 @@ class CartController extends Controller
         $total = $this->cartService->getTotal(); // получаем общую сумму
         return view('pages.cart', compact('cart', 'total')); // передаем total вместо cartService
     }
+
+    public function getOffcanvasCart()
+    {
+        $cart = $this->cartService->getCart();
+        $total = $this->cartService->getTotal();
+
+        if (request()->ajax()) {
+            return view('components.cart.offcanvas-cart', compact('cart', 'total'))->render();
+        }
+
+        return response()->json(['error' => 'Invalid request'], 400);
+    }
 }

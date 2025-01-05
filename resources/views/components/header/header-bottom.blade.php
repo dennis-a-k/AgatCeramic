@@ -21,7 +21,9 @@
                         <div>
                             <span>Корзина</span>
                             <i class="pe-7s-cart"></i>
-                            <span class="header-action-num">01</span>
+                            @if (count($cart) > 0)
+                                <span class="header-action-num">{{ str_pad(count($cart), STR_PAD_LEFT) }}</span>
+                            @endif
                         </div>
                         <span class="header-action-order">Оформить заказ</span>
                     </a>
