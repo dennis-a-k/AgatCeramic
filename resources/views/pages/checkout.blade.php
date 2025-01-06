@@ -5,11 +5,14 @@
 @section('content')
     <div class="checkout-area pt-100px pb-100px">
         <div class="container">
-            <div class="row">
-                @include('components.cart.checkout-detail')
+            <form action="{{ route('checkout.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    @include('components.cart.checkout-detail')
 
-                @include('components.cart.checkout-order')
-            </div>
+                    @include('components.cart.checkout-order')
+                </div>
+            </form>
         </div>
     </div>
 @endsection

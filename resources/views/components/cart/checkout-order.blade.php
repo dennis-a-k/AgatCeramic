@@ -11,17 +11,21 @@
                 </div>
                 <div class="your-order-middle">
                     <ul>
-                        <li><span class="order-middle-left">Product Name X 1</span> <span class="order-price">$100 </span>
-                        </li>
-                        <li><span class="order-middle-left">Product Name X 1</span> <span class="order-price">$100 </span>
-                        </li>
+                        @foreach ($cart as $item)
+                            <li>
+                                <span class="order-middle-left">{{ $item['title'] }} × {{ $item['quantity'] }}</span>
+                                <span class="order-price">{{ number_format($item['price'] * $item['quantity'], 2) }}
+                                    &#8381;
+                                </span>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="your-order-total">
                     <ul>
                         <li class="order-total">Итого</li>
-                        <li>$100</li>
+                        <li>{{ number_format($total, 2) }} &#8381;</li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +35,7 @@
                 <a class="btn-change" href="{{ route('cart') }}">Изменить</a>
             </div>
             <div class="col-md-6">
-                <a class="btn-order" href="#">Заказать</a>
+                <button type="submit" class="btn-order" style="width: 100%;">Заказать</button>
             </div>
         </div>
 

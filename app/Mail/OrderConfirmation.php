@@ -2,21 +2,24 @@
 
 namespace App\Mail;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use App\Models\Order;
+use Illuminate\Queue\SerializesModels;
 
 class OrderConfirmation extends Mailable
 {
+    use Queueable, SerializesModels;
+
     public $order;
 
-    public function __construct(Order $order)
+    public function __construct($order)
     {
         $this->order = $order;
     }
 
     public function build()
     {
-        return $this->markdown('emails.orders.confirmation')
-            ->subject('Подтверждение заказа #' . $this->order->order_number);
+        return $this->view('emails.order-confirmation')
+                    ->subject('Подтверждение заказа #' . $this->order->order_number);
     }
 }

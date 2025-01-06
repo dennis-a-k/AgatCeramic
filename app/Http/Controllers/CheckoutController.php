@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Mail\OrderConfirmation;
 use App\Mail\NewOrderNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -22,7 +23,14 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-        return view('pages.checkout');
+        $cart = $this->cartService->getCart();
+        $total = $this->cartService->getTotal();
+
+        if (empty($cart)) {
+            return redirect()->route('cart')->with('error', 'Корзина пуста');
+        }
+
+        return view('pages.checkout', compact('cart', 'total'));
     }
 
     public function store(Request $request)
@@ -41,7 +49,7 @@ class CheckoutController extends Controller
         }
 
         $order = Order::create([
-            'order_number' => 'ORD-' . strtoupper(Str::random(10)),
+            'order_number' => 'Заказ-' . strtoupper(Str::random(10)),
             'customer_name' => $request->customer_name,
             'customer_email' => $request->customer_email,
             'customer_phone' => $request->customer_phone,
@@ -61,17 +69,27 @@ class CheckoutController extends Controller
             ]);
         }
 
-        // Отправляем письмо клиенту
-        Mail::to($order->customer_email)
-            ->send(new OrderConfirmation($order));
+        try {
+            // Отправляем письмо клиенту
+            if ($order->customer_email) {
+                Mail::to($order->customer_email)
+                    ->send(new OrderConfirmation($order));
+            }
 
-        // Отправляем письмо администратору
-        Mail::to(config('mail.admin_email'))
-            ->send(new NewOrderNotification($order));
+            // Отправляем письмо администратору
+            $adminEmail = config('mail.admin_email');
+            if ($adminEmail) {
+                Mail::to($adminEmail)
+                    ->send(new NewOrderNotification($order));
+            }
+        } catch (\Exception $e) {
+            // Логируем ошибку, но позволяем процессу оформления заказа продолжиться
+            Log::error('Ошибка отправки email: ' . $e->getMessage());
+        }
 
         $this->cartService->clear();
 
-        return redirect()->route('order.success', $order->order_number)
+        return redirect()->route('order.success', ['order_number' => $order->order_number])
             ->with('success', 'Заказ успешно оформлен');
     }
 }

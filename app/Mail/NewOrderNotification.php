@@ -2,21 +2,24 @@
 
 namespace App\Mail;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use App\Models\Order;
+use Illuminate\Queue\SerializesModels;
 
 class NewOrderNotification extends Mailable
 {
+    use Queueable, SerializesModels;
+
     public $order;
 
-    public function __construct(Order $order)
+    public function __construct($order)
     {
         $this->order = $order;
     }
 
     public function build()
     {
-        return $this->markdown('emails.orders.new_order')
-            ->subject('Новый заказ #' . $this->order->order_number);
+        return $this->view('emails.new-order-notification')
+                    ->subject('Новый заказ #' . $this->order->order_number);
     }
 }

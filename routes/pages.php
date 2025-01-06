@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BrandController::class, 'slider'])->name('home');
@@ -36,6 +37,8 @@ Route::get('/rezka', function () {
 Route::get('/rospis', function () {
     return view('pages.rospis');
 })->name('rospis');
+
+Route::get('/order/success/{order_number}', [OrderController::class, 'success'])->name('order.success');
 
 Route::fallback(function () {
     return view('errors.404');
