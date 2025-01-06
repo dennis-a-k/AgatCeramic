@@ -21,7 +21,9 @@
                 <div class="header-actions">
                     <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                         <i class="pe-7s-cart"></i>
-                        <span class="header-action-num">01</span>
+                        @if (count($cart) > 0)
+                            <span class="header-action-num">{{ str_pad(count($cart), STR_PAD_LEFT) }}</span>
+                        @endif
                     </a>
                     <a href="#offcanvas-mobile-menu"
                         class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
