@@ -162,31 +162,42 @@ function showNotification(message) {
 
 function updateCartCount(count) {
     const cartCounter = document.querySelector(".product-subtotal");
-    const cartIcon = document.querySelector(".header-action-btn-cart div");
+    const cartIcons = document.querySelectorAll(
+        ".header-action-btn-cart div, .header-action-btn-cart"
+    );
 
     if (cartCounter) {
         cartCounter.textContent = count;
     }
 
-    if (!cartIcon) return;
+    cartIcons.forEach((cartIcon) => {
+        let cartCounterGoods = cartIcon.querySelector(".header-action-num");
 
-    let cartCounterGoods = cartIcon.querySelector(".header-action-num");
-
-    if (count > 0) {
-        // Если счетчик не существует, создаем его
-        if (!cartCounterGoods) {
-            cartCounterGoods = document.createElement("span");
-            cartCounterGoods.className = "header-action-num";
-            cartIcon.appendChild(cartCounterGoods);
+        if (count > 0) {
+            // Если счетчик не существует, создаем его
+            if (!cartCounterGoods) {
+                cartCounterGoods = document.createElement("span");
+                cartCounterGoods.className = "header-action-num";
+                // Для мобильной версии добавляем счетчик сразу после иконки корзины
+                if (cartIcon.tagName.toLowerCase() === "a") {
+                    const cartIconElement =
+                        cartIcon.querySelector(".pe-7s-cart");
+                    if (cartIconElement) {
+                        cartIconElement.after(cartCounterGoods);
+                    }
+                } else {
+                    cartIcon.appendChild(cartCounterGoods);
+                }
+            }
+            // Обновляем значение
+            cartCounterGoods.textContent = count.toString();
+        } else {
+            // Если count равен 0 и счетчик существует, удаляем его
+            if (cartCounterGoods) {
+                cartCounterGoods.remove();
+            }
         }
-        // Обновляем значение
-        cartCounterGoods.textContent = count.toString();
-    } else {
-        // Если count равен 0 и счетчик существует, удаляем его
-        if (cartCounterGoods) {
-            cartCounterGoods.remove();
-        }
-    }
+    });
 }
 
 function updateCartTotal(total) {
@@ -217,6 +228,8 @@ function initializeOffcanvasCart() {
             updateOffcanvasCart();
         });
     }
+
+    initializeOffcanvasEvents();
 }
 
 // Функция обновления содержимого offcanvas корзины
@@ -236,9 +249,12 @@ function updateOffcanvasCart() {
                 const currentCart = document.querySelector("#offcanvas-cart");
                 currentCart.innerHTML = newCart.innerHTML;
 
-                // Переинициализируем обработчики событий внутри корзины
+                // Переинициализируем обработчики событий
                 initializeOffcanvasEvents();
             }
+        })
+        .catch((error) => {
+            console.error("Ошибка обновления корзины:", error);
         });
 }
 
@@ -247,11 +263,19 @@ function initializeOffcanvasEvents() {
     // Удаление товаров из корзины
     const removeButtons = document.querySelectorAll("#offcanvas-cart .remove");
     removeButtons.forEach((button) => {
-        button.addEventListener("click", function (e) {
-            e.preventDefault();
-            const productId = this.closest("li").dataset.productId;
-            removeFromCart(productId);
-        });
+        // Удаляем старые обработчики перед добавлением новых
+        button.replaceWith(button.cloneNode(true));
+        const newButton = document.querySelector(
+            `#offcanvas-cart .remove[data-product-id="${button.dataset.productId}"]`
+        );
+
+        if (newButton) {
+            newButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                const productId = this.dataset.productId;
+                removeFromCart(productId);
+            });
+        }
     });
 
     // Обработчик закрытия корзины
@@ -259,7 +283,13 @@ function initializeOffcanvasEvents() {
         "#offcanvas-cart .offcanvas-close"
     );
     if (closeButton) {
-        closeButton.addEventListener("click", function (e) {
+        // Удаляем старые обработчики перед добавлением новых
+        closeButton.replaceWith(closeButton.cloneNode(true));
+        const newCloseButton = document.querySelector(
+            "#offcanvas-cart .offcanvas-close"
+        );
+
+        newCloseButton.addEventListener("click", function (e) {
             e.preventDefault();
             document.body.classList.remove("offcanvas-open");
             document
