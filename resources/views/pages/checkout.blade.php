@@ -3,7 +3,7 @@
 @section('title', ' | Оформление заказа')
 
 @section('content')
-    <div class="checkout-area pt-100px pb-100px">
+    <main class="checkout-area pt-100px pb-100px">
         <div class="container">
             <form action="{{ route('checkout.store') }}" method="POST">
                 @csrf
@@ -14,5 +14,5 @@
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 @endsection

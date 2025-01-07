@@ -1,4 +1,4 @@
-<div class="footer-area">
+<footer class="footer-area">
     <div class="footer-container">
         <div class="footer-top">
             <div class="container">
@@ -78,8 +78,8 @@
                                             class="fa fa-telegram" aria-hidden="true"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-whatsapp"
-                                            aria-hidden="true"></i>
+                                    <a target="_blank" rel="noopener noreferrer" href="#"><i
+                                            class="fa fa-whatsapp" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -108,4 +108,4 @@
             </div>
         </div>
     </div>
-</div>
+</footer>

@@ -3,7 +3,7 @@
 @section('title', ' | Оплата и доставка')
 
 @section('content')
-    <div class="shop-category-area pt-100px pb-100px">
+    <main class="shop-category-area pt-100px pb-100px">
         <div class="container">
             {{-- <form action="{{ route('goods.import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -14,5 +14,5 @@
 
             <a href="{{ route('admin.dashboard') }}" class="btn-dark">Админка</a>
         </div>
-    </div>
+    </main>
 @endsection

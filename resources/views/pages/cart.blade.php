@@ -4,7 +4,7 @@
 
 @section('content')
     @if (count($cart) > 0)
-        <div class="cart-main-area pt-100px pb-100px">
+        <main class="cart-main-area pt-100px pb-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -54,9 +54,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     @else
-        <div class="empty-cart-area pb-100px pt-100px">
+        <main class="empty-cart-area pb-100px pt-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -71,6 +71,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     @endif
 @endsection

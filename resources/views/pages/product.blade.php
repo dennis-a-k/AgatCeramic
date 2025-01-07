@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="product-details-area pt-100px pb-100px">
+    <main class="product-details-area pt-100px pb-100px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 @endsection
 
 @section('css')

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/venobox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/app-0xz4Fmca.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
     @yield('css')
 </head>
@@ -33,17 +33,17 @@
 
         @include('components.header.header', ['cart' => $cart])
 
-        <div class="offcanvas-overlay"></div>
-
-        @include('components.cart.offcanvas-cart', ['cart' => $cart, 'total' => $total])
-
-        @include('components.mobile-menu.navigation')
-
         @yield('content')
 
         @include('components.footer.footer')
 
     </div>
+
+    <div class="offcanvas-overlay"></div>
+
+    @include('components.cart.offcanvas-cart', ['cart' => $cart, 'total' => $total])
+
+    @include('components.mobile-menu.navigation')
 
     @include('components.modal.modal-product')
 
@@ -59,11 +59,7 @@
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/app-DyHoAEKG.js') }}"></script>
-
-    {{-- удалить --}}
-    {{-- <script src="{{ asset('assets/js/product-modal-cart.js') }}"></script>
-    <script src="{{ asset('assets/js/cart.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     @yield('js')
 </body>
