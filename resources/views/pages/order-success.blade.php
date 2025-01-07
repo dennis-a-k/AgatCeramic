@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('title', ' | Спасибо за заказ!')
+@section('title')
+    | {{ $order_number }}
+@endsection
 
 @section('content')
     <div class="shop-category-area pt-100px pb-100px">
@@ -9,20 +11,26 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-8">
                         <div class="inner_complated">
-                            <div class="img_cmpted"><img src="assets/images/icons/cmpted_logo.png" alt=""></div>
-                            <p class="dsc_cmpted">Thank you for ordering in our store. You will receive a confirmation
-                                email shortly.</p>
+                            <div class="img_cmpted">
+                                <img src="{{ asset('assets/images/stock/checkmark.png') }}" alt="check">
+                            </div>
+                            <p class="dsc_cmpted">
+                                Спасибо за заказ в нашем магазине. Скоро вы получите письмо с подтверждением.
+                            </p>
                             <div class="btn_cmpted">
-                                <a href="shop-4-column.html" class="shop-btn" title="Go To Shop">Continue Shopping </a>
+                                <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}"
+                                    class="shop-btn" title="Продолжить покупки">
+                                    Продолжить покупки
+                                </a>
                             </div>
                         </div>
                         <div class="main_quickorder text-align-center">
-                            <h3 class="title">Call Us for Quick Order</h3>
+                            <h3 class="title">Ваш номер заказа:</h3>
                             <div class="cntct typewriter-effect">
                                 <span class="call_desk">
-                                    <a href="tel:+01234567890" id="typewriter_num">
+                                    <p class="order">
                                         {{ $order_number }}
-                                    </a>
+                                    </p>
                                 </span>
                             </div>
                             @if (session('success'))
@@ -34,4 +42,21 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('css')
+    <style>
+        .img_cmpted {
+            width: 15%;
+            justify-self: center;
+        }
+
+        .order {
+            font-size: 20px;
+            color: #eb2606;
+            margin: 15px 0 0;
+            display: inline-block;
+            font-weight: 500;
+        }
+    </style>
 @endsection

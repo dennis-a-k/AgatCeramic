@@ -27,6 +27,7 @@ class CategoryComposerServiceProvider extends ServiceProvider
             'components.mobile-menu.navigation',
             'components.banner.banner',
             'pages.cart',
+            'pages.order-success',
         ], CategoryComposer::class);
     }
 }
