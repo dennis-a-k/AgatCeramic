@@ -1,25 +1,57 @@
-@component('mail::message')
-    # Спасибо за заказ!
+<!DOCTYPE html>
+<html>
 
-    Номер вашего заказа: {{ $order->order_number }}
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
 
-    ## Детали заказа:
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
-    @component('mail::table')
-        | Товар | Количество | Цена |
-        |:------|:-----------|:-----|
+        th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Спасибо за заказ!</h1>
+
+    <p>Номер вашего заказа: {{ $order->order_number }}</p>
+
+    <h2>Детали заказа:</h2>
+    <table>
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена</th>
+        </tr>
         @foreach ($order->items as $item)
-            | {{ $item->product_title }} | {{ $item->quantity }} | {{ $item->price }} ₽ |
+            <tr>
+                <td>{{ $item->product_title }}</td>
+                <td>{{ $item->quantity }}</td>
+                <td>{{ $item->price }} &#8381;</td>
+            </tr>
         @endforeach
-    @endcomponent
+    </table>
 
-    **Итого: {{ $order->total_amount }} ₽**
+    <p><strong>Итого: {{ $order->total_amount }} &#8381;</strong></p>
 
-    ## Информация о доставке:
-    {{ $order->shipping_address }}
+    <h2>Информация о доставке:</h2>
+    <p>{{ $order->shipping_address }}</p>
 
-    Мы свяжемся с вами в ближайшее время для подтверждения заказа.
+    <p>Мы свяжемся с вами в ближайшее время для подтверждения заказа.</p>
 
-    С уважением,<br>
-    {{ config('app.name') }}
-@endcomponent
+    <p>С уважением,<br>
+        {{ config('app.name') }}</p>
+</body>
+
+</html>

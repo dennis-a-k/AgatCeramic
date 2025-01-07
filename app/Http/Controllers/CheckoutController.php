@@ -49,7 +49,7 @@ class CheckoutController extends Controller
         }
 
         $order = Order::create([
-            'order_number' => 'Заказ-' . strtoupper(Str::random(10)),
+            'order_number' => str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT) . '-' . strtoupper(Str::random(10)),
             'customer_name' => $request->customer_name,
             'customer_email' => $request->customer_email,
             'customer_phone' => $request->customer_phone,
