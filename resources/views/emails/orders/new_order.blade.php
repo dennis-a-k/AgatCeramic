@@ -43,6 +43,7 @@
     <h2>Детали заказа:</h2>
     <table>
         <tr>
+            <th>Артикул</th>
             <th>Товар</th>
             <th>Количество</th>
             <th>Цена</th>
@@ -50,6 +51,7 @@
         </tr>
         @foreach ($order->items as $item)
             <tr>
+                <td>{{ $item->product_sku }}</td>
                 <td>{{ $item->product_title }}</td>
                 <td>{{ $item->quantity }}</td>
                 <td>{{ $item->price }} &#8381;</td>
@@ -58,7 +60,7 @@
         @endforeach
     </table>
 
-    <p><strong>Итого: {{ $order->total_amount }} &#8381;</strong></p>
+    <h2><strong>Итого: {{ $order->total_amount }} &#8381;</strong></h2>
 
     <p>С уважением,<br>
         {{ config('app.name') }}</p>
