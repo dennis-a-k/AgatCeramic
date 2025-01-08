@@ -9,10 +9,10 @@
         rel="stylesheet">
     <style>
         body {
-            font-family: Roboto, Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #b0b1b1;
+            background-color: #f9f9f9;
             color: #000;
         }
 
@@ -35,7 +35,7 @@
         .header h1 {
             margin: 0;
             font-size: 24px;
-            font-family: Roboto, Arial, sans-serif;
+            font-family: 'Nunito', sans-serif;
             font-weight: 600;
         }
 
@@ -127,7 +127,7 @@
                 <strong>Итоговая сумма: {{ $order->total_amount }} &#8381;</strong>
             </div>
 
-            <h2>Информация о доставке::</h2>
+            <h2>Информация о доставке:</h2>
             <p><strong>Телефон: </strong>{{ $order->customer_phone }}</p>
             <p><strong>Адрес: </strong>{{ $order->shipping_address }}</p>
             @if ($order->comment)
