@@ -52,7 +52,7 @@
             <tr>
                 <td>{{ $item->product_title }}</td>
                 <td>{{ $item->quantity }}</td>
-                <td>{{ $item->price }} ₽ &#8381;</td>
+                <td>{{ $item->price }} &#8381;</td>
                 <td>{{ $item->subtotal }} &#8381;</td>
             </tr>
         @endforeach

@@ -9,9 +9,9 @@
         rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            /* font-family: 'Poppins', sans-serif; */
             margin: 0;
-            padding: 0;
+            padding: 10px 0;
             background-color: #f9f9f9;
             color: #000;
         }
@@ -20,7 +20,7 @@
             max-width: 600px;
             margin: 20px auto;
             background-color: #ffffff;
-            border: 1px solid #788da3;
+            border: 1px solid #f9f9f9;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -35,7 +35,7 @@
         .header h1 {
             margin: 0;
             font-size: 24px;
-            font-family: 'Nunito', sans-serif;
+            /* font-family: 'Nunito', sans-serif; */
             font-weight: 600;
         }
 
