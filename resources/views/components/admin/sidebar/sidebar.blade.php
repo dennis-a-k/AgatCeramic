@@ -44,6 +44,14 @@
                         <p>Список товаров</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('product.create') }}" class="nav-link">
+                        <i class="far fa-plus-square nav-icon"></i>
+                        <p>Добавить товар</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-list-ul nav-icon"></i>
@@ -104,16 +112,9 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{ route('product.create') }}" class="nav-link">
-                        <i class="far fa-plus-square nav-icon"></i>
-                        <p>Добавить товар</p>
-                    </a>
-                </li>
-
                 <li class="nav-header">Заказы</li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="{{ route('orders.list') }}" class="nav-link">
                         <i class="fas fa-boxes nav-icon"></i>
                         <p>
                             Список заказов
