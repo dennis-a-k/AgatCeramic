@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class OrderController extends Controller
 {
@@ -23,6 +24,29 @@ class OrderController extends Controller
     {
         $order = Order::where('order_number', $order_number)->firstOrFail();
         return view('pages.admin.order-print', compact('order'));
+    }
+
+    public function exportToPDF($id)
+    {
+        $order = Order::find($id);
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Заказ не найден');
+        }
+
+        $html = view('pages.admin.order-pdf', compact('order'))->render();
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // Скачать PDF
+        return $dompdf->stream('Заказ_' . $order->order_number . '.pdf');
     }
 
     public function success($order_number)

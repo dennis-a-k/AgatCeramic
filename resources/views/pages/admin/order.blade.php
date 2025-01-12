@@ -131,10 +131,10 @@
                                             <i class="fas fa-print"></i>
                                             Распечатать
                                         </a>
-                                        <button type="button" class="btn btn-primary float-right"
+                                        <a href="{{ route('order.pdf', $order->id) }}" class="btn btn-primary float-right"
                                             style="margin-right: 5px;">
                                             <i class="fas fa-download"></i> Сохранить в PDF
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
