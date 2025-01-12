@@ -13,8 +13,16 @@
                     <ul>
                         @foreach ($cart as $item)
                             <li>
-                                <span class="order-middle-left">{{ $item['title'] }} × {{ $item['quantity'] }}</span>
-                                <span class="order-price">{{ number_format($item['price'] * $item['quantity'], 2) }}
+                                <span class="order-middle-left">
+                                    {{ $item['title'] }} × {{ $item['quantity'] }}
+                                    @if ($item['unit'] === 'шт')
+                                        шт.
+                                    @else
+                                        м<sup>2</sup>
+                                    @endif
+                                </span>
+                                <span
+                                    class="order-price">{{ number_format($item['price'] * $item['quantity'], 2, '.', ' ') }}
                                     &#8381;
                                 </span>
                             </li>
@@ -25,7 +33,7 @@
                 <div class="your-order-total">
                     <ul>
                         <li class="order-total">Итого</li>
-                        <li>{{ number_format($total, 2) }} &#8381;</li>
+                        <li>{{ number_format($total, 2, '.', ' ') }} &#8381;</li>
                     </ul>
                 </div>
             </div>

@@ -53,7 +53,14 @@
             <tr>
                 <td>{{ $item->product_sku }}</td>
                 <td>{{ $item->product_title }}</td>
-                <td>{{ $item->quantity }}</td>
+                <td>
+                    {{ $item->quantity }}
+                    @if ($item->unit === 'шт')
+                        шт.
+                    @else
+                        м<sup>2</sup>
+                    @endif
+                </td>
                 <td>{{ $item->price }} &#8381;</td>
                 <td>{{ $item->subtotal }} &#8381;</td>
             </tr>

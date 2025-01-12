@@ -17,6 +17,7 @@
                                             <th>Товар</th>
                                             <th>Цена</th>
                                             <th>Количество</th>
+                                            <th> </th>
                                             <th>Стоимость</th>
                                             <th></th>
                                         </tr>
@@ -26,7 +27,7 @@
                                             <x-cart.cart-table-tr :id="$id" :img="$product['image']->first()
                                                 ? asset('storage/images/' . $product['image']->first()->title)
                                                 : asset('assets/images/stock/stock-image.png')" :url="route('product.show', $product['sku'])"
-                                                :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" />
+                                                :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -34,8 +35,8 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <th>Общая стоимость:</th>
-                                            <th class="cart-total">{{ $total }} &#8381;</th>
+                                            <th colspan="2">Общая стоимость:</th>
+                                            <th class="cart-total">{{ number_format($total, 2, '.', ' ') }} &#8381;</th>
                                             <td></td>
                                         </tr>
                                     </tfoot>

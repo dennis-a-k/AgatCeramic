@@ -66,6 +66,7 @@ class CheckoutController extends Controller
                 'product_title' => $item['title'],
                 'price' => $item['price'],
                 'quantity' => $item['quantity'],
+                'unit' => $item['unit'],
                 'subtotal' => $item['price'] * $item['quantity']
             ]);
         }

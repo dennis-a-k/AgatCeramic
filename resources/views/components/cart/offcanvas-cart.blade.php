@@ -21,27 +21,32 @@
                                 {{ $item['title'] }}
                             </a>
                             <span class="quantity-price">
-                                {{ $item['quantity'] }} x <span class="amount">{{ $item['price'] }} &#8381;</span>
+                                {{ $item['quantity'] }}@if ($item['unit'] === 'шт')
+                                    шт.
+                                @else
+                                    м<sup>2</sup>
+                                @endif x
+                                <span class="amount">{{ number_format($item['price'], 2, '.', ' ') }} &#8381;</span>
                             </span>
                             <a href="#" class="remove" data-product-id="{{ $item['id'] }}">×</a>
                         </div>
                     </li>
-                @empty
-                    <li class="empty-cart">Корзина пуста</li>
-                @endforelse
-            </ul>
-        </div>
-        @if (count($cart) > 0)
-            <div class="foot">
-                <div class="sub-total">
-                    <strong>Итого:</strong>
-                    <span class="amount">{{ $total }} &#8381;</span>
-                </div>
-                <div class="buttons mt-30px">
-                    <a href="{{ route('cart') }}" class="btn mb-30px">Перейти в корзину</a>
-                    <a href="{{ route('checkout') }}" class="btn current-btn">Оформить заказ</a>
-                </div>
+                    @empty
+                        <li class="empty-cart">Корзина пуста</li>
+                    @endforelse
+                </ul>
             </div>
-        @endif
+            @if (count($cart) > 0)
+                <div class="foot">
+                    <div class="sub-total">
+                        <strong>Итого:</strong>
+                        <span class="amount">{{ number_format($total, 2, '.', ' ') }} &#8381;</span>
+                    </div>
+                    <div class="buttons mt-30px">
+                        <a href="{{ route('cart') }}" class="btn mb-30px">Перейти в корзину</a>
+                        <a href="{{ route('checkout') }}" class="btn current-btn">Оформить заказ</a>
+                    </div>
+                </div>
+            @endif
+        </div>
     </div>
-</div>

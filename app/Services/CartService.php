@@ -20,6 +20,7 @@ class CartService
             'title' => $product->title,
             'price' => $product->price,
             'quantity' => $quantity,
+            'unit' => $product->unit,
             'image' => $product->images,
             'expires_at' => Carbon::now()->addDays(self::CART_EXPIRY_DAYS)
         ];

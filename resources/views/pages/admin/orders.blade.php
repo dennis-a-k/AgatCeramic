@@ -57,7 +57,7 @@
                                             {{ $order->customer_phone }}
                                         </td>
                                         <td>
-                                            {{ $order->total_amount }} &#8381;
+                                            {{ number_format($order->total_amount, 2, '.', ' ') }} &#8381;
                                         </td>
                                         <td>
                                             <span class="badge badge-success">
