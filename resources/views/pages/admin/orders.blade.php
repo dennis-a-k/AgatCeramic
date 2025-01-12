@@ -2,15 +2,6 @@
 
 @section('title', '| Список заказов')
 
-@section('css')
-    <style type="text/css">
-        .error-login {
-            font-size: 80%;
-            color: #dc3545;
-        }
-    </style>
-@endsection
-
 @section('content-header')
     <div class="content-header">
         <div class="container-fluid">
@@ -39,7 +30,6 @@
                                     <th>Телефон</th>
                                     <th>Стоимость заказа</th>
                                     <th>Статус</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,23 +54,6 @@
                                                 {{ $order->status }}
                                             </span>
                                         </td>
-                                        <td>
-                                            <div class="btn-group btn-group-xs">
-                                                <a href="{{ route('order.edit', $order->id) }}"
-                                                    class="btn btn-info btn-xs btn-xs goods-popover" id=""
-                                                    data-content="Редактировать" target="_blank">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-
-                                                <button class="btn btn-danger btn-xs btn-xs goods-popover" id=""
-                                                    data-toggle="modal" data-target="#modalDelete"
-                                                    data-product="{{ $order }}" data-content="Удалить">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-
-                                            @include('components.admin.goods.delete-product-modal')
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -90,23 +63,4 @@
             @endif
         </div>
     </div>
-@endsection
-
-@section('js')
-    <script>
-        // $('.goods-popover').popover({
-        //     placement: 'top',
-        //     trigger: 'hover',
-        // });
-
-        $('#modalDelete').on('show.bs.modal', function(event) {
-            const button = $(event.relatedTarget);
-            const product = button.data('product');
-
-            const modal = $(this);
-            modal.find('.modal-title').text('Удаление артикула: ' + product['sku']);
-            modal.find('.modal-text').text('Удалить «' + product['title'] + '»?');
-            modal.find('.modal-id').attr('value', product['id']);
-        });
-    </script>
 @endsection
