@@ -57,7 +57,6 @@
                                     <div class="col-sm-4 invoice-col">
                                         <b>Заказ № {{ $order->order_number }}</b><br>
                                     </div>
-
                                 </div>
 
                                 <div class="row">
@@ -127,15 +126,14 @@
 
                                 <div class="row no-print">
                                     <div class="col-12">
-                                        <a href="invoice-print.html" rel="noopener" target="_blank"
-                                            class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                                        <button type="button" class="btn btn-success float-right"><i
-                                                class="far fa-credit-card"></i> Submit
-                                            Payment
-                                        </button>
+                                        <a href="{{ route('order.print', $order->order_number) }}" rel="noopener"
+                                            target="_blank" class="btn btn-default">
+                                            <i class="fas fa-print"></i>
+                                            Распечатать
+                                        </a>
                                         <button type="button" class="btn btn-primary float-right"
                                             style="margin-right: 5px;">
-                                            <i class="fas fa-download"></i> Generate PDF
+                                            <i class="fas fa-download"></i> Сохранить в PDF
                                         </button>
                                     </div>
                                 </div>
