@@ -13,9 +13,10 @@ class OrderController extends Controller
         return view('pages.admin.orders', compact('orders'));
     }
 
-    public function order()
+    public function order(string $order_number)
     {
-       //
+        $order = Order::where('order_number', $order_number)->firstOrFail();
+        return view('pages.admin.order', compact('order'));
     }
 
     public function success($order_number)

@@ -8,7 +8,7 @@ Route::group([
     // 'middleware' => 'auth',
 ], function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.list');
-    Route::get('/order/{order}', [OrderController::class, 'order'])->name('order.show');
+    Route::get('/order/{order_number}', [OrderController::class, 'order'])->name('order.show');
     // Route::get('/product-create', [GoodsController::class, 'create'])->name('product.create');
     // Route::post('/product-create', [GoodsController::class, 'store'])->name('product.store');
     Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
