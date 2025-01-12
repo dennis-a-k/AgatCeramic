@@ -29,7 +29,7 @@
                                         <h4>
                                             Agat Ceramic
                                             <small class="float-right">
-                                                {{ $order->created_at->format('d.m.Y h:i') }}
+                                                {{ $order->created_at->format('d.m.Y H:i') }}
                                             </small>
                                         </h4>
                                     </div>
