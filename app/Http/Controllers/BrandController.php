@@ -14,11 +14,23 @@ class BrandController extends Controller
 {
     use SortableProducts;
 
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::orderBy('title', 'ASC')->get();
-        return view('pages.admin.brands', compact('brands'));
+        $search = $request->input('search');
+
+        $brands = Brand::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where('title', 'LIKE', "%{$search}%");
+            })
+            ->orderBy('title', 'ASC')
+            ->paginate(25);
+
+        return view('pages.admin.brands', [
+            'brands' => $brands,
+            'search' => $search
+        ]);
     }
+
 
     public function store(BrandRequest $request)
     {
