@@ -67,6 +67,7 @@
                                             @endif
                                         </a>
                                     </th>
+                                    <th>Дата заказа</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,9 +88,18 @@
                                             {{ number_format($order->total_amount, 2, '.', ' ') }} &#8381;
                                         </td>
                                         <td>
-                                            <span class="badge badge-success">
-                                                {{ $order->status }}
-                                            </span>
+                                            @if ($order->status === 'pending')
+                                                <span class="badge badge-warning">
+                                                    новый заказ
+                                                </span>
+                                            @else
+                                                <span class="badge badge-secondary">
+                                                    просмотрен
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $order->created_at->format('H:i d.m.Y') }}
                                         </td>
                                     </tr>
                                 @endforeach
