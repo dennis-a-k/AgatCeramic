@@ -12,6 +12,8 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $sortField = $request->input('sort', 'created_at');
+        $sortDirection = $request->input('direction', 'desc');
 
         $orders = Order::query()
             ->when($search, function ($query) use ($search) {
@@ -19,12 +21,14 @@ class OrderController extends Controller
                     ->orWhere('customer_name', 'LIKE', "%{$search}%")
                     ->orWhere('customer_phone', 'LIKE', "%{$search}%");
             })
-            ->orderBy('created_at', 'DESC')
+            ->orderBy($sortField, $sortDirection)
             ->paginate(50);
 
         return view('pages.admin.orders', [
             'orders' => $orders,
-            'search' => $search
+            'search' => $search,
+            'sortField' => $sortField,
+            'sortDirection' => $sortDirection
         ]);
     }
 

@@ -2,6 +2,19 @@
 
 @section('title', '| Список заказов')
 
+@section('css')
+    <style type="text/css">
+        .text-dark {
+            text-decoration: none;
+        }
+
+        .text-dark:hover {
+            text-decoration: none;
+            color: #666;
+        }
+    </style>
+@endsection
+
 @section('content-header')
     <div class="content-header">
         <div class="container-fluid">
@@ -39,7 +52,21 @@
                                     <th>Покупатель</th>
                                     <th>Телефон</th>
                                     <th>Стоимость заказа</th>
-                                    <th>Статус</th>
+                                    <th>
+                                        <a href="{{ route('orders.list', [
+                                            'sort' => 'status',
+                                            'direction' => $sortField === 'status' && $sortDirection === 'asc' ? 'desc' : 'asc',
+                                            'search' => request('search'),
+                                        ]) }}"
+                                            class="text-dark">
+                                            Статус
+                                            @if ($sortField === 'status')
+                                                <i class="fas fa-sort-{{ $sortDirection === 'asc' ? 'up' : 'down' }}"></i>
+                                            @else
+                                                <i class="fas fa-sort"></i>
+                                            @endif
+                                        </a>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
