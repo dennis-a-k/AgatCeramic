@@ -6,35 +6,15 @@
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">Пользователи</li>
+                <li class="nav-header">Заказы</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                    <a href="{{ route('orders.list') }}" class="nav-link">
+                        <i class="fas fa-boxes nav-icon"></i>
                         <p>
-                            Список
-                            <i class="fas fa-angle-left right"></i>
+                            Список заказов
+                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-user-tie nav-icon"></i>
-                                <p>Администраторы</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-user-friends nav-icon"></i>
-                                <p>Клиенты</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-user-plus nav-icon"></i>
-                                <p>Добавить</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li class="nav-header">Товары</li>
@@ -112,14 +92,17 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">Заказы</li>
+                <li class="nav-header">Пользователи</li>
                 <li class="nav-item">
-                    <a href="{{ route('orders.list') }}" class="nav-link">
-                        <i class="fas fa-boxes nav-icon"></i>
-                        <p>
-                            Список заказов
-                            <span class="badge badge-info right">2</span>
-                        </p>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-friends nav-icon"></i>
+                        <p>Администраторы</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-plus nav-icon"></i>
+                        <p>Добавить</p>
                     </a>
                 </li>
             </ul>

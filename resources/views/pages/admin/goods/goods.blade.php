@@ -97,7 +97,7 @@
                                         </td>
                                         <td>
                                             @if ($product->unit === 'м2')
-                                                М<sup>2</sup>
+                                                м<sup>2</sup>
                                             @elseif ($product->unit === 'шт')
                                                 шт.
                                             @endif
