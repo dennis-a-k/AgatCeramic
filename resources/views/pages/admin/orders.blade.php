@@ -21,6 +21,16 @@
                 <h5 class="text-info text-center mt-2">Список заказов пуст</h5>
             @else
                 <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-12">
+                                <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО или телефону клиента"
+                                    route="{{ route('orders.list') }}">
+                                </x-admin.search.search>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap table-sm">
                             <thead>
@@ -59,7 +69,11 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+
+                    <div class="card-footer clearfix">
+                        <x-admin.pagination.pagination :items="$orders">
+                        </x-admin.pagination.pagination>
+                    </div>
             @endif
         </div>
     </div>

@@ -5,13 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'DESC')->get();
-        return view('pages.admin.orders', compact('orders'));
+        $search = $request->input('search');
+
+        $orders = Order::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where('order_number', 'LIKE', "%{$search}%")
+                    ->orWhere('customer_name', 'LIKE', "%{$search}%")
+                    ->orWhere('customer_phone', 'LIKE', "%{$search}%");
+            })
+            ->orderBy('created_at', 'DESC')
+            ->paginate(50);
+
+        return view('pages.admin.orders', [
+            'orders' => $orders,
+            'search' => $search
+        ]);
     }
 
     public function order(string $order_number)
