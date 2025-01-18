@@ -17,11 +17,11 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class СharacteristicsExport implements FromView, WithTitle, WithEvents
+class PageСharacteristics implements FromView, WithTitle, WithEvents
 {
     public function view(): View
     {
-        return view('components.excel.exports', [
+        return view('components.excel.characteristics', [
             'categories' => Category::all('title'),
             'sizes' => Size::all('title'),
             'colors' => Color::all('title'),
@@ -47,3 +47,4 @@ class СharacteristicsExport implements FromView, WithTitle, WithEvents
         ];
     }
 }
+

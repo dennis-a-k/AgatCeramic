@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ProductsExport;
+use App\Exports\GoodsExport;
+use App\Exports\GoodsTemplateExport;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdatProductRequest;
 use App\Imports\ProductsImport;
@@ -190,6 +191,11 @@ class GoodsController extends Controller
 
     public function export()
     {
-        return Excel::download(new ProductsExport, 'goods-AC.xlsx');
+        return Excel::download(new GoodsExport, 'goods-AC.xlsx');
+    }
+
+    public function templateExport()
+    {
+        return Excel::download(new GoodsTemplateExport, 'goods-template-AC.xlsx');
     }
 }

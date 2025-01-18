@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="col-6">
-                                <a href="http://localhost/admin-panel/order-pdf/45" class="btn btn-default float-right"
+                                <a href="{{ route('goods.export') }}" class="btn btn-default float-right"
                                     style="margin-right: 5px;">
                                     <i class="fas fa-download"></i> Сохранить в Excel
                                 </a>

@@ -60,8 +60,8 @@
                             </ul>
                         @endif
                         <div class="col-md-auto">
-                            <a href="{{ route('goods.export') }}" class="btn btn-outline-secondary" download>
-                                Скачать Excel шаблон
+                            <a href="{{ route('goods.template.export') }}" class="btn btn-outline-secondary" download>
+                                <i class="fas fa-download"></i> Скачать Excel шаблон
                             </a>
                         </div>
 
