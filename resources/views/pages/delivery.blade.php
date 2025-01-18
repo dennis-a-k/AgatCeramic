@@ -12,7 +12,7 @@
                 <button class="btn-dark" type="submit">Send</button>
             </form> --}}
 
-            <a href="{{ route('admin.dashboard') }}" class="btn-dark">Админка</a>
+            <a href="{{ route('orders.list') }}" class="btn-dark">Админка</a>
         </div>
     </main>
 @endsection

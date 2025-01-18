@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
-    <a href="{{ route('admin.dashboard') }}" class="brand-link text-center">
+    <a href="{{ route('orders.list') }}" class="brand-link text-center">
         <span class="brand-text font-weight-light">Админ-панель</span>
     </a>
 
