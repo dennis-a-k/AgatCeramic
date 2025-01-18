@@ -8,6 +8,15 @@
             font-size: 80%;
             color: #dc3545;
         }
+
+        .text-dark {
+            text-decoration: none;
+        }
+
+        .text-dark:hover {
+            text-decoration: none;
+            color: #666;
+        }
     </style>
 @endsection
 
@@ -58,8 +67,36 @@
                                     <th>Категория</th>
                                     <th>Цена</th>
                                     <th>ед.изм</th>
-                                    <th>Статус</th>
-                                    <th>Распродажа</th>
+                                    <th>
+                                        <a href="{{ route('goods.list', [
+                                            'sort' => 'is_published',
+                                            'direction' => $sortField === 'is_published' && $sortDirection === 'asc' ? 'desc' : 'asc',
+                                            'search' => request('search'),
+                                        ]) }}"
+                                            class="text-dark">
+                                            Статус
+                                            @if ($sortField === 'is_published')
+                                                <i class="fas fa-sort-{{ $sortDirection === 'asc' ? 'up' : 'down' }}"></i>
+                                            @else
+                                                <i class="fas fa-sort"></i>
+                                            @endif
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a href="{{ route('goods.list', [
+                                            'sort' => 'sale',
+                                            'direction' => $sortField === 'sale' && $sortDirection === 'asc' ? 'desc' : 'asc',
+                                            'search' => request('search'),
+                                        ]) }}"
+                                            class="text-dark">
+                                            Распродажа
+                                            @if ($sortField === 'sale')
+                                                <i class="fas fa-sort-{{ $sortDirection === 'asc' ? 'up' : 'down' }}"></i>
+                                            @else
+                                                <i class="fas fa-sort"></i>
+                                            @endif
+                                        </a>
+                                    </th>
                                     <th></th>
                                 </tr>
                             </thead>

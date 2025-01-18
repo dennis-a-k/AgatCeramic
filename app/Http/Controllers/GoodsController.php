@@ -25,6 +25,8 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $sortField = $request->input('sort', 'sku'); // По умолчанию сортировка по SKU
+        $sortDirection = $request->input('direction', 'asc');
 
         $goods = Product::query()
             ->when($search, function ($query) use ($search) {
@@ -32,12 +34,14 @@ class GoodsController extends Controller
                     ->orWhere('title', 'LIKE', "%{$search}%")
                     ->orWhere('product_code', 'LIKE', "%{$search}%");
             })
-            ->orderBy('sku', 'ASC')
+            ->orderBy($sortField, $sortDirection)
             ->paginate(50);
 
         return view('pages.admin.goods.goods', [
             'goods' => $goods,
-            'search' => $search
+            'search' => $search,
+            'sortField' => $sortField,
+            'sortDirection' => $sortDirection
         ]);
     }
 
