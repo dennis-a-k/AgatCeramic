@@ -67,7 +67,21 @@
                                             @endif
                                         </a>
                                     </th>
-                                    <th>Дата заказа</th>
+                                    <th>
+                                        <a href="{{ route('orders.list', [
+                                            'sort' => 'created_at',
+                                            'direction' => $sortField === 'created_at' && $sortDirection === 'asc' ? 'desc' : 'asc',
+                                            'search' => request('search'),
+                                        ]) }}"
+                                            class="text-dark">
+                                            Дата заказа
+                                            @if ($sortField === 'created_at')
+                                                <i class="fas fa-sort-{{ $sortDirection === 'asc' ? 'up' : 'down' }}"></i>
+                                            @else
+                                                <i class="fas fa-sort"></i>
+                                            @endif
+                                        </a>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,13 +107,13 @@
                                                     новый заказ
                                                 </span>
                                             @else
-                                                <span class="badge badge-secondary">
+                                                <span class="badge badge-light">
                                                     просмотрен
                                                 </span>
                                             @endif
                                         </td>
                                         <td>
-                                            {{ $order->created_at->format('H:i d.m.Y') }}
+                                            {{ $order->created_at->format('H:i -- d.m.Y') }}
                                         </td>
                                     </tr>
                                 @endforeach
