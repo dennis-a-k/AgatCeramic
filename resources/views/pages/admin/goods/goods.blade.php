@@ -33,24 +33,9 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <form action="{{ route('goods.list') }}" method="GET">
-                                    <div class="input-group input-group-sm" style="width: 500px;">
-                                        <input type="text" name="search" class="form-control float-right"
-                                            placeholder="Поиск по артикулу, наименованию или коду товара"
-                                            value="{{ request('search') }}">
-
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                            @if (request('search'))
-                                                <a href="{{ route('goods.list') }}" class="btn btn-default">
-                                                    <i class="fas fa-times"></i>
-                                                </a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </form>
+                                <x-admin.search.search placeholder="Поиск по артикулу, наименованию или коду товара"
+                                    route="{{ route('goods.list') }}">
+                                </x-admin.search.search>
                             </div>
 
                             <div class="col-6">
@@ -147,24 +132,8 @@
                     </div>
 
                     <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item {{ $goods->currentPage() == 1 ? 'disabled' : '' }}">
-                                <a class="page-link"
-                                    href="{{ $goods->appends(['search' => request('search')])->url(1) }}">&laquo;</a>
-                            </li>
-
-                            @for ($i = 1; $i <= $goods->lastPage(); $i++)
-                                <li class="page-item {{ $goods->currentPage() == $i ? 'active' : '' }}">
-                                    <a class="page-link"
-                                        href="{{ $goods->appends(['search' => request('search')])->url($i) }}">{{ $i }}</a>
-                                </li>
-                            @endfor
-
-                            <li class="page-item {{ $goods->currentPage() == $goods->lastPage() ? 'disabled' : '' }}">
-                                <a class="page-link"
-                                    href="{{ $goods->appends(['search' => request('search')])->url($goods->lastPage()) }}">&raquo;</a>
-                            </li>
-                        </ul>
+                        <x-admin.pagination.pagination :items="$goods">
+                        </x-admin.pagination.pagination>
                     </div>
                 </div>
             @endif
