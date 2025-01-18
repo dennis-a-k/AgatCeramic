@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <x-admin.search.search placeholder="Поиск по артикулу, наименованию или коду товара"
-                                    route="{{ route('goods.list') }}">
+                                    route="{{ route('goods.list') }}" width="500px">
                                 </x-admin.search.search>
                             </div>
 

@@ -10,13 +10,15 @@ class Search extends Component
 {
     public $placeholder;
     public $route;
+    public $width;
     /**
      * Create a new component instance.
      */
-    public function __construct($placeholder, $route)
+    public function __construct($placeholder, $route, $width)
     {
         $this->placeholder = $placeholder;
         $this->route = $route;
+        $this->width = $width;
     }
 
     /**

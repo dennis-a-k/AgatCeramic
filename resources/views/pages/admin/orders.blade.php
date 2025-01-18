@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО или телефону клиента"
-                                    route="{{ route('orders.list') }}">
+                                    route="{{ route('orders.list') }}" width="500px">
                                 </x-admin.search.search>
                             </div>
                         </div>

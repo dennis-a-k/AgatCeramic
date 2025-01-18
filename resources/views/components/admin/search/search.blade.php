@@ -1,5 +1,5 @@
 <form action="{{ $route }}" method="GET">
-    <div class="input-group input-group-sm" style="width: 500px;">
+    <div class="input-group input-group-sm" style="width: {{ $width }};">
         <input type="text" name="search" class="form-control float-right" placeholder="{{ $placeholder }}"
             value="{{ request('search') }}">
 
