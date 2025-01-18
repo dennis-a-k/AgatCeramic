@@ -30,6 +30,38 @@
                 <h5 class="text-info text-center mt-2">Список товаров пуст</h5>
             @else
                 <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-6">
+                                <form action="{{ route('goods.list') }}" method="GET">
+                                    <div class="input-group input-group-sm" style="width: 500px;">
+                                        <input type="text" name="search" class="form-control float-right"
+                                            placeholder="Поиск по артикулу, наименованию или коду товара"
+                                            value="{{ request('search') }}">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                            @if (request('search'))
+                                                <a href="{{ route('goods.list') }}" class="btn btn-default">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-6">
+                                <a href="http://localhost/admin-panel/order-pdf/45" class="btn btn-default float-right"
+                                    style="margin-right: 5px;">
+                                    <i class="fas fa-download"></i> Сохранить в Excel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap table-sm">
                             <thead>
@@ -112,6 +144,27 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="card-footer clearfix">
+                        <ul class="pagination pagination-sm m-0 float-right">
+                            <li class="page-item {{ $goods->currentPage() == 1 ? 'disabled' : '' }}">
+                                <a class="page-link"
+                                    href="{{ $goods->appends(['search' => request('search')])->url(1) }}">&laquo;</a>
+                            </li>
+
+                            @for ($i = 1; $i <= $goods->lastPage(); $i++)
+                                <li class="page-item {{ $goods->currentPage() == $i ? 'active' : '' }}">
+                                    <a class="page-link"
+                                        href="{{ $goods->appends(['search' => request('search')])->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li class="page-item {{ $goods->currentPage() == $goods->lastPage() ? 'disabled' : '' }}">
+                                <a class="page-link"
+                                    href="{{ $goods->appends(['search' => request('search')])->url($goods->lastPage()) }}">&raquo;</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             @endif

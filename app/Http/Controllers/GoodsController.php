@@ -22,10 +22,23 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class GoodsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $goods = Product::query()->orderBy('sku', 'ASC')->get();
-        return view('pages.admin.goods.goods', ['goods' => $goods]);
+        $search = $request->input('search');
+
+        $goods = Product::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where('sku', 'LIKE', "%{$search}%")
+                    ->orWhere('title', 'LIKE', "%{$search}%")
+                    ->orWhere('product_code', 'LIKE', "%{$search}%");
+            })
+            ->orderBy('sku', 'ASC')
+            ->paginate(50);
+
+        return view('pages.admin.goods.goods', [
+            'goods' => $goods,
+            'search' => $search
+        ]);
     }
 
     public function create()
