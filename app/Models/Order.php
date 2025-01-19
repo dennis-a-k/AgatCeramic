@@ -94,4 +94,9 @@ class Order extends Model
         $hash = hash('sha256', strtolower($name));
         return $query->where('searchable_name', $hash);
     }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }
