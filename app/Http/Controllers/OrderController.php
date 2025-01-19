@@ -17,9 +17,18 @@ class OrderController extends Controller
 
         $orders = Order::query()
             ->when($search, function ($query) use ($search) {
-                $query->where('order_number', 'LIKE', "%{$search}%")
-                    ->orWhere('customer_name', 'LIKE', "%{$search}%")
-                    ->orWhere('customer_phone', 'LIKE', "%{$search}%");
+                return $query->where(function($q) use ($search) {
+                    $q->where('order_number', 'LIKE', "%{$search}%")
+                        ->orWhere(function($query) use ($search) {
+                            $query->searchByEmail($search)
+                                ->orWhere(function($q) use ($search) {
+                                    $q->searchByPhone($search);
+                                })
+                                ->orWhere(function($q) use ($search) {
+                                    $q->searchByName($search);
+                                });
+                        });
+                });
             })
             ->orderBy($sortField, $sortDirection)
             ->paginate(50);

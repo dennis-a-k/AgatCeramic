@@ -37,7 +37,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-12">
-                                <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО или телефону клиента"
+                                <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО, почте или телефону клиента"
                                     route="{{ route('orders.list') }}" width="500px">
                                 </x-admin.search.search>
                             </div>
@@ -51,6 +51,7 @@
                                     <th>Номер заказа</th>
                                     <th>Покупатель</th>
                                     <th>Телефон</th>
+                                    <th>Почта</th>
                                     <th>Стоимость заказа</th>
                                     <th>
                                         <a href="{{ route('orders.list', [
@@ -97,6 +98,9 @@
                                         </td>
                                         <td>
                                             {{ $order->customer_phone }}
+                                        </td>
+                                        <td>
+                                            {{ $order->customer_email }}
                                         </td>
                                         <td>
                                             {{ number_format($order->total_amount, 2, '.', ' ') }} &#8381;

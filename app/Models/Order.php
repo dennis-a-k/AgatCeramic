@@ -26,14 +26,29 @@ class Order extends Model
         'searchable_name'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($order) {
+            if ($order->isDirty('customer_name')) {
+                $order->searchable_name = hash('sha256', strtolower($order->customer_name));
+            }
+            if ($order->isDirty('customer_email')) {
+                $order->searchable_email = hash('sha256', strtolower($order->customer_email));
+            }
+            if ($order->isDirty('customer_phone')) {
+                $phone = preg_replace('/[^0-9]/', '', $order->customer_phone);
+                $order->searchable_phone = hash('sha256', $phone);
+            }
+        });
+    }
+
     protected function customerName(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => Crypt::decryptString($value),
-            set: function ($value) {
-                $this->searchable_name = strtolower($value);
-                return Crypt::encryptString($value);
-            }
+            set: fn ($value) => Crypt::encryptString($value)
         );
     }
 
@@ -41,10 +56,7 @@ class Order extends Model
     {
         return Attribute::make(
             get: fn ($value) => Crypt::decryptString($value),
-            set: function ($value) {
-                $this->searchable_email = strtolower($value);
-                return Crypt::encryptString($value);
-            }
+            set: fn ($value) => Crypt::encryptString($value)
         );
     }
 
@@ -52,10 +64,7 @@ class Order extends Model
     {
         return Attribute::make(
             get: fn ($value) => Crypt::decryptString($value),
-            set: function ($value) {
-                $this->searchable_phone = preg_replace('/[^0-9]/', '', $value);
-                return Crypt::encryptString($value);
-            }
+            set: fn ($value) => Crypt::encryptString($value)
         );
     }
 
@@ -69,21 +78,20 @@ class Order extends Model
 
     public function scopeSearchByEmail($query, $email)
     {
-        return $query->where('searchable_email', strtolower($email));
+        $hash = hash('sha256', strtolower($email));
+        return $query->where('searchable_email', $hash);
     }
 
     public function scopeSearchByPhone($query, $phone)
     {
-        return $query->where('searchable_phone', preg_replace('/[^0-9]/', '', $phone));
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        $hash = hash('sha256', $phone);
+        return $query->where('searchable_phone', $hash);
     }
 
     public function scopeSearchByName($query, $name)
     {
-        return $query->where('searchable_name', 'LIKE', '%' . strtolower($name) . '%');
-    }
-
-    public function items()
-    {
-        return $this->hasMany(OrderItem::class);
+        $hash = hash('sha256', strtolower($name));
+        return $query->where('searchable_name', $hash);
     }
 }
