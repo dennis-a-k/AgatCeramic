@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
 
 class Order extends Model
 {
@@ -32,16 +31,21 @@ class Order extends Model
 
         static::saving(function ($order) {
             if ($order->isDirty('customer_name')) {
-                $order->searchable_name = hash('sha256', strtolower($order->customer_name));
+                $order->searchable_name = self::hashWithPepper(strtolower($order->customer_name));
             }
             if ($order->isDirty('customer_email')) {
-                $order->searchable_email = hash('sha256', strtolower($order->customer_email));
+                $order->searchable_email = self::hashWithPepper(strtolower($order->customer_email));
             }
             if ($order->isDirty('customer_phone')) {
                 $phone = preg_replace('/[^0-9]/', '', $order->customer_phone);
-                $order->searchable_phone = hash('sha256', $phone);
+                $order->searchable_phone = self::hashWithPepper($phone);
             }
         });
+    }
+
+    private static function hashWithPepper(string $value): string
+    {
+        return hash('sha256', $value . config('app.key'));
     }
 
     protected function customerName(): Attribute
@@ -78,20 +82,20 @@ class Order extends Model
 
     public function scopeSearchByEmail($query, $email)
     {
-        $hash = hash('sha256', strtolower($email));
+        $hash = self::hashWithPepper(strtolower($email));
         return $query->where('searchable_email', $hash);
     }
 
     public function scopeSearchByPhone($query, $phone)
     {
         $phone = preg_replace('/[^0-9]/', '', $phone);
-        $hash = hash('sha256', $phone);
+        $hash = self::hashWithPepper($phone);
         return $query->where('searchable_phone', $hash);
     }
 
     public function scopeSearchByName($query, $name)
     {
-        $hash = hash('sha256', strtolower($name));
+        $hash = self::hashWithPepper(strtolower($name));
         return $query->where('searchable_name', $hash);
     }
 
