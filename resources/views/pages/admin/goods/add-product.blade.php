@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Добавить новый товар</h1>
+                    <h1 class="m-0 text-info">Добавить новый товар</h1>
                 </div>
             </div>
         </div>
@@ -42,10 +42,10 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="card card-info card-outline">
+            <div class="card card-success card-outline">
                 <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                     <div class="card-header">
-                        <h4 class="card-title text-info w-100">
+                        <h4 class="card-title text-success w-100">
                             Добавить шаблоном
                         </h4>
                     </div>
@@ -60,7 +60,7 @@
                             </ul>
                         @endif
                         <div class="col-md-auto">
-                            <a href="{{ route('goods.template.export') }}" class="btn btn-outline-secondary" download>
+                            <a href="{{ route('goods.template.export') }}" class="btn btn-default" download>
                                 <i class="fas fa-download"></i> Скачать Excel шаблон
                             </a>
                         </div>
@@ -97,10 +97,10 @@
                     </div>
                 </div>
             </div>
-            <div class="card card-info card-outline">
+            <div class="card card-purple card-outline">
                 <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false">
                     <div class="card-header">
-                        <h4 class="card-title text-info w-100">
+                        <h4 class="card-title text-purple w-100">
                             Добавить товар
                         </h4>
                     </div>

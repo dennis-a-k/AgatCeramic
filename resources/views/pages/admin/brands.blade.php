@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '| Производитель')
+@section('title', '| Производители')
 
 @section('css')
     <style type="text/css">
@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Производитель</h1>
+                    <h1 class="m-0 text-info">Производители</h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 @section('content')
     <div class="row justify-content-lg-center">
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card card-light">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">

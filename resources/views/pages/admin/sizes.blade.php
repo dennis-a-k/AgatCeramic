@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '| Размер')
+@section('title', '| Размеры')
 
 @section('css')
     <style type="text/css">
@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Размер</h1>
+                    <h1 class="m-0 text-info">Размеры</h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 @section('content')
     <div class="row justify-content-lg-center">
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card card-light">
                 <div class="card-header">
                     @include('components.admin.size.add-size-modal')
                 </div>

@@ -17,7 +17,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Редактировать товар <span class="text-black-50">«{{ $product->title }}»</span></h1>
+                    <h1 class="m-0 text-info">Редактировать товар <span class="text-black-50">«{{ $product->title }}»</span>
+                    </h1>
                 </div>
             </div>
         </div>

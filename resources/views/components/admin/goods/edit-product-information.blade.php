@@ -1,10 +1,10 @@
 <section class="col-md-6">
-    <div class="card card-info card-outline">
+    <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title">Данные о товаре</h3>
         </div>
 
-        <div class="card-body">
+        <div class="card-body bg-light">
             <div class="form-group">
                 <div>
                     <label class="text-black-50" for="inputTitle">Наименование <small

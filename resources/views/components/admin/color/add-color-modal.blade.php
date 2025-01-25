@@ -1,7 +1,7 @@
 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#staticBackdropAdd" data-placement="top">
     Добавить
 </button>
-<a href="https://colorscheme.ru/html-colors.html" class="btn btn-secondary btn-sm" target="_blank">
+<a href="https://colorscheme.ru/html-colors.html" class="btn btn-secondary btn-sm text-white" target="_blank">
     Коды НЕХ для цветов
 </a>
 
@@ -10,7 +10,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabelAdd">
+                <h5 class="modal-title text-info" id="staticBackdropLabelAdd">
                     Добавление цвета
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
