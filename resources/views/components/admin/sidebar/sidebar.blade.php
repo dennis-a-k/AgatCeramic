@@ -6,22 +6,22 @@
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">Заказы</li>
+                <li class="nav-header text-info"><strong>Заказы</strong></li>
                 <li class="nav-item">
                     <a href="{{ route('orders.list') }}" class="nav-link">
                         <i class="fas fa-boxes nav-icon"></i>
                         <p>
                             Список заказов
                             @if ($pendingOrdersCount > 0)
-                            <span class="badge badge-info right">
-                                {{ $pendingOrdersCount }}
-                            </span>
+                                <span class="badge badge-info right">
+                                    {{ $pendingOrdersCount }}
+                                </span>
                             @endif
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-header">Товары</li>
+                <li class="nav-header text-info"><strong>Товары</strong></li>
                 <li class="nav-item">
                     <a href="{{ route('goods.list') }}" class="nav-link">
                         <i class="fas fa-layer-group nav-icon"></i>
@@ -96,7 +96,14 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">Пользователи</li>
+                <li class="nav-item">
+                    <a href="{{ route('goods.editor') }}" class="nav-link">
+                        <i class="fas fa-pencil-alt nav-icon"></i>
+                        <p>Редактирование</p>
+                    </a>
+                </li>
+
+                <li class="nav-header text-info"><strong>Пользователи</strong></li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-user-friends nav-icon"></i>
