@@ -97,7 +97,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('goods.editor') }}" class="nav-link">
+                    <a href="{{ route('editor') }}" class="nav-link">
                         <i class="fas fa-pencil-alt nav-icon"></i>
                         <p>Редактирование</p>
                     </a>

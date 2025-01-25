@@ -7,7 +7,8 @@ Route::group([
     'prefix' => '/admin-panel',
     // 'middleware' => 'auth',
 ], function () {
-    Route::get('/goods-editor', [EditorGoodsController::class, 'index'])->name('goods.editor');
-    Route::post('/goods-editor/import', [EditorGoodsController::class, 'import'])->name('goods.editor.import');
-    Route::get('/goods-editor/export-goods', [EditorGoodsController::class, 'exportGoods'])->name('goods.editor.export.goods');
+    Route::get('/editor', [EditorGoodsController::class, 'index'])->name('editor');
+
+    Route::post('/editor/import-goods', [EditorGoodsController::class, 'import'])->name('editor.import.goods');
+    Route::get('/editor/export-goods', [EditorGoodsController::class, 'exportGoods'])->name('editor.export.goods');
 });
