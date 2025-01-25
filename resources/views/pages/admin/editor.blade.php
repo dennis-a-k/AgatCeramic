@@ -44,7 +44,7 @@
                         </ul>
                     @endif
                     <div class="col-md-auto">
-                        <a href="{{ route('goods.template.export') }}" class="btn btn-outline-secondary" download>
+                        <a href="{{ route('editor.export.goods') }}" class="btn btn-outline-secondary" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
                         </a>
                     </div>
