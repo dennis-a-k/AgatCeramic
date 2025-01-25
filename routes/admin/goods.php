@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\EditorGoodsController;
 use App\Http\Controllers\GoodsController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +22,4 @@ Route::group([
     Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
     Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
     Route::get('/goods-template-export', [GoodsController::class, 'templateExport'])->name('goods.template.export');
-
-    Route::get('/goods-editor', [EditorGoodsController::class, 'index'])->name('goods.editor');
-    Route::post('/goods-editor/import', [EditorGoodsController::class, 'import'])->name('goods.editor.import');
 });
