@@ -212,7 +212,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('goods.import') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import.sales') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -229,7 +229,7 @@
 
                             <div class="row pb-4">
                                 <div class="col-12">
-                                    @if (session('status') === 'template-loaded')
+                                    @if (session('status') === 'editorSales-loaded')
                                         <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
                                             class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif

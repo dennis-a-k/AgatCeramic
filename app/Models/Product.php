@@ -25,6 +25,7 @@ class Product extends Model
         'country_id',
         'description',
         'is_published',
+        'sale',
     ];
 
     public function category()

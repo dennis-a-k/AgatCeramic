@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EditorExport;
-use App\Exports\GoodsEditorExport;
 use App\Imports\GoodsEditorImport;
 use App\Imports\PricesEditorImport;
+use App\Imports\SalesEditorImport;
 use App\Imports\StatusesEditorImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -33,6 +33,12 @@ class EditorGoodsController extends Controller
     {
         Excel::import(new StatusesEditorImport, $request->file('fileExcel'));
         return redirect()->back()->with('status', 'editorStatuses-loaded');
+    }
+
+    public function importSales(Request $request)
+    {
+        Excel::import(new SalesEditorImport, $request->file('fileExcel'));
+        return redirect()->back()->with('status', 'editorSales-loaded');
     }
 
     public function export(Request $request)
