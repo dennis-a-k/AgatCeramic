@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
             'sku' => ['required', 'alpha_num', 'unique:products,sku', 'max:8'],
             'title' => ['required', 'string', 'max:255'],
             'price' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
-            'unit' => ['nullable', 'string'],
+            'unit' => ['required', 'string'],
             'product_code' => ['nullable', 'string'],
             'description' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
             'category_id' => ['nullable', 'numeric'],

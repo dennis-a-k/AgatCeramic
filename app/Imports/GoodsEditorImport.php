@@ -73,7 +73,7 @@ class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation
                         'title' => $row['naimenovanie'],
                         'product_code' => $row['kod_tovara'] ?? NULL,
                         'description' => $row['opisanie'] ?? NULL,
-                        'unit' => $row['edinica_izmereniia'] ?? NULL,
+                        'unit' => $row['edinica_izmereniia'] ?? 'м2',
                         'category_id' => $category->id ?? NULL,
                         'size_id' => $size->id ?? NULL,
                         'color_id' => $color->id ?? NULL,
