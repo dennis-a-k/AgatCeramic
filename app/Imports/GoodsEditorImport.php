@@ -94,7 +94,7 @@ class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation
             'artikul' => ['required', 'alpha_num', 'max:8'],
             'naimenovanie' => ['required', 'string', 'max:255'],
             'edinica_izmereniia' => ['nullable', 'string'],
-            'kod_tovara' => ['nullable', 'alpha_num'],
+            'kod_tovara' => ['nullable', 'string'],
             'opisanie' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
             'kategoriia' => ['nullable', 'string'],
             'razmer' => ['nullable', 'string'],
