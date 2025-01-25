@@ -30,21 +30,21 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            @if (!isset($orders[0]))
-                <h5 class="text-info text-center mt-2">Список заказов пуст</h5>
-            @else
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-12">
-                                <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО, почте или телефону клиента"
-                                    route="{{ route('orders.list') }}" width="500px">
-                                </x-admin.search.search>
-                            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-12">
+                            <x-admin.search.search placeholder="Поиск по номеру заказа, ФИО, почте или телефону клиента"
+                                route="{{ route('orders.list') }}" width="500px">
+                            </x-admin.search.search>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card-body table-responsive p-0">
+                <div class="card-body table-responsive p-0">
+                    @if (!isset($orders[0]))
+                        <h5 class="text-info text-center mt-2">Список заказов пуст</h5>
+                    @else
                         <table class="table table-hover text-nowrap table-sm">
                             <thead>
                                 <tr>
@@ -123,13 +123,14 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    @endif
+                </div>
 
-                    <div class="card-footer clearfix">
-                        <x-admin.pagination.pagination :items="$orders">
-                        </x-admin.pagination.pagination>
-                    </div>
-            @endif
+                <div class="card-footer clearfix">
+                    <x-admin.pagination.pagination :items="$orders">
+                    </x-admin.pagination.pagination>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
