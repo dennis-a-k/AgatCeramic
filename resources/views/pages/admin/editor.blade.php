@@ -44,7 +44,7 @@
                         </ul>
                     @endif
                     <div class="col-md-auto">
-                        <a href="{{ route('editor.export.goods') }}" class="btn btn-outline-secondary" download>
+                        <a href="{{ route('editor.export', 'goods') }}" class="btn btn-outline-secondary" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
                         </a>
                     </div>
@@ -98,7 +98,7 @@
                         </ul>
                     @endif
                     <div class="col-md-auto">
-                        <a href="{{ route('editor.export.prices') }}" class="btn btn-outline-secondary" download>
+                        <a href="{{ route('editor.export', 'price') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-download"></i> Скачать Excel шаблон
                         </a>
                     </div>
@@ -152,13 +152,13 @@
                         </ul>
                     @endif
                     <div class="col-md-auto">
-                        <a href="{{ route('goods.template.export') }}" class="btn btn-outline-secondary" download>
+                        <a href="{{ route('editor.export', 'status') }}" class="btn btn-outline-secondary" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
                         </a>
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('goods.import') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import.statuses') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -175,7 +175,7 @@
 
                             <div class="row pb-4">
                                 <div class="col-12">
-                                    @if (session('status') === 'template-loaded')
+                                    @if (session('status') === 'editorStatuses-loaded')
                                         <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
                                             class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
@@ -206,7 +206,7 @@
                         </ul>
                     @endif
                     <div class="col-md-auto">
-                        <a href="{{ route('goods.template.export') }}" class="btn btn-outline-secondary" download>
+                        <a href="{{ route('editor.export', 'sale') }}" class="btn btn-outline-secondary" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
                         </a>
                     </div>

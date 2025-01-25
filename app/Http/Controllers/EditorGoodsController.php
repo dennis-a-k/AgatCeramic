@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EditorExport;
 use App\Exports\GoodsEditorExport;
-use App\Exports\PricesEditorExport;
 use App\Imports\GoodsEditorImport;
 use App\Imports\PricesEditorImport;
 use Illuminate\Http\Request;
@@ -28,13 +28,14 @@ class EditorGoodsController extends Controller
         return redirect()->back()->with('status', 'editorPrices-loaded');
     }
 
-    public function exportGoods()
+    public function importStatuses(Request $request)
     {
-        return Excel::download(new GoodsEditorExport, 'editorGoods-AC.xlsx');
+        Excel::import(new StatusesEditorImport, $request->file('fileExcel'));
+        return redirect()->back()->with('status', 'editorPrices-loaded');
     }
 
-    public function exportPrices()
+    public function export(Request $request)
     {
-        return Excel::download(new PricesEditorExport, 'editorPrices-AC.xlsx');
+        return Excel::download(new EditorExport($request->parametr), 'editor-AC.xlsx');
     }
 }
