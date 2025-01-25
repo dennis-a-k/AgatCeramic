@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('goods.import') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import.goods') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -67,7 +67,7 @@
 
                             <div class="row pb-4">
                                 <div class="col-12">
-                                    @if (session('status') === 'template-loaded')
+                                    @if (session('status') === 'editorGoods-loaded')
                                         <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
                                             class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
@@ -243,4 +243,17 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('assets/adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bs-custom-file-input.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            bsCustomFileInput.init();
+
+            $('.select2').select2();
+        })
+    </script>
 @endsection

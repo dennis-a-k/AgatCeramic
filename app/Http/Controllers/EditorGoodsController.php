@@ -17,7 +17,7 @@ class EditorGoodsController extends Controller
     public function importGoods(Request $request)
     {
         Excel::import(new GoodsEditorImport, $request->file('fileExcel'));
-        return redirect()->back()->with('status', 'template-loaded');
+        return redirect()->back()->with('status', 'editorGoods-loaded');
     }
 
     public function exportGoods()
