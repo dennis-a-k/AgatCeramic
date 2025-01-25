@@ -14,7 +14,7 @@ class PageEditorPrices implements WithEvents, WithTitle, FromView
 {
     public function view(): View
     {
-        return view('components.excel.editor-prices');
+        return view('components.excel.editor', ['item' => 'Цена']);
     }
 
     public function title(): string
