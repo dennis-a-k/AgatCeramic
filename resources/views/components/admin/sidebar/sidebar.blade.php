@@ -12,7 +12,11 @@
                         <i class="fas fa-boxes nav-icon"></i>
                         <p>
                             Список заказов
-                            <span class="badge badge-info right">2</span>
+                            @if ($pendingOrdersCount > 0)
+                            <span class="badge badge-info right">
+                                {{ $pendingOrdersCount }}
+                            </span>
+                            @endif
                         </p>
                     </a>
                 </li>

@@ -51,6 +51,11 @@ class OrderController extends Controller
         return view('pages.admin.order', compact('order'));
     }
 
+    public static function getPendingOrdersCount()
+    {
+        return Order::where('status', 'pending')->count();
+    }
+
     public function print(string $order_number)
     {
         $order = Order::where('order_number', $order_number)->firstOrFail();
