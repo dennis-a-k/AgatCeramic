@@ -2,10 +2,6 @@
 
 @section('title', '| Авторизация')
 
-@section('css')
-
-@endsection
-
 @section('content')
     <div class="login-box">
         <div class="login-logo">

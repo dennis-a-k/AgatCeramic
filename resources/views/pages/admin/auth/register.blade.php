@@ -2,10 +2,6 @@
 
 @section('title', '| Создание нового пользователя')
 
-@section('css')
-
-@endsection
-
 @section('content-header')
     <div class="content-header">
         <div class="container-fluid">
