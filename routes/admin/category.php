@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/categories',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [CategoryController::class, 'index'])->name('categories.list');
     Route::post('/create', [CategoryController::class, 'store'])->name('categories.store');

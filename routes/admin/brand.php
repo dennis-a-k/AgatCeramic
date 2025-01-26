@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/brands',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [BrandController::class, 'index'])->name('brands.list');
     Route::post('/create', [BrandController::class, 'store'])->name('brands.store');

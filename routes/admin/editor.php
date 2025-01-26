@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/editor', [EditorGoodsController::class, 'index'])->name('editor');
 

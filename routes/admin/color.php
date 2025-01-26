@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/colors',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [ColorController::class, 'index'])->name('color.list');
     Route::post('/create', [ColorController::class, 'store'])->name('color.store');

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/countries',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [CountryController::class, 'index'])->name('country.list');
     Route::post('/create', [CountryController::class, 'store'])->name('country.store');

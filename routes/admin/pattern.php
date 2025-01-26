@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/patterns',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [PatternController::class, 'index'])->name('pattern.list');
     Route::post('/create', [PatternController::class, 'store'])->name('pattern.store');

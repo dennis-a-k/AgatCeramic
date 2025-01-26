@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/textures',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [TextureController::class, 'index'])->name('texture.list');
     Route::post('/create', [TextureController::class, 'store'])->name('texture.store');

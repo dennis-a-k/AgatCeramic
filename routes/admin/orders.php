@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.list');
     Route::get('/order/{order_number}', [OrderController::class, 'order'])->name('order.show');

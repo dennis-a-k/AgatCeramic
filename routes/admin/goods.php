@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/goods', [GoodsController::class, 'index'])->name('goods.list');
     Route::get('/product-create', [GoodsController::class, 'create'])->name('product.create');

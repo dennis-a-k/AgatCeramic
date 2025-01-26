@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel/sizes',
-    // 'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/', [SizesController::class, 'index'])->name('sizes.list');
     Route::post('/create', [SizesController::class, 'store'])->name('sizes.store');
