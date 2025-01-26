@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -12,9 +13,11 @@ class UserController extends Controller
         return view('pages.admin.auth.register');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        dd($request->all());
+        $data = $request->validated();
+        $user = User::create($data);
+        return back()->with('status', 'user-created');
     }
 
     public function login()
