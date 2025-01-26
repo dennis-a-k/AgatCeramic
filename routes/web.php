@@ -27,3 +27,5 @@ require __DIR__.'/admin/color.php';
 require __DIR__.'/admin/brand.php';
 require __DIR__.'/admin/orders.php';
 require __DIR__.'/admin/editor.php';
+
+require __DIR__.'/admin/auth/auth.php';
