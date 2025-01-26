@@ -22,7 +22,7 @@ class TextureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'unique:textures,title', 'max:255'],
         ];
     }
 }
