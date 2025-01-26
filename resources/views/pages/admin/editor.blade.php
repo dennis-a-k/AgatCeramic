@@ -36,13 +36,6 @@
                 </div>
 
                 <div class="card-body row">
-                    @if ($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
                     <div class="col-md-auto">
                         <a href="{{ route('editor.export', 'goods') }}" class="btn btn-default" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
@@ -90,13 +83,6 @@
                 </div>
 
                 <div class="card-body row">
-                    @if ($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
                     <div class="col-md-auto">
                         <a href="{{ route('editor.export', 'price') }}" class="btn btn-default">
                             <i class="fas fa-download"></i> Скачать Excel шаблон
@@ -144,13 +130,6 @@
                 </div>
 
                 <div class="card-body row">
-                    @if ($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
                     <div class="col-md-auto">
                         <a href="{{ route('editor.export', 'status') }}" class="btn btn-default" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон
@@ -198,13 +177,6 @@
                 </div>
 
                 <div class="card-body row">
-                    @if ($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
                     <div class="col-md-auto">
                         <a href="{{ route('editor.export', 'sale') }}" class="btn btn-default" download>
                             <i class="fas fa-download"></i> Скачать Excel шаблон

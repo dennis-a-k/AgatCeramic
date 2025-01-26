@@ -52,13 +52,6 @@
                 </a>
                 <div id="collapseTwo" class="collapse show" data-parent="#accordion" style="">
                     <div class="card-body row">
-                        @if ($errors->any())
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
                         <div class="col-md-auto">
                             <a href="{{ route('goods.template.export') }}" class="btn btn-default" download>
                                 <i class="fas fa-download"></i> Скачать Excel шаблон
