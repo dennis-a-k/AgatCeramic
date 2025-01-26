@@ -28,13 +28,13 @@
 
             <div class="form-group">
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio1" name="unit" value="шт"
-                        {{ $product->unit == 'шт' ? 'checked' : '' }}>
+                    <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio1"
+                        name="unit" value="шт" {{ $product->unit == 'шт' ? 'checked' : '' }}>
                     <label for="customRadio1" class="custom-control-label">штука</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="customRadio2" name="unit" value="м2"
-                        {{ $product->unit == 'м2' ? 'checked' : '' }}>
+                    <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio2"
+                        name="unit" value="м2" {{ $product->unit == 'м2' ? 'checked' : '' }}>
                     <label for="customRadio2" class="custom-control-label">метр квадратный</label>
                 </div>
             </div>
