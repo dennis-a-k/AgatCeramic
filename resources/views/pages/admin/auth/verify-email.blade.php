@@ -36,12 +36,17 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-info btn-block">
+                            <button type="submit" class="btn btn-info btn-block mb-3">
                                 Подтвердить адрес электронной почты
                             </button>
                         </div>
                     </div>
                 </form>
+
+                <div class="text-right">
+                    <a href="{{ route('logout') }}" class="text-secondary">Сменить адрес электронной почты</a>
+                </div>
+
             </div>
         </div>
     </div>
