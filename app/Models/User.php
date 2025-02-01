@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use App\Mail\VerifyEmailMail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
@@ -44,4 +49,18 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getVerificationUrl()
+    {
+        return URL::temporarySignedRoute(
+            'verification.verify', // Название маршрута верификации
+            Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)), // Время жизни ссылки
+            ['id' => $this->id, 'hash' => sha1($this->email)]
+        );
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        Mail::to($this->email)->send(new VerifyEmailMail($this));
+    }
 }
