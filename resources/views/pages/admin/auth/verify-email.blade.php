@@ -17,7 +17,7 @@
                 </ul>
             </div>
         @elseif (session('status') === 'verification-send')
-            <div class="alert alert-success">
+            <div class="alert alert-success text-center">
                 Письмо для подтверждения отправлено на вашу почту: {{ $user->email }}
             </div>
         @endif
@@ -46,7 +46,6 @@
                 <div class="text-right">
                     <a href="{{ route('logout') }}" class="text-secondary">Сменить адрес электронной почты</a>
                 </div>
-
             </div>
         </div>
     </div>

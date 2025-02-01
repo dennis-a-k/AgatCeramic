@@ -91,9 +91,6 @@
 @endsection
 
 @section('js')
-    <!-- jquery-validation -->
-    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/additional-methods.min.js') }}"></script>
     <script>
         $(function() {
             $('#quickForm').validate({

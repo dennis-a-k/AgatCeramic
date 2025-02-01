@@ -25,6 +25,9 @@
     <script src="{{ asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- jquery-validation -->
+    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
     @yield('js')
 </body>
