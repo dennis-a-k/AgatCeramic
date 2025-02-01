@@ -13,5 +13,8 @@
     <br>
     <p>При входе в Админ-панель, просьба сменить пароль.</p>
     <a href="{{ url('/admin-panel/login') }}" class="button">Войти в Админ-панель</a>
+    <br>
+    <br>
+    <br>
     <div class="footer">© {{ date('Y') }} {{ config('app.name') }}.</div>
 @endsection

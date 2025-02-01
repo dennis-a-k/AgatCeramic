@@ -7,8 +7,7 @@
     @yield('title')
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             margin: 0;
             padding: 0;
         }
@@ -18,8 +17,6 @@
             margin: 20px auto;
             background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .button {
@@ -30,6 +27,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             margin: 20px auto;
+            overflow: hidden;
         }
 
         .footer {
