@@ -1,6 +1,6 @@
 @extends('layouts.login')
 
-@section('title', '| Авторизация')
+@section('title', '| Восстановление пароля')
 
 @section('content')
     <div class="login-box">
@@ -16,29 +16,27 @@
                     @endforeach
                 </ul>
             </div>
-        @elseif (session('status') === 'password-update')
-            <div class="alert alert-success text-center">
-                Пароль успешно обновлен
-            </div>
         @endif
 
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Авторизируйтесь в админ-панели</p>
+                <p class="login-box-msg">Придумайте новый пароль</p>
 
-                <form action="{{ route('login.store') }}" method="POST" id="quickForm">
+                <form action="{{ route('password.update') }}" method="POST" id="quickForm">
                     @csrf
 
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                    <input type="hidden" name="token" value="{{ $request->token }}">
+
+                    <div class="input-group form-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" name="email"
+                            value="{{ $request->email }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="input-group mb-3">
+                    <div class="input-group form-group mb-3">
                         <input type="password" class="form-control" placeholder="Пароль" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -46,25 +44,21 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-info">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">
-                                    Запомнить меня
-                                </label>
+                    <div class="input-group form-group mb-3">
+                        <input type="password" class="form-control" placeholder="Повторить пароль"
+                            name="password_confirmation">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-info btn-block">Войти</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-info btn-block">Сохранить</button>
                         </div>
                     </div>
                 </form>
-
-                <p class="mb-1">
-                    <a href="{{ route('password.request') }}" class="text-info">Восстановить пароль</a>
-                </p>
             </div>
         </div>
     </div>
@@ -80,6 +74,11 @@
                     },
                     password: {
                         required: true,
+                        minlength: 6,
+                    },
+                    password_confirmation: {
+                        required: true,
+                        equalTo: "input[name='password']",
                     },
                 },
                 messages: {
@@ -87,13 +86,18 @@
                         required: "Укажите адрес электронной почты",
                     },
                     password: {
-                        required: "Укажите пароль",
+                        required: "Придумайте пароль",
+                        minlength: "Длина пароля не менее 6 символов",
+                    },
+                    password_confirmation: {
+                        required: "Подтвердите пароль",
+                        equalTo: "Пароли не совпадают",
                     },
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
-                    element.closest('.input-group').append(error);
+                    element.closest('.form-group').append(error);
                 },
                 highlight: function(element, errorClass, validClass) {
                     $(element).addClass('is-invalid');

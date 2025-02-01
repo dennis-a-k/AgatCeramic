@@ -1,6 +1,6 @@
 @extends('layouts.login')
 
-@section('title', '| Авторизация')
+@section('title', '| Восстановление пароля')
 
 @section('content')
     <div class="login-box">
@@ -16,17 +16,17 @@
                     @endforeach
                 </ul>
             </div>
-        @elseif (session('status') === 'password-update')
+        @elseif (session('status') === 'forgot-password')
             <div class="alert alert-success text-center">
-                Пароль успешно обновлен
+                Вам на почту отправлено письмо с сылкой для восстановления пароля
             </div>
         @endif
 
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Авторизируйтесь в админ-панели</p>
+                <p class="login-box-msg">Поле для восстановления пароля</p>
 
-                <form action="{{ route('login.store') }}" method="POST" id="quickForm">
+                <form action="{{ route('password.email') }}" method="POST" id="quickForm">
                     @csrf
 
                     <div class="input-group mb-3">
@@ -38,33 +38,12 @@
                         </div>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Пароль" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-info">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">
-                                    Запомнить меня
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-info btn-block">Войти</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-info btn-block">Восстановить пароль</button>
                         </div>
                     </div>
                 </form>
-
-                <p class="mb-1">
-                    <a href="{{ route('password.request') }}" class="text-info">Восстановить пароль</a>
-                </p>
             </div>
         </div>
     </div>
@@ -78,16 +57,10 @@
                     email: {
                         required: true,
                     },
-                    password: {
-                        required: true,
-                    },
                 },
                 messages: {
                     email: {
                         required: "Укажите адрес электронной почты",
-                    },
-                    password: {
-                        required: "Укажите пароль",
                     },
                 },
                 errorElement: 'span',
