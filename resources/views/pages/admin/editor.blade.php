@@ -27,7 +27,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card card-purple">
                 <div class="card-header">
                     <h4 class="card-title w-100">
@@ -48,8 +48,7 @@
 
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx "
-                                        name="fileExcel" required>
+                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузить шаблон товаров
                                     </label>
@@ -61,8 +60,7 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     @if (session('status') === 'editorGoods-loaded')
-                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
 
                                     <button type="submit" class="btn btn-info float-right">Загрузить</button>
@@ -74,7 +72,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card card-warning">
                 <div class="card-header">
                     <h4 class="card-title w-100">
@@ -95,8 +93,7 @@
 
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx "
-                                        name="fileExcel" required>
+                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон цен
                                     </label>
@@ -108,8 +105,7 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     @if (session('status') === 'editorPrices-loaded')
-                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
 
                                     <button type="submit" class="btn btn-info float-right">Загрузить</button>
@@ -121,7 +117,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card card-success">
                 <div class="card-header">
                     <h4 class="card-title w-100">
@@ -142,8 +138,7 @@
 
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx "
-                                        name="fileExcel" required>
+                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон статусов
                                     </label>
@@ -155,8 +150,7 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     @if (session('status') === 'editorStatuses-loaded')
-                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
 
                                     <button type="submit" class="btn btn-info float-right">Загрузить</button>
@@ -168,7 +162,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card card-orange">
                 <div class="card-header">
                     <h4 class="card-title w-100">
@@ -189,8 +183,7 @@
 
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile"
-                                        accept=".xls, .xlsx " name="fileExcel" required>
+                                    <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон распродаж
                                     </label>
@@ -202,8 +195,7 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     @if (session('status') === 'editorSales-loaded')
-                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                     @endif
 
                                     <button type="submit" class="btn btn-info float-right">Загрузить</button>
