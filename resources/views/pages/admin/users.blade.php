@@ -14,8 +14,7 @@
     </div>
 
     @if (session('status') === 'verification-send')
-        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-            class="d-block text-sm text-info text-center mb-3">
+        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="d-block text-sm text-info text-center mb-3">
             Ссылка для подтверждения отправлена!
         </span>
     @endif
@@ -70,10 +69,9 @@
                                         </td>
                                         <td>
                                             @if ($user->email_verified_at === null)
-                                                <a href="{{ route('verification.send') }}" class="btn btn-info btn-sm">
-                                                    <i class="fas fa-envelope-open"></i>
-                                                    Отправить ссылку
-                                                </a>
+                                                <span class="badge badge-secondary">
+                                                    Пользователь не подтвердил почту
+                                                </span>
                                             @else
                                                 {{ $user->email_verified_at->format('d.m.Y') }}
                                             @endif
