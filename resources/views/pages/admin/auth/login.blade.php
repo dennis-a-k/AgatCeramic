@@ -4,6 +4,10 @@
 
 @section('content')
     <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ route('home') }}" target="_blank"><b>Agat Ceramic</b></a>
+        </div>
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -14,15 +18,11 @@
             </div>
         @endif
 
-        <div class="login-logo">
-            <a href="{{ route('home') }}" target="_blank"><b>Agat Ceramic</b></a>
-        </div>
-
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Авторизируйтесь в админ-панели</p>
 
-                <form action="{{ route('login.store') }}" method="POST">
+                <form action="{{ route('login.store') }}" method="POST" id="quickForm">
                     @csrf
 
                     <div class="input-group mb-3">
@@ -67,4 +67,40 @@
 @endsection
 
 @section('js')
+    <!-- jquery-validation -->
+    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/adminlte/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('#quickForm').validate({
+                rules: {
+                    email: {
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    email: {
+                        required: "Укажите адрес электронной почты",
+                    },
+                    password: {
+                        required: "Укажите пароль",
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.input-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
 @endsection
