@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '404 - Страница не найдена')
+@section('title', '403 - Доступ запрещён')
 
 @section('content')
     <div class="section-404 section" data-bg-image="assets/images/404/bg-404.webp">
