@@ -15,8 +15,7 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') .
-                                        mb_substr($pattern->title, 1, null, 'UTF-8') }}
+                                    {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($pattern->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
@@ -39,8 +38,7 @@
                                         'category_slug' => isset($category) ? $category->slug : null,
                                     ]),
                                 ) }}"
-                                    style="background-color: #{{ $color->code }};" class="colors-filter"
-                                    data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
+                                    style="background-color: #{{ $color->code }};" class="colors-filter" data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
                                 </a>
                             </li>
                         @endforeach
@@ -64,8 +62,7 @@
                                             'category_slug' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
-                                    {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') .
-                                        mb_substr($texture->title, 1, null, 'UTF-8') }}
+                                    {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texture->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
@@ -124,8 +121,7 @@
 
         <div class="sidebar-widget">
             <div class="">
-                <a href="{{ route('filter', ['category_slug' => isset($category) ? $category->slug : null]) }}"
-                    class="btn-filter">
+                <a href="{{ route('filter', ['category_slug' => isset($category) ? $category->slug : null]) }}" class="btn-filter">
                     Сбросить фильтры
                 </a>
             </div>

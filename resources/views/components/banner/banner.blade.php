@@ -13,8 +13,7 @@
                     производителей
                 </x-slot>
 
-                <x-slot name="url"
-                    href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                <x-slot name="url" href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
 
@@ -27,8 +26,7 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url"
-                    href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                <x-slot name="url" href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
         </div>
@@ -43,8 +41,7 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url"
-                    href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                <x-slot name="url" href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
 

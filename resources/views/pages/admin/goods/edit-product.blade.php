@@ -42,8 +42,7 @@
         <div class="row pb-4">
             <div class="col-12">
                 @if (session('status') === 'product-updated')
-                    <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                        class="text-sm text-info text-align-center mr-2">Товар изменён</span>
+                    <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Товар изменён</span>
                 @endif
                 <button type="submit" class="btn btn-info float-right">Изменить</button>
             </div>

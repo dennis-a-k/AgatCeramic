@@ -26,6 +26,6 @@
 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
     <span>Коллекция: </span>
     <ul class="d-flex">
-        <li><a href="">{{ $product->collection?->title ?? '---'}}</a></li>
+        <li><a href="">{{ $product->collection?->title ?? '---' }}</a></li>
     </ul>
 </div>

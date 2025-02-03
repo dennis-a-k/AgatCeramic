@@ -2,11 +2,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i
-                        class="pe-7s-close"></i></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                        <!-- Swiper -->
                         <div class="swiper-container gallery-top">
                             <div class="swiper-wrapper">
                             </div>
@@ -14,7 +12,6 @@
                         <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
                             <div class="swiper-wrapper">
                             </div>
-                            <!-- Add Arrows -->
                             <div class="swiper-buttons">
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>

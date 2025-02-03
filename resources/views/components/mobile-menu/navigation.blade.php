@@ -16,22 +16,19 @@
         <div class="offcanvas-menu mb-4">
             <ul>
                 <li>
-                    <a
-                        href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                    <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
                         Керамогранит
                     </a>
                 </li>
 
                 <li>
-                    <a
-                        href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                    <a href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
                         Плитка
                     </a>
                 </li>
 
                 <li>
-                    <a
-                        href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                    <a href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
                         Мозаика
                     </a>
                 </li>
@@ -48,14 +45,12 @@
                     <a href="#"><span class="menu-text">Каталог</span></a>
                     <ul class="sub-menu">
                         <li>
-                            <a
-                                href="{{ $categories->contains('title', 'Клинкер') ? route('category.list', $categories->firstWhere('title', 'Клинкер')->slug) : 404 }}">
+                            <a href="{{ $categories->contains('title', 'Клинкер') ? route('category.list', $categories->firstWhere('title', 'Клинкер')->slug) : 404 }}">
                                 <span class="menu-text">Клинкер</span>
                             </a>
                         </li>
                         <li>
-                            <a
-                                href="{{ $categories->contains('title', 'Ступени') ? route('category.list', $categories->firstWhere('title', 'Ступени')->slug) : 404 }}">
+                            <a href="{{ $categories->contains('title', 'Ступени') ? route('category.list', $categories->firstWhere('title', 'Ступени')->slug) : 404 }}">
                                 <span class="menu-text">Ступени</span>
                             </a>
                         </li>

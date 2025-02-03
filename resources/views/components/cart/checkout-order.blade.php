@@ -21,8 +21,7 @@
                                         м<sup>2</sup>
                                     @endif
                                 </span>
-                                <span
-                                    class="order-price">{{ number_format($item['price'] * $item['quantity'], 2, '.', ' ') }}
+                                <span class="order-price">{{ number_format($item['price'] * $item['quantity'], 2, '.', ' ') }}
                                     &#8381;
                                 </span>
                             </li>
@@ -50,8 +49,7 @@
         <div class="your-order-foot mt-3">
             <p class="text-end">
                 Нажимая кнопку «Заказать», я даю <a href="{{ route('personal-data') }}" target="_blank">согласие</a> на
-                обработку персональных данных, в соответствии с <a href="{{ route('policy') }}"
-                    target="_blank">Политикой</a>
+                обработку персональных данных, в соответствии с <a href="{{ route('policy') }}" target="_blank">Политикой</a>
             </p>
         </div>
     </div>

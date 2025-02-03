@@ -24,10 +24,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($cart as $id => $product)
-                                            <x-cart.cart-table-tr :id="$id" :img="$product['image']->first()
-                                                ? asset('storage/images/' . $product['image']->first()->title)
-                                                : asset('assets/images/stock/stock-image.png')" :url="route('product.show', $product['sku'])"
-                                                :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
+                                            <x-cart.cart-table-tr :id="$id" :img="$product['image']->first() ? asset('storage/images/' . $product['image']->first()->title) : asset('assets/images/stock/stock-image.png')" :url="route('product.show', $product['sku'])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -64,8 +61,7 @@
                         <div class="empty-text-contant text-center">
                             <i class="pe-7s-cart"></i>
                             <h3>Ваша корзина пуста</h3>
-                            <a class="empty-cart-btn"
-                                href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                            <a class="empty-cart-btn" href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
                                 <i class="fa fa-arrow-left"> </i> Перети к покупкам
                             </a>
                         </div>

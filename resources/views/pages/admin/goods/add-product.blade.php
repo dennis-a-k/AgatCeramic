@@ -64,8 +64,7 @@
 
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile"
-                                            accept=".xls, .xlsx " name="fileExcel" required>
+                                        <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
                                         <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                             Загрузите шаблон Excel
                                         </label>
@@ -77,9 +76,7 @@
                                 <div class="row pb-4">
                                     <div class="col-12">
                                         @if (session('status') === 'template-loaded')
-                                            <span x-data="{ show: true }" x-show="show" x-transition
-                                                x-init="setTimeout(() => show = false, 2000)"
-                                                class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                            <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
                                         @endif
 
                                         <button type="submit" class="btn btn-info float-right">Загрузить</button>
@@ -115,8 +112,7 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     @if (session('status') === 'product-created')
-                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-info text-align-center mr-2">Товар создан</span>
+                                        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Товар создан</span>
                                     @endif
 
                                     <button type="submit" class="btn btn-info float-right">Создать</button>

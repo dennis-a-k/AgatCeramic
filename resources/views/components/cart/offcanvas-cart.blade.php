@@ -9,11 +9,7 @@
                 @forelse($cart as $item)
                     <li data-product-id="{{ $item['id'] }}">
                         <a href="{{ route('product.show', $item['sku']) }}" class="image">
-                            <img src="{{ asset(
-                                $item['image']->first()
-                                    ? asset('storage/images/' . $item['image']->first()->title)
-                                    : asset('assets/images/stock/stock-image.png'),
-                            ) }}"
+                            <img src="{{ asset($item['image']->first() ? asset('storage/images/' . $item['image']->first()->title) : asset('assets/images/stock/stock-image.png')) }}"
                                 alt="{{ $item['title'] }}">
                         </a>
                         <div class="content">

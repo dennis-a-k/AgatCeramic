@@ -59,8 +59,7 @@
                                         'color_id' => $color->id,
                                     ]),
                                 ) }}"
-                                    style="background-color: #{{ $color->code }};" class="colors-filter"
-                                    data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
+                                    style="background-color: #{{ $color->code }};" class="colors-filter" data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
                                 </a>
                             </li>
                         @endforeach

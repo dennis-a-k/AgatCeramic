@@ -1,10 +1,8 @@
-<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalEdit" data-country="{{ $country }}"
-    data-content="Редактировать">
+<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalEdit" data-country="{{ $country }}" data-content="Редактировать">
     <i class="fas fa-pencil-alt"></i>
 </button>
 
-<div class="modal fade" id="modalEdit" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
+<div class="modal fade" id="modalEdit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,9 +20,8 @@
                     <div class="form-group">
                         <div>
                             <label for="inputCountry">Страна</label>
-                            <input type="text" id="inputCountry"
-                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }} modal-title"
-                                name="name" value="" required autofocus autocomplete="name">
+                            <input type="text" id="inputCountry" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }} modal-title" name="name" value="" required autofocus
+                                autocomplete="name">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('name')" /> --}}
                         </div>
                     </div>

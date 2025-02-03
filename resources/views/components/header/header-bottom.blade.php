@@ -27,8 +27,7 @@
                         </div>
                         <span class="header-action-order">Оформить заказ</span>
                     </a>
-                    <a href="#offcanvas-mobile-menu"
-                        class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                         <i class="pe-7s-menu"></i>
                     </a>
                 </div>

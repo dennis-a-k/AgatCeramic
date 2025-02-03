@@ -144,8 +144,7 @@
         <div class="footer">
             <h2>Мы свяжемся с вами в ближайшее время для подтверждения заказа.</h2>
             <p>Если у вас возникли вопросы, свяжитесь с нами:</p>
-            <p>Email: <a href="mailto:zakaz@agatceramic.com">zakaz@agatceramic.com</a> | Телефон: <a
-                    href="tel:79999999999">+7 (XXX) XXX-XX-XX</a>
+            <p>Email: <a href="mailto:zakaz@agatceramic.com">zakaz@agatceramic.com</a> | Телефон: <a href="tel:79999999999">+7 (XXX) XXX-XX-XX</a>
             </p>
             <p>Спасибо, что выбрали {{ config('app.name') }}!</p>
         </div>

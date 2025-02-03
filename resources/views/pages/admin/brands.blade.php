@@ -35,8 +35,7 @@
 
                         <div class="col-6">
                             <div style="float: right;">
-                                <x-admin.search.search placeholder="Поиск по бренду" route="{{ route('brands.list') }}"
-                                    width="250px">
+                                <x-admin.search.search placeholder="Поиск по бренду" route="{{ route('brands.list') }}" width="250px">
                                 </x-admin.search.search>
                             </div>
                         </div>
@@ -67,8 +66,7 @@
                                             @if (!$brand->img)
                                                 ---
                                             @else
-                                                <img src="{{ URL::asset('storage/brands/' . $brand->img) }}"
-                                                    alt="{{ $brand->title }}" height="35px">
+                                                <img src="{{ URL::asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}" height="35px">
                                             @endif
 
                                         </td>
@@ -76,9 +74,7 @@
                                             <div class="btn-group btn-group-xs">
                                                 @include('components.admin.brand.edit-brand-modal')
 
-                                                <button class="btn btn-danger btn-xs" data-toggle="modal"
-                                                    data-target="#modalDelete" data-brand="{{ $brand }}"
-                                                    data-content="Удалить">
+                                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modalDelete" data-brand="{{ $brand }}" data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>

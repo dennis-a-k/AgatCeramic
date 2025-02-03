@@ -1,6 +1,5 @@
 @if ($product->sale == 1)
-    <span class="badge badge-danger" type="button" id="dropdownMenuProduct11" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+    <span class="badge badge-danger" type="button" id="dropdownMenuProduct11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Распродажа
     </span>
 
@@ -14,8 +13,7 @@
         </form>
     </div>
 @else
-    <span class="badge badge-secondary" type="button" id="dropdownMenuProduct01" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+    <span class="badge badge-secondary" type="button" id="dropdownMenuProduct01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Не распродажа
     </span>
 

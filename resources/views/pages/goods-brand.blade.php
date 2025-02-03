@@ -12,8 +12,7 @@
                     <div>
                         <p>{{ $title }}</p>
                         @if ($brand->img)
-                            <img src="{{ asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}"
-                                style="max-height: 45px;">
+                            <img src="{{ asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}" style="max-height: 45px;">
                         @endif
                     </div>
 
@@ -28,9 +27,7 @@
                                             @forelse ($goods as $product)
                                                 <x-goods.product-card>
                                                     <x-slot name="img"
-                                                        src="{{ $product->images->first()
-                                                            ? asset('storage/images/' . $product->images->first()->title)
-                                                            : asset('assets/images/stock/stock-image.png') }}"
+                                                        src="{{ $product->images->first() ? asset('storage/images/' . $product->images->first()->title) : asset('assets/images/stock/stock-image.png') }}"
                                                         alt="{{ $product->title }}">
                                                     </x-slot>
                                                     <x-slot name="id">{{ $product->id }}</x-slot>
@@ -38,11 +35,9 @@
                                                     <x-slot name="title">{{ $product->title }}</x-slot>
                                                     <x-slot name="price">{{ $product->price }}</x-slot>
                                                     <x-slot name="sale">{{ $product->sale }}</x-slot>
-                                                    <x-slot name="urlProduct"
-                                                        href="{{ route('product.show', $product->sku) }}">
+                                                    <x-slot name="urlProduct" href="{{ route('product.show', $product->sku) }}">
                                                     </x-slot>
-                                                    <x-slot name="urlCategory"
-                                                        href="{{ route('category.list', $product->category->slug) }}"></x-slot>
+                                                    <x-slot name="urlCategory" href="{{ route('category.list', $product->category->slug) }}"></x-slot>
                                                 </x-goods.product-card>
                                             @empty
                                                 <h5 class="text-center mt-2">Список товаров пуст</h5>

@@ -25,8 +25,7 @@
                             <span class="header-action-num">{{ str_pad(count($cart), STR_PAD_LEFT) }}</span>
                         @endif
                     </a>
-                    <a href="#offcanvas-mobile-menu"
-                        class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                         <i class="pe-7s-menu"></i>
                     </a>
                 </div>

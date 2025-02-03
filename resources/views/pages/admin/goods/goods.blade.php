@@ -42,14 +42,12 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <x-admin.search.search placeholder="Поиск по артикулу, наименованию или коду товара"
-                                    route="{{ route('goods.list') }}" width="500px">
+                                <x-admin.search.search placeholder="Поиск по артикулу, наименованию или коду товара" route="{{ route('goods.list') }}" width="500px">
                                 </x-admin.search.search>
                             </div>
 
                             <div class="col-6">
-                                <a href="{{ route('goods.export') }}" class="btn btn-default float-right"
-                                    style="margin-right: 5px;">
+                                <a href="{{ route('goods.export') }}" class="btn btn-default float-right" style="margin-right: 5px;">
                                     <i class="fas fa-download"></i> Сохранить в Excel
                                 </a>
                             </div>
@@ -105,8 +103,7 @@
                                     <tr>
                                         <td>{{ $product->sku }}</td>
                                         <td>
-                                            <a href="{{ route('product.show', $product->sku) }}"
-                                                target="_blank">{{ $product->title }}</a>
+                                            <a href="{{ route('product.show', $product->sku) }}" target="_blank">{{ $product->title }}</a>
                                         </td>
                                         <td>
                                             @if (!$product->product_code)
@@ -147,15 +144,13 @@
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
-                                                <a href="{{ route('product.edit', $product->id) }}"
-                                                    class="btn btn-info btn-xs btn-xs goods-popover" id=""
-                                                    data-content="Редактировать" target="_blank">
+                                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                    target="_blank">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 
-                                                <button class="btn btn-danger btn-xs btn-xs goods-popover" id=""
-                                                    data-toggle="modal" data-target="#modalDelete"
-                                                    data-product="{{ $product }}" data-content="Удалить">
+                                                <button class="btn btn-danger btn-xs btn-xs goods-popover" id="" data-toggle="modal" data-target="#modalDelete" data-product="{{ $product }}"
+                                                    data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>

@@ -4,8 +4,7 @@
             <div class="swiper-wrapper align-items-center">
                 @forelse ($brands as $brand)
                     <div class="swiper-slide brand-slider-item text-center px-2">
-                        <a href="{{ asset('brand/' . $brand->slug) }}"><img class=" img-fluid"
-                                src="{{ asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}" /></a>
+                        <a href="{{ asset('brand/' . $brand->slug) }}"><img class=" img-fluid" src="{{ asset('storage/brands/' . $brand->img) }}" alt="{{ $brand->title }}" /></a>
                     </div>
                 @endforeach
             </div>

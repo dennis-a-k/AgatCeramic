@@ -33,8 +33,7 @@
 
                 @for ($i = $start; $i <= $end; $i++)
                     <li class="li">
-                        <a class="page-link {{ $i == $current ? 'active' : '' }}"
-                            href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                        <a class="page-link {{ $i == $current ? 'active' : '' }}" href="{{ $paginator->url($i) }}">{{ $i }}</a>
                     </li>
                 @endfor
 
@@ -43,11 +42,7 @@
                         if ($end < $last - 1) {
                             echo '<li class="li disabled"><a class="page-link">...</a></li>';
                         }
-                        echo '<li class="li"><a class="page-link" href="' .
-                            $paginator->url($last) .
-                            '">' .
-                            $last .
-                            '</a></li>';
+                        echo '<li class="li"><a class="page-link" href="' . $paginator->url($last) . '">' . $last . '</a></li>';
                     }
                 @endphp
 

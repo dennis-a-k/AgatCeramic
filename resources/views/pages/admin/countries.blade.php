@@ -54,9 +54,7 @@
                                             <div class="btn-group btn-group-xs">
                                                 @include('components.admin.country.edit-country-modal')
 
-                                                <button class="btn btn-danger btn-xs" data-toggle="modal"
-                                                    data-target="#modalDelete" data-country="{{ $country }}"
-                                                    data-content="Удалить">
+                                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modalDelete" data-country="{{ $country }}" data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>

@@ -54,9 +54,7 @@
                                             <div class="btn-group btn-group-xs">
                                                 @include('components.admin.category.edit-category-modal')
 
-                                                <button class="btn btn-danger btn-xs" data-toggle="modal"
-                                                    data-target="#modalDelete" data-category="{{ $category }}"
-                                                    data-content="Удалить">
+                                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modalDelete" data-category="{{ $category }}" data-content="Удалить">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>

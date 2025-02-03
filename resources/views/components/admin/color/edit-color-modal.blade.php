@@ -1,10 +1,8 @@
-<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalEdit" data-color="{{ $color }}"
-    data-content="Редактировать">
+<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalEdit" data-color="{{ $color }}" data-content="Редактировать">
     <i class="fas fa-pencil-alt"></i>
 </button>
 
-<div class="modal fade" id="modalEdit" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
+<div class="modal fade" id="modalEdit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,9 +20,8 @@
                     <div class="form-group">
                         <div>
                             <label for="inputColor">Название цвета</label>
-                            <input type="text" id="inputColor"
-                                class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title"
-                                name="title" value="" required autofocus autocomplete="title">
+                            <input type="text" id="inputColor" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title" name="title" value="" required autofocus
+                                autocomplete="title">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
 
@@ -36,9 +33,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">#</div>
                                 </div>
-                                <input type="text" id="inputCode"
-                                    class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }} modal-code"
-                                    name="code" value="" required autocomplete="code">
+                                <input type="text" id="inputCode" class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }} modal-code" name="code" value="" required
+                                    autocomplete="code">
                                 {{-- <x-input-error class="ml-2" :messages="$errors->get('code')" /> --}}
                             </div>
                         </div>

@@ -15,20 +15,18 @@
                     <li><span>Страна:</span></li>
                     <li class="product-anotherinfo-img">
                         @if (!$product->brand?->img)
-                        <span></span>
+                            <span></span>
                         @else
-                        <a href="">
-                            <img src="{{ asset('storage/brands/' . $product->brand->img) }}"
-                                alt="{{ $product->brand->title }}">
-                        </a>
+                            <a href="#">
+                                <img src="{{ asset('storage/brands/' . $product->brand->img) }}" alt="{{ $product->brand->title }}">
+                            </a>
                         @endif
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a
-                            href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
+                        <a href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
                             {{ $product->category?->title ?? '---' }}
                         </a>
                     </li>

@@ -14,8 +14,7 @@
                     </a>
                 </div>
             </div>
-            <div
-                class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
                 <div class="show-case">
                     <div class="hero-slide-image">
                         <img {{ $img->attributes }}>

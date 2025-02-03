@@ -2,8 +2,7 @@
     Добавить
 </button>
 
-<div class="modal fade" id="staticBackdropAdd" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
+<div class="modal fade" id="staticBackdropAdd" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,21 +19,18 @@
                     <div class="form-group">
                         <div>
                             <label for="inputBrand">Название производителя</label>
-                            <input type="text" id="inputBrand"
-                                class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title"
-                                value="{{ old('title') }}" required autofocus autocomplete="title">
+                            <input type="text" id="inputBrand" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus
+                                autocomplete="title">
                             {{--
                             <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
 
                         <div class="mt-3">
-                            <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse"
-                                data-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
+                            <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
                                 Фото производителя
                             </button>
                             <div class="custom-file collapse mt-3" id="collapseBrand">
-                                <input type="file" class="custom-file-input" id="brandImg"
-                                    accept="image/png, image/jpeg, image/jpg, image/webp" name="img">
+                                <input type="file" class="custom-file-input" id="brandImg" accept="image/png, image/jpeg, image/jpg, image/webp" name="img">
                                 <label class="custom-file-label" for="brandImg" data-browse="Выбрать">
                                     Загрузите фото
                                 </label>

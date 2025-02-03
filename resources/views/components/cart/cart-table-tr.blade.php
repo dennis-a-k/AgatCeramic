@@ -2,8 +2,7 @@
 
 <tr data-product-id="{{ $id }}">
     <td class="product-thumbnail">
-        <a href="{{ $url }}"><img class="img-responsive ml-15px" src="{{ $img }}"
-                alt="{{ $title }}" /></a>
+        <a href="{{ $url }}"><img class="img-responsive ml-15px" src="{{ $img }}" alt="{{ $title }}" /></a>
     </td>
     <td class="product-name"><a href="{{ $url }}">{{ $title }}</a></td>
     <td class="product-price-cart"><span class="amount">{{ number_format($price, 2, '.', ' ') }} &#8381;</span></td>

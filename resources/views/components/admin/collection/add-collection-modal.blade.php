@@ -2,8 +2,7 @@
     Добавить
 </button>
 
-<div class="modal fade" id="staticBackdropAdd" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
+<div class="modal fade" id="staticBackdropAdd" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,9 +19,8 @@
                     <div class="form-group">
                         <div>
                             <label for="inputCollection">Коллекция</label>
-                            <input type="text" id="inputCollection"
-                                class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title"
-                                value="{{ old('title') }}" required autofocus autocomplete="title">
+                            <input type="text" id="inputCollection" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required
+                                autofocus autocomplete="title">
                             {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                         </div>
                     </div>

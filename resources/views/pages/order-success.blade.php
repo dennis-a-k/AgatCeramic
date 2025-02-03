@@ -17,8 +17,8 @@
                             Спасибо за заказ в нашем магазине. Скоро вы получите письмо с подтверждением.
                         </p>
                         <div class="btn_cmpted">
-                            <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}"
-                                class="shop-btn" title="Продолжить покупки">
+                            <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}" class="shop-btn"
+                                title="Продолжить покупки">
                                 Продолжить покупки
                             </a>
                         </div>

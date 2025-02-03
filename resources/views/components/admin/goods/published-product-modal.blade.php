@@ -1,6 +1,5 @@
 @if ($product->is_published == 1)
-    <span class="badge badge-success" type="button" id="dropdownMenuProduct1" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+    <span class="badge badge-success" type="button" id="dropdownMenuProduct1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Опубликован
     </span>
 
@@ -14,8 +13,7 @@
         </form>
     </div>
 @else
-    <span class="badge badge-secondary" type="button" id="dropdownMenuProduct0" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+    <span class="badge badge-secondary" type="button" id="dropdownMenuProduct0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Скрыт
     </span>
 
