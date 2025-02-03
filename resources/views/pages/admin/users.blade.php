@@ -57,24 +57,29 @@
                                             {{ $user->email }}
                                         </td>
                                         <td>
-                                            @if ($user->role === 'admin')
-                                                <span class="badge badge-warning">
-                                                    Администратор
-                                                </span>
+                                            @if (auth()->id() === $user->id)
+                                                @if ($user->role === 'admin')
+                                                    <span class="btn btn-outline-warning btn-xs disabled">
+                                                        Администратор
+                                                    </span>
+                                                @else
+                                                    <span class="btn btn-block btn-outline-info btn-xs disabled">
+                                                        Пользователь
+                                                    </span>
+                                                @endif
                                             @else
-                                                <span class="badge badge-info">
-                                                    Пользователь
-                                                </span>
+                                                @include('components.admin.user.role')
                                             @endif
                                         </td>
                                         <td>
                                             @if ($user->email_verified_at === null)
-                                                <span class="badge badge-secondary">
+                                                <span class="btn btn-secondary btn-xs disabled">
                                                     Пользователь не подтвердил почту
                                                 </span>
                                             @else
                                                 {{ $user->email_verified_at->format('d.m.Y') }}
                                             @endif
+
                                         </td>
                                         <td>
                                             {{ $user->created_at->format('d.m.Y') }}

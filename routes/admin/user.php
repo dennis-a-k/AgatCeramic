@@ -14,4 +14,5 @@ Route::group([
     Route::put('/profile/update-name', [UserController::class, 'updateName'])->name('profile.update.name');
     Route::put('/profile/update-email', [UserController::class, 'updateEmail'])->name('profile.update.email');
     Route::put('/profile/update-password', [UserController::class, 'updatePassword'])->name('profile.update.password');
+    Route::put('/profile/{id}/update-role', [UserController::class, 'updateRole'])->name('profile.update.role');
 });
