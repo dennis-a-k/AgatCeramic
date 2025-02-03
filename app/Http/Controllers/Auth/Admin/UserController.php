@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -16,46 +17,48 @@ class UserController extends Controller
         return view('pages.admin.users', compact('users'));
     }
 
-    public function edit(string $id)
+    public function edit()
     {
-        $user = User::where('id', $id)->firstOrFail();
+        $user = Auth::user();
         return view('pages.admin.user', compact('user'));
     }
 
     public function updateName(Request $request)
     {
+        $user = User::find(Auth::id());
         $request->validate([
             'name' => ['required', 'string'],
         ]);
-        User::where('id', $request->id)->update(['name' => $request->name]);
+        $user->update(['name' => $request->name]);
         return back()->with('status', 'username-updated');
     }
 
     public function updateEmail(Request $request)
     {
+        $user = User::find(Auth::id());
         $request->validate([
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email', 'unique:users,email,' . $user->id],
         ]);
-        User::where('id', $request->id)->update(['email' => $request->email]);
+        $user->update(['email' => $request->email]);
         return back()->with('status', 'email-updated');
     }
 
     public function updatePassword(Request $request)
     {
+        $user = User::find(Auth::id());
         $request->validate([
             'password' => ['required', 'confirmed', Password::min(6)],
         ]);
-        User::where('id', $request->id)->update(['password' => Hash::make($request->password)]);
+        $user->update(['password' => Hash::make($request->password)]);
         return back()->with('status', 'password-updated');
     }
 
-    // public function destroy(Request $request)
-    // {
-    //     $product = Product::find($request->id)->get();
-    //     foreach ($product->images as $image) {
-    //         Storage::delete('public/images/' . $image->title);
-    //     }
-    //     $product->delete();
-    //     return back();
-    // }
+    public function destroy(User $user)
+    {
+        if (auth()->id() === $user->id) {
+            return redirect()->back()->with('error', 'Вы не можете удалить самого себя.');
+        }
+        $user->delete();
+        return redirect()->route('users')->with('status', 'Пользователь удален.');
+    }
 }

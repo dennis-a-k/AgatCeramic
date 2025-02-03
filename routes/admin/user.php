@@ -8,9 +8,10 @@ Route::group([
     'middleware' => ['auth', 'verified'],
 ], function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/user/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/user/{id}/update-name', [UserController::class, 'updateName'])->name('user.update.name');
-    Route::post('/user/{id}/update-email', [UserController::class, 'updateEmail'])->name('user.update.email');
-    Route::post('/user/{id}/update-password', [UserController::class, 'updatePassword'])->name('user.update.password');
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update-name', [UserController::class, 'updateName'])->name('profile.update.name');
+    Route::put('/profile/update-email', [UserController::class, 'updateEmail'])->name('profile.update.email');
+    Route::put('/profile/update-password', [UserController::class, 'updatePassword'])->name('profile.update.password');
 });

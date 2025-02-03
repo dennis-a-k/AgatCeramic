@@ -80,13 +80,17 @@
                                             {{ $user->created_at->format('d.m.Y') }}
                                         </td>
                                         <td class="text-right">
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-trash"></i>
-                                                Удалить
-                                            </a>
+                                            @if (auth()->id() !== $user->id)
+                                                <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" data-user="{{ $user }}">
+                                                    <i class="fas fa-trash"></i>
+                                                    Удалить
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                @include('components.admin.user.modal')
                             </tbody>
                         </table>
                     </div>
@@ -94,4 +98,16 @@
             @endif
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('#modalDelete').on('show.bs.modal', function(event) {
+            const button = $(event.relatedTarget);
+            const user = button.data('user');
+
+            const modal = $(this);
+            modal.find('.modal-text').text('Удалить ' + user['name'] + '?');
+        });
+    </script>
 @endsection

@@ -5,7 +5,7 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
         <li class="user-footer">
-            <a href="{{ route('user.edit', Auth::user()->id) }}" class="btn btn-default btn-flat">Профиль</a>
+            <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat">Профиль</a>
             <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right">Выйти</a>
         </li>
     </ul>

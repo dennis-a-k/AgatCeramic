@@ -9,7 +9,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-info">{{ $user->name }} <span class="m-0 text-secondary"> - {{ $user->email }}</span></h1>
+                    <h1 class="m-0 text-info">{{ $user->name }}</h1>
+                    <h3 class="m-0 text-secondary">{{ $user->email }}</h3>
                 </div>
             </div>
         </div>
@@ -31,14 +32,15 @@
 @endsection
 
 @section('content')
-    <div class="col-lg-7">
+    <div class="col-xl-8">
         <div class="card">
             <div class="card-body register-card-body">
-                <form action="{{ route('user.update.name', $user->id) }}" method="POST" class="form-horizontal" id="quickFormName">
+                <form action="{{ route('profile.update.name', $user->id) }}" method="POST" class="form-horizontal" id="quickFormName">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">Изменить имя</label>
-                        <div class="col-sm-9 input-group">
+                        <label for="inputName" class="col-md-3 col-form-label">Изменить имя</label>
+                        <div class="col-md-9 input-group">
                             <input type="text" class="form-control" id="inputName" placeholder="Полное имя" name="name">
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -52,11 +54,12 @@
                     </div>
                 </form>
 
-                <form action="{{ route('user.update.email', $user->id) }}" method="POST" class="form-horizontal" id="quickFormEmail">
+                <form action="{{ route('profile.update.email', $user->id) }}" method="POST" class="form-horizontal" id="quickFormEmail">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-3 col-form-label">Изменить почту</label>
-                        <div class="col-sm-9 input-group">
+                        <label for="inputEmail" class="col-md-3 col-form-label">Изменить почту</label>
+                        <div class="col-md-9 input-group">
                             <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{ old('email') }}">
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -70,11 +73,12 @@
                     </div>
                 </form>
 
-                <form action="{{ route('user.update.password', $user->id) }}" method="POST" class="my-4" id="quickFormPassword">
+                <form action="{{ route('profile.update.password', $user->id) }}" method="POST" class="my-4" id="quickFormPassword">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">Изменить пароль</label>
-                        <div class="col-sm-9 input-group">
+                        <label for="inputPassword" class="col-md-3 col-form-label">Изменить пароль</label>
+                        <div class="col-md-9 input-group">
                             <input type="password" class="form-control" id="inputPassword" placeholder="Новый пароль" name="password">
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -84,9 +88,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">Подтвердить пароль</label>
-                        <div class="col-sm-9 input-group">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Повторить пароль" name="password_confirmation">
+                        <label for="inputPasswordComf" class="col-md-3 col-form-label">Подтвердить пароль</label>
+                        <div class="col-md-9 input-group">
+                            <input type="password" class="form-control" id="inputPasswordComf" placeholder="Повторить пароль" name="password_confirmation">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
