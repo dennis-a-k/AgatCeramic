@@ -31,7 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then((data) => {
                     const title = data.title || "---";
-                    const price = data.price || "---";
+                    const price = +data.price || "---";
+                    const formattedPrice = price
+                        .toLocaleString("ru-RU", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        })
+                        .replace(",", ".");
                     const sku = data.sku || "---";
                     const unit =
                         data.unit === "шт"
@@ -56,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ).innerText = title;
                     document.querySelector(
                         "#modalProduct .modal-body .new-price"
-                    ).innerText = `${price} ₽`;
+                    ).innerText = `${formattedPrice} ₽`;
                     document.querySelector(
                         "#modalProduct .modal-body .new-sku"
                     ).innerText = sku;
