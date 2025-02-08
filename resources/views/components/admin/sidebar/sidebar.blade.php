@@ -103,19 +103,21 @@
                     </a>
                 </li>
 
-                <li class="nav-header text-info"><strong>Пользователи</strong></li>
-                <li class="nav-item">
-                    <a href="{{ route('users') }}" class="nav-link">
-                        <i class="fas fa-user-friends nav-icon"></i>
-                        <p>Администраторы</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('register') }}" class="nav-link">
-                        <i class="fas fa-user-plus nav-icon"></i>
-                        <p>Добавить</p>
-                    </a>
-                </li>
+                @if (auth()->user()->role === 'admin')
+                    <li class="nav-header text-info"><strong>Пользователи</strong></li>
+                    <li class="nav-item">
+                        <a href="{{ route('users') }}" class="nav-link">
+                            <i class="fas fa-user-friends nav-icon"></i>
+                            <p>Администраторы</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('register') }}" class="nav-link">
+                            <i class="fas fa-user-plus nav-icon"></i>
+                            <p>Добавить</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </nav>
     </div>

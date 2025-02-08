@@ -53,12 +53,12 @@ class UserController extends Controller
         return back()->with('status', 'password-updated');
     }
 
-    public function updateRole(Request $request)
+    public function updateRole(Request $request, User $user)
     {
         $request->validate([
             'role' => ['required', 'string'],
         ]);
-        User::where('id', $request->id)->update(['role' => $request->role]);
+        User::where('id', $user->id)->update(['role' => $request->role]);
         return back();
     }
 

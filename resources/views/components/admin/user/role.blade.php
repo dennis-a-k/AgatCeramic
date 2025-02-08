@@ -4,7 +4,7 @@
     </span>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuProduct1">
-        <form method="POST" action="{{ route('profile.update.role', $user->id) }}">
+        <form method="POST" action="{{ route('users.update.role', $user->id) }}">
             @csrf
             @method('PUT')
             <button class="dropdown-item" type="submit" name="role" value="user">
@@ -18,7 +18,7 @@
     </span>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuProduct0">
-        <form method="POST" action="{{ route('profile.update.role', $user->id) }}">
+        <form method="POST" action="{{ route('users.update.role', $user->id) }}">
             @csrf
             @method('PUT')
             <button class="dropdown-item" type="submit" name="role" value="admin">
