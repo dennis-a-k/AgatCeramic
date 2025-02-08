@@ -103,7 +103,9 @@
                                     <tr>
                                         <td>{{ $product->sku }}</td>
                                         <td>
-                                            <a href="{{ route('product.show', $product->sku) }}" target="_blank">{{ $product->title }}</a>
+                                            <a href="{{ route('product.show', $product->sku) }}" target="_blank" class="title">
+                                                {{ Str::words($product->title, 5) }}
+                                            </a>
                                         </td>
                                         <td>
                                             @if (!$product->product_code)
