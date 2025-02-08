@@ -59,7 +59,7 @@
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/appd.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     @yield('js')
 </body>
