@@ -10,12 +10,13 @@ function initializeCartButtons() {
     addToCartButtons.forEach((button) => {
         button.addEventListener("click", function () {
             const productId = this.dataset.productId;
-            const quantityInput =
-                this.closest(".pro-details-quality")?.querySelector(
-                    ".cart-plus-minus-box"
-                ) || document.querySelector(".cart-plus-minus-box");
-            const quantity = quantityInput ? quantityInput.value : 1;
-
+            const quantityInput = this.closest(
+                ".pro-details-quality"
+            )?.querySelector(".cart-plus-minus-box");
+            const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+            if (quantityInput) {
+                quantityInput.value = 1;
+            }
             addToCart(productId, quantity);
         });
     });
@@ -161,7 +162,7 @@ function showNotification(message) {
 }
 
 function updateCartCount(count) {
-    const cartCounter = document.querySelector(".product-subtotal");
+    const cartCounter = document.querySelector(".header-action-num");
     const cartIcons = document.querySelectorAll(
         ".header-action-btn-cart div, .header-action-btn-cart"
     );
@@ -201,9 +202,15 @@ function updateCartCount(count) {
 }
 
 function updateCartTotal(total) {
+    let formatTotal = total
+        .toLocaleString("ru-RU", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        })
+        .replace(",", ".");
     const cartTotalElement = document.querySelector(".cart-total");
     if (cartTotalElement) {
-        cartTotalElement.textContent = `${total} ₽`;
+        cartTotalElement.textContent = `${formatTotal} ₽`;
     }
 }
 
@@ -211,12 +218,20 @@ function updateProductSubtotal(productId, quantity) {
     const row = document.querySelector(`tr[data-product-id="${productId}"]`);
     if (row) {
         const productSubtotal = row.querySelector(".product-subtotal");
-        const productPrice = parseFloat(
-            row.querySelector(".product-price-cart .amount").textContent
-        );
+        const priceText = row.querySelector(
+            ".product-price-cart .amount"
+        ).textContent;
+        const cleanedPriceText = priceText.replace(/\s/g, "");
+        const productPrice = parseFloat(cleanedPriceText);
         if (productSubtotal && !isNaN(productPrice)) {
-            const itemTotal = productPrice * quantity;
-            productSubtotal.textContent = `${itemTotal.toFixed(1)} ₽`;
+            let itemTotal = productPrice * quantity;
+            itemTotal = itemTotal
+                .toLocaleString("ru-RU", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                })
+                .replace(",", ".");
+            productSubtotal.textContent = `${itemTotal} ₽`;
         }
     }
 }
