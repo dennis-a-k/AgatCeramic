@@ -26,7 +26,7 @@
 
                         <div class="pricing-meta">
                             <ul class="d-flex">
-                                <li class="new-price">{{ $product->price }} &#8381;</li>
+                                <li class="new-price">{{ number_format($product->price, 2, '.', ' ') }} &#8381;</li>
                             </ul>
                         </div>
 

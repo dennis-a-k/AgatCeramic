@@ -1,5 +1,5 @@
 <span type="button" id="dropdownMenuPrice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ $product->price }} &#8381;
+    {{ number_format($product->price, 2, '.', ' ') }} &#8381;
 </span>
 
 <div class="dropdown-menu px-1" style="width: 10rem" aria-labelledby="dropdownMenuPrice">
