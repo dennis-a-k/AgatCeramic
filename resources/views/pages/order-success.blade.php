@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    | {{ $order_number }}
+    Заказ №{{ $order_number }} |
 @endsection
 
 @section('content')

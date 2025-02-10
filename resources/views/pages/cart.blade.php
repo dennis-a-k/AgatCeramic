@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', ' | Корзина')
+@section('title', 'Корзина | ')
 
 @section('content')
     @if (count($cart) > 0)

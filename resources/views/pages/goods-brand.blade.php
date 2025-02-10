@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    | {{ $title }}
+    Купить плитку {{ $title }} в Москве по низкой цене с доставкой
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
                                                     <x-slot name="urlCategory" href="{{ route('category.list', $product->category->slug) }}"></x-slot>
                                                 </x-goods.product-card>
                                             @empty
-                                                <h5 class="text-center mt-2">Список товаров пуст</h5>
+                                                <h1 class="text-center mt-2">Список товаров пуст</h1>
                                             @endforelse
                                         </div>
                                     </div>

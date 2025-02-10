@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', ' | Дизайнерам')
+@section('title', 'Сотрудничество с дизайнерами | ')
 
 @section('content')
     <main class="shop-category-area pt-100px pb-100px">

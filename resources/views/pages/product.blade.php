@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    | {{ $product->title }}
+    {{ $product->category->title }} {{ $product->title }} купить в
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
                             </span>
                         @endif
 
-                        <h2>{{ $product->title }}</h2>
+                        <h1>{{ $product->category->title }} {{ $product->title }}</h1>
 
                         <div class="pricing-meta">
                             <ul class="d-flex">

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    | {{ $title }}
+    {{ $title }} купить в Москве по низкой цене с доставкой
 @endsection
 
 @section('content')
@@ -34,7 +34,7 @@
                                                     </x-slot>
                                                 </x-goods.product-card>
                                             @empty
-                                                <h5 class="text-center mt-2">Список товаров пуст</h5>
+                                                <h1 class="text-center mt-2">Список товаров пуст</h1>
                                             @endforelse
                                         </div>
                                     </div>

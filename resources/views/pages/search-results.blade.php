@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    | {{ $title }}
+    {{ $title }} купить в Москве по низкой цене с доставкой
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>{{ $title }}</h2>
+                    <h1>{{ $title }}</h1>
                     <p>Найдено результатов: {{ $goods->total() }}</p>
 
                     <div class="shop-bottom-area">

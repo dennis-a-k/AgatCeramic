@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', ' | Оформление заказа')
+@section('title', 'Оформление заказа | ')
 
 @section('content')
     <main class="checkout-area pt-100px pb-100px">
