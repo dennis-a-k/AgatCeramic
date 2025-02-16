@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Color;
+use App\Models\Pattern;
+use App\Models\Texture;
+use App\Models\Size;
 use App\Traits\SortableProducts;
 use Illuminate\Http\Request;
 
@@ -18,8 +22,8 @@ class FilterController extends Controller
         $title = '';
 
         // Сохраняем или получаем категорию из сессии
-        if ($request->has('category_slug')) {
-            session(['current_category_slug' => $request->category_slug]);
+        if ($request->has('category')) {
+            session(['current_category_slug' => $request->category]);
         }
         $categorySlug = session('current_category_slug');
 
@@ -33,11 +37,39 @@ class FilterController extends Controller
         // Клонируем запрос для получения характеристик
         $characteristicsQuery = clone $query;
 
-        // Применяем фильтры к основному запросу
-        $filters = ['pattern_id', 'color_id', 'texture_id', 'size_id', 'brand_id'];
-        foreach ($filters as $filter) {
-            if ($request->has($filter)) {
-                $query->where($filter, $request->input($filter));
+        // Применяем фильтры к основному запросу используя slugs
+        if ($request->has('pattern')) {
+            $pattern = Pattern::where('slug', $request->pattern)->first();
+            if ($pattern) {
+                $query->where('pattern_id', $pattern->id);
+            }
+        }
+
+        if ($request->has('color')) {
+            $color = Color::where('slug', $request->color)->first();
+            if ($color) {
+                $query->where('color_id', $color->id);
+            }
+        }
+
+        if ($request->has('texture')) {
+            $texture = Texture::where('slug', $request->texture)->first();
+            if ($texture) {
+                $query->where('texture_id', $texture->id);
+            }
+        }
+
+        if ($request->has('size')) {
+            $size = Size::where('title', $request->size)->first();
+            if ($size) {
+                $query->where('size_id', $size->id);
+            }
+        }
+
+        if ($request->has('brand')) {
+            $brand = Brand::where('slug', $request->brand)->first();
+            if ($brand) {
+                $query->where('brand_id', $brand->id);
             }
         }
 
@@ -51,66 +83,25 @@ class FilterController extends Controller
         ])->get();
 
         // Собираем характеристики
-        $colors = $request->has('color_id')
-            ? Product::where('id', $request->color_id)->get()->pluck('color')->filter()
+        $colors = $request->has('color')
+            ? collect([Color::where('slug', $request->color)->first()])->filter()
             : $allProducts->pluck('color')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $brands = $request->has('brand_id')
-            ? Product::where('id', $request->brand_id)->get()->pluck('brand')->filter()
+        $brands = $request->has('brand')
+            ? collect([Brand::where('slug', $request->brand)->first()])->filter()
             : $allProducts->pluck('brand')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $patterns = $request->has('pattern_id')
-            ? Product::where('id', $request->pattern_id)->get()->pluck('pattern')->filter()
+        $patterns = $request->has('pattern')
+            ? collect([Pattern::where('slug', $request->pattern)->first()])->filter()
             : $allProducts->pluck('pattern')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $textures = $request->has('texture_id')
-            ? Product::where('id', $request->texture_id)->get()->pluck('texture')->filter()
+        $textures = $request->has('texture')
+            ? collect([Texture::where('slug', $request->texture)->first()])->filter()
             : $allProducts->pluck('texture')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $sizes = $request->has('size_id')
-            ? Product::where('id', $request->size_id)->get()->pluck('size')->filter()
+        $sizes = $request->has('size')
+            ? collect([Size::where('title', $request->size)->first()])->filter()
             : $allProducts->pluck('size')->flatten()->filter()->unique('id')->sortBy('title')->values();
-
-        // Получаем характеристики только если они не выбраны в фильтрах
-        if ($request->has('color_id')) {
-            $selectedColor = Product::where('color_id', $request->color_id)
-                ->with('color')
-                ->first()
-                ->color;
-            $colors = collect([$selectedColor])->filter();
-        }
-
-        if ($request->has('pattern_id')) {
-            $selectedPattern = Product::where('pattern_id', $request->pattern_id)
-                ->with('pattern')
-                ->first()
-                ->pattern;
-            $patterns = collect([$selectedPattern])->filter();
-        }
-
-        if ($request->has('brand_id')) {
-            $selectedBrand = Product::where('brand_id', $request->brand_id)
-                ->with('brand')
-                ->first()
-                ->brand;
-            $brands = collect([$selectedBrand])->filter();
-        }
-
-        if ($request->has('texture_id')) {
-            $selecredTexture = Product::where('texture_id', $request->texture_id)
-                ->with('texture')
-                ->first()
-                ->texture;
-            $textures = collect([$selecredTexture])->filter();
-        }
-
-        if ($request->has('size_id')) {
-            $selectedSize = Product::where('size_id', $request->size_id)
-                ->with('size')
-                ->first()
-                ->size;
-            $sizes = collect([$selectedSize])->filter();
-        }
 
         // Применяем сортировку к отфильтрованному запросу
         $query = $this->applySorting($query, $request->input('sort'));
@@ -137,8 +128,8 @@ class FilterController extends Controller
         $title = '';
 
         // Сохраняем или получаем бренд из сессии
-        if ($request->has('brand_slug')) {
-            session(['current_brand_slug' => $request->brand_slug]);
+        if ($request->has('brand')) {
+            session(['current_brand_slug' => $request->brand]);
         }
         $brandSlug = session('current_brand_slug');
 
@@ -152,15 +143,43 @@ class FilterController extends Controller
         // Клонируем запрос для получения характеристик
         $characteristicsQuery = clone $query;
 
-        // Применяем фильтры к основному запросу
-        $filters = ['pattern_id', 'color_id', 'texture_id', 'size_id', 'category_id'];
-        foreach ($filters as $filter) {
-            if ($request->has($filter)) {
-                $query->where($filter, $request->input($filter));
+        // Применяем фильтры к основному запросу используя slugs
+        if ($request->has('pattern')) {
+            $pattern = Pattern::where('slug', $request->pattern)->first();
+            if ($pattern) {
+                $query->where('pattern_id', $pattern->id);
             }
         }
 
-        // Получаем все товары для характеристик до применения фильтров
+        if ($request->has('color')) {
+            $color = Color::where('slug', $request->color)->first();
+            if ($color) {
+                $query->where('color_id', $color->id);
+            }
+        }
+
+        if ($request->has('texture')) {
+            $texture = Texture::where('slug', $request->texture)->first();
+            if ($texture) {
+                $query->where('texture_id', $texture->id);
+            }
+        }
+
+        if ($request->has('size')) {
+            $size = Size::where('title', $request->size)->first();
+            if ($size) {
+                $query->where('size_id', $size->id);
+            }
+        }
+
+        if ($request->has('category')) {
+            $category = Category::where('slug', $request->category)->first();
+            if ($category) {
+                $query->where('category_id', $category->id);
+            }
+        }
+
+        // Получаем все товары для характеристик
         $allProducts = $characteristicsQuery->with([
             'color',
             'pattern',
@@ -170,71 +189,30 @@ class FilterController extends Controller
         ])->get();
 
         // Собираем характеристики
-        $colors = $request->has('color_id')
-            ? Product::where('id', $request->color_id)->get()->pluck('color')->filter()
+        $colors = $request->has('color')
+            ? collect([Color::where('slug', $request->color)->first()])->filter()
             : $allProducts->pluck('color')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $categories = $request->has('category_id')
-            ? Product::where('id', $request->category_id)->get()->pluck('category')->filter()
+        $categories = $request->has('category')
+            ? collect([Category::where('slug', $request->category)->first()])->filter()
             : $allProducts->pluck('category')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $patterns = $request->has('pattern_id')
-            ? Product::where('id', $request->pattern_id)->get()->pluck('pattern')->filter()
+        $patterns = $request->has('pattern')
+            ? collect([Pattern::where('slug', $request->pattern)->first()])->filter()
             : $allProducts->pluck('pattern')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $textures = $request->has('texture_id')
-            ? Product::where('id', $request->texture_id)->get()->pluck('texture')->filter()
+        $textures = $request->has('texture')
+            ? collect([Texture::where('slug', $request->texture)->first()])->filter()
             : $allProducts->pluck('texture')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        $sizes = $request->has('size_id')
-            ? Product::where('id', $request->size_id)->get()->pluck('size')->filter()
+        $sizes = $request->has('size')
+            ? collect([Size::where('title', $request->size)->first()])->filter()
             : $allProducts->pluck('size')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
-        // Получаем характеристики только если они не выбраны в фильтрах
-        if ($request->has('color_id')) {
-            $selectedColor = Product::where('color_id', $request->color_id)
-                ->with('color')
-                ->first()
-                ->color;
-            $colors = collect([$selectedColor])->filter();
-        }
-
-        if ($request->has('pattern_id')) {
-            $selectedPattern = Product::where('pattern_id', $request->pattern_id)
-                ->with('pattern')
-                ->first()
-                ->pattern;
-            $patterns = collect([$selectedPattern])->filter();
-        }
-
-        if ($request->has('category_id')) {
-            $selectedCategory = Product::where('category_id', $request->category_id)
-                ->with('category')
-                ->first()
-                ->category;
-            $categories = collect([$selectedCategory])->filter();
-        }
-
-        if ($request->has('texture_id')) {
-            $selecredTexture = Product::where('texture_id', $request->texture_id)
-                ->with('texture')
-                ->first()
-                ->texture;
-            $textures = collect([$selecredTexture])->filter();
-        }
-
-        if ($request->has('size_id')) {
-            $selectedSize = Product::where('size_id', $request->size_id)
-                ->with('size')
-                ->first()
-                ->size;
-            $sizes = collect([$selectedSize])->filter();
-        }
-
-        // Применяем сортировку к отфильтрованному запросу
+        // Применяем сортировку
         $query = $this->applySorting($query, $request->input('sort'));
 
-        // Получаем отфильтрованные товары с пагинацией
+        // Получаем товары с пагинацией
         $goods = $query->with(['color', 'pattern', 'category', 'texture', 'size'])
             ->paginate(40);
 

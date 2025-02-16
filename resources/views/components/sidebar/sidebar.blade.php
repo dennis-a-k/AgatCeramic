@@ -11,8 +11,8 @@
                                     href="{{ route(
                                         'filter',
                                         array_merge(request()->query(), [
-                                            'pattern_id' => $pattern->id,
-                                            'category_slug' => isset($category) ? $category->slug : null,
+                                            'pattern' => $pattern->slug,
+                                            'category' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($pattern->title, 1, null, 'UTF-8') }}
@@ -34,8 +34,8 @@
                                 <a href="{{ route(
                                     'filter',
                                     array_merge(request()->query(), [
-                                        'color_id' => $color->id,
-                                        'category_slug' => isset($category) ? $category->slug : null,
+                                        'color' => $color->slug,
+                                        'category' => isset($category) ? $category->slug : null,
                                     ]),
                                 ) }}"
                                     style="background-color: #{{ $color->code }};" class="colors-filter" data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
@@ -58,8 +58,8 @@
                                     href="{{ route(
                                         'filter',
                                         array_merge(request()->query(), [
-                                            'texture_id' => $texture->id,
-                                            'category_slug' => isset($category) ? $category->slug : null,
+                                            'texture' => $texture->slug,
+                                            'category' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texture->title, 1, null, 'UTF-8') }}
@@ -82,8 +82,8 @@
                                     href="{{ route(
                                         'filter',
                                         array_merge(request()->query(), [
-                                            'size_id' => $size->id,
-                                            'category_slug' => isset($category) ? $category->slug : null,
+                                            'size' => $size->title,
+                                            'category' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
                                     {{ $size->title }}
@@ -106,8 +106,8 @@
                                     href="{{ route(
                                         'filter',
                                         array_merge(request()->query(), [
-                                            'brand_id' => $brand->id,
-                                            'category_slug' => isset($category) ? $category->slug : null,
+                                            'brand' => $brand->slug,
+                                            'category' => isset($category) ? $category->slug : null,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
