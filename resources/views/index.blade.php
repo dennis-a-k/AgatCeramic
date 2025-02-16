@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Интернет-магазин плитки, керамогранита и сантехники в Москве ')
+
 @section('content')
     @include('components.sliders.main-slider')
 

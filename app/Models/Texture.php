@@ -11,6 +11,7 @@ class Texture extends Model
 
     protected $fillable = [
         'title',
+        'slug',
     ];
 
     public function goods()

@@ -20,6 +20,7 @@ use App\Models\Texture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 
 class GoodsController extends Controller
 {
@@ -71,13 +72,14 @@ class GoodsController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
         $product = Product::create($data);
         if ($request->hasFile('imgs')) {
             foreach ($request->file('imgs') as $index => $img) {
                 if ($index >= 5) break; // Ограничение до 5 изображений
                 $filename = $product->sku . '_' . $index . '.' . $img->getClientOriginalExtension();
                 $img->storeAs('public/images', $filename);
-                $product->images()->create(['title' => $filename,'order' => $index]);
+                $product->images()->create(['title' => $filename, 'order' => $index]);
             }
         }
         return back()->with('status', 'product-created');
@@ -112,6 +114,7 @@ class GoodsController extends Controller
     public function update(UpdatProductRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
         $product = Product::find($id);
         $product->fill($data)->save();
         // Обновление порядка существующих изображений

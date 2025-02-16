@@ -12,6 +12,7 @@ class Color extends Model
     protected $fillable = [
         'title',
         'code',
+        'slug',
     ];
 
     public function goods()

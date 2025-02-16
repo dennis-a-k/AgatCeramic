@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColorRequest;
 use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ColorController extends Controller
 {
@@ -26,6 +27,7 @@ class ColorController extends Controller
         Color::create([
             'title' => $request->title,
             'code' => $request->code,
+            'slug' => Str::slug($request->title),
         ]);
         return back()->with('status', 'color-created');
     }
@@ -40,6 +42,7 @@ class ColorController extends Controller
         Color::where('id', $request->id)->update([
             'title' => $request->title,
             'code' => $request->code,
+            'slug' => Str::slug($request->title),
         ]);
         return back()->with('status', 'color-updated');
     }

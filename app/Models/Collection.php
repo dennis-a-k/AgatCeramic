@@ -11,6 +11,7 @@ class Collection extends Model
 
     protected $fillable = [
         'title',
+        'slug',
     ];
 
     public function goods()

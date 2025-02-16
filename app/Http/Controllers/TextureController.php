@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TextureRequest;
 use App\Models\Texture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TextureController extends Controller
 {
@@ -23,7 +24,10 @@ class TextureController extends Controller
     public function store(TextureRequest $request)
     {
         $request->validated();
-        Texture::create(['title' => $request->title]);
+        Texture::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+        ]);
         return back()->with('status', 'textures-created');
     }
 
@@ -34,7 +38,10 @@ class TextureController extends Controller
     public function update(TextureRequest $request)
     {
         $request->validated();
-        Texture::where('id', $request->id)->update(['title' => $request->title]);
+        Texture::where('id', $request->id)->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+        ]);
         return back()->with('status', 'textures-updated');
     }
 

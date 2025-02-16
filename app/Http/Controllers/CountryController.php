@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CountryRequest;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CountryController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -23,7 +24,10 @@ class CountryController extends Controller
     public function store(CountryRequest $request)
     {
         $request->validated();
-        Country::create(['name' => $request->name]);
+        Country::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
         return back()->with('status', 'countries-created');
     }
 
@@ -34,7 +38,10 @@ class CountryController extends Controller
     public function update(CountryRequest $request)
     {
         $request->validated();
-        Country::where('id', $request->id)->update(['name' => $request->name]);
+        Country::where('id', $request->id)->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
         return back()->with('status', 'countries-updated');
     }
 

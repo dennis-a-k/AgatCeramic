@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CollectionRequest;
 use App\Models\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CollectionController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -23,7 +24,10 @@ class CollectionController extends Controller
     public function store(CollectionRequest $request)
     {
         $request->validated();
-        Collection::create(['title' => $request->title]);
+        Collection::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+        ]);
         return back()->with('status', 'collections-created');
     }
 
@@ -34,7 +38,10 @@ class CollectionController extends Controller
     public function update(CollectionRequest $request)
     {
         $request->validated();
-        Collection::where('id', $request->id)->update(['title' => $request->title]);
+        Collection::where('id', $request->id)->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+        ]);
         return back()->with('status', 'collections-updated');
     }
 

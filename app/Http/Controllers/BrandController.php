@@ -92,7 +92,11 @@ class BrandController extends Controller
 
             // Получаем все товары для извлечения характеристик (без пагинации)
             $allBrandProducts = $characteristicsQuery->with([
-                'color', 'category', 'pattern', 'texture', 'size'
+                'color',
+                'category',
+                'pattern',
+                'texture',
+                'size'
             ])->get();
 
             // Получаем все характеристики
@@ -160,8 +164,8 @@ class BrandController extends Controller
     public function slider()
     {
         $brands = Brand::whereNotNull('img')
-        ->where('img', '!=', '')
-        ->get();
+            ->where('img', '!=', '')
+            ->get();
         return view('index', compact('brands'));
     }
 }

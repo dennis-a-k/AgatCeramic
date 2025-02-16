@@ -11,6 +11,7 @@ class Country extends Model
 
     protected $fillable = [
         'name',
+        'slug',
     ];
 
     public function goods()
