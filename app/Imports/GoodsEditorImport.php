@@ -18,8 +18,9 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Illuminate\Support\Str;
 
-class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
+class GoodsEditorImport implements ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
 {
     use Importable;
 
@@ -42,7 +43,6 @@ class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation
         $this->brands = Brand::select('id', 'title')->get();
         $this->collections = ModelsCollection::select('id', 'title')->get();
         $this->countries = Country::select('id', 'name')->get();
-
     }
 
     public function sheets(): array
@@ -54,9 +54,8 @@ class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation
 
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row)
-        {
-            if(isset($row['artikul']) && $row['artikul'] != null) {
+        foreach ($rows as $row) {
+            if (isset($row['artikul']) && $row['artikul'] != null) {
                 $product = Product::where('sku', $row['artikul'])->first();
 
                 if ($product) {
@@ -71,6 +70,7 @@ class GoodsEditorImport implements  ToCollection, WithHeadingRow, WithValidation
 
                     $product->update([
                         'title' => $row['naimenovanie'],
+                        'slug' => Str::slug($row['naimenovanie']),
                         'product_code' => $row['kod_tovara'] ?? NULL,
                         'description' => $row['opisanie'] ?? NULL,
                         'unit' => $row['edinica_izmereniia'] ?? 'м2',

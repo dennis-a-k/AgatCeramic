@@ -18,8 +18,9 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Illuminate\Support\Str;
 
-class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
+class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
 {
     use Importable;
 
@@ -42,7 +43,6 @@ class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, S
         $this->brands = Brand::select('id', 'title')->get();
         $this->collections = ModelsCollection::select('id', 'title')->get();
         $this->countries = Country::select('id', 'name')->get();
-
     }
 
     public function sheets(): array
@@ -54,9 +54,8 @@ class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, S
 
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row)
-        {
-            if(isset($row['artikul']) && $row['artikul'] != null) {
+        foreach ($rows as $row) {
+            if (isset($row['artikul']) && $row['artikul'] != null) {
                 $category = $this->categories->where('title', $row['kategoriia'])->first();
                 $size = $this->sizes->where('title', $row['razmer'])->first();
                 $color = $this->colors->where('title', $row['cvet'])->first();
@@ -68,9 +67,10 @@ class ProductsImport implements  ToCollection, WithHeadingRow, WithValidation, S
 
                 Product::firstOrCreate([
                     'sku' => $row['artikul'],
-                ],[
+                ], [
                     'sku' => $row['artikul'],
                     'title' => $row['naimenovanie'],
+                    'slug' => Str::slug($row['naimenovanie']),
                     'price' => $row['cena'],
                     'product_code' => $row['kod_tovara'] ?? NULL,
                     'description' => $row['opisanie'] ?? NULL,
