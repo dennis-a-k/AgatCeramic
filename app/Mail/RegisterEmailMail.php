@@ -22,9 +22,9 @@ class RegisterEmailMail extends Mailable
     public function build()
     {
         return $this->subject('Регистрация в админ-панели Agat Ceramic')
-                    ->markdown('emails.auth.register-email', [
-                        'user' => $this->user,
-                        'password' =>  $this->password,
-                    ]);
+            ->markdown('emails.auth.register-email', [
+                'user' => $this->user,
+                'password' =>  $this->password,
+            ]);
     }
 }

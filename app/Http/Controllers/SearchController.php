@@ -17,7 +17,7 @@ class SearchController extends Controller
 
         $goods = Product::query()
             ->where('is_published', true)
-            ->where(function($q) use ($query) {
+            ->where(function ($q) use ($query) {
                 $q->where('title', 'LIKE', "%{$query}%")
                     ->orWhere('sku', 'LIKE', "%{$query}%")
                     ->orWhere('product_code', 'LIKE', "%{$query}%");

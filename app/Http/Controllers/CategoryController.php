@@ -48,7 +48,7 @@ class CategoryController extends Controller
 
         if ($category) {
             $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') .
-                    mb_substr($category->title, 1, null, 'UTF-8');
+                mb_substr($category->title, 1, null, 'UTF-8');
 
             // Базовый запрос для всех товаров категории
             $baseQuery = Product::where('category_id', $category->id)
@@ -59,7 +59,11 @@ class CategoryController extends Controller
 
             // Получаем все товары для извлечения характеристик (без пагинации)
             $allCategoryProducts = $characteristicsQuery->with([
-                'color', 'brand', 'pattern', 'texture', 'size'
+                'color',
+                'brand',
+                'pattern',
+                'texture',
+                'size'
             ])->get();
 
             // Получаем все характеристики

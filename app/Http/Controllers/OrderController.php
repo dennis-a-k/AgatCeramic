@@ -17,14 +17,14 @@ class OrderController extends Controller
 
         $orders = Order::query()
             ->when($search, function ($query) use ($search) {
-                return $query->where(function($q) use ($search) {
+                return $query->where(function ($q) use ($search) {
                     $q->where('order_number', 'LIKE', "%{$search}%")
-                        ->orWhere(function($query) use ($search) {
+                        ->orWhere(function ($query) use ($search) {
                             $query->searchByEmail($search)
-                                ->orWhere(function($q) use ($search) {
+                                ->orWhere(function ($q) use ($search) {
                                     $q->searchByPhone($search);
                                 })
-                                ->orWhere(function($q) use ($search) {
+                                ->orWhere(function ($q) use ($search) {
                                     $q->searchByName($search);
                                 });
                         });

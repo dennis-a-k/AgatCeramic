@@ -43,7 +43,11 @@ class FilterController extends Controller
 
         // Получаем все товары для характеристик до применения фильтров
         $allProducts = $characteristicsQuery->with([
-            'color', 'pattern', 'brand', 'texture', 'size'
+            'color',
+            'pattern',
+            'brand',
+            'texture',
+            'size'
         ])->get();
 
         // Собираем характеристики
@@ -158,7 +162,11 @@ class FilterController extends Controller
 
         // Получаем все товары для характеристик до применения фильтров
         $allProducts = $characteristicsQuery->with([
-            'color', 'pattern', 'category', 'texture', 'size'
+            'color',
+            'pattern',
+            'category',
+            'texture',
+            'size'
         ])->get();
 
         // Собираем характеристики

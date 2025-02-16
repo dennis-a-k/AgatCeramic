@@ -51,32 +51,32 @@ class Order extends Model
     protected function customerName(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Crypt::decryptString($value),
-            set: fn ($value) => Crypt::encryptString($value)
+            get: fn($value) => Crypt::decryptString($value),
+            set: fn($value) => Crypt::encryptString($value)
         );
     }
 
     protected function customerEmail(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Crypt::decryptString($value),
-            set: fn ($value) => Crypt::encryptString($value)
+            get: fn($value) => Crypt::decryptString($value),
+            set: fn($value) => Crypt::encryptString($value)
         );
     }
 
     protected function customerPhone(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Crypt::decryptString($value),
-            set: fn ($value) => Crypt::encryptString($value)
+            get: fn($value) => Crypt::decryptString($value),
+            set: fn($value) => Crypt::encryptString($value)
         );
     }
 
     protected function shippingAddress(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Crypt::decryptString($value),
-            set: fn ($value) => Crypt::encryptString($value)
+            get: fn($value) => Crypt::decryptString($value),
+            set: fn($value) => Crypt::encryptString($value)
         );
     }
 

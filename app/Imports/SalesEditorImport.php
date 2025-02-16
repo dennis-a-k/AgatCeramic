@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class SalesEditorImport implements  ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
+class SalesEditorImport implements ToCollection, WithHeadingRow, WithValidation, SkipsEmptyRows, WithMultipleSheets
 {
     use Importable;
 
@@ -24,9 +24,8 @@ class SalesEditorImport implements  ToCollection, WithHeadingRow, WithValidation
 
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row)
-        {
-            if(isset($row['artikul']) && $row['artikul'] != null) {
+        foreach ($rows as $row) {
+            if (isset($row['artikul']) && $row['artikul'] != null) {
                 $product = Product::where('sku', $row['artikul'])->first();
 
                 if ($product) {

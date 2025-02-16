@@ -29,7 +29,12 @@ class SaleController extends Controller
         }
 
         $allProducts = $characteristicsQuery->with([
-            'color', 'pattern', 'category', 'texture', 'size', 'brand'
+            'color',
+            'pattern',
+            'category',
+            'texture',
+            'size',
+            'brand'
         ])->get();
 
         $colors = $this->getFilteredAttribute($request, $allProducts, 'color', 'color_id');

@@ -47,4 +47,3 @@ class PageСharacteristics implements FromView, WithTitle, WithEvents
         ];
     }
 }
-

@@ -20,9 +20,9 @@ class VerifyEmailMail extends Mailable
     public function build()
     {
         return $this->subject('Подтверждение адреса электронной почты')
-                    ->markdown('emails.auth.verify-email', [
-                        'user' => $this->user,
-                        'verificationUrl' => $this->user->getVerificationUrl(),
-                    ]);
+            ->markdown('emails.auth.verify-email', [
+                'user' => $this->user,
+                'verificationUrl' => $this->user->getVerificationUrl(),
+            ]);
     }
 }
