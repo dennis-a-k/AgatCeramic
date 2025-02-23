@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+class ProductController extends Controller
+{
+    public function show($category, $collection, $slug, $sku)
+    {
+        $product = Product::query()->where('sku', $sku)
+            ->whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
+            })
+            ->whereHas('collection', function ($query) use ($collection) {
+                $query->where('slug', $collection);
+            })
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $canonicalUrl = route('product.show', [
+            'category' => $product->category->slug,
+            'collection' => $product->collection->slug,
+            'slug' => $product->slug,
+            'sku' => $product->sku
+        ]);
+
+        if (request()->url() !== $canonicalUrl) {
+            return redirect()->to($canonicalUrl, 301);
+        }
+        return view('pages.product', compact('product'));
+    }
+
+    public function modal($id)
+    {
+        $product = Product::with(['category', 'collection'])->findOrFail($id);
+
+        return response()->json([
+            'id' => $product->id,
+            'title' => $product->title,
+            'price' => $product->price,
+            'sku' => $product->sku,
+            'unit' => $product->unit,
+            'collection' => $product->collection,
+            'brand' => $product->brand,
+            'description' => $product->description,
+            'images' => $product->images,
+            'url' => route('product.show', [
+                'category' => $product->category->slug,
+                'collection' => $product->collection->slug,
+                'slug' => $product->slug,
+                'sku' => $product->sku,
+            ])
+        ]);
+    }
+}

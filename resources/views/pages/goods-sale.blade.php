@@ -28,7 +28,13 @@
                                                     <x-slot name="title">{{ $product->title }}</x-slot>
                                                     <x-slot name="price">{{ $product->price }}</x-slot>
                                                     <x-slot name="sale">{{ $product->sale }}</x-slot>
-                                                    <x-slot name="urlProduct" href="{{ route('product.show', $product->sku) }}">
+                                                    <x-slot name="urlProduct"
+                                                        href="{{ route('product.show', [
+                                                            'category' => $product->category->slug,
+                                                            'collection' => $product->collection->slug,
+                                                            'slug' => $product->slug,
+                                                            'sku' => $product->sku,
+                                                        ]) }}">
                                                     </x-slot>
                                                     <x-slot name="urlCategory" href="{{ route('category.list', $product->category->slug) }}">
                                                     </x-slot>
