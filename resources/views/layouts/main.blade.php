@@ -11,6 +11,8 @@
         @yield('title', config('app.name')) {{ config('app.name') }}
     </title>
 
+    @yield('seo')
+
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

@@ -4,6 +4,16 @@
     {{ $product->category->title }} {{ $product->title }} купить в
 @endsection
 
+@section('seo')
+    <meta name="description" content="{{ $description }}">
+    <meta property="og:title" content="{{ $product->title }}">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="{{ $product->images->first() }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="product:price:amount" content="{{ $product->price }}">
+    <meta property="product:price:currency" content="RUB">
+@endsection
+
 @section('content')
     <main class="product-details-area pt-100px pb-100px">
         <div class="container">

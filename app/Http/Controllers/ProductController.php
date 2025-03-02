@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -28,7 +29,10 @@ class ProductController extends Controller
         if (request()->url() !== $canonicalUrl) {
             return redirect()->to($canonicalUrl, 301);
         }
-        return view('pages.product', compact('product'));
+
+        $description = Str::limit($product->description, 155);
+
+        return view('pages.product', compact('product', 'description'));
     }
 
     public function modal($id)
