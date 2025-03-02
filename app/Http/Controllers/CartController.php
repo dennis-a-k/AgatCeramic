@@ -17,7 +17,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $product = Product::findOrFail($request->product_id);
+        $product = Product::with(['category', 'collection'])->findOrFail($request->product_id);
         $this->cartService->addToCart($product, $request->quantity);
 
         return response()->json([
@@ -48,8 +48,8 @@ class CartController extends Controller
     public function index()
     {
         $cart = $this->cartService->getCart();
-        $total = $this->cartService->getTotal(); // получаем общую сумму
-        return view('pages.cart', compact('cart', 'total')); // передаем total вместо cartService
+        $total = $this->cartService->getTotal();
+        return view('pages.cart', compact('cart', 'total'));
     }
 
     public function getOffcanvasCart()

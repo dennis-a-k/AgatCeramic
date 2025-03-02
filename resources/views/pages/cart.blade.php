@@ -24,7 +24,12 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($cart as $id => $product)
-                                            <x-cart.cart-table-tr :id="$id" :img="$product['image']->first() ? asset('storage/images/' . $product['image']->first()->title) : asset('assets/images/stock/stock-image.png')" :url="route('product.show', $product['sku'])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
+                                            <x-cart.cart-table-tr :id="$id" :img="$product['image']->first() ? asset('storage/images/' . $product['image']->first()->title) : asset('assets/images/stock/stock-image.png')" :url="route('product.show', [
+                                                'category' => $product['category_slug'] ?? '',
+                                                'collection' => $product['collection_slug'] ?? '',
+                                                'slug' => $product['slug'] ?? '',
+                                                'sku' => $product['sku'],
+                                            ])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>

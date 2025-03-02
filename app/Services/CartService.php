@@ -22,7 +22,10 @@ class CartService
             'quantity' => $quantity,
             'unit' => $product->unit,
             'image' => $product->images,
-            'expires_at' => Carbon::now()->addDays(self::CART_EXPIRY_DAYS)
+            'expires_at' => Carbon::now()->addDays(self::CART_EXPIRY_DAYS),
+            'category_slug' => $product->category->slug,
+            'collection_slug' => $product->collection->slug,
+            'slug' => $product->slug,
         ];
 
         if (isset($cart[$product->id])) {

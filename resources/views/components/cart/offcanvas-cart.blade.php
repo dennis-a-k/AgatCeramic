@@ -8,12 +8,24 @@
             <ul class="minicart-product-list">
                 @forelse($cart as $item)
                     <li data-product-id="{{ $item['id'] }}">
-                        <a href="{{ route('product.show', $item['sku']) }}" class="image">
+                        <a href="{{ route('product.show', [
+                            'category' => $item['category_slug'] ?? '',
+                            'collection' => $item['collection_slug'] ?? '',
+                            'slug' => $item['slug'] ?? '',
+                            'sku' => $item['sku'],
+                        ]) }}"
+                            class="image">
                             <img src="{{ asset($item['image']->first() ? asset('storage/images/' . $item['image']->first()->title) : asset('assets/images/stock/stock-image.png')) }}"
                                 alt="{{ $item['title'] }}">
                         </a>
                         <div class="content">
-                            <a href="{{ route('product.show', $item['sku']) }}" class="title">
+                            <a href="{{ route('product.show', [
+                                'category' => $item['category_slug'] ?? '',
+                                'collection' => $item['collection_slug'] ?? '',
+                                'slug' => $item['slug'] ?? '',
+                                'sku' => $item['sku'],
+                            ]) }}"
+                                class="title">
                                 {{ $item['title'] }}
                             </a>
                             <span class="quantity-price">
