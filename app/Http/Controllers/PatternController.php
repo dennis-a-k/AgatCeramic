@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatternRequest;
-use App\Models\Category;
 use App\Models\Pattern;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
