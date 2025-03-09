@@ -87,7 +87,7 @@ class GoodsController extends Controller
 
     public function edit(string $id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $categories = Category::all();
         $sizes = Size::all();
         $patterns = Pattern::all();
@@ -144,9 +144,11 @@ class GoodsController extends Controller
 
     public function destroy(Request $request)
     {
-        $product = Product::find($request->id)->get();
-        foreach ($product->images as $image) {
-            Storage::delete('public/images/' . $image->title);
+        $product = Product::find($request->id);
+        if (isset($product->images)) {
+            foreach ($product->images as $image) {
+                Storage::delete('public/images/' . $image->title);
+            }
         }
         $product->delete();
         return back();
