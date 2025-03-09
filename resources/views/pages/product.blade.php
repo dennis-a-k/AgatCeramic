@@ -7,11 +7,20 @@
 @section('seo')
     <meta name="description" content="{{ $description }}">
     <meta property="og:title" content="{{ $product->title }}">
+    <meta property="og:description" content="{{ $description }}">
     <meta property="og:type" content="product">
-    <meta property="og:url" content="{{ $product->images->first() }}">
+    <meta property="og:image" content="{{ $product->images->first() }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="product:price:amount" content="{{ $product->price }}">
     <meta property="product:price:currency" content="RUB">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url"
+        content="{{ route('product.show', [
+            'category' => $product->category->slug,
+            'collection' => $product->collection->slug,
+            'slug' => $product->slug,
+            'sku' => $product->sku,
+        ]) }}">
 @endsection
 
 @section('content')
