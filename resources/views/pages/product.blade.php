@@ -9,7 +9,7 @@
     <meta property="og:title" content="{{ $product->title }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:type" content="product">
-    <meta property="og:image" content="{{ asset('storage/images/' . $product->images->first()->title) }}">
+    <meta property="og:image" content="{{ $product->images->first() ? asset('storage/images/' . $product->images->first()->title) : asset('assets/images/stock/stock-image.png') }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="product:price:amount" content="{{ $product->price }}">
     <meta property="product:price:currency" content="RUB">
