@@ -8,9 +8,10 @@
                             <div class="footer-logo">
                                 <a href="{{ route('home') }}" class="footer-logo-text">Agat Ceramic</a>
                             </div>
-                            <p class="about-text">БОЛЬШОЕ ОПИСАНИЕ МАГАЗИНА Lorem ipsum dolor sit amet consl adipisi
-                                elit, sed do
-                                eiusmod templ incididunt ut labore
+                            <p class="about-text lh-base" style="text-align: justify; color: #8a8a8a">
+                                Интернет-магазин керамической плитки, керамогранита и мозаики в Москве и Московской области. В интернет-магазине Agat Ceramic вы найдете премиальную
+                                керамическую плитку, керамогранит и мозаику от ведущих мировых производителей. Мы предлагаем эксклюзивные коллекции для создания уникального дизайна интерьера:
+                                напольную и настенную плитку, износостойкий керамогранит для коммерческих и жилых помещений, а также стильную мозаику для акцентных решений.
                             </p>
                         </div>
                     </div>
