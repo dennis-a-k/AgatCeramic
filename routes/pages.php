@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [BrandController::class, 'slider'])->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/delivery', function () {
     return view('pages.delivery');
