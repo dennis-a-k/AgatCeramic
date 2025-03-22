@@ -27,7 +27,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $sortField = $request->input('sort', 'sku'); // По умолчанию сортировка по SKU
+        $sortField = $request->input('sort', 'sku');
         $sortDirection = $request->input('direction', 'asc');
 
         $goods = Product::query()
