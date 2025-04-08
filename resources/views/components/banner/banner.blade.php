@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
-                <x-slot name="img" src="assets/images/banner/3.jpg" alt="banner"></x-slot>
+                <x-slot name="img" src="assets/images/banner/keramogranit.jpeg" alt="keramogranit"></x-slot>
 
                 <x-slot name="title" class="nth-child-2">
                     Керамогранит
@@ -18,7 +18,7 @@
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
-                <x-slot name="img" src="assets/images/banner/4.jpg" alt="banner"></x-slot>
+                <x-slot name="img" src="assets/images/banner/plitka.jpg" alt="plitka"></x-slot>
 
                 <x-slot name="title" class="nth-child-2">
                     Керамическая плитка
@@ -33,7 +33,7 @@
 
         <div class="row">
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
-                <x-slot name="img" src="assets/images/banner/5.jpg" alt="banner"></x-slot>
+                <x-slot name="img" src="assets/images/banner/mozaika.jpeg" alt="mozaika"></x-slot>
 
                 <x-slot name="title" class="nth-child-2">
                     Керамическая мозаика
@@ -46,7 +46,7 @@
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
-                <x-slot name="img" src="assets/images/banner/6.jpg" alt="banner"></x-slot>
+                <x-slot name="img" src="assets/images/banner/santekhnika.jpeg" alt="santekhnika"></x-slot>
 
                 <x-slot name="title" class="nth-child-2">
                     Сантехника
