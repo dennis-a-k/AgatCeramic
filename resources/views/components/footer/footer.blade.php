@@ -66,7 +66,7 @@
                                 </p>
                                 <p class="phone">
                                     <i class="fa fa-phone"></i>
-                                    <a href="tel:79999999999"> +7 (999) 999-99-99</a>
+                                    <a href="tel:+79999999999" class="phone-link"> +7 (999) 999-99-99</a>
                                 </p>
                                 <p class="mail">
                                     <i class="fa fa-envelope-o"></i>

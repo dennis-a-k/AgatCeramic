@@ -20,7 +20,7 @@
             <div class="col-auto d-none d-lg-block">
                 <div class="top-nav">
                     <ul>
-                        <li><a href="tel:79999999999"><i class="fa fa-phone"></i> +7 999 999-99-99</a></li>
+                        <li><a href="tel:+79999999999" class="phone-link"><i class="fa fa-phone"></i> +7 (999) 999-99-99</a></li>
                         <li><a href="mailto:zakaz@agatceramic.ru">
                                 <i class="fa fa-envelope-o"></i>
                                 zakaz@agatceramic.ru
