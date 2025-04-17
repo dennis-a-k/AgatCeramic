@@ -21,6 +21,20 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('calls.list') }}" class="nav-link">
+                        <i class="fas fa-phone nav-icon"></i>
+                        <p>
+                            Заявки перезвонить
+                            @if ($pendingCallsCount > 0)
+                                <span class="badge badge-info right">
+                                    {{ $pendingCallsCount }}
+                                </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header text-info"><strong>Товары</strong></li>
                 <li class="nav-item">
                     <a href="{{ route('goods.list') }}" class="nav-link">
