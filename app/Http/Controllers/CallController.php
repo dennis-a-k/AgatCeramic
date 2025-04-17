@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewCallNotification;
 use App\Models\Call;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CallController extends Controller
 {
@@ -32,12 +35,24 @@ class CallController extends Controller
 
         $orderDate = Carbon::now('Europe/Moscow');
 
-        Call::create([
+        $call = Call::create([
             'customer_name' => $request->customer_name,
             'customer_phone' => $request->customer_phone,
             'created_at' => $orderDate,
             'updated_at' => $orderDate,
         ]);
+
+        try {
+            // Отправляем письмо администратору
+            $adminEmail = config('mail.admin_email');
+            if ($adminEmail) {
+                Mail::to($adminEmail)
+                    ->send(new NewCallNotification($call));
+            }
+        } catch (\Exception $e) {
+            // Логируем ошибку, но позволяем процессу оформления заказа продолжиться
+            Log::error('Ошибка отправки email: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'call-created');
     }
