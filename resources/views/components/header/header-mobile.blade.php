@@ -4,8 +4,10 @@
             <div class="col-lg-3 col">
                 <div class="header-logo">
                     <a href="{{ route('home') }}">
-                        {{-- <img src="assets/images/logo/logo.png" alt="Site Logo" /> --}}
-                        <h4>Agat Ceramic</h4>
+                        <div class="row align-items-center">
+                            <img src="{{ asset('assets/images/stock/logo.svg') }}" class="col-4 col-md-3 pe-0" alt="Logo" />
+                            <h4 class="col-8 col-md-9 m-0">Agat <span style="color: #8a8a8a">Ceramic</span></h4>
+                        </div>
                     </a>
                 </div>
             </div>

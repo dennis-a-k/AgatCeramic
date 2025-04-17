@@ -5,7 +5,7 @@
                 <div class="header-logo">
                     <a href="{{ route('home') }}">
                         <div class="row align-items-center">
-                            <img src="{{ asset('assets/images/stock/logo.svg') }}" class="col-3 p-0" alt="logo">
+                            <img src="{{ asset('assets/images/stock/logo.svg') }}" class="col-3 pe-0" alt="logo">
                             <h3 class="col-9 m-0">Agat <span style="color: #8a8a8a">Ceramic</span></h3>
                         </div>
                     </a>
