@@ -171,6 +171,7 @@ return [
         App\Providers\BrandComposerServiceProvider::class,
         App\Providers\CategoryComposerServiceProvider::class,
         App\Providers\OrderComposerServiceProvider::class,
+        App\Providers\CallComposerServiceProvider::class,
     ])->toArray(),
 
     /*

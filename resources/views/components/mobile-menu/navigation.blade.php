@@ -2,8 +2,12 @@
     <button class="offcanvas-close"></button>
     <div class="user-panel">
         <ul>
-            <li><a href="">Заказать звонок</a></li>
-            <li><a href="tel:79999999999"><i class="fa fa-phone"></i> +7 999 999-99-99</a></li>
+            <li>
+                <a href="#" class="modal-call" data-link-action="modal-call" data-bs-toggle="modal" data-bs-target="#modalCall">
+                    Заказать звонок
+                </a>
+            </li>
+            <li><a href="tel:+79999999999"><i class="fa fa-phone"></i> +7 (999) 999-99-99</a></li>
             <li>
                 <a href="mailto:zakaz@agatceramic.ru">
                     <i class="fa fa-envelope-o"></i>

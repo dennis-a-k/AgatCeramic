@@ -62,7 +62,9 @@
                             <h4 class="footer-herading">Контакты</h4>
                             <div class="footer-links">
                                 <p class="mail">
-                                    <a href="">Заказать звонок</a>
+                                    <a href="#" class="modal-call" data-link-action="modal-call" data-bs-toggle="modal" data-bs-target="#modalCall">
+                                        Заказать звонок
+                                    </a>
                                 </p>
                                 <p class="phone">
                                     <i class="fa fa-phone"></i>

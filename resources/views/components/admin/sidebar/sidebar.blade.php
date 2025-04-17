@@ -1,6 +1,12 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
-    <a href="{{ route('orders.list') }}" class="brand-link text-center">
-        <span class="brand-text font-weight-light">Админ-панель</span>
+    <a href="{{ route('orders.list') }}" class="brand-link pb-2">
+        <div class="row ml-3">
+            <img src="{{ asset('assets/images/stock/logo.svg') }}" class="col-2 pr-0" alt="logo">
+            <div class="col-10 brand-text">
+                <p class="m-0 h6"><strong>Agat<span style="color: #8a8a8a">Ceramic</span></strong></p>
+                <p class="font-weight-light m-0 h6 text-info">Админ-панель</p>
+            </div>
+        </div>
     </a>
 
     <div class="sidebar">
@@ -15,6 +21,20 @@
                             @if ($pendingOrdersCount > 0)
                                 <span class="badge badge-info right">
                                     {{ $pendingOrdersCount }}
+                                </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('calls.list') }}" class="nav-link">
+                        <i class="fas fa-phone nav-icon"></i>
+                        <p>
+                            Заявки перезвонить
+                            @if ($pendingCallsCount > 0)
+                                <span class="badge badge-info right">
+                                    {{ $pendingCallsCount }}
                                 </span>
                             @endif
                         </p>
