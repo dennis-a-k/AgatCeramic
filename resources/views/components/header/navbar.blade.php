@@ -73,6 +73,8 @@
                     <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
 
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
+
+                    <li><a href="{{ route('orders.list') }}">Админка</a></li>
                 </ul>
             </div>
         </div>
