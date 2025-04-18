@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
-Route::get('/delivery', function () {
+Route::get('/payment&delivery', function () {
     return view('pages.delivery');
 })->name('delivery');
 
