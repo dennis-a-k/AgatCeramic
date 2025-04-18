@@ -138,6 +138,16 @@
                         </a>
                     </li>
                 @endif
+
+                <li class="nav-header text-info"><strong>Данные сайты</strong></li>
+                <li class="nav-item">
+                    <a href="{{ route('app.data') }}" class="nav-link">
+                        <i class="fas fa-address-card nav-icon"></i>
+                        <p>
+                            Добавить данные
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
