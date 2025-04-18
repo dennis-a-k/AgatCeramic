@@ -1,4 +1,4 @@
-<div class="banner-area style-two pt-100px pb-100px">
+<section class="banner-area style-two pt-100px pb-100px">
     <div class="container">
         <div class="row">
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
@@ -58,4 +58,4 @@
             </x-banner.single-banner>
         </div>
     </div>
-</div>
+</section>

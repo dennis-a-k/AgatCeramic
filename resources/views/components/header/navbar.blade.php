@@ -1,4 +1,4 @@
-<div class="header-nav-area d-none d-lg-block sticky-nav">
+<nav class="header-nav-area d-none d-lg-block sticky-nav">
     <div class="container">
         <div class="header-nav">
             <div class="main-menu position-relative">
@@ -73,8 +73,10 @@
                     <li><a href="{{ route('partnerships') }}">Дизайнерам</a></li>
 
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
+
+                    <li><a href="{{ route('orders.list') }}">Админка</a></li>
                 </ul>
             </div>
         </div>
     </div>
-</div>
+</nav>
