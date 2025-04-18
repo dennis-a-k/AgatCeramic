@@ -1,6 +1,6 @@
 <section class="product-area pb-100px">
     <div class="container">
-        <h2 class="text-center d-none my-5">Товары</h2>
+        <h2 class="text-center d-none my-5">Популярные товары</h2>
         @include('components.goods.main-nav-goods')
         <div class="row">
             <div class="col">
