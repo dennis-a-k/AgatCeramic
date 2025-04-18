@@ -1,4 +1,4 @@
-<div class="header-nav-area d-none d-lg-block sticky-nav">
+<nav class="header-nav-area d-none d-lg-block sticky-nav">
     <div class="container">
         <div class="header-nav">
             <div class="main-menu position-relative">
@@ -79,4 +79,4 @@
             </div>
         </div>
     </div>
-</div>
+</nav>

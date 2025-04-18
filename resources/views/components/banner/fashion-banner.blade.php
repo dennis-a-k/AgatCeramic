@@ -1,4 +1,5 @@
-<div class="fashion-area" data-bg-banner="assets/images/fashion/02.jpg">
+<section class="fashion-area" data-bg-banner="assets/images/fashion/02.jpg">
+    <h2 class="text-center d-none my-5">Распродажа</h2>
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 text-center">
@@ -9,4 +10,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>

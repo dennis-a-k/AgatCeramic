@@ -17,7 +17,7 @@
         </ul>
     </div>
     <div class="inner customScroll">
-        <div class="offcanvas-menu mb-4">
+        <nav class="offcanvas-menu mb-4">
             <ul>
                 <li>
                     <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
@@ -81,7 +81,7 @@
                 <li><a href="{{ route('return') }}">Возврат и замена</a></li>
                 <li><a href="{{ route('contact') }}">Контакты</a></li>
             </ul>
-        </div>
+        </nav>
 
         <div class="offcanvas-social">
             <ul>

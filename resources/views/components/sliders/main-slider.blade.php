@@ -1,4 +1,4 @@
-<div class="section ">
+<section class="section">
     <div class="hero-slider swiper-container slider-nav-style-1 slider-dot-style-1">
         <div class="swiper-wrapper">
             <x-sliders.hero-slide data-bg-image="assets/images/hero/bg/hero-bg-1.jpeg">
@@ -45,4 +45,4 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-</div>
+</section>
