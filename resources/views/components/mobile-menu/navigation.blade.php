@@ -7,11 +7,11 @@
                     Заказать звонок
                 </a>
             </li>
-            <li><a href="tel:+79999999999"><i class="fa fa-phone"></i> +7 (999) 999-99-99</a></li>
+            <li><a href="tel:{{ $appData->app_phone ?? '---' }}" class="phone-link"><i class="fa fa-phone"></i> {{ $appData->appPhoneFormatted ?? '---' }}</a></li>
             <li>
-                <a href="mailto:zakaz@agatceramic.ru">
+                <a href="mailto:{{ $appData->app_email ?? '---' }}">
                     <i class="fa fa-envelope-o"></i>
-                    zakaz@agatceramic.ru
+                    {{ $appData->app_email ?? '---' }}
                 </a>
             </li>
         </ul>

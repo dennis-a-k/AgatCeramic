@@ -68,11 +68,11 @@
                                 </p>
                                 <p class="phone">
                                     <i class="fa fa-phone"></i>
-                                    <a href="tel:+79999999999" class="phone-link"> +7 (999) 999-99-99</a>
+                                    <a href="tel:{{ $appData->app_phone ?? '---' }}" class="phone-link"> {{ $appData->appPhoneFormatted ?? '---' }}</a>
                                 </p>
                                 <p class="mail">
                                     <i class="fa fa-envelope-o"></i>
-                                    <a href="mailto:zakaz@agatceramic.ru">zakaz@agatceramic.ru</a>
+                                    <a href="mailto:{{ $appData->app_email ?? '---' }}">{{ $appData->app_email ?? '---' }}</a>
                                 </p>
                             </div>
                             <ul class="link-follow">
