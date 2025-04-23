@@ -99,7 +99,7 @@ class SaleController extends Controller
             : $allProducts->pluck('size')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
         $categories = $request->has('category')
-            ? collect([Category::where('title', $request->category)->first()])->filter()
+            ? collect([Category::where('slug', $request->category)->first()])->filter()
             : $allProducts->pluck('category')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
         $query = $this->applySorting($query, $request->input('sort'));
