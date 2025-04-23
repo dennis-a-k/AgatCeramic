@@ -2,6 +2,19 @@
 
 @section('title', 'Резка плитки и керамогранит | ')
 
+@section('seo')
+    <meta name="description"
+        content="Профессиональная резка керамогранита и керамической плитки любой сложности. Современное оборудование, чистые края, доставка по Москве и МО">
+    <meta property="og:title" content="Резка плитки и керамогранита в {{ config('app.name') }}">
+    <meta property="og:description"
+        content="Профессиональная резка керамогранита и керамической плитки любой сложности. Современное оборудование, чистые края, доставка по Москве и МО">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('assets/images/stock/logo.png') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="{{ route('rezka') }}">
+@endsection
+
 @section('content')
     <main class="shop-category-area pt-100px pb-100px">
         <div class="container">
