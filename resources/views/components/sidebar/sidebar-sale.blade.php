@@ -11,7 +11,7 @@
                                     href="{{ route(
                                         'sale.filter',
                                         array_merge(request()->query(), [
-                                            'category_id' => $category->id,
+                                            'category' => $category->slug,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($category->title, 1, null, 'UTF-8') }}
@@ -34,7 +34,7 @@
                                     href="{{ route(
                                         'sale.filter',
                                         array_merge(request()->query(), [
-                                            'pattern_id' => $pattern->id,
+                                            'pattern' => $pattern->slug,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($pattern->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($pattern->title, 1, null, 'UTF-8') }}
@@ -56,7 +56,7 @@
                                 <a href="{{ route(
                                     'sale.filter',
                                     array_merge(request()->query(), [
-                                        'color_id' => $color->id,
+                                        'color' => $color->slug,
                                     ]),
                                 ) }}"
                                     style="background-color: #{{ $color->code }};" class="colors-filter" data-color="{{ mb_convert_case($color->title, MB_CASE_TITLE, 'UTF-8') }}">
@@ -79,7 +79,7 @@
                                     href="{{ route(
                                         'sale.filter',
                                         array_merge(request()->query(), [
-                                            'texture_id' => $texture->id,
+                                            'texture' => $texture->slug,
                                         ]),
                                     ) }}">
                                     {{ mb_strtoupper(mb_substr($texture->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texture->title, 1, null, 'UTF-8') }}
@@ -102,7 +102,7 @@
                                     href="{{ route(
                                         'sale.filter',
                                         array_merge(request()->query(), [
-                                            'size_id' => $size->id,
+                                            'size' => $size->slug,
                                         ]),
                                     ) }}">
                                     {{ $size->title }}
@@ -119,19 +119,38 @@
                 <h4 class="sidebar-title">Производитель</h4>
                 <div class="sidebar-widget-category">
                     <ul>
-                        @foreach ($brands as $brand)
+                        @foreach ($brands->take(5) as $brand)
                             <li>
-                                <a
-                                    href="{{ route(
-                                        'sale.filter',
-                                        array_merge(request()->query(), [
-                                            'brand_id' => $brand->id,
-                                        ]),
-                                    ) }}">
+                                <a href="{{ route(
+                                    'sale.filter',
+                                    array_merge(request()->query(), [
+                                        'brand' => $brand->slug,
+                                    ]),
+                                ) }}">
                                     {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
+
+                        @if ($brands->count() > 5)
+                            <div id="hidden-brands" style="display: none;">
+                                @foreach ($brands->slice(5) as $brand)
+                                    <li>
+                                        <a href="{{ route(
+                                            'sale.filter',
+                                            array_merge(request()->query(), [
+                                                'brand' => $brand->slug,
+                                            ]),
+                                        ) }}">
+                                            {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </div>
+                            <li>
+                                <a href="#" id="show-all-brands" class="show-more-link">Показать все</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
