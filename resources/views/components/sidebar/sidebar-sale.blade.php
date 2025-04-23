@@ -102,7 +102,7 @@
                                     href="{{ route(
                                         'sale.filter',
                                         array_merge(request()->query(), [
-                                            'size' => $size->slug,
+                                            'size' => $size->title,
                                         ]),
                                     ) }}">
                                     {{ $size->title }}
