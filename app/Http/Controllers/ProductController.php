@@ -47,7 +47,7 @@ class ProductController extends Controller
             'unit' => $product->unit,
             'collection' => $product->collection,
             'brand' => $product->brand,
-            'description' => $product->description,
+            'category' => $product->category,
             'images' => $product->images,
             'url' => route('product.show', [
                 'category' => $product->category->slug,
