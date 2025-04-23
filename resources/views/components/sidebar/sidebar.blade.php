@@ -99,21 +99,41 @@
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Производитель</h4>
                 <div class="sidebar-widget-category">
-                    <ul>
-                        @foreach ($brands as $brand)
+                    <ul id="brands-list">
+                        @foreach ($brands->take(5) as $brand)
                             <li>
-                                <a
-                                    href="{{ route(
-                                        'filter',
-                                        array_merge(request()->query(), [
-                                            'brand' => $brand->slug,
-                                            'category' => isset($category) ? $category->slug : null,
-                                        ]),
-                                    ) }}">
+                                <a href="{{ route(
+                                    'filter',
+                                    array_merge(request()->query(), [
+                                        'brand' => $brand->slug,
+                                        'category' => isset($category) ? $category->slug : null,
+                                    ]),
+                                ) }}">
                                     {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
                         @endforeach
+
+                        @if ($brands->count() > 5)
+                            <div id="hidden-brands" style="display: none;">
+                                @foreach ($brands->slice(5) as $brand)
+                                    <li>
+                                        <a href="{{ route(
+                                            'filter',
+                                            array_merge(request()->query(), [
+                                                'brand' => $brand->slug,
+                                                'category' => isset($category) ? $category->slug : null,
+                                            ]),
+                                        ) }}">
+                                            {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </div>
+                            <li>
+                                <a href="#" id="show-all-brands" class="show-more-link">Показать все</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

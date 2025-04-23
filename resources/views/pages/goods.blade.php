@@ -139,5 +139,35 @@
         .disabled a {
             background-color: #e1e1e1;
         }
+
+        .show-more-link {
+            color: #788da3;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .show-more-link:hover {
+            color: #5a6d80;
+            text-decoration: none;
+        }
     </style>
+@endsection
+
+@section('js')
+    <script>
+        document.getElementById('show-all-brands')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            const hiddenBrands = document.getElementById('hidden-brands');
+            const showAllLink = document.getElementById('show-all-brands');
+
+            if (hiddenBrands.style.display === 'none') {
+                hiddenBrands.style.display = 'block';
+                showAllLink.textContent = 'Скрыть';
+            } else {
+                hiddenBrands.style.display = 'none';
+                showAllLink.textContent = 'Показать все';
+            }
+        });
+    </script>
 @endsection

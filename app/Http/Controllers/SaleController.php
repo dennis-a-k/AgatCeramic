@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Pattern;
 use App\Models\Product;
+use App\Models\Size;
+use App\Models\Texture;
 use App\Traits\SortableProducts;
 use Illuminate\Http\Request;
 
@@ -21,10 +27,45 @@ class SaleController extends Controller
 
         $characteristicsQuery = clone $query;
 
-        $filters = ['pattern_id', 'color_id', 'texture_id', 'size_id', 'category_id', 'brand_id'];
-        foreach ($filters as $filter) {
-            if ($request->has($filter)) {
-                $query->where($filter, $request->input($filter));
+        if ($request->has('pattern')) {
+            $pattern = Pattern::where('slug', $request->pattern)->first();
+            if ($pattern) {
+                $query->where('pattern_id', $pattern->id);
+            }
+        }
+
+        if ($request->has('color')) {
+            $color = Color::where('slug', $request->color)->first();
+            if ($color) {
+                $query->where('color_id', $color->id);
+            }
+        }
+
+        if ($request->has('category')) {
+            $category = Category::where('slug', $request->category)->first();
+            if ($category) {
+                $query->where('category_id', $category->id);
+            }
+        }
+
+        if ($request->has('texture')) {
+            $texture = Texture::where('slug', $request->texture)->first();
+            if ($texture) {
+                $query->where('texture_id', $texture->id);
+            }
+        }
+
+        if ($request->has('size')) {
+            $size = Size::where('title', $request->size)->first();
+            if ($size) {
+                $query->where('size_id', $size->id);
+            }
+        }
+
+        if ($request->has('brand')) {
+            $brand = Brand::where('slug', $request->brand)->first();
+            if ($brand) {
+                $query->where('brand_id', $brand->id);
             }
         }
 
@@ -37,16 +78,33 @@ class SaleController extends Controller
             'brand'
         ])->get();
 
-        $colors = $this->getFilteredAttribute($request, $allProducts, 'color', 'color_id');
-        $categories = $this->getFilteredAttribute($request, $allProducts, 'category', 'category_id');
-        $patterns = $this->getFilteredAttribute($request, $allProducts, 'pattern', 'pattern_id');
-        $textures = $this->getFilteredAttribute($request, $allProducts, 'texture', 'texture_id');
-        $sizes = $this->getFilteredAttribute($request, $allProducts, 'size', 'size_id');
-        $brands = $this->getFilteredAttribute($request, $allProducts, 'brand', 'brand_id');
+        $colors = $request->has('color')
+            ? collect([Color::where('slug', $request->color)->first()])->filter()
+            : $allProducts->pluck('color')->flatten()->filter()->unique('id')->sortBy('title')->values();
+
+        $brands = $request->has('brand')
+            ? collect([Brand::where('slug', $request->brand)->first()])->filter()
+            : $allProducts->pluck('brand')->flatten()->filter()->unique('id')->sortBy('title')->values();
+
+        $patterns = $request->has('pattern')
+            ? collect([Pattern::where('slug', $request->pattern)->first()])->filter()
+            : $allProducts->pluck('pattern')->flatten()->filter()->unique('id')->sortBy('title')->values();
+
+        $textures = $request->has('texture')
+            ? collect([Texture::where('slug', $request->texture)->first()])->filter()
+            : $allProducts->pluck('texture')->flatten()->filter()->unique('id')->sortBy('title')->values();
+
+        $sizes = $request->has('size')
+            ? collect([Size::where('title', $request->size)->first()])->filter()
+            : $allProducts->pluck('size')->flatten()->filter()->unique('id')->sortBy('title')->values();
+
+        $categories = $request->has('category')
+            ? collect([Category::where('title', $request->category)->first()])->filter()
+            : $allProducts->pluck('category')->flatten()->filter()->unique('id')->sortBy('title')->values();
 
         $query = $this->applySorting($query, $request->input('sort'));
 
-        $goods = $query->with(['color', 'pattern', 'category', 'texture', 'size', 'brand'])
+        $goods = $query->with(['color', 'pattern', 'brand', 'texture', 'size', 'category'])
             ->paginate(40);
 
         return view('pages.goods-sale', compact(
@@ -59,22 +117,5 @@ class SaleController extends Controller
             'brands',
             'title'
         ));
-    }
-
-    private function getFilteredAttribute($request, $products, $relation, $filterId)
-    {
-        if ($request->has($filterId)) {
-            $model = Product::where($filterId, $request->input($filterId))
-                ->with($relation)
-                ->first();
-            return $model ? collect([$model->$relation])->filter() : collect();
-        }
-
-        return $products->pluck($relation)
-            ->flatten()
-            ->filter()
-            ->unique('id')
-            ->sortBy('title')
-            ->values();
     }
 }
