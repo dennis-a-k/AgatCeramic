@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((data) => {
-                    const title = data.title || "---";
+                    const title = data.category.title + ' ' + data.title || "---";
                     const price = +data.price || "---";
                     const formattedPrice = price
                         .toLocaleString("ru-RU", {
@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         ? data.collection.title
                         : "---";
                     const brand = data.brand ? data.brand.title : "---";
-                    const description = data.description || "---";
                     const images =
                         data.images && data.images.length > 0
                             ? data.images
@@ -75,9 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.querySelector(
                         "#modalProduct .modal-body .new-brand"
                     ).innerText = brand;
-                    document.querySelector(
-                        "#modalProduct .modal-body .new-description"
-                    ).innerText = description;
                     elementId.setAttribute("data-product-id", data.id);
 
                     // Update images with correct base URL

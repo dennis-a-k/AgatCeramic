@@ -56,9 +56,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <p class="new-description">
-                                Описание
-                            </p>
                         </div>
                     </div>
                 </div>
