@@ -24,7 +24,7 @@
 
     @include('components.goods.main-goods')
 
-    @include('components.banner.sail-banner')
+    @include('components.banner.sale-banner')
 
     @include('components.sliders.brand-slider')
 @endsection
