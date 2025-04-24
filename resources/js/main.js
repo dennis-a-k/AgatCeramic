@@ -22,10 +22,20 @@
             $image = $this.data("bg-banner");
         $this.css(
             "background",
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(" +
-                $image +
-                ")"
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(" + $image + ")"
         );
+        $this.css(
+            "background-repeat",
+            "no-repeat"
+        )
+        $this.css(
+            "background-size",
+            "100% auto"
+        )
+        $this.css(
+            "background-position",
+            "center"
+        )
     });
 
     /*---------------------------
