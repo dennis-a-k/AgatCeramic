@@ -80,6 +80,7 @@
                 <li><a href="{{ route('delivery') }}">Оплата и доставка</a></li>
                 <li><a href="{{ route('return') }}">Возврат и замена</a></li>
                 <li><a href="{{ route('contact') }}">Контакты</a></li>
+                <li><a href="{{ route('sale') }}" class="text-danger">Распродажа</a></li>
             </ul>
         </nav>
 

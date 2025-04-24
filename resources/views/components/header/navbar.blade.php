@@ -74,6 +74,8 @@
 
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
 
+                    <li><a href="{{ route('sale') }}" class="text-danger">Распродажа</a></li>
+
                     <li><a href="{{ route('orders.list') }}">Админка</a></li>
                 </ul>
             </div>
