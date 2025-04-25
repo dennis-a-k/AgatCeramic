@@ -122,6 +122,8 @@
                     </div>
                 </div>
             </div>
+
+            @include('components.admin.goods.add-kleevye_smesi')
         </div>
     </div>
 @endsection
