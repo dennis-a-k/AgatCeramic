@@ -26,6 +26,14 @@ class ProductController extends Controller
             return redirect()->to($canonicalUrl, 301);
         }
 
+        if (isset($product->attributes['weight_kg'])) {
+            $product['weight_kg'] = $product->attributes['weight_kg'];
+        }
+
+        if ($product->category->title === 'Клеевые смеси') {
+            $product->category->title = 'Клей';
+        }
+
         $description = Str::limit($product->description, 155);
 
         return view('pages.product', compact('product', 'description'));
