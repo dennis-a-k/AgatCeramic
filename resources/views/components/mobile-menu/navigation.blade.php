@@ -59,7 +59,7 @@
                             </a>
                         </li>
                         <li><a href="{{ route('zatirka.list') }}"><span class="menu-text">Затирка для плитки</span></a>
-                        <li><a href="{{ route('kleevye-smesi.list') }}"><span class="menu-text">Клеевые смеси</span></a>
+                        <li><a href="{{ $categories->contains('title', 'Клеевые смеси') ? route('category.list', $categories->firstWhere('title', 'Клеевые смеси')->slug) : 404 }}"><span class="menu-text">Клеевые смеси</span></a>
                         </li>
                         <li>
                             <a href="#"><span class="menu-text">Сантехника</span></a>

@@ -7,34 +7,62 @@
         <div id="des-details2" class="tab-pane">
             <div class="product-anotherinfo-wrapper text-start d-flex">
                 <ul>
-                    <li><span>Категория:</span></li>
-                    <li><span>Размер:</span></li>
-                    <li><span>Цвет:</span></li>
-                    <li><span>Поверхность:</span></li>
-                    <li><span>Узор:</span></li>
-                    <li><span>Страна:</span></li>
-                    <li class="product-anotherinfo-img">
-                        @if (!$product->brand?->img)
-                            <span></span>
-                        @else
-                            <a href="#">
+                    @if ($product->category)
+                        <li><span>Категория:</span></li>
+                    @endif
+                    @if ($product->size)
+                        <li><span>Размер:</span></li>
+                    @endif
+                    @if ($product->weight_kg)
+                        <li><span>Вес:</span></li>
+                    @endif
+                    @if ($product->color)
+                        <li><span>Цвет:</span></li>
+                    @endif
+                    @if ($product->texture)
+                        <li><span>Поверхность:</span></li>
+                    @endif
+                    @if ($product->pattern)
+                        <li><span>Узор:</span></li>
+                    @endif
+                    @if ($product->country)
+                        <li><span>Страна:</span></li>
+                    @endif
+                    @if ($product->brand?->img)
+                        <li class="product-anotherinfo-img">
+                            <a href="{{ route('brand.list', $product->brand->slug) }}">
                                 <img src="{{ asset('storage/brands/' . $product->brand->img) }}" alt="{{ $product->brand->title }}">
                             </a>
-                        @endif
-                    </li>
+                        </li>
+                    @endif
                 </ul>
 
                 <ul>
-                    <li>
-                        <a href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
-                            {{ $product->category?->title ?? '---' }}
-                        </a>
-                    </li>
-                    <li>{{ $product->size?->title ?? '---' }}</li>
-                    <li>{{ $product->color?->title ?? '---' }}</li>
-                    <li>{{ $product->texture?->title ?? '---' }}</li>
-                    <li>{{ $product->pattern?->title ?? '---' }}</li>
-                    <li>{{ $product->country?->name ?? '---' }}</li>
+                    @if ($product->category)
+                        <li>
+                            <a href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
+                                {{ $product->category->title === 'Клей' ? 'Клеевые смеси' : $product->category->title }}
+                            </a>
+                        </li>
+                    @endif
+                    @if ($product->size)
+                        <li>{{ $product->size->title }}</li>
+                    @endif
+                    @if ($product->weight_kg)
+                        <li>{{ $product->weight_kg }} кг</li>
+                    @endif
+                    @if ($product->color)
+                        <li>{{ $product->color->title }}</li>
+                    @endif
+                    @if ($product->texture)
+                        <li>{{ $product->texture->title }}</li>
+                    @endif
+                    @if ($product->pattern)
+                        <li>{{ $product->pattern->title }}</li>
+                    @endif
+                    @if ($product->country)
+                        <li>{{ $product->country->name }}</li>
+                    @endif
                 </ul>
             </div>
         </div>

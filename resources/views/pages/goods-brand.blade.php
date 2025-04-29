@@ -33,7 +33,7 @@
                                                     <x-slot name="id">{{ $product->id }}</x-slot>
                                                     <x-slot name="category">{{ $product->category->title }}</x-slot>
                                                     <x-slot name="title">{{ $product->title }}</x-slot>
-                                                    <x-slot name="price">{{ $product->price }}</x-slot>
+                                                    <x-slot name="price">{{ number_format($product->price, 2, '.', ' ') }}</x-slot>
                                                     <x-slot name="sale">{{ $product->sale }}</x-slot>
                                                     <x-slot name="urlProduct"
                                                         href="{{ route('product.show', [
