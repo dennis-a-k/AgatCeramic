@@ -7,21 +7,17 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function show($category, $collection, $slug, $sku)
+    public function show($category, $slug, $sku)
     {
         $product = Product::query()->where('sku', $sku)
             ->whereHas('category', function ($query) use ($category) {
                 $query->where('slug', $category);
-            })
-            ->whereHas('collection', function ($query) use ($collection) {
-                $query->where('slug', $collection);
             })
             ->where('slug', $slug)
             ->firstOrFail();
 
         $canonicalUrl = route('product.show', [
             'category' => $product->category->slug,
-            'collection' => $product->collection->slug,
             'slug' => $product->slug,
             'sku' => $product->sku
         ]);
@@ -51,7 +47,6 @@ class ProductController extends Controller
             'images' => $product->images,
             'url' => route('product.show', [
                 'category' => $product->category->slug,
-                'collection' => $product->collection->slug,
                 'slug' => $product->slug,
                 'sku' => $product->sku,
             ])
