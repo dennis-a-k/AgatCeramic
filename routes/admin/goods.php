@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\KleevyeSmesiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '/admin-panel',
     'middleware' => ['auth', 'verified'],
 ], function () {
+    Route::post('/kleya-create', [KleevyeSmesiController::class, 'store'])->name('kleya.store');
     Route::get('/goods', [GoodsController::class, 'index'])->name('goods.list');
     Route::get('/product-create', [GoodsController::class, 'create'])->name('product.create');
     Route::post('/product-create', [GoodsController::class, 'store'])->name('product.store');

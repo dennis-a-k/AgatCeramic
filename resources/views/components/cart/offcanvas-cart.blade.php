@@ -10,7 +10,6 @@
                     <li data-product-id="{{ $item['id'] }}">
                         <a href="{{ route('product.show', [
                             'category' => $item['category_slug'] ?? '',
-                            'collection' => $item['collection_slug'] ?? '',
                             'slug' => $item['slug'] ?? '',
                             'sku' => $item['sku'],
                         ]) }}"
@@ -21,7 +20,6 @@
                         <div class="content">
                             <a href="{{ route('product.show', [
                                 'category' => $item['category_slug'] ?? '',
-                                'collection' => $item['collection_slug'] ?? '',
                                 'slug' => $item['slug'] ?? '',
                                 'sku' => $item['sku'],
                             ]) }}"

@@ -31,7 +31,6 @@
                                                     <x-slot name="urlProduct"
                                                         href="{{ route('product.show', [
                                                             'category' => $product->category->slug,
-                                                            'collection' => $product->collection->slug,
                                                             'slug' => $product->slug,
                                                             'sku' => $product->sku,
                                                         ]) }}">
