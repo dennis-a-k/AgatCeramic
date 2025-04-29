@@ -24,7 +24,6 @@ class CartService
             'image' => $product->images,
             'expires_at' => Carbon::now()->addDays(self::CART_EXPIRY_DAYS),
             'category_slug' => $product->category->slug,
-            'collection_slug' => $product->collection->slug,
             'slug' => $product->slug,
         ];
 
