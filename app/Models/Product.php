@@ -27,6 +27,11 @@ class Product extends Model
         'is_published',
         'sale',
         'slug',
+        'attributes',
+    ];
+
+    protected $casts = [
+        'attributes' => 'array',
     ];
 
     public function category()
