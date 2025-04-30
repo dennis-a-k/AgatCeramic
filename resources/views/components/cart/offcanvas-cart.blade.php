@@ -23,8 +23,13 @@
                                 'slug' => $item['slug'] ?? '',
                                 'sku' => $item['sku'],
                             ]) }}"
-                                class="title">
-                                {{ $item['title'] }}
+                                class="title lh-1">
+                                <p>{{ $item['category'] }}</p>
+                                @if (isset($item['weight_kg']) && $item['weight_kg'])
+                                    <p>{{ $item['title'] }} {{ $item['weight_kg'] }} кг</p>
+                                @else
+                                    <p>{{ $item['title'] }}</p>
+                                @endif
                             </a>
                             <span class="quantity-price">
                                 {{ $item['quantity'] }}@if ($item['unit'] === 'шт')

@@ -24,8 +24,13 @@ class CartService
             'image' => $product->images,
             'expires_at' => Carbon::now()->addDays(self::CART_EXPIRY_DAYS),
             'category_slug' => $product->category->slug,
+            'category' => $product->category->title,
             'slug' => $product->slug,
         ];
+
+        if (isset($product->attributes['weight_kg'])) {
+            $cartItem['weight_kg'] = $product->attributes['weight_kg'];
+        }
 
         if (isset($cart[$product->id])) {
             $cart[$product->id]['quantity'] += $quantity;
