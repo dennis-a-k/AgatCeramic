@@ -150,6 +150,13 @@
             color: #5a6d80;
             text-decoration: none;
         }
+
+        .weight a {
+            border: 1px solid #788da3;
+            padding: 3px;
+            background-color: #788da3;
+            border-radius: 4px;
+        }
     </style>
 @endsection
 

@@ -48,6 +48,29 @@
             </div>
         @endif
 
+        @if (isset($weights) && $weights->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Вес (кг)</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        @foreach ($weights as $weight)
+                            <li class="color-list weight">
+                                <a href="{{ route(
+                                    'filters',
+                                    array_merge(request()->query(), [
+                                        'weight' => $weight,
+                                        'brand' => isset($brand) ? $brand->slug : null,
+                                    ]),
+                                ) }}" class="text-white">
+                                    {{ $weight }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
         @if (isset($colors) && $colors->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Цвет</h4>

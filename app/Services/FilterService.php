@@ -94,8 +94,10 @@ class FilterService
     {
         $weights = $query->clone()
             ->get()
-            ->pluck('attributes->weight_kg')
-            ->filter()
+            ->pluck('attributes.weight_kg')
+            ->filter(function($value) {
+                return !is_null($value) && $value !== '';
+            })
             ->unique()
             ->sort()
             ->values();
