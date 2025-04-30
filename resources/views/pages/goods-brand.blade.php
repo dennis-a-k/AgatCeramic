@@ -32,7 +32,7 @@
                                                     </x-slot>
                                                     <x-slot name="id">{{ $product->id }}</x-slot>
                                                     <x-slot name="category">{{ $product->category->title }}</x-slot>
-                                                    <x-slot name="title">{{ $product->title }}</x-slot>
+                                                    <x-slot name="title">{{ $product->title }} @if (isset($product->attributes['weight_kg'])) {{ $product->attributes['weight_kg'] }} кг@endif</x-slot>
                                                     <x-slot name="price">{{ number_format($product->price, 2, '.', ' ') }}</x-slot>
                                                     <x-slot name="sale">{{ $product->sale }}</x-slot>
                                                     <x-slot name="urlProduct"
