@@ -40,11 +40,15 @@
                             </span>
                         @endif
 
-                        <h1>{{ $product->category->title }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }}</h1>
+                        <h1 class="h3">{{ $product->category->title }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }}</h1>
 
                         <div class="pricing-meta">
                             <ul class="d-flex">
-                                <li class="new-price">{{ number_format($product->price, 2, '.', ' ') }} &#8381;</li>
+                                <li class="new-price">
+                                    <span class="h1">
+                                       {{ number_format($product->price, 2, '.', ' ') }} &#8381;
+                                    </span>
+                                </li>
                             </ul>
                         </div>
 
@@ -93,6 +97,10 @@
             color: #fff;
             font-weight: 600;
             background-color: #c50101;
+        }
+
+        .product-details-content .pricing-meta ul li span {
+            color: #6e7f89;
         }
     </style>
 @endsection
