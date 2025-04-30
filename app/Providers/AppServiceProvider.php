@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\AppData;
+use App\Services\FilterService;
+use App\Services\SessionService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -14,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(FilterService::class, fn () => new FilterService());
+        $this->app->bind(SessionService::class, fn () => new SessionService());
     }
 
     /**
