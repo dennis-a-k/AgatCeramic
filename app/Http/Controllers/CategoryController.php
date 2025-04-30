@@ -1,17 +1,20 @@
 <?php
-// CategoryController.php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\Product;
-use App\Traits\SortableProducts;
+use App\Services\FilterService;
+use App\Services\SessionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    use SortableProducts;
+    public function __construct(
+        private FilterService $filterService,
+        private SessionService $sessionService
+    ) {}
 
     public function index()
     {
@@ -41,91 +44,27 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function filterProducts(string $categorySlug, Request $request, string $title = '')
+    public function filterProducts(string $categorySlug, Request $request)
     {
-        // Получаем категорию
+        $this->sessionService->applyFilter($request, 'category');
+
+        $query = $this->filterService->getBaseQuery('category', $categorySlug, $title);
+        $this->filterService->applyActiveFilters($query, $request);
+
+        $goods = $this->filterService->getFilteredProducts($query, $request);
+        $filters = $this->filterService->getAvailableFilters($query, $request);
+
         $category = Category::where('slug', $categorySlug)->first();
 
         if ($category) {
             $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') .
                 mb_substr($category->title, 1, null, 'UTF-8');
-
-            // Базовый запрос для всех товаров категории
-            $baseQuery = Product::where('category_id', $category->id)
-                ->where('is_published', true);
-
-            // Клонируем запрос для получения всех характеристик
-            $characteristicsQuery = clone $baseQuery;
-
-            // Получаем все товары для извлечения характеристик (без пагинации)
-            $allCategoryProducts = $characteristicsQuery->with([
-                'color',
-                'brand',
-                'pattern',
-                'texture',
-                'size'
-            ])->get();
-
-            // Получаем все характеристики
-            $colors = $allCategoryProducts->pluck('color')
-                ->flatten()
-                ->filter()
-                ->unique('id')
-                ->sortBy('title')
-                ->values();
-
-            $brands = $allCategoryProducts->pluck('brand')
-                ->flatten()
-                ->filter()
-                ->unique('id')
-                ->sortBy('title')
-                ->values();
-
-            $patterns = $allCategoryProducts->pluck('pattern')
-                ->flatten()
-                ->filter()
-                ->unique('id')
-                ->sortBy('title')
-                ->values();
-
-            $textures = $allCategoryProducts->pluck('texture')
-                ->flatten()
-                ->filter()
-                ->unique('id')
-                ->sortBy('title')
-                ->values();
-
-            $sizes = $allCategoryProducts->pluck('size')
-                ->flatten()
-                ->filter()
-                ->unique('id')
-                ->sortBy('title')
-                ->values();
-
-            // Применяем сортировку к базовому запросу
-            $query = $this->applySorting($baseQuery, $request->input('sort'));
-
-            // Получаем товары с пагинацией
-            $goods = $query->with(['color', 'brand', 'pattern', 'texture', 'size'])
-                ->paginate(40);
-        } else {
-            $goods = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 40);
-            $colors = collect();
-            $brands = collect();
-            $patterns = collect();
-            $textures = collect();
-            $sizes = collect();
         }
 
-        return view('pages.goods', compact(
-            'goods',
-            'category',
-            'title',
-            'colors',
-            'brands',
-            'patterns',
-            'textures',
-            'sizes'
-        ));
+        return view('pages.goods', array_merge([
+            'goods' => $goods,
+            'category' => $category,
+            'title' => $title,
+        ], $filters));
     }
 }

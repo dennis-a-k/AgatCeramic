@@ -139,5 +139,12 @@
         .disabled a {
             background-color: #e1e1e1;
         }
+
+        .weight a {
+            border: 1px solid #788da3;
+            padding: 3px;
+            background-color: #788da3;
+            border-radius: 4px;
+        }
     </style>
 @endsection
