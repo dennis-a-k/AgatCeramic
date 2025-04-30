@@ -28,7 +28,7 @@
                                                 'category' => $product['category_slug'] ?? '',
                                                 'slug' => $product['slug'] ?? '',
                                                 'sku' => $product['sku'],
-                                            ])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" />
+                                            ])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" :weight_kg="$product['weight_kg'] ?? null" :category="$product['category']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>
