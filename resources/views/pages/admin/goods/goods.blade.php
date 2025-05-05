@@ -151,10 +151,18 @@
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
-                                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
-                                                    target="_blank">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
+                                                @if ($product->category->title === 'Клеевые смеси')
+                                                    <a href="{{ route('kleya.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                        target="_blank">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                        target="_blank">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                @endif
+
 
                                                 <button class="btn btn-danger btn-xs btn-xs goods-popover" id="" data-toggle="modal" data-target="#modalDelete" data-product="{{ $product }}"
                                                     data-content="Удалить">

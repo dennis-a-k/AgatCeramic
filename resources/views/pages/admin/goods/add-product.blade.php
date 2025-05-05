@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            @include('components.admin.goods.add-kleevye_smesi')
+            @include('components.admin.goods.kleya.add-kleya')
         </div>
     </div>
 @endsection
