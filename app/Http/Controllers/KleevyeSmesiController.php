@@ -2,34 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\KleyaRequest;
+use App\Http\Requests\UpdateKleyaRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Country;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class KleevyeSmesiController extends Controller
 {
-    public function store(Request $request)
+    public function store(KleyaRequest $request)
     {
-        $validated = $request->validate([
-            'sku' => ['required', 'alpha_num', 'unique:products,sku', 'max:8'],
-            'title' => ['required', 'string', 'max:255'],
-            'price' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
-            'unit' => ['required', 'string'],
-            'description' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
-            'category_id' => ['nullable', 'numeric'],
-            'color_id' => ['nullable', 'numeric'],
-            'brand_id' => ['nullable', 'numeric'],
-            'country_id' => ['nullable', 'numeric'],
-            'weight_kg' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
-            'imgs' => ['nullable', 'array'],
-            'imgs.*' => [
-                'nullable',
-                'image',
-                'mimes:jpeg,png,jpg,webp',
-                'dimensions:max_width=1200,max_height=1200',
-                'max:50000',
-            ]
-        ]);
+        $validated = $request->validated();
 
         $productData = [
             'sku' => $validated['sku'],
@@ -53,7 +41,7 @@ class KleevyeSmesiController extends Controller
 
         if ($request->hasFile('imgs')) {
             foreach ($request->file('imgs') as $index => $img) {
-                if ($index >= 5) break;
+                if ($index >= 3) break;
                 $filename = $product->sku . '_' . $index . '.' . $img->getClientOriginalExtension();
                 $img->storeAs('public/images', $filename);
                 $product->images()->create(['title' => $filename, 'order' => $index]);
@@ -61,5 +49,55 @@ class KleevyeSmesiController extends Controller
         }
 
         return back()->with('status', 'product-created');
+    }
+
+    public function edit(string $id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        $colors = Color::all();
+        $brands = Brand::all();
+        $countries = Country::all();
+        $currentImageCount = $product->images->count();
+        return view('pages.admin.goods.edit-kleya', compact(
+            'product',
+            'categories',
+            'colors',
+            'brands',
+            'countries',
+            'currentImageCount',
+        ));
+    }
+
+    public function update(UpdateKleyaRequest $request, string $id)
+    {
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+        $data['attributes']['weight_kg'] = $data['weight_kg'];
+        $product = Product::find($id);
+        $product->fill($data)->save();
+        // Обновление порядка существующих изображений
+        if ($request->has('image_order')) {
+            foreach ($request->image_order as $imageId => $order) {
+                $image = Image::find($imageId);
+                if ($image && $image->product_id == $product->id) {
+                    $image->update(['order' => $order]);
+                }
+            }
+        }
+        // Добавление новых изображений
+        if ($request->hasFile('imgs')) {
+            $currentImageCount = $product->images->count();
+            foreach ($request->file('imgs') as $index => $img) {
+                if ($currentImageCount + $index >= 3) break; // Максимум 5 изображений
+                $filename = $product->sku . '_' . $currentImageCount + $index . '.' . $img->getClientOriginalExtension();
+                $img->storeAs('public/images', $filename);
+                $product->images()->create([
+                    'title' => $filename,
+                    'order' => $currentImageCount + $index
+                ]);
+            }
+        }
+        return back()->with('status', 'product-updated');
     }
 }
