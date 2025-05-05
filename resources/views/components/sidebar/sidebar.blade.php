@@ -164,7 +164,7 @@
 
         <div class="sidebar-widget">
             <div class="">
-                <a href="{{ route('filter', ['category_slug' => isset($category) ? $category->slug : null]) }}" class="btn-filter">
+                <a href="{{ route('filter', ['category' => isset($category) ? $category->slug : null]) }}" class="btn-filter">
                     Сбросить фильтры
                 </a>
             </div>
