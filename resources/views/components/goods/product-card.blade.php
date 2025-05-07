@@ -1,18 +1,18 @@
 <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-    <div class="product">
+    <div class="product card h-100" style="border: none">
         @if ($sale == '1')
             <span class="badges">
                 <span class="new">Sale</span>
             </span>
         @endif
 
-        <div class="thumb">
+        <div class="thumb d-flex justify-content-center align-items-center" style="aspect-ratio: 1 / 1;">
             <a {{ $urlProduct->attributes }} class="image">
                 <img {{ $img->attributes }} />
                 <img class="hover-image" {{ $img->attributes }} />
             </a>
         </div>
-        <div class="content">
+        <div class="content text-center">
             <span class="category"><a {{ $urlCategory->attributes }}>{{ $category }}</a></span>
 
             <span class="price">
@@ -20,7 +20,7 @@
             </span>
 
             <h5 class="title">
-                <a {{ $urlProduct->attributes }}>{{ $title }}</a>
+                <a {{ $urlProduct->attributes }}>{{ Str::words($title, 15) }}</a>
             </h5>
         </div>
         <div class="actions">
