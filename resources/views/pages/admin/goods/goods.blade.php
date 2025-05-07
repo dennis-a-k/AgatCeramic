@@ -61,7 +61,6 @@
                                     <th>Артикул</th>
                                     <th>Наименование</th>
                                     <th>Код товара</th>
-                                    <th>Коллекция</th>
                                     <th>Категория</th>
                                     <th>Цена</th>
                                     <th>ед.изм</th>
@@ -109,7 +108,7 @@
                                                 'sku' => $product->sku,
                                             ]) }}"
                                                 target="_blank" class="title">
-                                                {{ Str::words($product->title, 5) }}
+                                                {{ Str::words($product->title, 6) }}
                                             </a>
                                         </td>
                                         <td>
@@ -117,13 +116,6 @@
                                                 ---
                                             @else
                                                 {{ $product->product_code }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if (!$product->collection)
-                                                ---
-                                            @else
-                                                {{ $product->collection->title }}
                                             @endif
                                         </td>
                                         <td>
