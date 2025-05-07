@@ -3,7 +3,6 @@
 require __DIR__.'/pages.php';
 require __DIR__.'/cart.php';
 
-require __DIR__.'/zatirka.php';
 
 require __DIR__.'/santekhnika.php';
 
@@ -17,6 +16,8 @@ require __DIR__.'/sale.php';
 require __DIR__.'/call.php';
 
 require __DIR__.'/admin/goods.php';
+require __DIR__.'/admin/kleya.php';
+require __DIR__.'/admin/zatirka.php';
 require __DIR__.'/admin/category.php';
 require __DIR__.'/admin/sizes.php';
 require __DIR__.'/admin/pattern.php';
