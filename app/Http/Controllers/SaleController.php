@@ -102,6 +102,21 @@ class SaleController extends Controller
             $weight = $request->weight;
             $query->whereJsonContains('attributes->weight_kg', $weight);
         }
+
+        if ($request->has('glue')) {
+            $glue = $request->glue;
+            $query->whereJsonContains('attributes->glue', $glue);
+        }
+
+        if ($request->has('mixture_types')) {
+            $mixture_types = $request->mixture_types;
+            $query->whereJsonContains('attributes->mixture_types', $mixture_types);
+        }
+
+        if ($request->has('seams')) {
+            $seams = $request->seams;
+            $query->whereJsonContains('attributes->seams', $seams);
+        }
     }
 
     private function getAvailableFilters($products, Request $request)
@@ -156,6 +171,27 @@ class SaleController extends Controller
           ->sort()
           ->values();
 
+        $glues = $products->filter(function ($product) {
+            return isset($product->attributes['glue']);
+        })->pluck('attributes.glue')
+          ->unique()
+          ->sort()
+          ->values();
+
+        $mixture_types = $products->filter(function ($product) {
+            return isset($product->attributes['mixture_type']);
+        })->pluck('attributes.mixture_type')
+          ->unique()
+          ->sort()
+          ->values();
+
+        $seams = $products->filter(function ($product) {
+            return isset($product->attributes['seam']);
+        })->pluck('attributes.seam')
+          ->unique()
+          ->sort()
+          ->values();
+
         // Если какой-то фильтр уже выбран, оставляем только его значение
         if ($request->has('color')) {
             $colors = $colors->where('slug', $request->color);
@@ -185,6 +221,18 @@ class SaleController extends Controller
             $weights = collect([$request->weight]);
         }
 
+        if ($request->has('glue')) {
+            $glues = collect([$request->glue]);
+        }
+
+        if ($request->has('mixture_type')) {
+            $mixture_types = collect([$request->mixture_type]);
+        }
+
+        if ($request->has('seam')) {
+            $seams = collect([$request->seam]);
+        }
+
         return [
             'colors' => $colors,
             'brands' => $brands,
@@ -193,6 +241,9 @@ class SaleController extends Controller
             'sizes' => $sizes,
             'categories' => $categories,
             'weights' => $weights,
+            'glues' => $glues,
+            'mixture_types' => $mixture_types,
+            'seams' => $seams,
         ];
     }
 }

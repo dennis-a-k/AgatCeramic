@@ -70,6 +70,75 @@
             </div>
         @endif
 
+        @if (isset($glues) && $glues->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Использовать в качестве клея</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        @foreach ($glues as $glue)
+                            <li class="color-list weight">
+                                <a href="{{ route(
+                                    'filter',
+                                    array_merge(request()->query(), [
+                                        'glue' => $glue,
+                                        'category' => isset($category) ? $category->slug : null,
+                                    ]),
+                                ) }}"  class="text-white">
+                                    {{ $glue }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
+        @if (isset($mixture_types) && $mixture_types->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Тип смеси</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        @foreach ($mixture_types as $type)
+                            <li>
+                                <a href="{{ route(
+                                    'filter',
+                                    array_merge(request()->query(), [
+                                        'mixture_type' => $type,
+                                        'category' => isset($category) ? $category->slug : null,
+                                    ]),
+                                ) }}">
+                                    {{ $type }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
+        @if (isset($seams) && $seams->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Ширина шва (мм)</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        @foreach ($seams as $seam)
+                            <li class="color-list weight">
+                                <a href="{{ route(
+                                    'filter',
+                                    array_merge(request()->query(), [
+                                        'seam' => $seam,
+                                        'category' => isset($category) ? $category->slug : null,
+                                    ]),
+                                ) }}"  class="text-white">
+                                    {{ $seam }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
         @if (isset($textures) && $textures->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Поверхность</h4>

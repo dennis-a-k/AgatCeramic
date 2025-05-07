@@ -38,6 +38,9 @@ class FilterService
             'texture' => fn ($q, $v) => $q->whereHas('texture', fn ($q) => $q->where('slug', $v)),
             'size' => fn ($q, $v) => $q->whereHas('size', fn ($q) => $q->where('title', $v)),
             'weight' => fn ($q, $v) => $q->where('attributes->weight_kg', (float)$v),
+            'glue' => fn ($q, $v) => $q->whereJsonContains('attributes->glue', $v),
+            'mixture_type' => fn ($q, $v) => $q->whereJsonContains('attributes->mixture_type', $v),
+            'seam' => fn ($q, $v) => $q->whereJsonContains('attributes->seam', $v),
         ];
 
         foreach ($filters as $key => $callback) {
@@ -57,6 +60,9 @@ class FilterService
             'sizes' => $this->getFilterValues($query, $request->size, 'App\Models\Size', 'size', 'title'),
             'categories' => $this->getFilterValues($query, $request->category, 'App\Models\Category', 'category'),
             'weights' => $this->getWeightFilterValues($query, $request->weight),
+            'glues' => $this->getAttributeFilterValues($query, 'glue', $request->glue),
+            'mixture_types' => $this->getAttributeFilterValues($query, 'mixture_type', $request->mixture_type),
+            'seams' => $this->getAttributeFilterValues($query, 'seam', $request->seam),
         ];
     }
 
@@ -107,5 +113,22 @@ class FilterService
         }
 
         return $weights;
+    }
+
+    protected function getAttributeFilterValues(Builder $query, string $attribute, $currentValue = null): Collection
+    {
+        $values = $query->clone()
+            ->get()
+            ->pluck("attributes.{$attribute}")
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values();
+
+        if ($currentValue) {
+            return collect([$currentValue])->filter();
+        }
+
+        return $values;
     }
 }
