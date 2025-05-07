@@ -61,7 +61,6 @@
                                     <th>Артикул</th>
                                     <th>Наименование</th>
                                     <th>Код товара</th>
-                                    <th>Коллекция</th>
                                     <th>Категория</th>
                                     <th>Цена</th>
                                     <th>ед.изм</th>
@@ -109,7 +108,7 @@
                                                 'sku' => $product->sku,
                                             ]) }}"
                                                 target="_blank" class="title">
-                                                {{ Str::words($product->title, 5) }}
+                                                {{ Str::words($product->title, 6) }}
                                             </a>
                                         </td>
                                         <td>
@@ -117,13 +116,6 @@
                                                 ---
                                             @else
                                                 {{ $product->product_code }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if (!$product->collection)
-                                                ---
-                                            @else
-                                                {{ $product->collection->title }}
                                             @endif
                                         </td>
                                         <td>
@@ -156,13 +148,17 @@
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
+                                                @elseif ($product->category->title === 'Затирка для плитки')
+                                                    <a href="{{ route('zatirka.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                        target="_blank">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
                                                 @else
                                                     <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
                                                 @endif
-
 
                                                 <button class="btn btn-danger btn-xs btn-xs goods-popover" id="" data-toggle="modal" data-target="#modalDelete" data-product="{{ $product }}"
                                                     data-content="Удалить">

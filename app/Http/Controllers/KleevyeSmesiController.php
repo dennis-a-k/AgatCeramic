@@ -10,7 +10,6 @@ use App\Models\Color;
 use App\Models\Country;
 use App\Models\Image;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class KleevyeSmesiController extends Controller

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateKleyaRequest extends FormRequest
+class UpdateZatirkaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,6 +31,9 @@ class UpdateKleyaRequest extends FormRequest
             'brand_id' => ['nullable', 'numeric'],
             'country_id' => ['nullable', 'numeric'],
             'weight_kg' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
+            'glue' => ['nullable', 'string'],
+            'mixture_type' => ['nullable', 'string'],
+            'seam' => ['nullable', 'string'],
             'imgs' => ['nullable', 'array'],
             'imgs.*' => [
                 'nullable',

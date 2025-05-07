@@ -124,6 +124,8 @@
             </div>
 
             @include('components.admin.goods.kleya.add-kleya')
+            
+            @include('components.admin.goods.zatirka.add-zatirka')
         </div>
     </div>
 @endsection
