@@ -30,6 +30,7 @@ class UpdateKleyaRequest extends FormRequest
             'color_id' => ['nullable', 'numeric'],
             'brand_id' => ['nullable', 'numeric'],
             'country_id' => ['nullable', 'numeric'],
+            'weight_kg' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
             'imgs' => ['nullable', 'array'],
             'imgs.*' => [
                 'nullable',
