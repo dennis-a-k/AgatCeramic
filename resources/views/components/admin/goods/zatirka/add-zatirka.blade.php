@@ -109,8 +109,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectMixture">Ширина шва (мм)</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectMixture" name="seam">
+                                    <label class="text-black-50" for="selectSeam">Ширина шва (мм)</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectSeam" name="seam">
                                         <option selected="selected" disabled>Выберите ширину шва</option>
                                         <option value="1-10" @selected(old('seam'))>1-10 мм</option>
                                         <option value="1-15" @selected(old('seam'))>1-15 мм</option>
