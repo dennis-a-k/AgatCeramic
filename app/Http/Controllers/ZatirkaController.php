@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateZatirkaRequest;
 use App\Http\Requests\ZatirkaRequest;
 use App\Models\Brand;
 use App\Models\Category;
@@ -9,7 +10,6 @@ use App\Models\Color;
 use App\Models\Country;
 use App\Models\Image;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ZatirkaController extends Controller
@@ -70,7 +70,7 @@ class ZatirkaController extends Controller
         $brands = Brand::all();
         $countries = Country::all();
         $currentImageCount = $product->images->count();
-        return view('pages.admin.goods.edit-kleya', compact(
+        return view('pages.admin.goods.edit-zatirka', compact(
             'product',
             'categories',
             'colors',
@@ -80,11 +80,14 @@ class ZatirkaController extends Controller
         ));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateZatirkaRequest $request, string $id)
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
         $data['attributes']['weight_kg'] = $data['weight_kg'];
+        $data['attributes']['glue'] = $data['glue'];
+        $data['attributes']['mixture_type'] = $data['mixture_type'];
+        $data['attributes']['seam'] = $data['seam'];
         $product = Product::find($id);
         $product->fill($data)->save();
         // Обновление порядка существующих изображений
