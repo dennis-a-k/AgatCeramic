@@ -50,9 +50,9 @@ class GoodsController extends Controller
     public function create()
     {
         $excludedCategories = [
-            config('materials.zatirka'),
-            config('materials.kleya'),
-            config('materials.santexnika'),
+            config('categories.zatirka'),
+            config('categories.kleya'),
+            config('categories.santexnika'),
         ];
 
         $categories = Category::whereNotIn('title', $excludedCategories)->get();

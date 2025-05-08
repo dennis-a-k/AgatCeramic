@@ -18,7 +18,7 @@ class ZatirkaController extends Controller
     {
         $validated = $request->validated();
 
-        $categoryName = config('materials.zatirka');
+        $categoryName = config('categories.zatirka');
         $category = Category::where('title', $categoryName)->first();
 
         if (!$category) {
