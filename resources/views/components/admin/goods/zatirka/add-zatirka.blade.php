@@ -2,7 +2,7 @@
     <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false">
         <div class="card-header">
             <h4 class="card-title text-maroon w-100">
-                Затирка для плитки
+                Добавить затирку для плитки
             </h4>
         </div>
     </a>
