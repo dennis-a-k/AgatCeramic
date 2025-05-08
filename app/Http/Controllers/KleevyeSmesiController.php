@@ -18,7 +18,7 @@ class KleevyeSmesiController extends Controller
     {
         $validated = $request->validated();
 
-        $categoryName = config('materials.kleya');
+        $categoryName = config('categories.kleya');
         $category = Category::where('title', $categoryName)->first();
 
         if (!$category) {
