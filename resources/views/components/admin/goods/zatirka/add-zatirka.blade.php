@@ -58,6 +58,15 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <div>
+                                        <label class="text-black-50" for="inputSeam">Ширина шва (мм)</label>
+                                        <input type="text" id="inputSeam" class="form-control {{ $errors->has('seam') ? 'is-invalid' : '' }}" name="seam" value="{{ old('seam') }}"
+                                            autocomplete="seam">
+                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="text-black-50" for="summernote">Описание</label>
                                     <textarea class="form-control" id="summernote" name="description" rows="9">{{ old('description') }}</textarea>
                                 </div>
@@ -87,21 +96,6 @@
                                         <option value="Силиконовая" @selected(old('mixture_type'))>Силиконовая</option>
                                         <option value="Цементная" @selected(old('mixture_type'))>Цементная</option>
                                         <option value="Эпоксидная" @selected(old('mixture_type'))>Эпоксидная</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="text-black-50" for="selectSeam">Ширина шва (мм)</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectSeam" name="seam">
-                                        <option selected="selected" disabled>Выберите ширину шва</option>
-                                        <option value="1-10" @selected(old('seam'))>1-10 мм</option>
-                                        <option value="1-15" @selected(old('seam'))>1-15 мм</option>
-                                        <option value="1-6" @selected(old('seam'))>1-6 мм</option>
-                                        <option value="1-7" @selected(old('seam'))>1-7 мм</option>
-                                        <option value="2-20" @selected(old('seam'))>2-20 мм</option>
-                                        <option value="3-10" @selected(old('seam'))>3-10 мм</option>
-                                        <option value="5-20" @selected(old('seam'))>5-20 мм</option>
-                                        <option value="5-30" @selected(old('seam'))>5-30 мм</option>
                                     </select>
                                 </div>
 
