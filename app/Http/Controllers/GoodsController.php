@@ -49,7 +49,13 @@ class GoodsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $excludedCategories = [
+            config('materials.zatirka'),
+            config('materials.kleya'),
+            config('materials.santexnika'),
+        ];
+
+        $categories = Category::whereNotIn('title', $excludedCategories)->get();
         $sizes = Size::all();
         $patterns = Pattern::all();
         $textures = Texture::all();

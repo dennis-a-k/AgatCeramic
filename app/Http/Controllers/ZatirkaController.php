@@ -18,6 +18,13 @@ class ZatirkaController extends Controller
     {
         $validated = $request->validated();
 
+        $categoryName = config('materials.zatirka');
+        $category = Category::where('title', $categoryName)->first();
+
+        if (!$category) {
+            return back()->with('error', 'Категория не найдена');
+        }
+
         $productData = [
             'sku' => $validated['sku'],
             'title' => $validated['title'],
@@ -25,7 +32,7 @@ class ZatirkaController extends Controller
             'unit' => $validated['unit'],
             'description' => $validated['description'],
             'slug' => Str::slug($validated['title']),
-            'category_id' => $validated['category_id'],
+            'category_id' => $category->id,
             'color_id' => $validated['color_id'],
             'brand_id' => $validated['brand_id'],
             'country_id' => $validated['country_id'],
