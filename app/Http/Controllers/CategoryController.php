@@ -16,34 +16,6 @@ class CategoryController extends Controller
         private SessionService $sessionService
     ) {}
 
-    public function index()
-    {
-        $categories = Category::query()->orderBy('title', 'ASC')->get();
-        return view('pages.admin.categories', ['categories' => $categories]);
-    }
-
-    public function store(CategoryRequest $request)
-    {
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
-        Category::create($data);
-        return back()->with('status', 'category-created');
-    }
-
-    public function update(CategoryRequest $request)
-    {
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
-        Category::where('id', $request->id)->update($data);
-        return back()->with('status', 'category-updated');
-    }
-
-    public function destroy(Request $request)
-    {
-        Category::find($request->id)->delete();
-        return back();
-    }
-
     public function filterProducts(string $categorySlug, Request $request)
     {
         $this->sessionService->applyFilter($request, 'category');
