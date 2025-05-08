@@ -79,6 +79,7 @@ class GoodsController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
+        $data['sku'] = Product::generateSku($data['category_id']);
         $product = Product::create($data);
         if ($request->hasFile('imgs')) {
             foreach ($request->file('imgs') as $index => $img) {

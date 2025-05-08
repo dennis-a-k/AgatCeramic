@@ -7,15 +7,6 @@
         <div class="card-body bg-light">
             <div class="form-group">
                 <div>
-                    <label class="text-black-50" for="inputArticle">Артикул <small class="text-red">(обязательно)</small></label>
-                    <input type="text" id="inputArticle" class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="sku" value="{{ old('sku') }}" required autofocus
-                        autocomplete="sku">
-                    {{-- <x-input-error class="ml-2" :messages="$errors->get('sku')" /> --}}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div>
                     <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
                     <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autocomplete="title">
                     {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}

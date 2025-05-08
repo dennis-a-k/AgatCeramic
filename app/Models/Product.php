@@ -34,6 +34,13 @@ class Product extends Model
         'attributes' => 'array',
     ];
 
+    public static function generateSku($categoryId)
+    {
+        $lastProduct = self::orderBy('id', 'desc')->first();
+        $lastId = $lastProduct ? $lastProduct->id : 0;
+        return $categoryId . str_pad($lastId + 1, 4, '0', STR_PAD_LEFT);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

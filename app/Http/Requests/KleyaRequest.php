@@ -22,7 +22,6 @@ class KleyaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sku' => ['required', 'alpha_num', 'unique:products,sku', 'max:8'],
             'title' => ['required', 'string', 'max:255'],
             'price' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
             'unit' => ['required', 'string'],

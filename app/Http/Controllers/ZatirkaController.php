@@ -26,7 +26,7 @@ class ZatirkaController extends Controller
         }
 
         $productData = [
-            'sku' => $validated['sku'],
+            'sku' => Product::generateSku($category->id),
             'title' => $validated['title'],
             'price' => $validated['price'],
             'unit' => $validated['unit'],
