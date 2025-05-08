@@ -58,7 +58,8 @@
                                     array_merge(request()->query(), [
                                         'weight' => $weight,
                                     ]),
-                                ) }}" class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $weight }}
                                 </a>
                             </li>
@@ -102,7 +103,8 @@
                                     array_merge(request()->query(), [
                                         'glue' => $glue,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $glue }}
                                 </a>
                             </li>
@@ -119,12 +121,13 @@
                     <ul>
                         @foreach ($mixture_types as $type)
                             <li>
-                                <a href="{{ route(
-                                    'sale.filter',
-                                    array_merge(request()->query(), [
-                                        'mixture_type' => $type,
-                                    ]),
-                                ) }}">
+                                <a
+                                    href="{{ route(
+                                        'sale.filter',
+                                        array_merge(request()->query(), [
+                                            'mixture_type' => $type,
+                                        ]),
+                                    ) }}">
                                     {{ $type }}
                                 </a>
                             </li>
@@ -146,7 +149,8 @@
                                     array_merge(request()->query(), [
                                         'seam' => $seam,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $seam }}
                                 </a>
                             </li>
@@ -209,12 +213,13 @@
                     <ul>
                         @foreach ($brands->take(5) as $brand)
                             <li>
-                                <a href="{{ route(
-                                    'sale.filter',
-                                    array_merge(request()->query(), [
-                                        'brand' => $brand->slug,
-                                    ]),
-                                ) }}">
+                                <a
+                                    href="{{ route(
+                                        'sale.filter',
+                                        array_merge(request()->query(), [
+                                            'brand' => $brand->slug,
+                                        ]),
+                                    ) }}">
                                     {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
@@ -224,12 +229,13 @@
                             <div id="hidden-brands" style="display: none;">
                                 @foreach ($brands->slice(5) as $brand)
                                     <li>
-                                        <a href="{{ route(
-                                            'sale.filter',
-                                            array_merge(request()->query(), [
-                                                'brand' => $brand->slug,
-                                            ]),
-                                        ) }}">
+                                        <a
+                                            href="{{ route(
+                                                'sale.filter',
+                                                array_merge(request()->query(), [
+                                                    'brand' => $brand->slug,
+                                                ]),
+                                            ) }}">
                                             {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                         </a>
                                     </li>

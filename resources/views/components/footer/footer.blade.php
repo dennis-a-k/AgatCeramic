@@ -24,20 +24,20 @@
                                     <ul class="align-items-center">
                                         <li class="li">
                                             <a class="single-link"
-                                                href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
-                                                Керамогранит
+                                                href="{{ $categories->contains('title', config('categories.keramogranit')) ? route('category.list', $categories->firstWhere('title', config('categories.keramogranit'))->slug) : 404 }}">
+                                                {{ config('categories.keramogranit') }}
                                             </a>
                                         </li>
                                         <li class="li">
                                             <a class="single-link"
-                                                href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
-                                                Плитка
+                                                href="{{ $categories->contains('title', config('categories.plitka')) ? route('category.list', $categories->firstWhere('title', config('categories.plitka'))->slug) : 404 }}">
+                                                {{ config('categories.plitka') }}
                                             </a>
                                         </li>
                                         <li class="li">
                                             <a class="single-link"
-                                                href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
-                                                Мозаика
+                                                href="{{ $categories->contains('title', config('categories.mozaika')) ? route('category.list', $categories->firstWhere('title', config('categories.mozaika'))->slug) : 404 }}">
+                                                {{ config('categories.mozaika') }}
                                             </a>
                                         </li>
                                         <li class="li">

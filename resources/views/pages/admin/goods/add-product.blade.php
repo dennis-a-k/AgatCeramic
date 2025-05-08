@@ -28,20 +28,6 @@
 @section('content')
     <div class="row">
         <div class="col-12" id="accordion">
-            {{-- <div class="card card-info card-outline">
-                <a class="d-block w-100" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
-                    <div class="card-header">
-                        <h4 class="card-title text-info w-100">
-                            Обновить базы данных
-                        </h4>
-                    </div>
-                </a>
-                <div id="collapseOne" class="collapse show" data-parent="#accordion" style="">
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </div>
-            </div> --}}
             <div class="card card-success card-outline">
                 <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                     <div class="card-header">
@@ -124,7 +110,7 @@
             </div>
 
             @include('components.admin.goods.kleya.add-kleya')
-            
+
             @include('components.admin.goods.zatirka.add-zatirka')
         </div>
     </div>

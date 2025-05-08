@@ -61,7 +61,8 @@
                                         'weight' => $weight,
                                         'brand' => isset($brand) ? $brand->slug : null,
                                     ]),
-                                ) }}" class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $weight }}
                                 </a>
                             </li>
@@ -107,7 +108,8 @@
                                         'glue' => $glue,
                                         'brand' => isset($brand) ? $brand->slug : null,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $glue }}
                                 </a>
                             </li>
@@ -124,13 +126,14 @@
                     <ul>
                         @foreach ($mixture_types as $type)
                             <li>
-                                <a href="{{ route(
-                                    'filters',
-                                    array_merge(request()->query(), [
-                                        'mixture_type' => $type,
-                                        'brand' => isset($brand) ? $brand->slug : null,
-                                    ]),
-                                ) }}">
+                                <a
+                                    href="{{ route(
+                                        'filters',
+                                        array_merge(request()->query(), [
+                                            'mixture_type' => $type,
+                                            'brand' => isset($brand) ? $brand->slug : null,
+                                        ]),
+                                    ) }}">
                                     {{ $type }}
                                 </a>
                             </li>
@@ -153,7 +156,8 @@
                                         'seam' => $seam,
                                         'brand' => isset($brand) ? $brand->slug : null,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $seam }}
                                 </a>
                             </li>

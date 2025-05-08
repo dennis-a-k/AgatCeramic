@@ -37,7 +37,8 @@
                                         'weight' => $weight,
                                         'category' => isset($category) ? $category->slug : null,
                                     ]),
-                                ) }}" class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $weight }}
                                 </a>
                             </li>
@@ -83,7 +84,8 @@
                                         'glue' => $glue,
                                         'category' => isset($category) ? $category->slug : null,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $glue }}
                                 </a>
                             </li>
@@ -100,13 +102,14 @@
                     <ul>
                         @foreach ($mixture_types as $type)
                             <li>
-                                <a href="{{ route(
-                                    'filter',
-                                    array_merge(request()->query(), [
-                                        'mixture_type' => $type,
-                                        'category' => isset($category) ? $category->slug : null,
-                                    ]),
-                                ) }}">
+                                <a
+                                    href="{{ route(
+                                        'filter',
+                                        array_merge(request()->query(), [
+                                            'mixture_type' => $type,
+                                            'category' => isset($category) ? $category->slug : null,
+                                        ]),
+                                    ) }}">
                                     {{ $type }}
                                 </a>
                             </li>
@@ -129,7 +132,8 @@
                                         'seam' => $seam,
                                         'category' => isset($category) ? $category->slug : null,
                                     ]),
-                                ) }}"  class="text-white">
+                                ) }}"
+                                    class="text-white">
                                     {{ $seam }}
                                 </a>
                             </li>
@@ -194,13 +198,14 @@
                     <ul id="brands-list">
                         @foreach ($brands->take(5) as $brand)
                             <li>
-                                <a href="{{ route(
-                                    'filter',
-                                    array_merge(request()->query(), [
-                                        'brand' => $brand->slug,
-                                        'category' => isset($category) ? $category->slug : null,
-                                    ]),
-                                ) }}">
+                                <a
+                                    href="{{ route(
+                                        'filter',
+                                        array_merge(request()->query(), [
+                                            'brand' => $brand->slug,
+                                            'category' => isset($category) ? $category->slug : null,
+                                        ]),
+                                    ) }}">
                                     {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                 </a>
                             </li>
@@ -210,13 +215,14 @@
                             <div id="hidden-brands" style="display: none;">
                                 @foreach ($brands->slice(5) as $brand)
                                     <li>
-                                        <a href="{{ route(
-                                            'filter',
-                                            array_merge(request()->query(), [
-                                                'brand' => $brand->slug,
-                                                'category' => isset($category) ? $category->slug : null,
-                                            ]),
-                                        ) }}">
+                                        <a
+                                            href="{{ route(
+                                                'filter',
+                                                array_merge(request()->query(), [
+                                                    'brand' => $brand->slug,
+                                                    'category' => isset($category) ? $category->slug : null,
+                                                ]),
+                                            ) }}">
                                             {{ mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($brand->title, 1, null, 'UTF-8') }}
                                         </a>
                                     </li>
