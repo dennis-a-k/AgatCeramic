@@ -66,12 +66,6 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('categories.list') }}" class="nav-link">
-                                <i class="fas fa-genderless nav-icon"></i>
-                                <p>Категория</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('sizes.list') }}" class="nav-link">
                                 <i class="fas fa-genderless nav-icon"></i>
                                 <p>Размер</p>
