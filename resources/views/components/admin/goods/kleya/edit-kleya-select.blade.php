@@ -5,8 +5,8 @@
 
     <div class="card-body bg-light">
         <div class="form-group">
-            <label class="text-black-50" for="selectCategories">Категория</label>
-            <select class="form-control select2" style="width: 100%;" id="selectCategories" name="category_id">
+            <label class="text-black-50" for="selectCategoriesGlue">Категория</label>
+            <select class="form-control select2" style="width: 100%;" id="selectCategoriesGlue" name="category_id">
                 <option selected="selected" disabled>Выберете категорию</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>{{ $category->title }}</option>
@@ -15,8 +15,8 @@
         </div>
 
         <div class="form-group">
-            <label class="text-black-50" for="selectColors">Цвет</label>
-            <select class="form-control select2" style="width: 100%;" id="selectColors" name="color_id">
+            <label class="text-black-50" for="selectColorsGlue">Цвет</label>
+            <select class="form-control select2" style="width: 100%;" id="selectColorsGlue" name="color_id">
                 <option selected="selected" disabled>Выберете цвет</option>
                 @foreach ($colors as $color)
                     <option value="{{ $color->id }}" @selected(old('color_id', $product->color_id) == $color->id)>{{ $color->title }}</option>
@@ -25,8 +25,8 @@
         </div>
 
         <div class="form-group">
-            <label class="text-black-50" for="selectBrands">Производитель</label>
-            <select class="form-control select2" style="width: 100%;" id="selectBrands" name="brand_id">
+            <label class="text-black-50" for="selectBrandsGlue">Производитель</label>
+            <select class="form-control select2" style="width: 100%;" id="selectBrandsGlue" name="brand_id">
                 <option selected="selected" disabled>Выберете производителя</option>
                 @foreach ($brands as $brand)
                     <option value="{{ $brand->id }}" @selected(old('brand_id', $product->brand_id) == $brand->id)>{{ $brand->title }}</option>
@@ -35,8 +35,8 @@
         </div>
 
         <div class="form-group">
-            <label class="text-black-50" for="selectCountry">Страна</label>
-            <select class="form-control select2" style="width: 100%;" id="selectCountry" name="country_id">
+            <label class="text-black-50" for="selectCountryGlue">Страна</label>
+            <select class="form-control select2" style="width: 100%;" id="selectCountryGlue" name="country_id">
                 <option selected="selected" disabled>Выберете страну</option>
                 @foreach ($countries as $country)
                     <option value="{{ $country->id }}" @selected(old('country_id', $product->country_id) == $country->id)>{{ $country->name }}</option>
@@ -44,5 +44,4 @@
             </select>
         </div>
     </div>
-    </div>
-
+</div>
