@@ -49,6 +49,19 @@
             </x-banner.single-banner>
 
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
+                <x-slot name="img" src="assets/images/banner/zatirka.jpg" alt="zatirka"></x-slot>
+
+                <x-slot name="title" class="nth-child-2">
+                    Затирка для керамической плитки
+                </x-slot>
+
+                <x-slot name="category"></x-slot>
+
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', config('categories.zatirka')) ? route('category.list', $categories->firstWhere('title', config('categories.zatirka'))->slug) : 404 }}"></x-slot>
+            </x-banner.single-banner>
+            {{--
+            <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
                 <x-slot name="img" src="assets/images/banner/santekhnika.jpeg" alt="santekhnika"></x-slot>
 
                 <x-slot name="title" class="nth-child-2">
@@ -59,7 +72,7 @@
 
                 <x-slot name="url"
                     href="{{ $categories->contains('title', config('categories.santexnika')) ? route('category.list', $categories->firstWhere('title', config('categories.santexnika'))->slug) : 404 }}"></x-slot>
-            </x-banner.single-banner>
+            </x-banner.single-banner> --}}
         </div>
     </div>
 </section>
