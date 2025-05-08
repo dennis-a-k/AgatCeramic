@@ -52,6 +52,8 @@ return new class extends Migration
             $table->dropColumn('subtitle');
         });
 
+        Schema::disableForeignKeyConstraints();
         DB::table('categories')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 };
