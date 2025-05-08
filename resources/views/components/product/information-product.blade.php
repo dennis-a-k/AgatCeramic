@@ -22,7 +22,7 @@
     @if ($product->brand)
         <span>Производитель: </span>
         <ul class="d-flex">
-            <li><a href="">{{ $product->brand->title }}</a></li>
+            <li><a href="{{ route('brand.list', $product->brand->slug) }}">{{ $product->brand->title }}</a></li>
         </ul>
     @endif
 </div>
@@ -31,7 +31,7 @@
     @if ($product->collection)
         <span>Коллекция: </span>
         <ul class="d-flex">
-            <li><a href="">{{ $product->collection->title }}</a></li>
+            <li>{{ $product->collection->title }}</li>
         </ul>
     @endif
 </div>

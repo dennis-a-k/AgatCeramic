@@ -13,8 +13,17 @@
                     @if ($product->size)
                         <li><span>Размер:</span></li>
                     @endif
-                    @if ($product->weight_kg)
+                    @if (isset($product->attributes['weight_kg']))
                         <li><span>Вес:</span></li>
+                    @endif
+                    @if (isset($product->attributes['glue']))
+                        <li><span>Используется в качстве клея:</span></li>
+                    @endif
+                    @if (isset($product->attributes['mixture_type']))
+                        <li><span>Тип смеси:</span></li>
+                    @endif
+                    @if (isset($product->attributes['seam']))
+                        <li><span>Ширина шва:</span></li>
                     @endif
                     @if ($product->color)
                         <li><span>Цвет:</span></li>
@@ -40,16 +49,25 @@
                 <ul>
                     @if ($product->category)
                         <li>
-                            <a href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : '#' }}">
-                                {{ $product->category->title === 'Клей' ? 'Клеевые смеси' : $product->category->title }}
+                            <a href="{{ $product->category?->slug ? route('category.list', $product->category->slug) : 404 }}">
+                                {{ $product->category->title }}
                             </a>
                         </li>
                     @endif
                     @if ($product->size)
                         <li>{{ $product->size->title }}</li>
                     @endif
-                    @if ($product->weight_kg)
-                        <li>{{ $product->weight_kg }} кг</li>
+                    @if (isset($product->attributes['weight_kg']))
+                        <li>{{ $product->attributes['weight_kg'] }} кг</li>
+                    @endif
+                    @if (isset($product->attributes['glue']))
+                        <li>{{ $product->attributes['glue'] }}</li>
+                    @endif
+                    @if (isset($product->attributes['mixture_type']))
+                        <li>{{ $product->attributes['mixture_type'] }}</li>
+                    @endif
+                    @if (isset($product->attributes['seam']))
+                        <li>{{ $product->attributes['seam'] }} мм</li>
                     @endif
                     @if ($product->color)
                         <li>{{ $product->color->title }}</li>
