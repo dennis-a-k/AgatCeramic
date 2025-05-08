@@ -13,7 +13,8 @@
                     производителей
                 </x-slot>
 
-                <x-slot name="url" href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', config('categories.keramogranit')) ? route('category.list', $categories->firstWhere('title', config('categories.keramogranit'))->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
 
@@ -26,7 +27,8 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', config('categories.plitka')) ? route('category.list', $categories->firstWhere('title', config('categories.plitka'))->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
         </div>
@@ -41,7 +43,8 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', config('categories.mozaika')) ? route('category.list', $categories->firstWhere('title', config('categories.mozaika'))->slug) : 404 }}">
                 </x-slot>
             </x-banner.single-banner>
 
@@ -54,7 +57,8 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url" href="{{ route('santekhnika.list') }}"></x-slot>
+                <x-slot name="url"
+                    href="{{ $categories->contains('title', config('categories.santexnika')) ? route('category.list', $categories->firstWhere('title', config('categories.santexnika'))->slug) : 404 }}"></x-slot>
             </x-banner.single-banner>
         </div>
     </div>

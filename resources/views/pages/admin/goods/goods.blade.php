@@ -143,13 +143,18 @@
                                         </td>
                                         <td>
                                             <div class="btn-group btn-group-xs">
-                                                @if ($product->category->title === 'Клеевые смеси')
+                                                @if ($product->category->title === config('categories.kleya'))
                                                     <a href="{{ route('kleya.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
-                                                @elseif ($product->category->title === 'Затирка для плитки')
+                                                @elseif ($product->category->title === config('categories.zatirka'))
                                                     <a href="{{ route('zatirka.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                        target="_blank">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                @elseif ($product->category->title === config('categories.santexnika'))
+                                                    <a href="{{ route('santexnika.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>

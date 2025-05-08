@@ -28,7 +28,8 @@
                                                 'category' => $product['category_slug'] ?? '',
                                                 'slug' => $product['slug'] ?? '',
                                                 'sku' => $product['sku'],
-                                            ])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']" :weight_kg="$product['weight_kg'] ?? null" :category="$product['category']" />
+                                            ])" :title="$product['title']" :price="$product['price']" :quantity="$product['quantity']" :unit="$product['unit']"
+                                                :weight_kg="$product['weight_kg'] ?? null" :category="$product['category']" />
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -65,7 +66,8 @@
                         <div class="empty-text-contant text-center">
                             <i class="pe-7s-cart"></i>
                             <h3>Ваша корзина пуста</h3>
-                            <a class="empty-cart-btn" href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
+                            <a class="empty-cart-btn"
+                                href="{{ $categories->contains('title', config('categories.keramogranit')) ? route('category.list', $categories->firstWhere('title', config('categories.keramogranit'))->slug) : 404 }}">
                                 <i class="fa fa-arrow-left"> </i> Перети к покупкам
                             </a>
                         </div>

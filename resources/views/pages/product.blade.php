@@ -46,7 +46,7 @@
                             <ul class="d-flex">
                                 <li class="new-price">
                                     <span class="h1">
-                                       {{ number_format($product->price, 2, '.', ' ') }} &#8381;
+                                        {{ number_format($product->price, 2, '.', ' ') }} &#8381;
                                     </span>
                                 </li>
                             </ul>

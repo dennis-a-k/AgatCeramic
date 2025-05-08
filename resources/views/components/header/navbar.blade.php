@@ -6,28 +6,32 @@
                     <li class="dropdown"><a href="#">Каталог <i class="fa fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li class="dropdown position-static">
-                                <a href="{{ $categories->contains('title', 'Клинкер') ? route('category.list', $categories->firstWhere('title', 'Клинкер')->slug) : 404 }}">
-                                    Клинкер
+                                <a
+                                    href="{{ $categories->contains('title', config('categories.klinker')) ? route('category.list', $categories->firstWhere('title', config('categories.klinker'))->slug) : 404 }}">
+                                    {{ config('categories.klinker') }}
                                 </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ $categories->contains('title', 'Ступени') ? route('category.list', $categories->firstWhere('title', 'Ступени')->slug) : 404 }}">
-                                    Ступени
+                                <a
+                                    href="{{ $categories->contains('title', config('categories.stupeni')) ? route('category.list', $categories->firstWhere('title', config('categories.stupeni'))->slug) : 404 }}">
+                                    {{ config('categories.stupeni') }}
                                 </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ $categories->contains('title', 'Затирка для плитки') ? route('category.list', $categories->firstWhere('title', 'Затирка для плитки')->slug) : 404 }}">
-                                    Затирка для плитки
+                                <a
+                                    href="{{ $categories->contains('title', config('categories.zatirka')) ? route('category.list', $categories->firstWhere('title', config('categories.zatirka'))->slug) : 404 }}">
+                                    {{ config('categories.zatirka') }}
                                 </a>
                             </li>
                             <li class="dropdown position-static">
-                                <a href="{{ $categories->contains('title', 'Клеевые смеси') ? route('category.list', $categories->firstWhere('title', 'Клеевые смеси')->slug) : 404 }}">
-                                    Клеевые смеси
+                                <a
+                                    href="{{ $categories->contains('title', config('categories.kleya')) ? route('category.list', $categories->firstWhere('title', config('categories.kleya'))->slug) : 404 }}">
+                                    {{ config('categories.kleya') }}
                                 </a>
                             </li>
-                            <li class="dropdown position-static">
+                            {{-- <li class="dropdown position-static">
                                 <a href="#">
-                                    Сантехника
+                                    {{ config('categories.santexnika') }}
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                                 <ul class="sub-menu sub-menu-2">
@@ -39,7 +43,7 @@
                                     <li><a href="blog-grid.html">Инсталляции</a></li>
                                     <li><a href="blog-grid.html">Душевые кабины</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
@@ -53,20 +57,23 @@
                     </li>
 
                     <li>
-                        <a href="{{ $categories->contains('title', 'Керамогранит') ? route('category.list', $categories->firstWhere('title', 'Керамогранит')->slug) : 404 }}">
-                            Керамогранит
+                        <a
+                            href="{{ $categories->contains('title', config('categories.keramogranit')) ? route('category.list', $categories->firstWhere('title', config('categories.keramogranit'))->slug) : 404 }}">
+                            {{ config('categories.keramogranit') }}
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ $categories->contains('title', 'Плитка') ? route('category.list', $categories->firstWhere('title', 'Плитка')->slug) : 404 }}">
-                            Плитка
+                        <a
+                            href="{{ $categories->contains('title', config('categories.plitka')) ? route('category.list', $categories->firstWhere('title', config('categories.plitka'))->slug) : 404 }}">
+                            {{ config('categories.plitka') }}
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ $categories->contains('title', 'Мозаика') ? route('category.list', $categories->firstWhere('title', 'Мозаика')->slug) : 404 }}">
-                            Мозаика
+                        <a
+                            href="{{ $categories->contains('title', config('categories.mozaika')) ? route('category.list', $categories->firstWhere('title', config('categories.mozaika'))->slug) : 404 }}">
+                            {{ config('categories.mozaika') }}
                         </a>
                     </li>
 

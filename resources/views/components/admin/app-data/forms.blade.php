@@ -6,7 +6,7 @@
                 <div class="form-group row">
                     <label for="inputPhone" class="col-md-3 col-form-label">Телефон:</label>
                     <div class="col-md-9 input-group">
-                        <input type="text" class="form-control" id="inputPhone" placeholder="Тенлефон компании (указать с +)" name="app_phone"  value="{{ old('app_phone') }}">
+                        <input type="text" class="form-control" id="inputPhone" placeholder="Тенлефон компании (указать с +)" name="app_phone" value="{{ old('app_phone') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-phone"></span>
