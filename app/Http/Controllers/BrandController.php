@@ -101,7 +101,7 @@ class BrandController extends Controller
 
         // Формируем заголовок с первой заглавной буквой
         $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') .
-                mb_substr($brand->title, 1, null, 'UTF-8');
+            mb_substr($brand->title, 1, null, 'UTF-8');
 
         // Создаем базовый запрос
         $query = Product::where('brand_id', $brand->id)

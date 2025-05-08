@@ -167,30 +167,30 @@ class SaleController extends Controller
         $weights = $products->filter(function ($product) {
             return isset($product->attributes['weight_kg']);
         })->pluck('attributes.weight_kg')
-          ->unique()
-          ->sort()
-          ->values();
+            ->unique()
+            ->sort()
+            ->values();
 
         $glues = $products->filter(function ($product) {
             return isset($product->attributes['glue']);
         })->pluck('attributes.glue')
-          ->unique()
-          ->sort()
-          ->values();
+            ->unique()
+            ->sort()
+            ->values();
 
         $mixture_types = $products->filter(function ($product) {
             return isset($product->attributes['mixture_type']);
         })->pluck('attributes.mixture_type')
-          ->unique()
-          ->sort()
-          ->values();
+            ->unique()
+            ->sort()
+            ->values();
 
         $seams = $products->filter(function ($product) {
             return isset($product->attributes['seam']);
         })->pluck('attributes.seam')
-          ->unique()
-          ->sort()
-          ->values();
+            ->unique()
+            ->sort()
+            ->values();
 
         // Если какой-то фильтр уже выбран, оставляем только его значение
         if ($request->has('color')) {
