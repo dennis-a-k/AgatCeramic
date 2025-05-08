@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    {{ $product->category->title }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }} купить в
+    {{ $product->category->subtitle }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }} купить в
 @endsection
 
 @section('seo')
@@ -40,7 +40,7 @@
                             </span>
                         @endif
 
-                        <h1 class="h3">{{ $product->category->title }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }}</h1>
+                        <h1 class="h3">{{ $product->category->subtitle }} {{ $product->title }}{{ $product->weight_kg ? ', ' . $product->weight_kg . ' кг' : '' }}</h1>
 
                         <div class="pricing-meta">
                             <ul class="d-flex">
