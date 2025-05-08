@@ -25,11 +25,13 @@
         <div class="form-group">
             <label class="text-black-50" for="inputWeight_kg">Использовать в качестве клея</label>
             <div class="custom-control custom-radio">
-                <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio3" name="glue" value="да">
+                <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio3" name="glue" value="да"
+                    {{ $product->attributes['glue'] == 'да' ? 'checked' : '' }}>
                 <label for="customRadio3" class="custom-control-label">Да</label>
             </div>
             <div class="custom-control custom-radio">
-                <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio4" name="glue" value="нет" checked>
+                <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio4" name="glue" value="нет"
+                    {{ $product->attributes['glue'] == 'нет' ? 'checked' : '' }}>
                 <label for="customRadio4" class="custom-control-label">Нет</label>
             </div>
         </div>
@@ -40,4 +42,3 @@
         </div>
     </div>
 </div>
-

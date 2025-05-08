@@ -21,8 +21,8 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="text-black-50" for="inputArticle">Артикул <small class="text-red">(обязательно)</small></label>
-                                        <input type="text" id="inputArticle" class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="sku" value="{{ old('sku') }}" required autofocus
-                                            autocomplete="sku">
+                                        <input type="text" id="inputArticle" class="form-control {{ $errors->has('article') ? 'is-invalid' : '' }}" name="sku" value="{{ old('sku') }}"
+                                            required autofocus autocomplete="sku">
                                         {{-- <x-input-error class="ml-2" :messages="$errors->get('sku')" /> --}}
                                     </div>
                                 </div>
@@ -30,7 +30,8 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
-                                        <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autocomplete="title">
+                                        <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required
+                                            autocomplete="title">
                                         {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
                                     </div>
                                 </div>
@@ -38,8 +39,8 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="text-black-50" for="inputPrice">Цена</label>
-                                        <input type="number" id="inputPrice" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price" value="{{ old('price') }}" min="0.00" step="0.01"
-                                            pattern="^\d+(?:\.\d{10,2})?$" autocomplete="price">
+                                        <input type="number" id="inputPrice" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price" value="{{ old('price') }}"
+                                            min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="price">
                                         {{-- <x-input-error class="ml-2" :messages="$errors->get('price')" /> --}}
                                     </div>
                                 </div>
@@ -47,8 +48,8 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="text-black-50" for="inputWeight_kg">Вес (кг)</label>
-                                        <input type="number" id="inputWeight_kg" class="form-control {{ $errors->has('weight_kg') ? 'is-invalid' : '' }}" name="weight_kg" value="{{ old('weight_kg') }}" min="0.00" step="0.01"
-                                            pattern="^\d+(?:\.\d{10,2})?$" autocomplete="weight_kg">
+                                        <input type="number" id="inputWeight_kg" class="form-control {{ $errors->has('weight_kg') ? 'is-invalid' : '' }}" name="weight_kg"
+                                            value="{{ old('weight_kg') }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="weight_kg">
                                         {{-- <x-input-error class="ml-2" :messages="$errors->get('weight_kg')" /> --}}
                                     </div>
                                 </div>
@@ -76,8 +77,8 @@
 
                             <div class="card-body bg-light">
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectCategories">Категория</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectCategories" name="category_id">
+                                    <label class="text-black-50" for="selectCategoriesGlue">Категория</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectCategoriesGlue" name="category_id">
                                         <option selected="selected" disabled>Выберете категорию</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->title }}</option>
@@ -86,8 +87,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectColors">Цвет</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectColors" name="color_id">
+                                    <label class="text-black-50" for="selectColorsGlue">Цвет</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectColorsGlue" name="color_id">
                                         <option selected="selected" disabled>Выберете цвет</option>
                                         @foreach ($colors as $color)
                                             <option value="{{ $color->id }}" @selected(old('color_id') == $color->id)>{{ $color->title }}</option>
@@ -96,8 +97,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectBrands">Производитель</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectBrands" name="brand_id">
+                                    <label class="text-black-50" for="selectBrandsGlue">Производитель</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectBrandsGlue" name="brand_id">
                                         <option selected="selected" disabled>Выберете производителя</option>
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->id }}" @selected(old('brand_id') == $brand->id)>{{ $brand->title }}</option>
@@ -106,8 +107,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectCountry">Страна</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectCountry" name="country_id">
+                                    <label class="text-black-50" for="selectCountryGlue">Страна</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectCountryGlue" name="country_id">
                                         <option selected="selected" disabled>Выберете страну</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}" @selected(old('country_id') == $country->id)>{{ $country->name }}</option>
