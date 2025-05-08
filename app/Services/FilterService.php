@@ -31,16 +31,16 @@ class FilterService
     public function applyActiveFilters(Builder $query, Request $request): void
     {
         $filters = [
-            'category' => fn ($q, $v) => $q->whereHas('category', fn ($q) => $q->where('slug', $v)),
-            'brand' => fn ($q, $v) => $q->whereHas('brand', fn ($q) => $q->where('slug', $v)),
-            'pattern' => fn ($q, $v) => $q->whereHas('pattern', fn ($q) => $q->where('slug', $v)),
-            'color' => fn ($q, $v) => $q->whereHas('color', fn ($q) => $q->where('slug', $v)),
-            'texture' => fn ($q, $v) => $q->whereHas('texture', fn ($q) => $q->where('slug', $v)),
-            'size' => fn ($q, $v) => $q->whereHas('size', fn ($q) => $q->where('title', $v)),
-            'weight' => fn ($q, $v) => $q->where('attributes->weight_kg', (float)$v),
-            'glue' => fn ($q, $v) => $q->whereJsonContains('attributes->glue', $v),
-            'mixture_type' => fn ($q, $v) => $q->whereJsonContains('attributes->mixture_type', $v),
-            'seam' => fn ($q, $v) => $q->whereJsonContains('attributes->seam', $v),
+            'category' => fn($q, $v) => $q->whereHas('category', fn($q) => $q->where('slug', $v)),
+            'brand' => fn($q, $v) => $q->whereHas('brand', fn($q) => $q->where('slug', $v)),
+            'pattern' => fn($q, $v) => $q->whereHas('pattern', fn($q) => $q->where('slug', $v)),
+            'color' => fn($q, $v) => $q->whereHas('color', fn($q) => $q->where('slug', $v)),
+            'texture' => fn($q, $v) => $q->whereHas('texture', fn($q) => $q->where('slug', $v)),
+            'size' => fn($q, $v) => $q->whereHas('size', fn($q) => $q->where('title', $v)),
+            'weight' => fn($q, $v) => $q->where('attributes->weight_kg', (float)$v),
+            'glue' => fn($q, $v) => $q->whereJsonContains('attributes->glue', $v),
+            'mixture_type' => fn($q, $v) => $q->whereJsonContains('attributes->mixture_type', $v),
+            'seam' => fn($q, $v) => $q->whereJsonContains('attributes->seam', $v),
         ];
 
         foreach ($filters as $key => $callback) {
@@ -101,7 +101,7 @@ class FilterService
         $weights = $query->clone()
             ->get()
             ->pluck('attributes.weight_kg')
-            ->filter(function($value) {
+            ->filter(function ($value) {
                 return !is_null($value) && $value !== '';
             })
             ->unique()
