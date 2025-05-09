@@ -33,14 +33,14 @@
                     <table class="table table-hover table-sm">
                         @if (empty($santexnika))
                             <thead>
-                                <h5 class="text-info text-center mt-2">Категории "Сантехника" не существует</h5>
+                                <h5 class="text-info text-center mt-2">Категория "Сантехника" не существует</h5>
                             </thead>
                         @elseif (!isset($categories->children[0]))
                             <div class="card-header">
                                 @include('components.admin.category.add-category-modal')
                             </div>
                             <thead>
-                                <h5 class="text-info text-center mt-2">Категория не созданы</h5>
+                                <h5 class="text-info text-center mt-2">Категории не созданы</h5>
                             </thead>
                         @else
                             <div class="card-header">
