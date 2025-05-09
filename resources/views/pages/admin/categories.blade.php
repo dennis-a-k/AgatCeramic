@@ -35,7 +35,7 @@
                             <thead>
                                 <h5 class="text-info text-center mt-2">Категория "Сантехника" не существует</h5>
                             </thead>
-                        @elseif (!isset($categories->children))
+                        @elseif (!isset($categories->children[0]))
                             <div class="card-header">
                                 @include('components.admin.category.add-category-modal')
                             </div>
