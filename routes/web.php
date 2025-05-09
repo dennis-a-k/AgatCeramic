@@ -16,6 +16,7 @@ require __DIR__ . '/sale.php';
 require __DIR__ . '/call.php';
 
 require __DIR__ . '/admin/goods.php';
+require __DIR__ . '/admin/categories.php';
 require __DIR__ . '/admin/kleya.php';
 require __DIR__ . '/admin/zatirka.php';
 require __DIR__ . '/admin/sizes.php';

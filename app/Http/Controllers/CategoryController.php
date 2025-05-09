@@ -16,6 +16,42 @@ class CategoryController extends Controller
         private SessionService $sessionService
     ) {}
 
+    public function index()
+    {
+        $santexnika = Category::where('title', config('categories.santexnika'))->first() ?? '';
+        $categories = !empty($santexnika) ? Category::with('children.children')->where('id', $santexnika->id)->firstOrFail() : '';
+        return view('pages.admin.categories', ['categories' => $categories, 'santexnika' => $santexnika]);
+    }
+
+    public function store(CategoryRequest $request)
+    {
+        $request->validated();
+        Category::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'parent_id' => $request->parent_id,
+            'subtitle' => $request->title,
+        ]);
+        return back()->with('status', 'category-created');
+    }
+
+    public function update(CategoryRequest $request)
+    {
+        $request->validated();
+        Category::where('id', $request->id)->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'subtitle' => $request->title,
+        ]);
+        return back()->with('status', 'category-updated');
+    }
+
+    public function destroy(Request $request)
+    {
+        Category::find($request->id)->delete();
+        return back();
+    }
+
     public function filterProducts(string $categorySlug, Request $request)
     {
         $this->sessionService->applyFilter($request, 'category');
