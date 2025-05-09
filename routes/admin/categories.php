@@ -7,7 +7,7 @@ Route::group([
     'prefix' => '/admin-panel/categories',
     'middleware' => ['auth', 'verified'],
 ], function () {
-    Route::get('/', [CategoryController::class, 'index'])->name('category.list');
+    Route::get('/', [CategoryController::class, 'index'])->name('categories.list');
     Route::post('/create', [CategoryController::class, 'store'])->name('category.store');
     Route::patch('/', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/', [CategoryController::class, 'destroy'])->name('category.destroy');

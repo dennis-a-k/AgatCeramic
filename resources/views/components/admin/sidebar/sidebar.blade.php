@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('category.list') }}" class="nav-link">
+                            <a href="{{ route('categories.list') }}" class="nav-link">
                                 <i class="fas fa-genderless nav-icon"></i>
                                 <p>Сантехника</p>
                             </a>
