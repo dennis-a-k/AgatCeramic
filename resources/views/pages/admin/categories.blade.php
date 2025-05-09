@@ -40,7 +40,7 @@
                                 @include('components.admin.category.add-category-modal')
                             </div>
                             <thead>
-                                <h5 class="text-info text-center mt-2">Категория не созданы {{ $categories->children }}</h5>
+                                <h5 class="text-info text-center mt-2">Категория не созданы</h5>
                             </thead>
                         @else
                             <div class="card-header">
