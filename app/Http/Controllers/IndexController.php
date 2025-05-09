@@ -14,13 +14,13 @@ class IndexController extends Controller
             ->where('img', '!=', '')
             ->get();
 
-        $categoryIds = Category::whereIn('slug', ['keramogranit', 'plitka', 'mozaika'])
-            ->pluck('id', 'slug')
+        $categoryIds = Category::whereIn('title', [config('categories.keramogranit'), config('categories.plitka'), config('categories.mozaika')])
+            ->pluck('id', 'title')
             ->toArray();
 
-        $keramogranit = Product::where('category_id', $categoryIds['keramogranit'])->inRandomOrder()->limit(8)->get();
-        $plitka = Product::where('category_id', $categoryIds['plitka'])->inRandomOrder()->limit(8)->get();
-        $mozaika = Product::where('category_id', $categoryIds['mozaika'])->inRandomOrder()->limit(8)->get();
+        $keramogranit = Product::where('category_id', $categoryIds[config('categories.keramogranit')])->inRandomOrder()->limit(8)->get();
+        $plitka = Product::where('category_id', $categoryIds[config('categories.plitka')])->inRandomOrder()->limit(8)->get();
+        $mozaika = Product::where('category_id', $categoryIds[config('categories.mozaika')])->inRandomOrder()->limit(8)->get();
 
         $products = [
             'keramogranit' => $keramogranit,
