@@ -33,7 +33,7 @@
                     <table class="table table-hover table-sm">
                         @if (empty($santexnika))
                             <thead>
-                                <h5 class="text-info text-center mt-2">Категория "Сантехника" не существует</h5>
+                                <h5 class="text-info text-center mt-2">Категории "Сантехника" не существует</h5>
                             </thead>
                         @elseif (!isset($categories->children[0]))
                             <div class="card-header">
