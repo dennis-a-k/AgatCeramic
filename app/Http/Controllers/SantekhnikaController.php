@@ -6,6 +6,6 @@ class SantekhnikaController extends Controller
 {
     public function index()
     {
-        return view('pages.goods', ['title' => 'Сантехника']);
+        return view('pages.plumbing', ['title' => config('categories.santexnika')]);
     }
 }

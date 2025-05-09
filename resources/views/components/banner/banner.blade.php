@@ -60,7 +60,7 @@
                 <x-slot name="url"
                     href="{{ $categories->contains('title', config('categories.zatirka')) ? route('category.list', $categories->firstWhere('title', config('categories.zatirka'))->slug) : 404 }}"></x-slot>
             </x-banner.single-banner>
-            {{--
+
             <x-banner.single-banner class="nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
                 <x-slot name="img" src="assets/images/banner/santekhnika.jpeg" alt="santekhnika"></x-slot>
 
@@ -70,9 +70,8 @@
 
                 <x-slot name="category"></x-slot>
 
-                <x-slot name="url"
-                    href="{{ $categories->contains('title', config('categories.santexnika')) ? route('category.list', $categories->firstWhere('title', config('categories.santexnika'))->slug) : 404 }}"></x-slot>
-            </x-banner.single-banner> --}}
+                <x-slot name="url" href="{{ route('plumbing.list') }}"></x-slot>
+            </x-banner.single-banner>
         </div>
     </div>
 </section>

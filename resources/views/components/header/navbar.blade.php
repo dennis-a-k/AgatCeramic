@@ -29,21 +29,17 @@
                                     {{ config('categories.kleya') }}
                                 </a>
                             </li>
-                            {{-- <li class="dropdown position-static">
+                            <li class="dropdown position-static">
                                 <a href="#">
                                     {{ config('categories.santexnika') }}
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                                 <ul class="sub-menu sub-menu-2">
-                                    <li><a href="blog-grid.html">Ванны</a></li>
-                                    <li><a href="blog-grid.html">Унитазы</a></li>
-                                    <li><a href="blog-grid.html">Раковины</a></li>
-                                    <li><a href="blog-grid.html">Кухонные мойки</a></li>
-                                    <li><a href="blog-grid.html">Смесители</a></li>
-                                    <li><a href="blog-grid.html">Инсталляции</a></li>
-                                    <li><a href="blog-grid.html">Душевые кабины</a></li>
+                                    @foreach ($plumbing->children->sortBy('title') as $item)
+                                        <li><a href="blog-grid.html">{{ $item->title }}</a></li>
+                                    @endforeach
                                 </ul>
-                            </li> --}}
+                            </li>
                         </ul>
                     </li>
 
