@@ -55,4 +55,13 @@ class CategoryRequest extends FormRequest
             back()->withErrors($validator)->withInput()
         );
     }
+
+    protected function prepareForValidation()
+    {
+        if (empty($this->subtitle)) {
+            $this->merge([
+                'subtitle' => $this->title
+            ]);
+        }
+    }
 }
