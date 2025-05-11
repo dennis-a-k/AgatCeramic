@@ -14,6 +14,7 @@ class Category extends Model
         'slug',
         'parent_id',
         'subtitle',
+        'img',
     ];
 
     public function getAllChildren()

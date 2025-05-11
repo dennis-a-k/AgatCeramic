@@ -25,7 +25,7 @@ class BrandController extends Controller
                 $query->where('title', 'LIKE', "%{$search}%");
             })
             ->orderBy('title', 'ASC')
-            ->paginate(25);
+            ->paginate(30);
 
         return view('pages.admin.brands', [
             'brands' => $brands,

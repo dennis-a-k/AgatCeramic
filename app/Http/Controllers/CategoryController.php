@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Services\FilterService;
 use App\Services\SessionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -25,24 +26,21 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $request->validated();
-        Category::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'parent_id' => $request->parent_id,
-            'subtitle' => $request->title,
-        ]);
+        $category = new Category($request->validated());
+        $this->handleImageUpload($category, $request);
+        $category['slug'] = Str::slug($category['title']);
+        $category['parent_id'] =  $request->parent_id;
+        $category->save();
         return back()->with('status', 'category-created');
     }
 
     public function update(CategoryRequest $request)
     {
-        $request->validated();
-        Category::where('id', $request->id)->update([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'subtitle' => $request->title,
-        ]);
+        $category = Category::findOrFail($request->id);
+        $category['slug'] = Str::slug($category['title']);
+        $category->fill($request->validated());
+        $this->handleImageUpload($category, $request, true);
+        $category->save();
         return back()->with('status', 'category-updated');
     }
 
@@ -50,6 +48,27 @@ class CategoryController extends Controller
     {
         Category::find($request->id)->delete();
         return back();
+    }
+
+    private function handleImageUpload(Category $category, CategoryRequest $request, bool $isUpdate = false)
+    {
+        if ($request->hasFile('img')) {
+            if ($isUpdate && $category->img) {
+                $this->deleteImage($category);
+            }
+            $slug = Str::slug($category->title);
+            $extension = $request->file('img')->getClientOriginalExtension();
+            $fileName = "{$slug}_plumbing.{$extension}";
+            $request->file('img')->storeAs('public/plumbing', $fileName);
+            $category->img = $fileName;
+        }
+    }
+
+    private function deleteImage(Category $category)
+    {
+        if ($category->img) {
+            Storage::disk('public')->delete('plumbing/' . $category->img);
+        }
     }
 
     public function filterProducts(string $categorySlug, Request $request)

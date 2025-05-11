@@ -10,6 +10,40 @@
             font-size: 80%;
             color: #dc3545;
         }
+
+        #imageModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        #fullSizeImage {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: 5vh auto;
+            display: block;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .clickable-image {
+            cursor: pointer;
+        }
     </style>
 @endsection
 
@@ -50,20 +84,29 @@
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th style="width: auto">Категория</th>
+                                    <th style="width: auto">Фото</th>
                                     <th style="width: 40px"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($categories->children as $key => $category)
                                     <tr data-widget="expandable-table" aria-expanded="false">
-                                        <td>{{ $key + 1 }}.</td>
-                                        <td>
+                                        <td class="align-middle">{{ $key + 1 }}.</td>
+                                        <td class="align-middle">
                                             {{ $category->title }}
                                             @if (isset($category->children[0]))
                                                 <i class="expandable-table-caret fas fa-caret-right fa-fw"></i>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="align-middle">
+                                            @if (!$category->img)
+                                                ---
+                                            @else
+                                                <img src="{{ URL::asset('storage/plumbing/' . $category->img) }}" class="clickable-image" alt="{{ $category->title }}" height="35px">
+                                            @endif
+
+                                        </td>
+                                        <td class="align-middle">
                                             <div class="btn-group btn-group-xs">
                                                 @include('components.admin.category.edit-category-modal')
 
@@ -76,7 +119,7 @@
                                         </td>
                                     </tr>
                                     <tr class="expandable-body d-none">
-                                        <td style="width: auto" colspan="3">
+                                        <td style="width: auto" colspan="4">
                                             <div class="p-0" style="display: none;">
                                                 <table class="table table-hover m-0">
                                                     <tbody>
@@ -84,6 +127,7 @@
                                                             <tr>
                                                                 <td style="width: 10px">{{ $key + 1 }}.{{ $k + 1 }}</td>
                                                                 <td style="width: auto">{{ $child->title }}</td>
+                                                                <td></td>
                                                                 <td style="width: 40px">
                                                                     <div class="btn-group btn-group-xs">
                                                                         @include('components.admin.category.edit-category-modal', ['category' => $child, 'level' => 0])
@@ -113,6 +157,11 @@
 
         @include('components.admin.category.select-category')
     </div>
+
+    <div id="imageModal">
+        <span class="close-modal">&times;</span>
+        <img id="fullSizeImage" src="" class="img-fluid">
+    </div>
 @endsection
 
 @section('js')
@@ -137,6 +186,7 @@
 
             const modal = $(this);
             modal.find('.modal-title').attr('value', category['title']);
+            modal.find('.modal-subtitle').attr('value', category['subtitle']);
             modal.find('.modal-id').attr('value', category['id']);
         })
 
@@ -148,5 +198,25 @@
             modal.find('.modal-text').text('Удалить «' + category['title'] + '»?')
             modal.find('.modal-id').attr('value', category['id']);
         })
+
+        document.querySelectorAll('.clickable-image').forEach(img => {
+            img.addEventListener('click', function() {
+                document.getElementById('fullSizeImage').src = this.src;
+                document.getElementById('imageModal').style.display = 'block';
+                document.body.classList.add('modal-open');
+            });
+        });
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        });
+
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
     </script>
 @endsection
