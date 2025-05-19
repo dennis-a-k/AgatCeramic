@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Traits\SortableProducts;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -130,5 +131,24 @@ class FilterService
         }
 
         return $values;
+    }
+
+    public function getNestedCategoryIds(Category $category): array
+    {
+        $ids = [$category->id];
+
+        foreach ($category->children as $child) {
+            $ids = array_merge($ids, $this->getNestedCategoryIds($child));
+        }
+
+        return $ids;
+    }
+
+    public function applyCategoryFilterWithNested(Builder $query, string $slug): void
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $categoryIds = $this->getNestedCategoryIds($category);
+
+        $query->whereIn('category_id', $categoryIds);
     }
 }

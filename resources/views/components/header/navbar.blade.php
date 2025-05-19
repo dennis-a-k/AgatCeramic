@@ -35,8 +35,8 @@
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                                 <ul class="sub-menu sub-menu-2">
-                                    @foreach ($plumbing->children->sortBy('title') as $item)
-                                        <li><a href="blog-grid.html">{{ $item->title }}</a></li>
+                                    @foreach ($plumbing->children->sortBy('title') as $child)
+                                        <li><a href="{{ route('plumbing.category', $child->slug) }}">{{ $child->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

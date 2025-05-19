@@ -37,7 +37,7 @@
 
                                 <x-slot name="category"></x-slot>
 
-                                <x-slot name="url" href=""></x-slot>
+                                <x-slot name="url" href="{{ route('plumbing.category', $child->slug) }}"></x-slot>
                             </x-banner.single-banner>
                         @endforeach
                     </div>
