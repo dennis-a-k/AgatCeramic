@@ -112,6 +112,8 @@
             @include('components.admin.goods.kleya.add-kleya')
 
             @include('components.admin.goods.zatirka.add-zatirka')
+
+            @include('components.admin.goods.plumbing.add-plumbing')
         </div>
     </div>
 @endsection

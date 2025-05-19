@@ -154,7 +154,7 @@
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
                                                 @elseif ($product->category->title === config('categories.santexnika'))
-                                                    <a href="{{ route('santexnika.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
+                                                    <a href="{{ route('plumbing.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
