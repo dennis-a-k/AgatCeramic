@@ -39,8 +39,8 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="text-black-50" for="inputDimensions">Габариты (см)</label>
-                                        <input type="number" id="inputDimensions" class="form-control {{ $errors->has('dimensions') ? 'is-invalid' : '' }}" name="dimensions"
-                                            value="{{ old('dimensions') }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="dimensions">
+                                        <input type="text" id="inputDimensions" class="form-control {{ $errors->has('dimensions') ? 'is-invalid' : '' }}" name="dimensions"
+                                            value="{{ old('dimensions') }}" autocomplete="dimensions">
                                         {{-- <x-input-error class="ml-2" :messages="$errors->get('dimensions')" /> --}}
                                     </div>
                                 </div>
@@ -68,12 +68,19 @@
 
                             <div class="card-body bg-light">
                                 <div class="form-group">
-                                    <label class="text-black-50" for="selectCategoryPlumbing">Цвет</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectCategoryPlumbing" name="color_id">
-                                        <option selected="selected" disabled>Выберете цвет</option>
-                                        @foreach ($colors as $color)
-                                            <option value="{{ $color->id }}" @selected(old('color_id') == $color->id)>{{ $color->title }}</option>
+                                    <label class="text-black-50" for="selectCategoryPlumbing">Категория</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectCategoryPlumbing" name="parent_id">
+                                        <option selected="selected" disabled>Выберите категорию</option>
+                                        @foreach ($plumbing->children as $item)
+                                            <option value="{{ $item->id }}" @selected(old('parent_id') == $item->id)>{{ $item->title }}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="subcategoryWrapper" style="display: none;">
+                                    <label class="text-black-50" for="selectSubcategoryPlumbing">Подкатегория</label>
+                                    <select class="form-control select2" style="width: 100%;" id="selectSubcategoryPlumbing" name="subcategory_id">
+                                        <option selected="selected" disabled>Сначала выберите категорию</option>
                                     </select>
                                 </div>
 

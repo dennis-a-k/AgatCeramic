@@ -33,6 +33,7 @@ class FilterService
     {
         $filters = [
             'category' => fn($q, $v) => $q->whereHas('category', fn($q) => $q->where('slug', $v)),
+            'subcategory' => fn($q, $v) => $q->whereHas('subcategory', fn($q) => $q->where('slug', $v)),
             'brand' => fn($q, $v) => $q->whereHas('brand', fn($q) => $q->where('slug', $v)),
             'pattern' => fn($q, $v) => $q->whereHas('pattern', fn($q) => $q->where('slug', $v)),
             'color' => fn($q, $v) => $q->whereHas('color', fn($q) => $q->where('slug', $v)),
@@ -60,6 +61,7 @@ class FilterService
             'textures' => $this->getFilterValues($query, $request->texture, 'App\Models\Texture', 'texture'),
             'sizes' => $this->getFilterValues($query, $request->size, 'App\Models\Size', 'size', 'title'),
             'categories' => $this->getFilterValues($query, $request->category, 'App\Models\Category', 'category'),
+            'subcategory' => $this->getFilterValues($query, $request->subcategory, 'App\Models\Category', 'subcategory'),
             'weights' => $this->getWeightFilterValues($query, $request->weight),
             'glues' => $this->getAttributeFilterValues($query, 'glue', $request->glue),
             'mixture_types' => $this->getAttributeFilterValues($query, 'mixture_type', $request->mixture_type),

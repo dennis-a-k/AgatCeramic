@@ -76,13 +76,10 @@ class CategoryController extends Controller
     {
         $this->sessionService->applyFilter($request, 'category');
 
-        // Получаем базовый запрос без привязки к категории
         $query = Product::query()->where('is_published', true);
 
-        // Применяем фильтр с учетом вложенности
         $this->filterService->applyCategoryFilterWithNested($query, $categorySlug);
 
-        // Применяем остальные фильтры
         $this->filterService->applyActiveFilters($query, $request);
 
         $goods = $this->filterService->getFilteredProducts($query, $request);

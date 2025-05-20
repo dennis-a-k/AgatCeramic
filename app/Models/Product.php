@@ -19,6 +19,7 @@ class Product extends Model
         'size_id',
         'color_id',
         'pattern_id',
+        'subcategory_id',
         'texture_id',
         'brand_id',
         'collection_id',
@@ -44,6 +45,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(Category::class, 'subcategory_id', 'id');
     }
 
     public function collection()

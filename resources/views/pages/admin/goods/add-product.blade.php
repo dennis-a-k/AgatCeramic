@@ -134,5 +134,43 @@
 
             $('.select2').select2();
         })
+
+        $(document).ready(function() {
+            $('#selectCategoryPlumbing').change(function() {
+                const categoryId = $(this).val();
+                const subcategorySelect = $('#selectSubcategoryPlumbing');
+                const wrapper = $('#subcategoryWrapper');
+
+                if (!categoryId) {
+                    wrapper.hide();
+                    return;
+                }
+
+                subcategorySelect.html('<option value="">Загрузка...</option>');
+                wrapper.show();
+
+                $.ajax({
+                    url: '/api/categories/' + categoryId + '/subcategories',
+                    type: 'GET',
+                    success: function(data) {
+                        if (data.length > 0) {
+                            let options = '<option selected disabled>Выберите подкатегорию</option>';
+                            data.forEach(function(subcategory) {
+                                options += `<option value="${subcategory.id}">${subcategory.title}</option>`;
+                            });
+                            subcategorySelect.html(options);
+                        } else {
+                            subcategorySelect.html('<option value="">Нет подкатегорий</option>');
+                            wrapper.hide();
+                        }
+                    },
+                    error: function() {
+                        subcategorySelect.html('<option value="">Ошибка загрузки</option>');
+                    }
+                });
+            });
+
+            $('#selectSubcategoryPlumbing').select2();
+        });
     </script>
 @endsection

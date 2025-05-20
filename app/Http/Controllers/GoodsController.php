@@ -49,13 +49,17 @@ class GoodsController extends Controller
 
     public function create()
     {
-        $excludedCategories = [
-            config('categories.zatirka'),
-            config('categories.kleya'),
-            config('categories.santexnika'),
+        $includedCategories = [
+            config('categories.keramogranit'),
+            config('categories.plitka'),
+            config('categories.mozaika'),
+            config('categories.klinker'),
+            config('categories.stupeni'),
         ];
 
-        $categories = Category::whereNotIn('title', $excludedCategories)->get();
+        $categories = Category::whereIn('title', $includedCategories)->get();
+        $santexnika = Category::where('title', config('categories.santexnika'))->first() ?? '';
+        $plumbing = !empty($santexnika) ? Category::with('children.children')->where('id', $santexnika->id)->firstOrFail() : '';
         $sizes = Size::all();
         $patterns = Pattern::all();
         $textures = Texture::all();
@@ -65,6 +69,7 @@ class GoodsController extends Controller
         $countries = Country::all();
         return view('pages.admin.goods.add-product', compact(
             'categories',
+            'plumbing',
             'sizes',
             'patterns',
             'textures',
