@@ -72,18 +72,14 @@
                                 <span class="menu-text">{{ config('categories.kleya') }}</span>
                             </a>
                         </li>
-                        {{-- <li>
+                        <li>
                             <a href="#"><span class="menu-text">{{ config('categories.santexnika') }}</span></a>
                             <ul class="sub-menu">
-                                <li><a href="shop-3-column.html">Ванны</a></li>
-                                <li><a href="shop-3-column.html">Унитазы</a></li>
-                                <li><a href="shop-3-column.html">Раковины</a></li>
-                                <li><a href="shop-3-column.html">Кухонные мойки</a></li>
-                                <li><a href="shop-3-column.html">Смесители</a></li>
-                                <li><a href="shop-3-column.html">Инсталляции</a></li>
-                                <li><a href="shop-3-column.html">Душевые кабины</a></li>
+                                @foreach ($plumbing->children->sortBy('title') as $child)
+                                    <li><a href="{{ route('plumbing.category', $child->slug) }}">{{ $child->title }}</a></li>
+                                @endforeach
                             </ul>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
 

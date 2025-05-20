@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <div>
-                        <label class="text-black-50" for="inputTitle">Характерстика</label>
+                        <label class="text-black-50" for="inputTitle">Подкатегория</label>
                         <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required
                             autocomplete="title">
                         {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}

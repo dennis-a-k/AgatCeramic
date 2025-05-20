@@ -1,5 +1,31 @@
 <div class="col-lg-3 order-lg-first col-md-12 order-md-last">
     <div class="shop-sidebar-wrap">
+        @if (isset($subcategories) && $subcategories->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Тип</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        <div class="subcategories">
+                            @foreach ($subcategories as $child)
+                                <li class="dropdown position-static">
+                                    <a
+                                        href="{{ route(
+                                            'filter',
+                                            array_merge(request()->query(), [
+                                                'subcategory' => $child->slug,
+                                                'category' => isset($category) ? $category->slug : null,
+                                            ]),
+                                        ) }}">
+                                        {{ mb_strtoupper(mb_substr($child->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($child->title, 1, null, 'UTF-8') }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        @endif
+
         @if (isset($patterns) && $patterns->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Рисунок</h4>
@@ -239,7 +265,7 @@
 
         <div class="sidebar-widget">
             <div class="">
-                <a href="{{ route('filter', ['category' => isset($category) ? $category->slug : null]) }}" class="btn-filter">
+                <a href="{{ route('category.list', ['category' => isset($category) ? $category->slug : null]) }}" class="btn-filter">
                     Сбросить фильтры
                 </a>
             </div>

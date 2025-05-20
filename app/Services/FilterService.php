@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Traits\SortableProducts;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -32,6 +33,7 @@ class FilterService
     {
         $filters = [
             'category' => fn($q, $v) => $q->whereHas('category', fn($q) => $q->where('slug', $v)),
+            'subcategory' => fn($q, $v) => $q->whereHas('subcategory', fn($q) => $q->where('slug', $v)),
             'brand' => fn($q, $v) => $q->whereHas('brand', fn($q) => $q->where('slug', $v)),
             'pattern' => fn($q, $v) => $q->whereHas('pattern', fn($q) => $q->where('slug', $v)),
             'color' => fn($q, $v) => $q->whereHas('color', fn($q) => $q->where('slug', $v)),
@@ -59,6 +61,7 @@ class FilterService
             'textures' => $this->getFilterValues($query, $request->texture, 'App\Models\Texture', 'texture'),
             'sizes' => $this->getFilterValues($query, $request->size, 'App\Models\Size', 'size', 'title'),
             'categories' => $this->getFilterValues($query, $request->category, 'App\Models\Category', 'category'),
+            'subcategories' => $this->getFilterValues($query, $request->subcategory, 'App\Models\Category', 'subcategory'),
             'weights' => $this->getWeightFilterValues($query, $request->weight),
             'glues' => $this->getAttributeFilterValues($query, 'glue', $request->glue),
             'mixture_types' => $this->getAttributeFilterValues($query, 'mixture_type', $request->mixture_type),
@@ -69,7 +72,7 @@ class FilterService
     public function getFilteredProducts(Builder $query, Request $request, array $with = []): Collection|LengthAwarePaginator
     {
         return $this->applySorting($query, $request->input('sort'))
-            ->with(array_merge(['color', 'pattern', 'brand', 'texture', 'size'], $with))
+            ->with(array_merge(['color', 'pattern', 'brand', 'texture', 'size', 'subcategory'], $with))
             ->paginate(40);
     }
 
@@ -130,5 +133,24 @@ class FilterService
         }
 
         return $values;
+    }
+
+    public function getNestedCategoryIds(Category $category): array
+    {
+        $ids = [$category->id];
+
+        foreach ($category->children as $child) {
+            $ids = array_merge($ids, $this->getNestedCategoryIds($child));
+        }
+
+        return $ids;
+    }
+
+    public function applyCategoryFilterWithNested(Builder $query, string $slug): void
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $categoryIds = $this->getNestedCategoryIds($category);
+
+        $query->whereIn('category_id', $categoryIds);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use App\Services\FilterService;
 use App\Services\SessionService;
 use Illuminate\Http\Request;
@@ -75,23 +76,22 @@ class CategoryController extends Controller
     {
         $this->sessionService->applyFilter($request, 'category');
 
-        $query = $this->filterService->getBaseQuery('category', $categorySlug, $title);
+        $query = Product::query()->where('is_published', true);
+
+        $this->filterService->applyCategoryFilterWithNested($query, $categorySlug);
+
         $this->filterService->applyActiveFilters($query, $request);
 
         $goods = $this->filterService->getFilteredProducts($query, $request);
         $filters = $this->filterService->getAvailableFilters($query, $request);
 
-        $category = Category::where('slug', $categorySlug)->first();
-
-        if ($category) {
-            $title = mb_strtoupper(mb_substr($category->title, 0, 1, 'UTF-8'), 'UTF-8') .
-                mb_substr($category->title, 1, null, 'UTF-8');
-        }
+        $category = Category::with('children')->where('slug', $categorySlug)->firstOrFail();
 
         return view('pages.goods', array_merge([
             'goods' => $goods,
             'category' => $category,
-            'title' => $title,
+            'title' => $category->title,
+            'nested_categories' => $category->children,
         ], $filters));
     }
 }
