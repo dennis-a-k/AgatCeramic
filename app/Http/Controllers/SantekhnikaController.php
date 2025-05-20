@@ -86,7 +86,6 @@ class SantekhnikaController extends Controller
         return view('pages.goods', array_merge([
             'goods' => $goods,
             'category' => $currentCategory ?? $rootCategory,
-            'root_category' => $rootCategory,
             'subcategories' => $subcategories,
             'title' => $currentCategory->title ?? $rootCategory->title,
         ], $filters));

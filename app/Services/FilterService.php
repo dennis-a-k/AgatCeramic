@@ -61,7 +61,7 @@ class FilterService
             'textures' => $this->getFilterValues($query, $request->texture, 'App\Models\Texture', 'texture'),
             'sizes' => $this->getFilterValues($query, $request->size, 'App\Models\Size', 'size', 'title'),
             'categories' => $this->getFilterValues($query, $request->category, 'App\Models\Category', 'category'),
-            'subcategory' => $this->getFilterValues($query, $request->subcategory, 'App\Models\Category', 'subcategory'),
+            'subcategories' => $this->getFilterValues($query, $request->subcategory, 'App\Models\Category', 'subcategory'),
             'weights' => $this->getWeightFilterValues($query, $request->weight),
             'glues' => $this->getAttributeFilterValues($query, 'glue', $request->glue),
             'mixture_types' => $this->getAttributeFilterValues($query, 'mixture_type', $request->mixture_type),
@@ -72,7 +72,7 @@ class FilterService
     public function getFilteredProducts(Builder $query, Request $request, array $with = []): Collection|LengthAwarePaginator
     {
         return $this->applySorting($query, $request->input('sort'))
-            ->with(array_merge(['color', 'pattern', 'brand', 'texture', 'size'], $with))
+            ->with(array_merge(['color', 'pattern', 'brand', 'texture', 'size', 'subcategory'], $with))
             ->paginate(40);
     }
 
