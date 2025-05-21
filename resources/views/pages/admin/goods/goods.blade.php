@@ -153,7 +153,7 @@
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
-                                                @elseif ($product->category->title === config('categories.santexnika'))
+                                                @elseif ($product->category->parent?->title === config('categories.santexnika'))
                                                     <a href="{{ route('plumbing.edit', $product->id) }}" class="btn btn-info btn-xs btn-xs goods-popover" id="" data-content="Редактировать"
                                                         target="_blank">
                                                         <i class="fas fa-pencil-alt"></i>

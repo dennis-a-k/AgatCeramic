@@ -11,7 +11,7 @@ class UpdatePlumbingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,23 @@ class UpdatePlumbingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'price' => ['nullable', 'numeric', 'between:0.00,99999999.99'],
+            'description' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
+            'category_id' => ['nullable', 'exists:categories,id'],
+            'subcategory_id' => ['nullable', 'exists:categories,id'],
+            'color_id' => ['nullable', 'numeric'],
+            'brand_id' => ['nullable', 'numeric'],
+            'country_id' => ['nullable', 'numeric'],
+            'dimensions' => ['nullable', 'string'],
+            'imgs' => ['nullable', 'array'],
+            'imgs.*' => [
+                'nullable',
+                'image',
+                'mimes:jpeg,png,jpg,webp',
+                'dimensions:max_width=1200,max_height=1200',
+                'max:50000',
+            ]
         ];
     }
 }

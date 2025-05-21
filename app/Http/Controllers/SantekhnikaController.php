@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlumbingRequest;
+use App\Http\Requests\UpdatePlumbingRequest;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
+use App\Models\Country;
+use App\Models\Image;
 use App\Models\Product;
 use App\Services\FilterService;
 use App\Services\SessionService;
@@ -59,6 +64,57 @@ class SantekhnikaController extends Controller
         }
 
         return back()->with('status', 'product-created');
+    }
+
+    public function edit(string $id)
+    {
+        $product = Product::findOrFail($id);
+        $santexnika = Category::where('title', config('categories.santexnika'))->first() ?? '';
+        $plumbing = !empty($santexnika) ? Category::with('children.children')->where('id', $santexnika->id)->firstOrFail() : '';
+        $colors = Color::all();
+        $brands = Brand::all();
+        $countries = Country::all();
+        $currentImageCount = $product->images->count();
+        return view('pages.admin.goods.edit-plumbing', compact(
+            'product',
+            'plumbing',
+            'colors',
+            'brands',
+            'countries',
+            'currentImageCount',
+        ));
+    }
+
+    public function update(UpdatePlumbingRequest $request, string $id)
+    {
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+        $data['attributes']['dimensions'] = $data['dimensions'];
+        $product = Product::find($id);
+        $product->fill($data)->save();
+
+        if ($request->has('image_order')) {
+            foreach ($request->image_order as $imageId => $order) {
+                $image = Image::find($imageId);
+                if ($image && $image->product_id == $product->id) {
+                    $image->update(['order' => $order]);
+                }
+            }
+        }
+
+        if ($request->hasFile('imgs')) {
+            $currentImageCount = $product->images->count();
+            foreach ($request->file('imgs') as $index => $img) {
+                if ($currentImageCount + $index >= 3) break; // Максимум 5 изображений
+                $filename = $product->sku . '_' . $currentImageCount + $index . '.' . $img->getClientOriginalExtension();
+                $img->storeAs('public/images', $filename);
+                $product->images()->create([
+                    'title' => $filename,
+                    'order' => $currentImageCount + $index
+                ]);
+            }
+        }
+        return back()->with('status', 'product-updated');
     }
 
     public function filterPlumbing(string $categorySlug, Request $request)

@@ -5,6 +5,23 @@
 
     <div class="card-body bg-light">
         <div class="form-group">
+            <label class="text-black-50" for="selectCategoryPlumbing">Категория</label>
+            <select class="form-control select2" style="width: 100%;" id="selectCategoryPlumbing" name="category_id">
+                <option selected="selected" disabled>Выберете категорию</option>
+                @foreach ($plumbing->children as $category)
+                    <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>{{ $category->title }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group" id="subcategoryWrapper" style="display: none;">
+            <label class="text-black-50" for="selectSubcategoryPlumbing">Подкатегория</label>
+            <select class="form-control select2" style="width: 100%;" id="selectSubcategoryPlumbing" name="subcategory_id">
+                <option selected="selected" disabled>Сначала выберите категорию</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label class="text-black-50" for="selectColorsGlue">Цвет</label>
             <select class="form-control select2" style="width: 100%;" id="selectColorsGlue" name="color_id">
                 <option selected="selected" disabled>Выберете цвет</option>
