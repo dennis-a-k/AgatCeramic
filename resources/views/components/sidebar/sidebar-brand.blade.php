@@ -24,6 +24,32 @@
             </div>
         @endif
 
+        @if (isset($subcategories) && $subcategories->count())
+            <div class="sidebar-widget">
+                <h4 class="sidebar-title">Тип</h4>
+                <div class="sidebar-widget-category">
+                    <ul>
+                        <div class="subcategories">
+                            @foreach ($subcategories as $child)
+                                <li class="dropdown position-static">
+                                    <a
+                                        href="{{ route(
+                                            'filters',
+                                            array_merge(request()->query(), [
+                                                'subcategory' => $child->slug,
+                                                'brand' => isset($brand) ? $brand->slug : null,
+                                            ]),
+                                        ) }}">
+                                        {{ mb_strtoupper(mb_substr($child->title, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($child->title, 1, null, 'UTF-8') }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        @endif
+
         @if (isset($patterns) && $patterns->count())
             <div class="sidebar-widget">
                 <h4 class="sidebar-title">Рисунок</h4>
