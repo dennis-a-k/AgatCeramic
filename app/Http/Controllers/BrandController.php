@@ -99,18 +99,14 @@ class BrandController extends Controller
             ]);
         }
 
-        // Формируем заголовок с первой заглавной буквой
         $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') .
             mb_substr($brand->title, 1, null, 'UTF-8');
 
-        // Создаем базовый запрос
         $query = Product::where('brand_id', $brand->id)
             ->where('is_published', true);
 
-        // Применяем фильтры из запроса
         $this->filterService->applyActiveFilters($query, $request);
 
-        // Получаем товары с пагинацией
         $goods = $this->filterService->getFilteredProducts($query, $request, [
             'color',
             'category',
@@ -119,7 +115,6 @@ class BrandController extends Controller
             'size'
         ]);
 
-        // Получаем доступные фильтры
         $filters = $this->filterService->getAvailableFilters($query, $request);
 
         return view('pages.goods-brand', array_merge([
