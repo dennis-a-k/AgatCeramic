@@ -15,10 +15,10 @@
 
         <div class="form-group">
             <div>
-                <label class="text-black-50" for="inputWeight_kg">Вес (кг)</label>
-                <input type="number" id="inputWeight_kg" class="form-control {{ $errors->has('weight_kg') ? 'is-invalid' : '' }}" name="weight_kg"
-                    value="{{ old('weight_kg', $product->attributes['weight_kg']) }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="weight_kg">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('weight_kg')" /> --}}
+                <label class="text-black-50" for="inputDimensions">Габариты (см)</label>
+                <input type="text" id="inputDimensions" class="form-control {{ $errors->has('dimensions') ? 'is-invalid' : '' }}" name="dimensions"
+                    value="{{ old('dimensions', $product->attributes['dimensions']) }}" autocomplete="dimensions">
+                {{-- <x-input-error class="ml-2" :messages="$errors->get('dimensions')" /> --}}
             </div>
         </div>
 
