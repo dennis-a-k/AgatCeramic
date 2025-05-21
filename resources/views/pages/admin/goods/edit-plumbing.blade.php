@@ -82,7 +82,6 @@
             bsCustomFileInput.init();
             $('.select2').select2();
 
-            // Обработчик удаления изображения
             $('.delete-image').on('click', function(e) {
                 e.preventDefault();
                 const imageId = $(this).data('image-id');
