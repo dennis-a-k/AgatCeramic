@@ -26,12 +26,10 @@ class SaleController extends Controller
 
         $this->applyFilters($query, $request);
 
-        // Получаем текущую категорию (если есть)
         $currentCategory = $request->has('category')
             ? Category::where('slug', $request->category)->first()
             : null;
 
-        // Получаем корневую категорию (если есть)
         $rootCategory = $currentCategory ? ($currentCategory->parent ?? $currentCategory) : null;
 
         $filteredProductsQuery = clone $query;
@@ -39,10 +37,8 @@ class SaleController extends Controller
 
         $filters = $this->getAvailableFilters($filteredProducts, $request);
 
-        // Инициализируем пустую коллекцию подкатегорий
         $subcategories = collect();
 
-        // Если выбрана категория, получаем подкатегории из отфильтрованных товаров
         if ($currentCategory) {
             $subcategories = $filteredProducts
                 ->pluck('subcategory')
@@ -51,13 +47,11 @@ class SaleController extends Controller
                 ->sortBy('title')
                 ->values();
 
-            // Фильтруем подкатегории, чтобы они принадлежали текущей категории
             $subcategories = $subcategories->filter(function ($subcategory) use ($currentCategory) {
                 return $subcategory && $subcategory->parent_id === $currentCategory->id;
             });
         }
 
-        // Добавляем подкатегории в фильтры
         $filters['subcategories'] = $subcategories;
         $filters['root_category'] = $rootCategory;
 
@@ -91,7 +85,6 @@ class SaleController extends Controller
         if ($request->has('category')) {
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
-                // Фильтрация с учетом вложенности
                 $categoryIds = $this->getNestedCategoryIds($category);
                 $query->whereIn('category_id', $categoryIds);
             }
@@ -159,12 +152,10 @@ class SaleController extends Controller
 
     private function getAvailableFilters($products, Request $request)
     {
-        // Получаем текущую категорию (если есть)
         $currentCategory = $request->has('category')
             ? Category::where('slug', $request->category)->first()
             : null;
 
-        // Если категория выбрана, фильтруем товары по ней (чтобы учитывать только её характеристики)
         if ($currentCategory) {
             $categoryIds = $this->getNestedCategoryIds($currentCategory);
             $products = $products->filter(function ($product) use ($categoryIds) {
@@ -172,7 +163,6 @@ class SaleController extends Controller
             });
         }
 
-        // Далее стандартная логика, но теперь $products уже отфильтрованы по категории
         $colors = $products->pluck('color')
             ->unique('id')
             ->filter()
@@ -237,7 +227,6 @@ class SaleController extends Controller
             ->sort()
             ->values();
 
-        // Оставляем логику фильтрации по выбранным значениям (если нужно)
         if ($request->has('color')) {
             $colors = $colors->where('slug', $request->color);
         }
