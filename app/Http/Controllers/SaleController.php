@@ -18,38 +18,62 @@ class SaleController extends Controller
 
     public function saleFilter(Request $request)
     {
-        // Основной запрос для товаров
         $query = Product::query()
             ->where('is_published', true)
             ->whereNotNull('sale')
             ->where('sale', '>', 0)
-            ->with(['color', 'pattern', 'brand', 'texture', 'size', 'category']);
+            ->with(['color', 'pattern', 'brand', 'texture', 'size', 'category', 'subcategory']);
 
-        // Применяем фильтры из запроса
         $this->applyFilters($query, $request);
 
-        // Клонируем запрос для получения характеристик
+        // Получаем текущую категорию (если есть)
+        $currentCategory = $request->has('category')
+            ? Category::where('slug', $request->category)->first()
+            : null;
+
+        // Получаем корневую категорию (если есть)
+        $rootCategory = $currentCategory ? ($currentCategory->parent ?? $currentCategory) : null;
+
         $filteredProductsQuery = clone $query;
         $filteredProducts = $filteredProductsQuery->get();
 
-        // Получаем доступные значения для фильтров на основе уже отфильтрованных товаров
         $filters = $this->getAvailableFilters($filteredProducts, $request);
 
-        // Применяем сортировку
+        // Инициализируем пустую коллекцию подкатегорий
+        $subcategories = collect();
+
+        // Если выбрана категория, получаем подкатегории из отфильтрованных товаров
+        if ($currentCategory) {
+            $subcategories = $filteredProducts
+                ->pluck('subcategory')
+                ->unique('id')
+                ->filter()
+                ->sortBy('title')
+                ->values();
+
+            // Фильтруем подкатегории, чтобы они принадлежали текущей категории
+            $subcategories = $subcategories->filter(function ($subcategory) use ($currentCategory) {
+                return $subcategory && $subcategory->parent_id === $currentCategory->id;
+            });
+        }
+
+        // Добавляем подкатегории в фильтры
+        $filters['subcategories'] = $subcategories;
+        $filters['root_category'] = $rootCategory;
+
         $query = $this->applySorting($query, $request->input('sort'));
 
-        // Пагинация
         $goods = $query->paginate(40);
 
         return view('pages.goods-sale', array_merge([
             'goods' => $goods,
-            'title' => 'Распродажа'
+            'title' => 'Распродажа',
+            'current_category' => $currentCategory,
         ], $filters));
     }
 
     private function applyFilters($query, Request $request)
     {
-        // Фильтр по паттерну
         if ($request->has('pattern')) {
             $pattern = Pattern::where('slug', $request->pattern)->first();
             if ($pattern) {
@@ -57,7 +81,6 @@ class SaleController extends Controller
             }
         }
 
-        // Фильтр по цвету
         if ($request->has('color')) {
             $color = Color::where('slug', $request->color)->first();
             if ($color) {
@@ -65,15 +88,22 @@ class SaleController extends Controller
             }
         }
 
-        // Фильтр по категории
         if ($request->has('category')) {
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
-                $query->where('category_id', $category->id);
+                // Фильтрация с учетом вложенности
+                $categoryIds = $this->getNestedCategoryIds($category);
+                $query->whereIn('category_id', $categoryIds);
             }
         }
 
-        // Фильтр по текстуре
+        if ($request->has('subcategory')) {
+            $subcategory = Category::where('slug', $request->subcategory)->first();
+            if ($subcategory) {
+                $query->where('subcategory_id', $subcategory->id);
+            }
+        }
+
         if ($request->has('texture')) {
             $texture = Texture::where('slug', $request->texture)->first();
             if ($texture) {
@@ -81,7 +111,6 @@ class SaleController extends Controller
             }
         }
 
-        // Фильтр по размеру
         if ($request->has('size')) {
             $size = Size::where('title', $request->size)->first();
             if ($size) {
@@ -89,7 +118,6 @@ class SaleController extends Controller
             }
         }
 
-        // Фильтр по бренду
         if ($request->has('brand')) {
             $brand = Brand::where('slug', $request->brand)->first();
             if ($brand) {
@@ -97,7 +125,6 @@ class SaleController extends Controller
             }
         }
 
-        // Фильтр по весу
         if ($request->has('weight')) {
             $weight = $request->weight;
             $query->whereJsonContains('attributes->weight_kg', $weight);
@@ -108,62 +135,80 @@ class SaleController extends Controller
             $query->whereJsonContains('attributes->glue', $glue);
         }
 
-        if ($request->has('mixture_types')) {
-            $mixture_types = $request->mixture_types;
-            $query->whereJsonContains('attributes->mixture_types', $mixture_types);
+        if ($request->has('mixture_type')) {
+            $mixture_type = $request->mixture_type;
+            $query->whereJsonContains('attributes->mixture_type', $mixture_type);
         }
 
-        if ($request->has('seams')) {
-            $seams = $request->seams;
-            $query->whereJsonContains('attributes->seams', $seams);
+        if ($request->has('seam')) {
+            $seam = $request->seam;
+            $query->whereJsonContains('attributes->seam', $seam);
         }
+    }
+
+    private function getNestedCategoryIds(Category $category): array
+    {
+        $ids = [$category->id];
+
+        foreach ($category->children as $child) {
+            $ids = array_merge($ids, $this->getNestedCategoryIds($child));
+        }
+
+        return $ids;
     }
 
     private function getAvailableFilters($products, Request $request)
     {
-        // Получаем доступные цвета (только из отфильтрованных товаров)
+        // Получаем текущую категорию (если есть)
+        $currentCategory = $request->has('category')
+            ? Category::where('slug', $request->category)->first()
+            : null;
+
+        // Если категория выбрана, фильтруем товары по ней (чтобы учитывать только её характеристики)
+        if ($currentCategory) {
+            $categoryIds = $this->getNestedCategoryIds($currentCategory);
+            $products = $products->filter(function ($product) use ($categoryIds) {
+                return in_array($product->category_id, $categoryIds);
+            });
+        }
+
+        // Далее стандартная логика, но теперь $products уже отфильтрованы по категории
         $colors = $products->pluck('color')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные бренды
         $brands = $products->pluck('brand')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные паттерны
         $patterns = $products->pluck('pattern')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные текстуры
         $textures = $products->pluck('texture')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные размеры
         $sizes = $products->pluck('size')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные категории
         $categories = $products->pluck('category')
             ->unique('id')
             ->filter()
             ->sortBy('title')
             ->values();
 
-        // Получаем доступные веса
         $weights = $products->filter(function ($product) {
             return isset($product->attributes['weight_kg']);
         })->pluck('attributes.weight_kg')
@@ -192,7 +237,7 @@ class SaleController extends Controller
             ->sort()
             ->values();
 
-        // Если какой-то фильтр уже выбран, оставляем только его значение
+        // Оставляем логику фильтрации по выбранным значениям (если нужно)
         if ($request->has('color')) {
             $colors = $colors->where('slug', $request->color);
         }
