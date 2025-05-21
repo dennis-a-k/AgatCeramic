@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use App\Services\FilterService;
 use Illuminate\Http\Request;
@@ -83,44 +84,40 @@ class BrandController extends Controller
 
     public function filterProducts(string $brandSlug, Request $request)
     {
-        $brand = Brand::where('slug', $brandSlug)->first();
-
-        if (!$brand) {
-            return view('pages.goods-brand', [
-                'goods' => new \Illuminate\Pagination\LengthAwarePaginator([], 0, 40),
-                'brand' => null,
-                'title' => '',
-                'colors' => collect(),
-                'patterns' => collect(),
-                'textures' => collect(),
-                'sizes' => collect(),
-                'categories' => collect(),
-                'weights' => collect(),
-            ]);
-        }
+        $brand = Brand::where('slug', $brandSlug)->firstOrFail();
 
         $title = mb_strtoupper(mb_substr($brand->title, 0, 1, 'UTF-8'), 'UTF-8') .
             mb_substr($brand->title, 1, null, 'UTF-8');
 
         $query = Product::where('brand_id', $brand->id)
-            ->where('is_published', true);
+            ->where('is_published', true)
+            ->with(['color', 'pattern', 'texture', 'size', 'category', 'subcategory']);
 
         $this->filterService->applyActiveFilters($query, $request);
 
-        $goods = $this->filterService->getFilteredProducts($query, $request, [
-            'color',
-            'category',
-            'pattern',
-            'texture',
-            'size'
-        ]);
+        $currentCategory = $request->has('category')
+            ? Category::where('slug', $request->category)->first()
+            : null;
 
-        $filters = $this->filterService->getAvailableFilters($query, $request);
+        $rootCategory = $currentCategory ? ($currentCategory->parent ?? $currentCategory) : null;
+
+        $subcategories = $currentCategory
+            ? $query->clone()->where('category_id', $currentCategory->id)
+            ->get()->pluck('subcategory')->unique('id')->filter()
+            : collect();
+
+        $goods = $this->filterService->getFilteredProducts($query, $request);
+
+        $filters = $this->filterService->getAvailableFilters($query, $request, $currentCategory);
+
+        $filters['subcategories'] = $subcategories;
+        $filters['root_category'] = $rootCategory;
 
         return view('pages.goods-brand', array_merge([
             'goods' => $goods,
             'brand' => $brand,
             'title' => $title,
+            'current_category' => $currentCategory,
         ], $filters));
     }
 }
