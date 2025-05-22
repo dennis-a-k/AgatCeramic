@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Add base URL constant at the top
     const BASE_URL = window.location.origin;
 
     const buttons = document.querySelectorAll(".quickview");
 
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
-            // Установить значение qtybutton в 1
             document.querySelector(".cart-plus-minus-box").value = 1;
 
             const productId = this.getAttribute("data-id");
 
-            // Clear modal content
             document.querySelector("#modalProduct .modal-body h2").innerText =
                 "Загрузка...";
             document.querySelector(
@@ -21,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "#modalProduct .modal-body .swiper-container .swiper-wrapper"
             ).innerHTML = "";
 
-            // AJAX request
             fetch(`${BASE_URL}/api/product/${productId}`)
                 .then((response) => {
                     if (!response.ok) {
@@ -30,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((data) => {
-                    const title = data.category.title + ' ' + data.title || "---";
+                    const title = data.category.subtitle + ' ' + data.title || "---";
                     const price = +data.price || "---";
                     const formattedPrice = price
                         .toLocaleString("ru-RU", {
@@ -55,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         "#modalProduct .pro-details-cart .add-cart"
                     );
 
-                    // Update modal content
                     document.querySelector(
                         "#modalProduct .modal-body h2"
                     ).innerText = title;
@@ -76,20 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     ).innerText = brand;
                     elementId.setAttribute("data-product-id", data.id);
 
-                    // Update images with correct base URL
                     document.querySelector(
                         "#modalProduct .modal-body .swiper-container .swiper-wrapper"
                     ).innerHTML = images
                         .map(
                             (image) =>
-                                `<div class="swiper-slide" style="border: none;"><img class="img-responsive m-auto" src="${
-                                    image.title
-                                        ? `${BASE_URL}/storage/images/${image.title}`
-                                        : `${BASE_URL}/assets/images/stock/stock-image.png`
-                                }" alt="${
-                                    image.title
-                                        ? image.title
-                                        : "Изображение по умолчанию"
+                                `<div class="swiper-slide" style="border: none;"><img class="img-responsive m-auto" src="${image.title
+                                    ? `${BASE_URL}/storage/images/${image.title}`
+                                    : `${BASE_URL}/assets/images/stock/stock-image.png`
+                                }" alt="${image.title
+                                    ? image.title
+                                    : "Изображение по умолчанию"
                                 }"></div>`
                         )
                         .join("");
