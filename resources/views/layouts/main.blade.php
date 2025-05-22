@@ -64,7 +64,7 @@
     <script src="{{ asset('assets/js/plugins/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/mailchimp-ajax.js') }}"></script>
 
-    <script src="{{ asset('assets/js/app-js.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     @yield('js')
 </body>
