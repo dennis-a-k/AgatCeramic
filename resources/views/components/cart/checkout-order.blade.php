@@ -14,7 +14,11 @@
                         @foreach ($cart as $item)
                             <li>
                                 <span class="order-middle-left">
-                                    {{ $item['title'] }} × {{ $item['quantity'] }}
+                                    {{ $item['title'] }}
+                                    @if (isset($item['weight_kg']))
+                                        {{ $item['weight_kg'] }} кг
+                                    @endif
+                                    × {{ $item['quantity'] }}
                                     @if ($item['unit'] === 'шт')
                                         шт.
                                     @else

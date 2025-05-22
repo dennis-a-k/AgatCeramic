@@ -17,7 +17,7 @@ class CartService
         $cartItem = [
             'id' => $product->id,
             'sku' => $product->sku,
-            'title' => $product->title,
+            'title' => $product->category->subtitle . ' ' . $product->title,
             'price' => $product->price,
             'quantity' => $quantity,
             'unit' => $product->unit,
