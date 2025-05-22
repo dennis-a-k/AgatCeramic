@@ -64,11 +64,17 @@ class CheckoutController extends Controller
         ]);
 
         foreach ($cart as $item) {
+            $productTitle = $item['title'];
+
+            if (isset($item['weight_kg'])) {
+                $productTitle .= ', ' . $item['weight_kg'] . ' кг';
+            }
+
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $item['id'],
                 'product_sku' => $item['sku'],
-                'product_title' => $item['title'],
+                'product_title' => $productTitle,
                 'price' => $item['price'],
                 'quantity' => $item['quantity'],
                 'unit' => $item['unit'],

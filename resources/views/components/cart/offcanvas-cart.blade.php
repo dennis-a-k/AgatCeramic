@@ -24,7 +24,6 @@
                                 'sku' => $item['sku'],
                             ]) }}"
                                 class="title lh-1">
-                                <p>{{ $item['category'] }}</p>
                                 @if (isset($item['weight_kg']) && $item['weight_kg'])
                                     <p>{{ $item['title'] }} {{ $item['weight_kg'] }} кг</p>
                                 @else
