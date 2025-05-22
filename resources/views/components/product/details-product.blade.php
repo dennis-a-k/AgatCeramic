@@ -10,6 +10,9 @@
                     @if ($product->category)
                         <li><span>Категория:</span></li>
                     @endif
+                    @if ($product->subcategory)
+                        <li><span>Тип:</span></li>
+                    @endif
                     @if ($product->size)
                         <li><span>Размер:</span></li>
                     @endif
@@ -24,6 +27,9 @@
                     @endif
                     @if (isset($product->attributes['seam']))
                         <li><span>Ширина шва:</span></li>
+                    @endif
+                    @if (isset($product->attributes['dimensions']))
+                        <li><span>Габариты:</span></li>
                     @endif
                     @if ($product->color)
                         <li><span>Цвет:</span></li>
@@ -54,6 +60,9 @@
                             </a>
                         </li>
                     @endif
+                    @if ($product->subcategory)
+                        <li>{{ $product->subcategory->title }}</li>
+                    @endif
                     @if ($product->size)
                         <li>{{ $product->size->title }}</li>
                     @endif
@@ -68,6 +77,9 @@
                     @endif
                     @if (isset($product->attributes['seam']))
                         <li>{{ $product->attributes['seam'] }} мм</li>
+                    @endif
+                    @if (isset($product->attributes['dimensions']))
+                        <li>{{ $product->attributes['dimensions'] }} см</li>
                     @endif
                     @if ($product->color)
                         <li>{{ $product->color->title }}</li>
