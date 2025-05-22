@@ -94,7 +94,7 @@
         <div class="content">
             <h2>Здравствуйте, {{ $order->customer_name }}!</h2>
             <p>Благодарим вас за покупку в нашем интернет-магазине.<br>
-                Мы рады подтвердить ваш заказ № <strong>{{ $order->order_number }}</strong>.
+                Ваш заказ № <strong>{{ $order->order_number }}</strong>.
             </p>
 
             <h2>Детали заказа:</h2>
@@ -144,7 +144,7 @@
         <div class="footer">
             <h2>Мы свяжемся с вами в ближайшее время для подтверждения заказа.</h2>
             <p>Если у вас возникли вопросы, свяжитесь с нами:</p>
-            <p>Email: <a href="mailto:zakaz@agatceramic.com">zakaz@agatceramic.com</a> | Телефон: <a href="tel:79999999999">+7 (XXX) XXX-XX-XX</a>
+            <p>Email: <a href="mailto:{{ $appData->app_email ?? '---' }}">{{ $appData->app_email ?? '---' }}</a> | Телефон: <a href="tel:{{ $appData->app_phone ?? '---' }}">{{ $appData->appPhoneFormatted ?? '---' }}</a>
             </p>
             <p>Спасибо, что выбрали {{ config('app.name') }}!</p>
         </div>
