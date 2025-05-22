@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/api/product/{id}', [ProductController::class, 'modal'])->name('product.modal');
 Route::get('/{category}/{slug}/{sku}', [ProductController::class, 'show'])
     ->name('product.show')
     ->where([
