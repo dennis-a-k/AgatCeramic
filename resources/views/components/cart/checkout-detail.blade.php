@@ -1,4 +1,4 @@
-<div class="col-lg-7">
+<div class="col-lg-6">
     <div class="billing-info-wrap">
         <h3>Детали заказа</h3>
         <div class="row">

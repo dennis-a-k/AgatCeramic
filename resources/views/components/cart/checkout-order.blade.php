@@ -1,4 +1,4 @@
-<div class="col-lg-5 mt-md-30px mt-lm-30px ">
+<div class="col-lg-6 mt-md-30px mt-lm-30px ">
     <div class="your-order-area">
         <h3>Ваш заказ</h3>
         <div class="your-order-wrap gray-bg-4">
@@ -10,27 +10,31 @@
                     </ul>
                 </div>
                 <div class="your-order-middle">
-                    <ul>
-                        @foreach ($cart as $item)
-                            <li>
+                    @foreach ($cart as $item)
+                        <div class="row align-items-center lh-1 mb-3">
+                            <div class="col-7">
                                 <span class="order-middle-left">
                                     {{ $item['title'] }}
                                     @if (isset($item['weight_kg']))
                                         {{ $item['weight_kg'] }} кг
                                     @endif
-                                    × {{ $item['quantity'] }}
-                                    @if ($item['unit'] === 'шт')
-                                        шт.
-                                    @else
-                                        м<sup>2</sup>
-                                    @endif
                                 </span>
+                            </div>
+                            <div class="col-2 text-end">
+                                × {{ $item['quantity'] }}
+                                @if ($item['unit'] === 'шт')
+                                    шт.
+                                @else
+                                    м<sup>2</sup>
+                                @endif
+                            </div>
+                            <div class="col-3 text-end">
                                 <span class="order-price">{{ number_format($item['price'] * $item['quantity'], 2, '.', ' ') }}
                                     &#8381;
                                 </span>
-                            </li>
-                        @endforeach
-                    </ul>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
                 <div class="your-order-total">
