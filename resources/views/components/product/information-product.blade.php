@@ -19,6 +19,17 @@
 </div>
 
 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+    @if ($product->subcategory)
+        <span>Тип: </span>
+        <ul class="d-flex">
+            <li>
+                {{ $product->subcategory->title }}
+            </li>
+        </ul>
+    @endif
+</div>
+
+<div class="pro-details-categories-info pro-details-same-style d-flex m-0">
     @if ($product->brand)
         <span>Производитель: </span>
         <ul class="d-flex">
