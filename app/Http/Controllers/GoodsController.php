@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\GoodsExport;
-use App\Exports\GoodsTemplateExport;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdatProductRequest;
-use App\Imports\ProductsImport;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Collection;
@@ -19,7 +16,6 @@ use App\Models\Size;
 use App\Models\Texture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 
 class GoodsController extends Controller
@@ -198,21 +194,5 @@ class GoodsController extends Controller
         ]);
         Product::where('id', $id)->update(['sale' => $request->sale]);
         return back();
-    }
-
-    public function import(Request $request)
-    {
-        Excel::import(new ProductsImport, $request->file('fileExcel'));
-        return redirect()->back()->with('status', 'template-loaded');
-    }
-
-    public function export()
-    {
-        return Excel::download(new GoodsExport, 'goods-AC.xlsx');
-    }
-
-    public function ceramicTemplateExport()
-    {
-        return Excel::download(new GoodsTemplateExport, 'ceramic-template-AC.xlsx');
     }
 }
