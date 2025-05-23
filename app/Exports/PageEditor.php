@@ -38,14 +38,14 @@ class PageEditor implements WithEvents, WithTitle, FromView
     public function view(): View
     {
         if ($this->parametr === 'status') {
-            return view('components.excel.editor', ['item' => 'Статус']);
+            return view('components.admin.excel.editor', ['item' => 'Статус']);
         }
 
         if ($this->parametr === 'sale') {
-            return view('components.excel.editor', ['item' => 'Распродажа']);
+            return view('components.admin.excel.editor', ['item' => 'Распродажа']);
         }
 
-        return view('components.excel.editor', ['item' => 'Цена']);
+        return view('components.admin.excel.editor', ['item' => 'Цена']);
     }
 
     public function title(): string

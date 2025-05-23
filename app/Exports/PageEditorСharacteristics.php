@@ -21,18 +21,18 @@ class PageEditorСharacteristics implements FromView, WithTitle, WithEvents
     public function view(): View
     {
         if ($this->parametr === 'status') {
-            return view('components.excel.editor-characteristics', [
+            return view('components.admin.excel.editor-characteristics', [
                 'items' => ['Опубликован', 'Скрыт'],
             ]);
         }
 
         if ($this->parametr === 'sale') {
-            return view('components.excel.editor-characteristics', [
+            return view('components.admin.excel.editor-characteristics', [
                 'items' => ['Распродажа', 'Не распродажа'],
             ]);
         }
 
-        return view('components.excel.editor-characteristics', [
+        return view('components.admin.excel.editor-characteristics', [
             'items' => [],
         ]);
     }

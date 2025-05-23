@@ -30,7 +30,7 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
 
     public function view(): View
     {
-        return view('components.excel.editor-goods');
+        return view('components.admin.excel.editor-goods');
     }
 
     public function title(): string

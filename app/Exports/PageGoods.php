@@ -14,7 +14,7 @@ class PageGoods implements WithEvents, WithTitle, FromView
 {
     public function view(): View
     {
-        return view('components.excel.goods', [
+        return view('components.admin.excel.goods', [
             'goods' => Product::query()->orderBy('created_at', 'DESC')->get(),
         ]);
     }

@@ -21,7 +21,7 @@ class PageСharacteristics implements FromView, WithTitle, WithEvents
 {
     public function view(): View
     {
-        return view('components.excel.characteristics', [
+        return view('components.admin.excel.characteristics', [
             'categories' => Category::all('title'),
             'sizes' => Size::all('title'),
             'colors' => Color::all('title'),
