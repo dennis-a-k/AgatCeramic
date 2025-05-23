@@ -17,6 +17,7 @@ require __DIR__ . '/admin/editor.php';
 require __DIR__ . '/admin/user.php';
 require __DIR__ . '/admin/calls.php';
 require __DIR__ . '/admin/app-data.php';
+require __DIR__ . '/admin/excel.php';
 require __DIR__ . '/admin/auth/auth.php';
 
 require __DIR__ . '/pages.php';

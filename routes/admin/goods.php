@@ -18,8 +18,4 @@ Route::group([
     Route::delete('/product', [GoodsController::class, 'destroy'])->name('product.destroy');
 
     Route::delete('/images/{image}', [GoodsController::class, 'deleteImage'])->name('images.destroy');
-
-    Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
-    Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
-    Route::get('/ceramic-template-export', [GoodsController::class, 'ceramicTemplateExport'])->name('ceramic.template.export');
 });

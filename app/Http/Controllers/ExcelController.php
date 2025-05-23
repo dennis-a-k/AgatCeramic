@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Exports\CeramicTemplateExport;
+use App\Exports\GoodsExport;
+use App\Imports\ProductsImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
+class ExcelController extends Controller
+{
+    public function import(Request $request)
+    {
+        Excel::import(new ProductsImport, $request->file('fileExcel'));
+        return redirect()->back()->with('status', 'template-loaded');
+    }
+
+    public function export()
+    {
+        return Excel::download(new GoodsExport, 'goods-AC.xlsx');
+    }
+
+    public function ceramicTemplateExport()
+    {
+        return Excel::download(new CeramicTemplateExport, 'ceramic-template-AC.xlsx');
+    }
+}
