@@ -31,12 +31,12 @@
         @method('PATCH')
 
         <div class="row">
-            @include('components.admin.goods.edit-product-information')
-            @include('components.admin.goods.edit-product-select')
+            @include('components.admin.goods.ceramic.edit-product-information')
+            @include('components.admin.goods.ceramic.edit-product-select')
         </div>
 
         <div class="row">
-            @include('components.admin.goods.edit-product-images')
+            @include('components.admin.goods.ceramic.edit-product-images')
         </div>
 
         <div class="row pb-4">
