@@ -38,41 +38,17 @@
                 </a>
                 <div id="collapseTwo" class="collapse show" data-parent="#accordion" style="">
                     <div class="card-body row">
-                        <div class="col-md-auto">
-                            <a href="{{ route('goods.template.export') }}" class="btn btn-default" download>
-                                <i class="fas fa-download"></i> Скачать Excel шаблон
-                            </a>
-                        </div>
+                        @include('components.admin.goods.templates.ceramic')
 
-                        <div class="col-md">
-                            <form method="POST" action="{{ route('goods.import') }}" enctype="multipart/form-data">
-                                @csrf
+                        @include('components.admin.goods.templates.kleya')
 
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
-                                        <label class="custom-file-label" for="customFile" data-browse="Выбрать">
-                                            Загрузите шаблон Excel
-                                        </label>
-                                        {{--
-                                    <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
-                                    </div>
-                                </div>
+                        @include('components.admin.goods.templates.zatirka')
 
-                                <div class="row pb-4">
-                                    <div class="col-12">
-                                        @if (session('status') === 'template-loaded')
-                                            <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
-                                        @endif
-
-                                        <button type="submit" class="btn btn-info float-right">Загрузить</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        @include('components.admin.goods.templates.plumbing')
                     </div>
                 </div>
             </div>
+
             @include('components.admin.goods.ceramic.add-product')
 
             @include('components.admin.goods.kleya.add-kleya')

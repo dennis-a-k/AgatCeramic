@@ -55,7 +55,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, Sk
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            if (isset($row['artikul']) && $row['artikul'] != null) {
+            if (isset($row['naimenovanie']) && $row['naimenovanie'] != null) {
                 $category = $this->categories->where('title', $row['kategoriia'])->first();
                 $size = $this->sizes->where('title', $row['razmer'])->first();
                 $color = $this->colors->where('title', $row['cvet'])->first();
@@ -65,10 +65,9 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, Sk
                 $collection = $this->collections->where('title', $row['kollekciia'])->first();
                 $country = $this->countries->where('name', $row['strana'])->first();
 
-                Product::firstOrCreate([
-                    'sku' => $row['artikul'],
-                ], [
-                    'sku' => $row['artikul'],
+                $sku = Product::generateSku($category->id ?? 00);
+                Product::create([
+                    'sku' => $sku,
                     'title' => $row['naimenovanie'],
                     'slug' => Str::slug($row['naimenovanie']),
                     'price' => $row['cena'],
@@ -91,7 +90,6 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, Sk
     public function rules(): array
     {
         return [
-            'artikul' => ['required', 'alpha_num', 'max:8'],
             'naimenovanie' => ['required', 'string', 'max:255'],
             'cena' => ['required', 'numeric', 'between:0.00,99999999.99'],
             'edinica_izmereniia' => ['nullable', 'string'],

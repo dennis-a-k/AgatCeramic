@@ -21,5 +21,5 @@ Route::group([
 
     Route::post('/goods-import', [GoodsController::class, 'import'])->name('goods.import');
     Route::get('/goods-export', [GoodsController::class, 'export'])->name('goods.export');
-    Route::get('/goods-template-export', [GoodsController::class, 'templateExport'])->name('goods.template.export');
+    Route::get('/ceramic-template-export', [GoodsController::class, 'ceramicTemplateExport'])->name('ceramic.template.export');
 });

@@ -30,7 +30,7 @@ class PageForGoods implements WithEvents, WithTitle, FromView
 
     public function view(): View
     {
-        return view('components.admin.excel.goods-template');
+        return view('components.admin.excel.ceramic-template');
     }
 
     public function title(): string
@@ -45,15 +45,15 @@ class PageForGoods implements WithEvents, WithTitle, FromView
                 /** @var Sheet $sheet */
                 $sheet = $event->sheet;
 
-                $this->listСharacteristics('!$1:$1', 'F', $sheet);
-                $this->listСharacteristics('!$2:$2', 'G', $sheet);
-                $this->listСharacteristics('!$3:$3', 'H', $sheet);
-                $this->listСharacteristics('!$4:$4', 'I', $sheet);
-                $this->listСharacteristics('!$5:$5', 'J', $sheet);
-                $this->listСharacteristics('!$6:$6', 'K', $sheet);
-                $this->listСharacteristics('!$7:$7', 'L', $sheet);
-                $this->listСharacteristics('!$8:$8', 'M', $sheet);
-                $this->listСharacteristics('!$9:$9', 'N', $sheet);
+                $this->listСharacteristics('!$1:$1', 'A', $sheet);
+                $this->listСharacteristics('!$2:$2', 'F', $sheet);
+                $this->listСharacteristics('!$3:$3', 'G', $sheet);
+                $this->listСharacteristics('!$4:$4', 'H', $sheet);
+                $this->listСharacteristics('!$5:$5', 'I', $sheet);
+                $this->listСharacteristics('!$6:$6', 'J', $sheet);
+                $this->listСharacteristics('!$7:$7', 'K', $sheet);
+                $this->listСharacteristics('!$8:$8', 'L', $sheet);
+                $this->listСharacteristics('!$9:$9', 'M', $sheet);
 
                 $styleHead = [
                     'font' => [
@@ -98,8 +98,8 @@ class PageForGoods implements WithEvents, WithTitle, FromView
                 ];
 
                 $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
-                $sheet->getDelegate()->getStyle('D1:N1')->applyFromArray($styleHead);
-                $sheet->getDelegate()->getStyle('A2:O1002')->applyFromArray($styleBorders);
+                $sheet->getDelegate()->getStyle('D1:M1')->applyFromArray($styleHead);
+                $sheet->getDelegate()->getStyle('A2:N1002')->applyFromArray($styleBorders);
             }
         ];
     }

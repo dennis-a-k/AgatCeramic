@@ -27,8 +27,8 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $sortField = $request->input('sort', 'sku');
-        $sortDirection = $request->input('direction', 'asc');
+        $sortField = $request->input('sort', 'created_at');
+        $sortDirection = $request->input('direction', 'desc');
 
         $goods = Product::query()
             ->when($search, function ($query) use ($search) {
@@ -211,8 +211,8 @@ class GoodsController extends Controller
         return Excel::download(new GoodsExport, 'goods-AC.xlsx');
     }
 
-    public function templateExport()
+    public function ceramicTemplateExport()
     {
-        return Excel::download(new GoodsTemplateExport, 'goods-template-AC.xlsx');
+        return Excel::download(new GoodsTemplateExport, 'ceramic-template-AC.xlsx');
     }
 }
