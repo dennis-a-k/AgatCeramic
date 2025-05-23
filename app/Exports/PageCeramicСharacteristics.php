@@ -17,7 +17,7 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PageСharacteristics implements FromView, WithTitle, WithEvents
+class PageCeramicСharacteristics implements FromView, WithTitle, WithEvents
 {
     public function view(): View
     {

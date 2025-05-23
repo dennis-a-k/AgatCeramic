@@ -4,7 +4,7 @@ namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class GoodsTemplateExport implements WithMultipleSheets
+class CeramicTemplateExport implements WithMultipleSheets
 {
     /**
      * @return array
@@ -12,8 +12,8 @@ class GoodsTemplateExport implements WithMultipleSheets
     public function sheets(): array
     {
         return [
-            'Товары' => new PageForGoods,
-            'Сharacteristics' => new PageСharacteristics,
+            'Товары' => new PageForCeramic,
+            'Сharacteristics' => new PageCeramicСharacteristics,
         ];
     }
 }

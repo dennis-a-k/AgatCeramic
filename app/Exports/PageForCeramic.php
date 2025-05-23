@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class PageForGoods implements WithEvents, WithTitle, FromView
+class PageForCeramic implements WithEvents, WithTitle, FromView
 {
     private function listСharacteristics($getData, $insertData, $sheet)
     {
