@@ -27,8 +27,8 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $sortField = $request->input('sort', 'sku');
-        $sortDirection = $request->input('direction', 'asc');
+        $sortField = $request->input('sort', 'created_at');
+        $sortDirection = $request->input('direction', 'desc');
 
         $goods = Product::query()
             ->when($search, function ($query) use ($search) {
