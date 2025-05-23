@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\CeramicTemplateExport;
 use App\Exports\GoodsExport;
+use App\Exports\KleyaTemplateExport;
 use App\Imports\ProductsImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,5 +25,10 @@ class ExcelController extends Controller
     public function ceramicTemplateExport()
     {
         return Excel::download(new CeramicTemplateExport, 'ceramic-template-AC.xlsx');
+    }
+
+    public function kleyaTemplateExport()
+    {
+        return Excel::download(new KleyaTemplateExport, 'kleya-template-AC.xlsx');
     }
 }
