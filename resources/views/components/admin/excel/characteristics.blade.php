@@ -52,5 +52,10 @@
             <td>шт</td>
             <td>м2</td>
         </tr>
+
+        <tr>
+            <td>да</td>
+            <td>нет</td>
+        </tr>
     </tbody>
 </table>
