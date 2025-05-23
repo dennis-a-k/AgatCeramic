@@ -30,7 +30,7 @@ class PageForGoods implements WithEvents, WithTitle, FromView
 
     public function view(): View
     {
-        return view('components.admin.excel.goods-template');
+        return view('components.admin.excel.ceramic-template');
     }
 
     public function title(): string

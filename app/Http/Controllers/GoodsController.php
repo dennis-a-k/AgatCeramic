@@ -211,8 +211,8 @@ class GoodsController extends Controller
         return Excel::download(new GoodsExport, 'goods-AC.xlsx');
     }
 
-    public function templateExport()
+    public function ceramicTemplateExport()
     {
-        return Excel::download(new GoodsTemplateExport, 'goods-template-AC.xlsx');
+        return Excel::download(new GoodsTemplateExport, 'ceramic-template-AC.xlsx');
     }
 }
