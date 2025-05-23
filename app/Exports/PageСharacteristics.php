@@ -21,8 +21,16 @@ class PageСharacteristics implements FromView, WithTitle, WithEvents
 {
     public function view(): View
     {
+        $includedCategories = [
+            config('categories.keramogranit'),
+            config('categories.plitka'),
+            config('categories.mozaika'),
+            config('categories.klinker'),
+            config('categories.stupeni'),
+        ];
+
         return view('components.admin.excel.characteristics', [
-            'categories' => Category::all('title'),
+            'categories' => Category::whereIn('title', $includedCategories)->get(['title']),
             'sizes' => Size::all('title'),
             'colors' => Color::all('title'),
             'patterns' => Pattern::all('title'),
