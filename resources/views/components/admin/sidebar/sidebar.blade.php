@@ -113,6 +113,12 @@
                                 <p>Сантехника</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('grout_type.index') }}" class="nav-link">
+                                <i class="fas fa-genderless nav-icon"></i>
+                                <p>Затирка</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
