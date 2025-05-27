@@ -27,6 +27,7 @@ class ZatirkaRequest extends FormRequest
             'unit' => ['required', 'string'],
             'description' => ['nullable', 'string', 'regex:/^[\s\S]*(<p>|<br\s*\/?>|<ul>|<li>)*[\s\S]*$/i'],
             'category_id' => ['nullable', 'numeric'],
+            'subcategory_id' =>['nullable', 'numeric'],
             'color_id' => ['nullable', 'numeric'],
             'brand_id' => ['nullable', 'numeric'],
             'country_id' => ['nullable', 'numeric'],

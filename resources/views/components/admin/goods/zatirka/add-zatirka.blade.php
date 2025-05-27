@@ -90,12 +90,11 @@
                             <div class="card-body bg-light">
                                 <div class="form-group">
                                     <label class="text-black-50" for="selectMixture">Тип смеси</label>
-                                    <select class="form-control select2" style="width: 100%;" id="selectMixture" name="mixture_type">
+                                    <select class="form-control select2" style="width: 100%;" id="selectMixture" name="subcategory_id">
                                         <option selected="selected" disabled>Выберите тип смеси</option>
-                                        <option value="Добавка к затирке" @selected(old('mixture_type'))>Добавка к затирке</option>
-                                        <option value="Силиконовая" @selected(old('mixture_type'))>Силиконовая</option>
-                                        <option value="Цементная" @selected(old('mixture_type'))>Цементная</option>
-                                        <option value="Эпоксидная" @selected(old('mixture_type'))>Эпоксидная</option>
+                                        @foreach ($groutType->children as $item)
+                                            <option value="{{ $item->id }}" @selected(old('parent_id') == $item->id)>{{ $item->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
