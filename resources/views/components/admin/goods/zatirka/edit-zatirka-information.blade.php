@@ -23,6 +23,14 @@
         </div>
 
         <div class="form-group">
+            <div>
+                <label class="text-black-50" for="inputSeam">Ширина шва (мм)</label>
+                <input type="text" id="inputSeam" class="form-control {{ $errors->has('seam') ? 'is-invalid' : '' }}" name="seam" value="{{ old('seam', $product->attributes['seam']) }}" autocomplete="seam">
+                {{-- <x-input-error class="ml-2" :messages="$errors->get('seam')" /> --}}
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="text-black-50" for="inputWeight_kg">Использовать в качестве клея</label>
             <div class="custom-control custom-radio">
                 <input class="custom-control-input custom-control-input-info" type="radio" id="customRadio3" name="glue" value="да"

@@ -33,6 +33,7 @@ class ZatirkaController extends Controller
             'description' => $validated['description'],
             'slug' => Str::slug($validated['title']),
             'category_id' => $category->id,
+            'subcategory_id' => $validated['subcategory_id'],
             'color_id' => $validated['color_id'],
             'brand_id' => $validated['brand_id'],
             'country_id' => $validated['country_id'],
@@ -45,10 +46,6 @@ class ZatirkaController extends Controller
 
         if (isset($validated['glue'])) {
             $productData['attributes']['glue'] = $validated['glue'];
-        }
-
-        if (isset($validated['mixture_type'])) {
-            $productData['attributes']['mixture_type'] = $validated['mixture_type'];
         }
 
         if (isset($validated['seam'])) {
@@ -72,7 +69,8 @@ class ZatirkaController extends Controller
     public function edit(string $id)
     {
         $product = Product::findOrFail($id);
-        $categories = Category::all();
+        $zatirka = Category::where('title', config('categories.zatirka'))->first() ?? '';
+        $categories = !empty($zatirka) ? Category::with('children.children')->where('id', $zatirka->id)->firstOrFail() : '';
         $colors = Color::all();
         $brands = Brand::all();
         $countries = Country::all();
@@ -93,7 +91,6 @@ class ZatirkaController extends Controller
         $data['slug'] = Str::slug($data['title']);
         $data['attributes']['weight_kg'] = $data['weight_kg'];
         $data['attributes']['glue'] = $data['glue'];
-        $data['attributes']['mixture_type'] = $data['mixture_type'];
         $data['attributes']['seam'] = $data['seam'];
         $product = Product::find($id);
         $product->fill($data)->save();

@@ -7,23 +7,11 @@
 
         <div class="form-group">
             <label class="text-black-50" for="selectMixture">Тип смеси</label>
-            <select class="form-control select2" style="width: 100%;" id="selectMixture" name="mixture_type">
+            <select class="form-control select2" style="width: 100%;" id="selectMixture" name="subcategory_id">
                 <option selected disabled>Выберите тип смеси</option>
-                @foreach (['Добавка к затирке', 'Силиконовая', 'Цементная', 'Эпоксидная'] as $type)
-                    <option value="{{ $type }}" @selected($product->attributes['mixture_type'] == $type)>
-                        {{ $type }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label class="text-black-50" for="selectSeam">Ширина шва (мм)</label>
-            <select class="form-control select2" style="width: 100%;" id="selectSeam" name="seam">
-                <option selected="selected" disabled>Выберите ширину шва</option>
-                @foreach (['1-10', '1-15', '1-6', '1-7', '2-20', '3-10', '5-20', '5-30'] as $type)
-                    <option value="{{ $type }}" @selected($product->attributes['seam'] == $type)>
-                        {{ $type }} мм
+                @foreach ($categories->children as $item)
+                    <option value="{{ $item->id }}" @selected(old('color_id', $product->subcategory_id) == $item->id)>
+                        {{ $item->title }}
                     </option>
                 @endforeach
             </select>

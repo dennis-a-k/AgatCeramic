@@ -56,6 +56,8 @@ class GoodsController extends Controller
         $categories = Category::whereIn('title', $includedCategories)->get();
         $santexnika = Category::where('title', config('categories.santexnika'))->first() ?? '';
         $plumbing = !empty($santexnika) ? Category::with('children.children')->where('id', $santexnika->id)->firstOrFail() : '';
+        $zatirka = Category::where('title', config('categories.zatirka'))->first() ?? '';
+        $groutType = !empty($zatirka) ? Category::with('children.children')->where('id', $zatirka->id)->firstOrFail() : '';
         $sizes = Size::all();
         $patterns = Pattern::all();
         $textures = Texture::all();
@@ -66,6 +68,7 @@ class GoodsController extends Controller
         return view('pages.admin.goods.add-product', compact(
             'categories',
             'plumbing',
+            'groutType',
             'sizes',
             'patterns',
             'textures',
