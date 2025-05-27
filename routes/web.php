@@ -5,6 +5,7 @@ require __DIR__ . '/admin/categories.php';
 require __DIR__ . '/admin/kleya.php';
 require __DIR__ . '/admin/zatirka.php';
 require __DIR__ . '/admin/santekhnika.php';
+require __DIR__ . '/admin/grout-type.php';
 require __DIR__ . '/admin/sizes.php';
 require __DIR__ . '/admin/pattern.php';
 require __DIR__ . '/admin/texture.php';
