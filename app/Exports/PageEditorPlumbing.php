@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class PageEditorGoods implements WithEvents, WithTitle, FromView
+class PageEditorPlumbing implements WithEvents, WithTitle, FromView
 {
     private function listСharacteristics($getData, $insertData, $sheet)
     {
@@ -30,7 +30,7 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
 
     public function view(): View
     {
-        return view('components.admin.excel.editor-goods');
+        return view('components.admin.excel.editor-plumbing');
     }
 
     public function title(): string
@@ -46,14 +46,10 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
                 $sheet = $event->sheet;
 
                 $this->listСharacteristics('!$1:$1', 'A', $sheet);
-                $this->listСharacteristics('!$2:$2', 'F', $sheet);
                 $this->listСharacteristics('!$3:$3', 'G', $sheet);
-                $this->listСharacteristics('!$4:$4', 'H', $sheet);
-                $this->listСharacteristics('!$5:$5', 'I', $sheet);
-                $this->listСharacteristics('!$6:$6', 'J', $sheet);
-                $this->listСharacteristics('!$7:$7', 'K', $sheet);
-                $this->listСharacteristics('!$8:$8', 'L', $sheet);
-                $this->listСharacteristics('!$9:$9', 'M', $sheet);
+                $this->listСharacteristics('!$6:$6', 'H', $sheet);
+                $this->listСharacteristics('!$8:$8', 'I', $sheet);
+                $this->listСharacteristics('!$11:$11', 'E', $sheet);
 
                 $styleHead = [
                     'font' => [
@@ -99,7 +95,7 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
 
                 $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
                 $sheet->getDelegate()->getStyle('D1:M1')->applyFromArray($styleHead);
-                $sheet->getDelegate()->getStyle('A2:N1002')->applyFromArray($styleBorders);
+                $sheet->getDelegate()->getStyle('A2:J1002')->applyFromArray($styleBorders);
             }
         ];
     }
