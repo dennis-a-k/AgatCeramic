@@ -1,8 +1,8 @@
 <table>
     <thead>
         <tr height="50">
-            <th width="20" style="border:1px solid #8EAADB; background-color:#1F3765">Категория</th>
             <th width="15" style="border:1px solid #8EAADB; background-color:#1F3765">Артикул</th>
+            <th width="20" style="border:1px solid #8EAADB; background-color:#1F3765">Категория</th>
             <th width="40" style="border:1px solid #8EAADB; background-color:#1F3765">Наименование</th>
             <th width="40" style="border:1px solid #8EAADB; background-color:#F2F7FF">Описание</th>
             <th width="20" style="border:1px solid #8EAADB; background-color:#B4C6E7">Подкатегория</th>

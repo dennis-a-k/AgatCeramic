@@ -45,7 +45,7 @@ class PageEditorPlumbing implements WithEvents, WithTitle, FromView
                 /** @var Sheet $sheet */
                 $sheet = $event->sheet;
 
-                $this->listСharacteristics('!$1:$1', 'A', $sheet);
+                $this->listСharacteristics('!$1:$1', 'B', $sheet);
                 $this->listСharacteristics('!$3:$3', 'G', $sheet);
                 $this->listСharacteristics('!$6:$6', 'H', $sheet);
                 $this->listСharacteristics('!$8:$8', 'I', $sheet);
