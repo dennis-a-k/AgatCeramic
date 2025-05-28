@@ -45,7 +45,7 @@ class PageEditorKleya implements WithEvents, WithTitle, FromView
                 /** @var Sheet $sheet */
                 $sheet = $event->sheet;
 
-                $this->listСharacteristics('!$1:$1', 'A', $sheet);
+                $this->listСharacteristics('!$1:$1', 'B', $sheet);
                 $this->listСharacteristics('!$3:$3', 'E', $sheet);
                 $this->listСharacteristics('!$6:$6', 'F', $sheet);
                 $this->listСharacteristics('!$8:$8', 'G', $sheet);

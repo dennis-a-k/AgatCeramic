@@ -45,7 +45,7 @@ class PageEditorCeramic implements WithEvents, WithTitle, FromView
                 /** @var Sheet $sheet */
                 $sheet = $event->sheet;
 
-                $this->listСharacteristics('!$1:$1', 'A', $sheet);
+                $this->listСharacteristics('!$1:$1', 'B', $sheet);
                 $this->listСharacteristics('!$2:$2', 'F', $sheet);
                 $this->listСharacteristics('!$3:$3', 'G', $sheet);
                 $this->listСharacteristics('!$4:$4', 'H', $sheet);
