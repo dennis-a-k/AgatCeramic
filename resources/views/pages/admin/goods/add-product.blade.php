@@ -38,13 +38,36 @@
                 </a>
                 <div id="collapseTwo" class="collapse show" data-parent="#accordion" style="">
                     <div class="card-body row">
-                        @include('components.admin.goods.templates.ceramic')
+                        <div class="col-xl-6 row">
+                            @include('components.admin.goods.templates.ceramic')
 
-                        @include('components.admin.goods.templates.kleya')
+                            @include('components.admin.goods.templates.kleya')
 
-                        @include('components.admin.goods.templates.zatirka')
+                            @include('components.admin.goods.templates.zatirka')
 
-                        @include('components.admin.goods.templates.plumbing')
+                            @include('components.admin.goods.templates.plumbing')
+                        </div>
+                        <div class="col-xl-6">
+                            <form method="POST" action="{{ route('goods.import') }}" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" accept=".xls, .xlsx " name="fileExcel" required>
+                                        <label class="custom-file-label" for="customFile" data-browse="Выбрать">
+                                            Загрузите шаблон Excel
+                                        </label>
+                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                    </div>
+                                </div>
+
+                                @if (session('status') === 'template-loaded')
+                                    <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-info text-align-center mr-2">Шаблон загружен</span>
+                                @endif
+
+                                <button type="submit" class="btn btn-info float-right">Загрузить</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
