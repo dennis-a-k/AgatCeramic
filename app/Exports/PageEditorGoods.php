@@ -45,7 +45,7 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
                 /** @var Sheet $sheet */
                 $sheet = $event->sheet;
 
-                $this->listСharacteristics('!$1:$1', 'E', $sheet);
+                $this->listСharacteristics('!$1:$1', 'A', $sheet);
                 $this->listСharacteristics('!$2:$2', 'F', $sheet);
                 $this->listСharacteristics('!$3:$3', 'G', $sheet);
                 $this->listСharacteristics('!$4:$4', 'H', $sheet);
@@ -97,8 +97,8 @@ class PageEditorGoods implements WithEvents, WithTitle, FromView
                     ],
                 ];
 
-                $sheet->getDelegate()->getStyle('A1:B1')->applyFromArray($styleText);
-                $sheet->getDelegate()->getStyle('C1:M1')->applyFromArray($styleHead);
+                $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
+                $sheet->getDelegate()->getStyle('D1:M1')->applyFromArray($styleHead);
                 $sheet->getDelegate()->getStyle('A2:N1002')->applyFromArray($styleBorders);
             }
         ];

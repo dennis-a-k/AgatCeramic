@@ -21,7 +21,7 @@ class EditorExport implements WithMultipleSheets
         if ($this->parametr === 'goods') {
             return [
                 'Товары' => new PageEditorGoods,
-                'Сharacteristics' => new PageСharacteristics,
+                'Сharacteristics' => new PageCeramicСharacteristics,
             ];
         }
         return [
