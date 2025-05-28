@@ -14,5 +14,5 @@ Route::group([
     Route::post('/editor-import/statuses', [EditorGoodsController::class, 'importStatuses'])->name('editor.import.statuses');
     Route::post('/editor-import/sales', [EditorGoodsController::class, 'importSales'])->name('editor.import.sales');
 
-    Route::get('/editor-export/{parametr}', [EditorGoodsController::class, 'export'])->name('editor.export');
+    Route::get('/editor-export/{parametr?}', [EditorGoodsController::class, 'export'])->name('editor.export');
 });

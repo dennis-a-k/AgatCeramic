@@ -18,10 +18,28 @@ class EditorExport implements WithMultipleSheets
      */
     public function sheets(): array
     {
-        if ($this->parametr === 'goods') {
+        if ($this->parametr === 'ceramics') {
             return [
-                'Товары' => new PageEditorGoods,
+                'Товары' => new PageEditorCeramic,
                 'Сharacteristics' => new PageCeramicСharacteristics,
+            ];
+        }
+        if ($this->parametr === 'kleya') {
+            return [
+                'Товары' => new PageEditorKleya,
+                'Сharacteristics' => new PageKleyaСharacteristics,
+            ];
+        }
+        if ($this->parametr === 'zatirka') {
+            return [
+                'Товары' => new PageEditorZatirka,
+                'Сharacteristics' => new PageZatirkaСharacteristics,
+            ];
+        }
+        if ($this->parametr === 'plumbing') {
+            return [
+                'Товары' => new PageEditorPlumbing,
+                'Сharacteristics' => new PagePlumbingСharacteristics,
             ];
         }
         return [

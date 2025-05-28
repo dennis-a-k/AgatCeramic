@@ -37,9 +37,21 @@
 
                 <div class="card-body row">
                     <div class="col-md-auto">
-                        <a href="{{ route('editor.export', 'goods') }}" class="btn btn-default" download>
-                            <i class="fas fa-download"></i> Скачать Excel шаблон
-                        </a>
+                        <form method="GET" action="{{ route('editor.export') }}" id="exportForm" download>
+                            @csrf
+                            <div class="form-group">
+                                <select class="form-control" name="category" id="categorySelect">
+                                    <option selected="selected" disabled>Выберете категорию</option>
+                                    <option value="ceramics">Керамика</option>
+                                    <option value="kleya">Клеевые смеси</option>
+                                    <option value="zatirka">Затирка для плитки</option>
+                                    <option value="plumbing">Сантехника</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-download"></i> Скачать Excel шаблон
+                            </button>
+                        </form>
                     </div>
 
                     <div class="col-md">
@@ -219,5 +231,17 @@
 
             $('.select2').select2();
         })
+
+        $(function() {
+            bsCustomFileInput.init();
+            $('.select2').select2();
+
+            $('#categorySelect').change(function() {
+                const category = $(this).val();
+                if (category) {
+                    $('#exportForm').attr('action', "{{ route('editor.export') }}" + '/' + category);
+                }
+            });
+        });
     </script>
 @endsection
