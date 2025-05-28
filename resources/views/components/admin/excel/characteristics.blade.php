@@ -1,10 +1,18 @@
 <table>
     <tbody>
-        <tr>
-            @foreach ($categories as $category)
-                <td>{{ $category->title }}</td>
-            @endforeach
-        </tr>
+        @if (isset($categories->children))
+            <tr>
+                @foreach ($categories->children as $type)
+                    <td>{{ $type->title }}</td>
+                @endforeach
+            </tr>
+        @else
+            <tr>
+                @foreach ($categories as $category)
+                    <td>{{ $category->title }}</td>
+                @endforeach
+            </tr>
+        @endif
 
         <tr>
             @foreach ($sizes as $size)
@@ -57,5 +65,23 @@
             <td>да</td>
             <td>нет</td>
         </tr>
+
+        @if (isset($grout->children))
+            <tr>
+                @foreach ($grout->children as $type)
+                    <td>{{ $type->title }}</td>
+                @endforeach
+            </tr>
+        @endif
+
+        @if (isset($categories->children))
+            <tr>
+                @foreach ($categories->children as $child)
+                    @foreach ($child->children as $type)
+                        <td>{{ $type->title }}</td>
+                    @endforeach
+                @endforeach
+            </tr>
+        @endif
     </tbody>
 </table>
