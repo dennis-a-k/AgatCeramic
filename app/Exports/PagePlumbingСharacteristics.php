@@ -17,16 +17,16 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PageZatirkaСharacteristics implements FromView, WithTitle, WithEvents
+class PagePlumbingСharacteristics implements FromView, WithTitle, WithEvents
 {
     public function view(): View
     {
         $includedCategories = [
-            config('categories.zatirka'),
+            config('categories.santexnika'),
         ];
 
         return view('components.admin.excel.characteristics', [
-            'categories' => Category::whereIn('title', $includedCategories)->get(['title']),
+            'categories' => Category::with('children.children')->whereIn('title', $includedCategories)->firstOrFail(),
             'sizes' => Size::all('title'),
             'colors' => Color::all('title'),
             'patterns' => Pattern::all('title'),
@@ -34,7 +34,6 @@ class PageZatirkaСharacteristics implements FromView, WithTitle, WithEvents
             'brands' => Brand::all('title'),
             'collections' => Collection::all('title'),
             'countries' => Country::all('name'),
-            'grout' => Category::with('children.children')->whereIn('title', $includedCategories)->firstOrFail(),
         ]);
     }
 

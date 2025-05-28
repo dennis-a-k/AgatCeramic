@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class PageForZatirka implements WithEvents, WithTitle, FromView
+class PageForPlumbing implements WithEvents, WithTitle, FromView
 {
     private function listСharacteristics($getData, $insertData, $sheet)
     {
@@ -30,7 +30,7 @@ class PageForZatirka implements WithEvents, WithTitle, FromView
 
     public function view(): View
     {
-        return view('components.admin.excel.zatirka-template');
+        return view('components.admin.excel.plumbing-template');
     }
 
     public function title(): string
@@ -46,11 +46,10 @@ class PageForZatirka implements WithEvents, WithTitle, FromView
                 $sheet = $event->sheet;
 
                 $this->listСharacteristics('!$1:$1', 'A', $sheet);
-                $this->listСharacteristics('!$3:$3', 'E', $sheet);
-                $this->listСharacteristics('!$6:$6', 'F', $sheet);
-                $this->listСharacteristics('!$8:$8', 'G', $sheet);
-                $this->listСharacteristics('!$10:$10', 'J', $sheet);
-                $this->listСharacteristics('!$11:$11', 'H', $sheet);
+                $this->listСharacteristics('!$3:$3', 'G', $sheet);
+                $this->listСharacteristics('!$6:$6', 'H', $sheet);
+                $this->listСharacteristics('!$8:$8', 'I', $sheet);
+                $this->listСharacteristics('!$11:$11', 'E', $sheet);
 
                 $styleHead = [
                     'font' => [
@@ -96,7 +95,7 @@ class PageForZatirka implements WithEvents, WithTitle, FromView
 
                 $sheet->getDelegate()->getStyle('A1:C1')->applyFromArray($styleText);
                 $sheet->getDelegate()->getStyle('D1:M1')->applyFromArray($styleHead);
-                $sheet->getDelegate()->getStyle('A2:L1002')->applyFromArray($styleBorders);
+                $sheet->getDelegate()->getStyle('A2:J1002')->applyFromArray($styleBorders);
             }
         ];
     }

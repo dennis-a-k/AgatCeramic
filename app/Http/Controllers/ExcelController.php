@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\CeramicTemplateExport;
 use App\Exports\GoodsExport;
 use App\Exports\KleyaTemplateExport;
+use App\Exports\PlumbingTemplateExport;
 use App\Exports\ZatirkaTemplateExport;
 use App\Imports\ProductsImport;
 use Illuminate\Http\Request;
@@ -36,5 +37,10 @@ class ExcelController extends Controller
     public function zatirkaTemplateExport()
     {
         return Excel::download(new ZatirkaTemplateExport, 'zatirka-template-AC.xlsx');
+    }
+
+    public function plumbingTemplateExport()
+    {
+        return Excel::download(new PlumbingTemplateExport, 'plumbing-template-AC.xlsx');
     }
 }
