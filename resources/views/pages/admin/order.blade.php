@@ -38,11 +38,11 @@
                                     <div class="col-sm-4 invoice-col">
                                         Продавец:
                                         <address>
-                                            <strong>ИП ООООО</strong><br>
-                                            Москва<br>
-                                            улица<br>
-                                            Телефон: +7 (999) 999-99-99<br>
-                                            Email: zakaz@agatceramic.ru
+                                            <strong>{{ $appData->organization }}</strong><br>
+                                            ИНН: {{ $appData->inn }}<br>
+                                            {{ $appData->adress }}<br>
+                                            Телефон: {{ $appData->app_phone }}<br>
+                                            Email: {{ $appData->app_email }}
                                         </address>
                                     </div>
                                     <div class="col-sm-4 invoice-col">
