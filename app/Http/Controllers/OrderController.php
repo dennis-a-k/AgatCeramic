@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppData;
 use App\Models\Order;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -43,12 +44,13 @@ class OrderController extends Controller
 
     public function order(string $order_number)
     {
+        $appData = AppData::first();;
         $order = Order::where('order_number', $order_number)->firstOrFail();
         if ($order->status === 'pending') {
             $order->status = 'viewed';
             $order->save();
         }
-        return view('pages.admin.order', compact('order'));
+        return view('pages.admin.order', compact('order', 'appData'));
     }
 
     public static function getPendingOrdersCount()
