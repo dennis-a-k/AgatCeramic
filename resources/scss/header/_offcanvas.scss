@@ -453,6 +453,8 @@ body.offcanvas-open {
             -webkit-flex: 1 0 75px;
             -ms-flex: 1 0 75px;
             flex: 1 0 75px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
             img {
                 max-width: 100%;
                 border: 1px solid#ebebeb;
@@ -464,7 +466,6 @@ body.offcanvas-open {
             }
         }
         .content {
-            position: relative;
             -webkit-box-flex: 1;
             -webkit-flex: 1 0 calc(100% - 150px);
             -ms-flex: 1 0 calc(100% - 150px);
@@ -487,22 +488,21 @@ body.offcanvas-open {
                     font-size: 18px;
                 }
             }
-            .remove {
-                line-height: 1.5;
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 0 3px;
-                color: $heading-color;
-                font-size: 16px;
-                &:hover {
-                    color: #eb2606;
-                }
-            }
             @media #{$small-mobile} {
                 -webkit-flex: 1 0 calc(100% - 75px);
                 -ms-flex: 1 0 calc(100% - 75px);
                 flex: 1 0 calc(100% - 75px);
+            }
+        }
+        .remove {
+            line-height: 1.5;
+            top: 0;
+            right: 0;
+            padding: 0 3px;
+            color: $heading-color;
+            font-size: 16px;
+            &:hover {
+                color: #eb2606;
             }
         }
         &:last-child {

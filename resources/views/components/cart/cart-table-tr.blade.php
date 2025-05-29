@@ -2,7 +2,9 @@
 
 <tr data-product-id="{{ $id }}">
     <td class="product-thumbnail px-2">
-        <a href="{{ $url }}"><img class="img-responsive" src="{{ $img }}" alt="{!! $title !!}" /></a>
+        <div style="aspect-ratio: 1 / 1; overflow: hidden;">
+            <a href="{{ $url }}"><img class="img-responsive" src="{{ $img }}" alt="{!! $title !!}" /></a>
+        </div>
     </td>
     <td class="product-name">
         <a href="{{ $url }}" class="lh-1">
