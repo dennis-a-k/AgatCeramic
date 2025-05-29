@@ -22,7 +22,7 @@
                             <label for="inputСategory">Название категории в множественном числе</label>
                             <input type="text" id="inputСategory" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title" name="title" value="" required autofocus
                                 autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                             <label for="inputCategorySubtitle">Название категории в единственном числе</label>
                             <input type="text" id="inputCategorySubtitle" class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }} modal-subtitle" name="subtitle" value=""
                                 required autofocus autocomplete="subtitle">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('subtitle')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('subtitle')" />
                         </div>
                     </div>
 
@@ -48,8 +48,7 @@
                             <label class="custom-file-label" for="brandImg" data-browse="Выбрать">
                                 Загрузите фото
                             </label>
-                            {{--
-                                <x-input-error class="ml-2" :messages="$errors->get('img')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('img')" />
                         </div>
                     </div>
                 </div>

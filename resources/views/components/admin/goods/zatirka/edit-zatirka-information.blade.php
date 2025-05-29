@@ -9,7 +9,7 @@
                 <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
                 <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title', $product->title) }}" required
                     autocomplete="title">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                 <label class="text-black-50" for="inputWeight_kg">Вес (кг)</label>
                 <input type="number" id="inputWeight_kg" class="form-control {{ $errors->has('weight_kg') ? 'is-invalid' : '' }}" name="weight_kg"
                     value="{{ old('weight_kg', $product->attributes['weight_kg']) }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="weight_kg">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('weight_kg')" /> --}}
+                <x-error.input-error class="ml-2" :messages="$errors->get('weight_kg')" />
             </div>
         </div>
 
@@ -26,7 +26,7 @@
             <div>
                 <label class="text-black-50" for="inputSeam">Ширина шва (мм)</label>
                 <input type="text" id="inputSeam" class="form-control {{ $errors->has('seam') ? 'is-invalid' : '' }}" name="seam" value="{{ old('seam', $product->attributes['seam']) }}" autocomplete="seam">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('seam')" /> --}}
+                <x-error.input-error class="ml-2" :messages="$errors->get('seam')" />
             </div>
         </div>
 

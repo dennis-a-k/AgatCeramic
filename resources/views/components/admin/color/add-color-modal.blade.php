@@ -24,7 +24,7 @@
                             <label for="inputColor">Название цвета</label>
                             <input type="text" id="inputColor" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus
                                 autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                         </div>
 
                         <div class="mt-2">
@@ -37,7 +37,7 @@
                                 </div>
                                 <input type="text" id="inputCode" class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" name="code" value="{{ old('code') }}" required
                                     autocomplete="code">
-                                {{-- <x-input-error class="ml-2" :messages="$errors->get('code')" /> --}}
+                                <x-error.input-error class="ml-2" :messages="$errors->get('code')" />
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@
                                         <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
                                         <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required
                                             autocomplete="title">
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                                     </div>
                                 </div>
 
@@ -32,7 +32,7 @@
                                         <label class="text-black-50" for="inputPrice">Цена</label>
                                         <input type="number" id="inputPrice" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price" value="{{ old('price') }}"
                                             min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="price">
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('price')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('price')" />
                                     </div>
                                 </div>
 
@@ -41,7 +41,7 @@
                                         <label class="text-black-50" for="inputWeight_kg">Вес (кг)</label>
                                         <input type="number" id="inputWeight_kg" class="form-control {{ $errors->has('weight_kg') ? 'is-invalid' : '' }}" name="weight_kg"
                                             value="{{ old('weight_kg') }}" min="0.00" step="0.01" pattern="^\d+(?:\.\d{10,2})?$" autocomplete="weight_kg">
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('weight_kg')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('weight_kg')" />
                                     </div>
                                 </div>
 
@@ -62,7 +62,7 @@
                                         <label class="text-black-50" for="inputSeam">Ширина шва (мм)</label>
                                         <input type="text" id="inputSeam" class="form-control {{ $errors->has('seam') ? 'is-invalid' : '' }}" name="seam" value="{{ old('seam') }}"
                                             autocomplete="seam">
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                                     </div>
                                 </div>
 
@@ -144,7 +144,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]" multiple>
                                         <label class="custom-file-label" for="customFile" data-browse="Выбрать">Загрузите фото</label>
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                                     </div>
                                 </div>
 
@@ -153,7 +153,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file2" accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]" multiple>
                                         <label class="custom-file-label" for="file2" data-browse="Выбрать">Загрузите фото</label>
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.1')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('imgs.1')" />
                                     </div>
                                 </div>
 
@@ -162,7 +162,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="file3" accept="image/png, image/jpeg, image/jpg, image/webp" name="imgs[]" multiple>
                                         <label class="custom-file-label" for="file3" data-browse="Выбрать">Загрузите фото</label>
-                                        {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.2')" /> --}}
+                                        <x-error.input-error class="ml-2" :messages="$errors->get('imgs.2')" />
                                     </div>
                                 </div>
                             </div>

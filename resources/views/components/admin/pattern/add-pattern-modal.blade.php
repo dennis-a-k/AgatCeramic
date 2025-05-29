@@ -21,7 +21,7 @@
                             <label for="inputPattern">Узор</label>
                             <input type="text" id="inputPattern" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus
                                 autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                         </div>
                     </div>
                 </div>

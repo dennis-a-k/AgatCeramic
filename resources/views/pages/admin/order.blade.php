@@ -41,7 +41,7 @@
                                             <strong>{{ $appData->organization }}</strong><br>
                                             ИНН: {{ $appData->inn }}<br>
                                             {{ $appData->adress }}<br>
-                                            Телефон: {{ $appData->app_phone }}<br>
+                                            Телефон: {{ $appData->appPhoneFormatted }}<br>
                                             Email: {{ $appData->app_email }}
                                         </address>
                                     </div>
@@ -61,7 +61,7 @@
 
                                 <div class="row">
                                     <div class="col-12 table-responsive">
-                                        <table class="table table-striped">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th></th>
