@@ -9,7 +9,7 @@
                 <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
                 <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title', $product->title) }}" required
                     autocomplete="title">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                 <label class="text-black-50" for="inputDimensions">Габариты (см)</label>
                 <input type="text" id="inputDimensions" class="form-control {{ $errors->has('dimensions') ? 'is-invalid' : '' }}" name="dimensions"
                     value="{{ old('dimensions', $product->attributes['dimensions']) }}" autocomplete="dimensions">
-                {{-- <x-input-error class="ml-2" :messages="$errors->get('dimensions')" /> --}}
+                <x-error.input-error class="ml-2" :messages="$errors->get('dimensions')" />
             </div>
         </div>
 

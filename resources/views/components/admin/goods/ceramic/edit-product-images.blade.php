@@ -17,7 +17,7 @@
                             <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                 Загрузите картинку
                             </label>
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                         </div>
                     </div>
                 </div>

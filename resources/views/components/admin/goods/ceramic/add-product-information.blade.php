@@ -8,8 +8,8 @@
             <div class="form-group">
                 <div>
                     <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
-                    <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autocomplete="title">
-                    {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                    <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" autocomplete="title">
+                    <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                 </div>
             </div>
 

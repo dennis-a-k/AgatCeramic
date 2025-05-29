@@ -22,8 +22,7 @@
                             <label for="inputBrand">Название производителя</label>
                             <input type="text" id="inputBrand" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title" name="title" value="" required autofocus
                                 autocomplete="title">
-                            {{--
-                            <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                         </div>
 
                         <div class="mt-3">
@@ -35,8 +34,7 @@
                                 <label class="custom-file-label" for="brandImg" data-browse="Выбрать">
                                     Загрузите фото
                                 </label>
-                                {{--
-                                <x-input-error class="ml-2" :messages="$errors->get('img')" /> --}}
+                                <x-error.input-error class="ml-2" :messages="$errors->get('img')" />
                             </div>
                         </div>
                     </div>

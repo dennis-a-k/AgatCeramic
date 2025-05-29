@@ -22,7 +22,7 @@
                         <label class="text-black-50" for="inputTitle">Подкатегория</label>
                         <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required
                             autocomplete="title">
-                        {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                        <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                     </div>
                 </div>
                 <button type="submit" class="btn btn-info float-right">

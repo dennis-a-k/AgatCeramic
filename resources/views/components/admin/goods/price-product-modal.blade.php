@@ -14,6 +14,6 @@
                 </button>
             </div>
         </div>
-        {{-- <x-input-error class="ml-2" :messages="$errors->get('price')" /> --}}
+        <x-error.input-error class="ml-2" :messages="$errors->get('price')" />
     </form>
 </div>

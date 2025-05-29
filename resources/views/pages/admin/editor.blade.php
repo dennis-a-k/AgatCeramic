@@ -64,8 +64,7 @@
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузить шаблон товаров
                                     </label>
-                                    {{--
-                                    <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                    <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                                 </div>
                             </div>
 
@@ -109,8 +108,7 @@
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон цен
                                     </label>
-                                    {{--
-                                    <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                    <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                                 </div>
                             </div>
 
@@ -154,8 +152,7 @@
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон статусов
                                     </label>
-                                    {{--
-                                    <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                    <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                                 </div>
                             </div>
 
@@ -199,8 +196,7 @@
                                     <label class="custom-file-label" for="customFile" data-browse="Выбрать">
                                         Загрузите шаблон распродаж
                                     </label>
-                                    {{--
-                                    <x-input-error class="ml-2" :messages="$errors->get('imgs.0')" /> --}}
+                                    <x-error.input-error class="ml-2" :messages="$errors->get('imgs.0')" />
                                 </div>
                             </div>
 

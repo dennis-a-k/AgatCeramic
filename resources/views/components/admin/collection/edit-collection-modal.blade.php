@@ -22,7 +22,7 @@
                             <label for="inputCollection">Коллекция</label>
                             <input type="text" id="inputCollection" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }} modal-title" name="title" value="" required autofocus
                                 autocomplete="title">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                         </div>
                     </div>
                 </div>

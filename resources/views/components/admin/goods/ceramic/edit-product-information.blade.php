@@ -10,7 +10,7 @@
                     <label class="text-black-50" for="inputTitle">Наименование <small class="text-red">(обязательно)</small></label>
                     <input type="text" id="inputTitle" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title', $product->title) }}" required
                         autocomplete="title">
-                    {{-- <x-input-error class="ml-2" :messages="$errors->get('title')" /> --}}
+                    <x-error.input-error class="ml-2" :messages="$errors->get('title')" />
                 </div>
             </div>
 
@@ -19,7 +19,7 @@
                     <label class="text-black-50" for="inputProductCode">Код товара</label>
                     <input type="text" id="inputProductCode" class="form-control {{ $errors->has('product_code') ? 'is-invalid' : '' }}" name="product_code"
                         value="{{ old('product_code', $product->product_code) }}" autocomplete="product_code">
-                    {{-- <x-input-error class="ml-2" :messages="$errors->get('product_code')" /> --}}
+                    <x-error.input-error class="ml-2" :messages="$errors->get('product_code')" />
                 </div>
             </div>
 

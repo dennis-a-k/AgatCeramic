@@ -22,7 +22,7 @@
                             <label for="inputCountry">Страна</label>
                             <input type="text" id="inputCountry" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }} modal-title" name="name" value="" required autofocus
                                 autocomplete="name">
-                            {{-- <x-input-error class="ml-2" :messages="$errors->get('name')" /> --}}
+                            <x-error.input-error class="ml-2" :messages="$errors->get('name')" />
                         </div>
                     </div>
                 </div>
