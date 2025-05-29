@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('title')
-    {{ $title }} купить в Москве по низкой цене с доставкой
+    {{ $title }} купить с распродажей в Москве по низкой цене с доставкой
+@endsection
+
+@section('seo')
+    <meta name="description" content="Успейте купить {{ $title }} со скидкой в Москве и Московской области. Ограниченные коллекции, остатки премиальных серий и выгодные акции – только сейчас!">
+    <meta property="og:title" content="{{ $title }} купить со скидкой в Москве по низкой цене с доставкой в {{ config('app.name') }}">
+    <meta property="og:description" content="Успейте купить {{ $title }} со скидкой в Москве и Московской области. Ограниченные коллекции, остатки премиальных серий и выгодные акции – только сейчас!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('assets/images/stock/logo.png') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="{{ route('sale') }}">
 @endsection
 
 @section('content')

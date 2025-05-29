@@ -4,6 +4,17 @@
     {{ $title }} купить в Москве по низкой цене с доставкой
 @endsection
 
+@section('seo')
+    <meta name="description" content="{{ $title }} в ассортименте магазина Agat Ceramic – прочные материалы, стойкость к нагрузкам и стильный дизайн. Доставка по Москве и области, гарантия качества!">
+    <meta property="og:title" content="{{ $title }} купить в Москве по низкой цене с доставкой в {{ config('app.name') }}">
+    <meta property="og:description" content="{{ $title }} в ассортименте магазина Agat Ceramic – прочные материалы, стойкость к нагрузкам и стильный дизайн. Доставка по Москве и области, гарантия качества!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('assets/images/stock/logo.png') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="{{ route('category.list', $slug) }}">
+@endsection
+
 @section('content')
     <main class="shop-category-area pt-100px pb-100px">
         <div class="container">

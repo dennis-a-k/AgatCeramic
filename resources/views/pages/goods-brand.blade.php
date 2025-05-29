@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('title')
-    Купить плитку {{ $title }} в Москве по низкой цене с доставкой
+    Купить товар бренда {{ $title }} в Москве по низкой цене с доставкой
+@endsection
+
+@section('seo')
+    <meta name="description" content="Откройте для себя {{ $title }} – эталон качества, инноваций и стиля! В нашем магазине в Москве и МО представлены эксклюзивные товары от {{ $title }} для роскошных интерьеров.">
+    <meta property="og:title" content="Купить товар бренда {{ $title }} в Москве по низкой цене с доставкой в {{ config('app.name') }}">
+    <meta property="og:description" content="Откройте для себя {{ $title }} – эталон качества, инноваций и стиля! В нашем магазине в Москве и МО представлены эксклюзивные товары от {{ $title }} для роскошных интерьеров.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('assets/images/stock/logo.png') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="{{ route('brand.list', $brand->slug) }}">
 @endsection
 
 @section('content')

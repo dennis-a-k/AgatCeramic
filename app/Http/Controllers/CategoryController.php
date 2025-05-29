@@ -91,6 +91,7 @@ class CategoryController extends Controller
             'goods' => $goods,
             'category' => $category,
             'title' => $category->title,
+            'slug' => $category->slug,
             'nested_categories' => $category->children,
         ], $filters));
     }
