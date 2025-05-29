@@ -7,7 +7,7 @@
         <div class="body customScroll">
             <ul class="minicart-product-list">
                 @forelse($cart as $item)
-                    <li data-product-id="{{ $item['id'] }}">
+                    <li class="d-flex" data-product-id="{{ $item['id'] }}">
                         <a href="{{ route('product.show', [
                             'category' => $item['category_slug'] ?? '',
                             'slug' => $item['slug'] ?? '',
@@ -38,8 +38,8 @@
                                 @endif x
                                 <span class="amount">{{ number_format($item['price'], 2, '.', ' ') }} &#8381;</span>
                             </span>
-                            <a href="#" class="remove" data-product-id="{{ $item['id'] }}">×</a>
                         </div>
+                        <a href="#" class="remove" data-product-id="{{ $item['id'] }}">×</a>
                     </li>
                     @empty
                         <li class="empty-cart">Корзина пуста</li>
