@@ -35,7 +35,7 @@
                         <p class="text-secondary text-center mb-3">Выберите порядок изображений</p>
                     </div>
                     @foreach ($product->images as $index => $image)
-                        <div class="col-auto mb-4 mx-3">
+                        <div class="col-auto mb-3 mx-3">
                             <div class="row">
                                 <div class="rounded" style="aspect-ratio: 1 / 1; overflow: hidden; width: 100px; align-content: center; border: 1px solid #e5e5e5;">
                                     <img src="{{ asset('storage/images/' . $image->title) }}" class="rounded" style="width: 100%;" alt="{{ $image->title }}">
