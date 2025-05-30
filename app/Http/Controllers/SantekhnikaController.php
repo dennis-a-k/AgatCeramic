@@ -144,6 +144,7 @@ class SantekhnikaController extends Controller
             'category' => $currentCategory ?? $rootCategory,
             'subcategories' => $subcategories,
             'title' => $currentCategory->title ?? $rootCategory->title,
+            'slug' => $currentCategory->slug ?? $rootCategory->slug,
         ], $filters));
     }
 }
