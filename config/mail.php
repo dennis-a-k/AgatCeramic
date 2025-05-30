@@ -131,5 +131,5 @@ return [
         ],
     ],
 
-    'admin_email' => env('ADMIN_EMAIL', 'dennis.a.k@yandex.ru'),
+    'admin_email' => env('ADMIN_EMAIL'),
 ];

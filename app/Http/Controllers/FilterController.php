@@ -29,6 +29,7 @@ class FilterController extends Controller
             'goods' => $goods,
             'title' => $title,
             'category' => Category::where('slug', $slug)->first(),
+            'slug' => $slug,
         ], $filters));
     }
 
@@ -47,6 +48,7 @@ class FilterController extends Controller
             'goods' => $goods,
             'title' => $title,
             'brand' => Brand::where('slug', $slug)->first(),
+            'slug' => $slug,
         ], $filters));
     }
 }
