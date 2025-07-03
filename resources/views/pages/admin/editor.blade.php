@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('editor.import.goods') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import', 'goods') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('editor.import.prices') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import', 'prices') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('editor.import.statuses') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import', 'statuses') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -187,7 +187,7 @@
                     </div>
 
                     <div class="col-md">
-                        <form method="POST" action="{{ route('editor.import.sales') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editor.import', 'sales') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
