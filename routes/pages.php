@@ -21,6 +21,9 @@ Route::get('/partnerships', function () {
 Route::get('/partnerships2', function () {
     return view('pages.partnerships2');
 })->name('partnerships2');
+Route::get('/partnerships3', function () {
+    return view('pages.partnerships3');
+})->name('partnerships3');
 
 Route::get('/contact', function () {
     return view('pages.contact');

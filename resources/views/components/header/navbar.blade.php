@@ -75,6 +75,7 @@
 
                     <li><a href="{{ route('partnerships') }}" target="_blunk">Дизайнерам</a></li>
                     <li><a href="{{ route('partnerships2') }}" target="_blunk">Дизайнерам 2</a></li>
+                    <li><a href="{{ route('partnerships3') }}" target="_blunk">Дизайнерам 3</a></li>
 
                     <li><a href="{{ route('contact') }}">Контакты</a></li>
 
