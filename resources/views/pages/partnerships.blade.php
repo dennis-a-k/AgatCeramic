@@ -28,23 +28,23 @@
                         <h3 class="col-9 m-0">Agat <span>Ceramic</span></h3>
                     </div>
                 </a>
-                <a href="#contact" class="cta-btn">Присоединиться</a>
+                <a href="#contact" class="btn visible">Присоединиться</a>
             </div>
         </header>
 
         <section class="fullscreen-section" id="hero">
-            <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Дизайн интерьера" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/main.png') }}" alt="Дизайн интерьера" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
-                <h1>Превратите ваши проекты в источник дохода</h1>
-                <p>Присоединяйтесь к сообществу дизайнеров <strong>{{ config('app.name') }}</strong> и получайте до 15% с каждого заказа ваших клиентов</p>
+                <h1 style="color: #e6a80e">Превратите ваши проекты в источник дохода</h1>
+                <p>Присоединяйтесь к сообществу дизайнеров <strong style="color: #e6a80e">{{ config('app.name') }}</strong> и получайте до 15% с каждого заказа ваших клиентов</p>
                 <a href="#contact" class="btn">Начать сотрудничество</a>
                 <a href="#commission" class="btn btn-outline">Узнать подробности</a>
             </div>
         </section>
 
         <section class="fullscreen-section" id="commission">
-            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Высокие комиссионные" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/section-2.png') }}" alt="Высокие комиссионные" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
                 <div class="benefit-card">
@@ -60,7 +60,7 @@
         </section>
 
         <section class="fullscreen-section" id="exclusive">
-            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Эксклюзивные материалы" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/section-3.png') }}" alt="Эксклюзивные материалы" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
                 <div class="benefit-card">
@@ -76,7 +76,7 @@
         </section>
 
         <section class="fullscreen-section" id="manager">
-            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Персональный менеджер" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/section-4.png') }}" alt="Персональный менеджер" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
                 <div class="benefit-card">
@@ -93,7 +93,7 @@
         </section>
 
         <section class="fullscreen-section" id="content">
-            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Готовый контент" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/section-5.png') }}" alt="Готовый контент" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
                 <div class="benefit-card">
@@ -109,12 +109,12 @@
         </section>
 
         <section class="fullscreen-section" id="contact">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Присоединиться" class="section-bg">
+            <img src="{{ asset('assets/images/partnerships/section-6.png') }}" alt="Присоединиться" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
                 <form class="contact-form" id="partnerForm">
-                    <h2>Стать партнером {{ config('app.name') }}</h2>
-                    <p>Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
+                    <h2 style="text-align: center">Стать партнером <span style="color: #b8860b">{{ config('app.name') }}</span></h2>
+                    <p style="text-align: center">Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
 
                     <div class="form-group">
                         <label for="name">Ваше имя</label>
@@ -129,11 +129,6 @@
                     <div class="form-group">
                         <label for="phone">Телефон</label>
                         <input type="tel" id="phone" name="phone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experience">Опыт работы (лет)</label>
-                        <input type="number" id="experience" name="experience" min="0" required>
                     </div>
 
                     <button type="submit" class="btn">Отправить заявку</button>
