@@ -112,7 +112,9 @@
             <img src="{{ asset('assets/images/partnerships/section-6.png') }}" alt="Присоединиться" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
-                <form class="contact-form" id="partnerForm">
+                <form class="contact-form" id="partnerForm" method="POST" action="{{ route('call.partnerships') }}">
+                    @csrf
+
                     <h2 style="text-align: center">Стать партнером <span style="color: #b8860b">{{ config('app.name') }}</span></h2>
                     <p style="text-align: center">Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
 
