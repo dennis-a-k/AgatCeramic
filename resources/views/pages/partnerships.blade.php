@@ -1,996 +1,708 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Designers Collaboration | Премиальная плитка и керамогранит</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <style>
-            /* CSS стили будут здесь */
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TileMaster Pro | Сотрудничество для дизайнеров</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fullscreen-section {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b8860b;
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.6s ease-out 0.3s;
+        }
+
+        .btn.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .btn:hover {
+            background-color: #a67c10;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #fff;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .section-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transform: scale(1.1);
+            transition: transform 8s ease-out;
+        }
+
+        .section-bg.zoomed {
+            transform: scale(1);
+        }
+
+        .section-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .scroll-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background-color: #b8860b;
+            transform: scale(1.3);
+        }
+
+        .nav-dot::after {
+            content: attr(data-title);
+            position: absolute;
+            right: 25px;
+            /* Изменено с left на right */
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            color: white;
+            font-size: 14px;
+            background-color: rgba(42, 42, 42, 0.8);
+            padding: 5px 10px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            background-color: rgba(42, 42, 42, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        header.scrolled .logo {
+            color: #fff;
+        }
+
+        .logo span {
+            color: #b8860b;
+        }
+
+        .cta-btn {
+            background-color: #b8860b;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #a67c10;
+            transform: translateY(-2px);
+        }
+
+        /* Specific sections */
+        #hero {
+            color: #fff;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        #hero p {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+
+        .benefit-card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .benefit-card h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2a2a2a;
+        }
+
+        .benefit-card p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon {
+            font-size: 50px;
+            color: #b8860b;
+            margin-bottom: 20px;
+        }
+
+        /* Form section */
+        #contact {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        #contact .section-overlay {
+            background: rgba(42, 42, 42, 0.7);
+        }
+
+        .contact-form {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+
+        .contact-form.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #b8860b;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2a2a2a;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            body {
-                font-family: 'Montserrat', sans-serif;
-                color: #333;
-                line-height: 1.6;
-                overflow-x: hidden;
+            50% {
+                transform: translateY(-10px);
             }
+        }
 
-            .container {
-                width: 100%;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
 
-            /* Header */
-            header {
-                background-color: #fff;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                position: fixed;
-                width: 100%;
-                z-index: 1000;
-            }
-
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px 0;
-            }
-
-            .logo {
-                font-family: 'Playfair Display', serif;
-                font-size: 24px;
-                font-weight: 700;
-                color: #2a2a2a;
-                text-decoration: none;
-            }
-
-            .logo span {
-                color: #b8860b;
-            }
-
-            nav ul {
-                display: flex;
-                list-style: none;
-            }
-
-            nav ul li {
-                margin-left: 30px;
-            }
-
-            nav ul li a {
-                text-decoration: none;
-                color: #2a2a2a;
-                font-weight: 500;
-                transition: color 0.3s;
-            }
-
-            nav ul li a:hover {
-                color: #b8860b;
-            }
-
-            .mobile-menu-btn {
-                display: none;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                color: #2a2a2a;
-            }
-
-            /* Hero Section */
-            .hero {
-                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-                background-size: cover;
-                background-position: center;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                color: #fff;
-                padding-top: 80px;
-            }
-
-            .hero-content {
-                max-width: 600px;
-            }
-
-            .hero h1 {
-                font-family: 'Playfair Display', serif;
+        /* Responsive */
+        @media (max-width: 992px) {
+            #hero h1 {
                 font-size: 48px;
-                margin-bottom: 20px;
-                line-height: 1.2;
             }
 
-            .hero p {
+            #hero p {
                 font-size: 18px;
-                margin-bottom: 30px;
-            }
-
-            .btn {
-                display: inline-block;
-                background-color: #b8860b;
-                color: #fff;
-                padding: 12px 30px;
-                border-radius: 4px;
-                text-decoration: none;
-                font-weight: 600;
-                transition: background-color 0.3s;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-            }
-
-            .btn:hover {
-                background-color: #a67c10;
-            }
-
-            .btn-outline {
-                background-color: transparent;
-                border: 2px solid #b8860b;
-                margin-left: 15px;
-            }
-
-            .btn-outline:hover {
-                background-color: rgba(184, 134, 11, 0.1);
-            }
-
-            /* Benefits Section */
-            .section {
-                padding: 100px 0;
-            }
-
-            .section-title {
-                text-align: center;
-                margin-bottom: 60px;
-            }
-
-            .section-title h2 {
-                font-family: 'Playfair Display', serif;
-                font-size: 36px;
-                color: #2a2a2a;
-                margin-bottom: 15px;
-            }
-
-            .section-title p {
-                color: #666;
-                max-width: 700px;
-                margin: 0 auto;
-            }
-
-            .benefits-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
             }
 
             .benefit-card {
-                background-color: #fff;
-                border-radius: 8px;
                 padding: 30px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-                transition: transform 0.3s, box-shadow 0.3s;
-                text-align: center;
             }
 
-            .benefit-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            .benefit-card h2 {
+                font-size: 28px;
             }
+        }
 
-            .benefit-icon {
-                font-size: 40px;
-                color: #b8860b;
-                margin-bottom: 20px;
-            }
-
-            .benefit-card h3 {
-                font-size: 22px;
-                margin-bottom: 15px;
-                color: #2a2a2a;
-            }
-
-            /* Portfolio Section */
-            .portfolio {
-                background-color: #f9f9f9;
-            }
-
-            .portfolio-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                gap: 25px;
-            }
-
-            .portfolio-item {
-                position: relative;
-                overflow: hidden;
-                border-radius: 8px;
-                height: 250px;
-            }
-
-            .portfolio-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.5s;
-            }
-
-            .portfolio-item:hover img {
-                transform: scale(1.1);
-            }
-
-            .portfolio-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(42, 42, 42, 0.8);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                opacity: 0;
-                transition: opacity 0.3s;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
-
-            .portfolio-item:hover .portfolio-overlay {
-                opacity: 1;
-            }
-
-            .portfolio-overlay h3 {
-                font-size: 22px;
-                margin-bottom: 10px;
-            }
-
-            /* How It Works */
-            .steps {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 50px;
-                position: relative;
-            }
-
-            .step {
-                text-align: center;
-                width: 23%;
-                position: relative;
-                z-index: 1;
-            }
-
-            .step-number {
-                width: 60px;
-                height: 60px;
-                background-color: #b8860b;
-                color: #fff;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                font-weight: 700;
-                margin: 0 auto 20px;
-            }
-
-            .step h3 {
-                font-size: 20px;
-                margin-bottom: 15px;
-                color: #2a2a2a;
-            }
-
-            .steps-line {
-                position: absolute;
-                top: 30px;
-                left: 15%;
-                width: 70%;
-                height: 2px;
-                background-color: #ddd;
-                z-index: 0;
-            }
-
-            /* Testimonials */
-            .testimonials {
-                background-color: #f9f9f9;
-            }
-
-            .testimonial-slider {
-                max-width: 800px;
-                margin: 0 auto;
-                position: relative;
-            }
-
-            .testimonial {
-                background-color: #fff;
-                padding: 40px;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-                text-align: center;
-                display: none;
-            }
-
-            .testimonial.active {
-                display: block;
-            }
-
-            .testimonial-text {
-                font-size: 18px;
-                font-style: italic;
-                margin-bottom: 30px;
-                color: #555;
-            }
-
-            .testimonial-author {
-                font-weight: 600;
-                color: #2a2a2a;
-            }
-
-            .testimonial-role {
-                color: #b8860b;
-                font-size: 14px;
-                margin-top: 5px;
-            }
-
-            .slider-nav {
-                display: flex;
-                justify-content: center;
-                margin-top: 30px;
-            }
-
-            .slider-dot {
-                width: 12px;
-                height: 12px;
-                background-color: #ddd;
-                border-radius: 50%;
-                margin: 0 5px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-
-            .slider-dot.active {
-                background-color: #b8860b;
-            }
-
-            /* CTA Section */
-            .cta {
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-                background-size: cover;
-                background-position: center;
-                color: #fff;
-                text-align: center;
-                padding: 100px 0;
-            }
-
-            .cta h2 {
-                font-family: 'Playfair Display', serif;
+        @media (max-width: 768px) {
+            #hero h1 {
                 font-size: 36px;
-                margin-bottom: 20px;
             }
 
-            .cta p {
-                max-width: 700px;
-                margin: 0 auto 30px;
-                font-size: 18px;
+            .scroll-nav {
+                right: 15px;
             }
 
-            /* Footer */
-            footer {
-                background-color: #2a2a2a;
-                color: #fff;
-                padding: 60px 0 20px;
+            .header-container {
+                padding: 0 20px;
             }
 
-            .footer-content {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 30px;
-                margin-bottom: 40px;
+            .section-content {
+                padding: 0 20px;
             }
 
-            .footer-column h3 {
-                font-size: 18px;
-                margin-bottom: 20px;
-                color: #b8860b;
-            }
-
-            .footer-column ul {
-                list-style: none;
-            }
-
-            .footer-column ul li {
-                margin-bottom: 10px;
-            }
-
-            .footer-column ul li a {
-                color: #ccc;
-                text-decoration: none;
-                transition: color 0.3s;
-            }
-
-            .footer-column ul li a:hover {
-                color: #b8860b;
-            }
-
-            .social-links {
-                display: flex;
-                margin-top: 20px;
-            }
-
-            .social-links a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 40px;
-                background-color: rgba(255, 255, 255, 0.1);
-                border-radius: 50%;
-                margin-right: 10px;
-                color: #fff;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            }
-
-            .social-links a:hover {
-                background-color: #b8860b;
-            }
-
-            .copyright {
-                text-align: center;
-                padding-top: 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                color: #999;
-                font-size: 14px;
-            }
-
-            /* Form */
-            .contact-form {
-                max-width: 600px;
-                margin: 0 auto;
-                background-color: #fff;
-                padding: 40px;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            }
-
-            .form-group {
-                margin-bottom: 20px;
-            }
-
-            .form-group label {
+            .btn {
                 display: block;
-                margin-bottom: 8px;
-                font-weight: 500;
-                color: #2a2a2a;
-            }
-
-            .form-group input,
-            .form-group textarea,
-            .form-group select {
                 width: 100%;
-                padding: 12px 15px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 16px;
-                transition: border-color 0.3s;
+                margin-bottom: 15px;
             }
 
-            .form-group input:focus,
-            .form-group textarea:focus,
-            .form-group select:focus {
-                border-color: #b8860b;
-                outline: none;
+            .btn-outline {
+                margin-left: 0;
             }
 
-            .form-group textarea {
-                min-height: 120px;
-                resize: vertical;
+            .scroll-nav {
+                right: 15px;
             }
 
-            /* Mobile Styles */
-            @media (max-width: 992px) {
-                .benefits-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+            .nav-dot::after {
+                right: 20px;
+                /* Уменьшаем отступ для мобильных */
+            }
+        }
 
-                .steps {
-                    flex-direction: column;
-                }
-
-                .step {
-                    width: 100%;
-                    margin-bottom: 40px;
-                }
-
-                .steps-line {
-                    display: none;
-                }
-
-                .footer-content {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+        @media (max-width: 576px) {
+            #hero h1 {
+                font-size: 28px;
             }
 
-            @media (max-width: 768px) {
-                nav ul {
-                    display: none;
-                    position: absolute;
-                    top: 80px;
-                    left: 0;
-                    width: 100%;
-                    background-color: #fff;
-                    flex-direction: column;
-                    padding: 20px 0;
-                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                }
-
-                nav ul.show {
-                    display: flex;
-                }
-
-                nav ul li {
-                    margin: 0;
-                    text-align: center;
-                    padding: 10px 0;
-                }
-
-                .mobile-menu-btn {
-                    display: block;
-                }
-
-                .hero h1 {
-                    font-size: 36px;
-                }
-
-                .hero p {
-                    font-size: 16px;
-                }
-
-                .btn {
-                    display: block;
-                    width: 100%;
-                    margin-bottom: 15px;
-                }
-
-                .btn-outline {
-                    margin-left: 0;
-                }
-
-                .section {
-                    padding: 60px 0;
-                }
-
-                .section-title h2 {
-                    font-size: 30px;
-                }
-
-                .portfolio-grid {
-                    grid-template-columns: 1fr;
-                }
+            .benefit-card {
+                padding: 20px;
             }
 
-            @media (max-width: 576px) {
-                .benefits-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .footer-content {
-                    grid-template-columns: 1fr;
-                }
+            .contact-form {
+                padding: 30px 20px;
             }
-        </style>
-    </head>
+        }
+    </style>
+</head>
 
-    <body>
-        <!-- Header -->
-        <header>
-            <div class="container header-container">
-                <a href="#" class="logo">Tile<span>Master</span></a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <nav>
-                    <ul id="mainMenu">
-                        <li><a href="#benefits">Преимущества</a></li>
-                        <li><a href="#portfolio">Портфолио</a></li>
-                        <li><a href="#process">Как это работает</a></li>
-                        <li><a href="#reviews">Отзывы</a></li>
-                        <li><a href="#contact">Сотрудничество</a></li>
-                    </ul>
-                </nav>
+<body>
+    <!-- Navigation Dots -->
+    <div class="scroll-nav">
+        <div class="nav-dot active" data-title="Главная" data-section="hero"></div>
+        <div class="nav-dot" data-title="Высокие комиссии" data-section="commission"></div>
+        <div class="nav-dot" data-title="Эксклюзивные материалы" data-section="exclusive"></div>
+        <div class="nav-dot" data-title="Персональный менеджер" data-section="manager"></div>
+        <div class="nav-dot" data-title="Готовый контент" data-section="content"></div>
+        <div class="nav-dot" data-title="Присоединиться" data-section="contact"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="header-container">
+            <a href="#" class="logo">Tile<span>Master</span></a>
+            <a href="#contact" class="cta-btn">Присоединиться</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="fullscreen-section" id="hero">
+        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Дизайн интерьера" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <h1>Превратите ваши проекты в источник дохода</h1>
+            <p>Присоединяйтесь к сообществу дизайнеров TileMaster и получайте до 15% с каждого заказа ваших клиентов</p>
+            <a href="#contact" class="btn">Начать сотрудничество</a>
+            <a href="#commission" class="btn btn-outline">Узнать подробности</a>
+        </div>
+    </section>
+
+    <!-- Commission Section -->
+    <section class="fullscreen-section" id="commission">
+        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Высокие комиссионные" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-percentage floating"></i>
+                </div>
+                <h2>Высокие комиссионные</h2>
+                <p>Получайте до 15% от суммы заказа вашего клиента. Чем больше вы продаете, тем выше ваш процент.</p>
+                <p>Наши топ-партнеры зарабатывают дополнительно от 150 000 ₽ в месяц.</p>
+                <a href="#contact" class="btn">Хочу такие условия</a>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Создавайте уникальные интерьеры с лучшими материалами</h1>
-                    <p>Присоединяйтесь к сообществу дизайнеров TileMaster и получайте эксклюзивные условия сотрудничества, доступ к премиальным коллекциям и вознаграждение за каждого клиента.</p>
-                    <a href="#contact" class="btn">Присоединиться</a>
-                    <a href="#benefits" class="btn btn-outline">Узнать больше</a>
+    <!-- Exclusive Section -->
+    <section class="fullscreen-section" id="exclusive">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Эксклюзивные материалы" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-gem floating"></i>
                 </div>
+                <h2>Эксклюзивные коллекции</h2>
+                <p>Доступ к ограниченным сериям и новинкам раньше других. Уникальные материалы для ваших проектов.</p>
+                <p>Только через наших партнеров-дизайнеров клиенты могут получить эти премиальные материалы.</p>
+                <a href="#contact" class="btn">Получить доступ</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Benefits Section -->
-        <section class="section" id="benefits">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Почему дизайнерам выгодно работать с нами?</h2>
-                    <p>Мы создали уникальные условия для дизайнеров интерьеров, которые хотят предлагать своим клиентам только лучшие материалы</p>
+    <!-- Manager Section -->
+    <section class="fullscreen-section" id="manager">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Персональный менеджер" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-user-tie floating"></i>
                 </div>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-percentage"></i>
-                        </div>
-                        <h3>Высокие комиссионные</h3>
-                        <p>Получайте до 15% от суммы заказа вашего клиента. Чем больше вы продаете, тем выше ваш процент.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3>Эксклюзивные коллекции</h3>
-                        <p>Доступ к ограниченным сериям и новинкам раньше других. Уникальные материалы для ваших проектов.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3>Персональный менеджер</h3>
-                        <p>Выделенный специалист, который поможет с подбором материалов, оформлением заказов и решением любых вопросов.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3>Библиотека материалов</h3>
-                        <p>Доступ к полной базе технических характеристик, сертификатов и инструкций по укладке всех материалов.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-photo-video"></i>
-                        </div>
-                        <h3>Профессиональный контент</h3>
-                        <p>Готовые HD фото и 3D-визуализации всех коллекций для ваших презентаций и портфолио.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <h3>Программа лояльности</h3>
-                        <p>Бонусы, подарки и специальные условия для самых активных партнеров. Участвуйте в закрытых мероприятиях.</p>
-                    </div>
-                </div>
+                <h2>Персональный менеджер</h2>
+                <p>Выделенный специалист, который поможет с подбором материалов, оформлением заказов и решением любых
+                    вопросов.</p>
+                <p>Ваш менеджер знает все о ваших клиентах и предпочтениях.</p>
+                <a href="#contact" class="btn">Хочу менеджера</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Portfolio Section -->
-        <section class="section portfolio" id="portfolio">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Проекты наших партнеров</h2>
-                    <p>Вдохновляйтесь реализованными проектами дизайнеров, которые уже сотрудничают с TileMaster</p>
+    <!-- Content Section -->
+    <section class="fullscreen-section" id="content">
+        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Готовый контент" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-photo-video floating"></i>
                 </div>
-                <div class="portfolio-grid" id="portfolioGrid">
-                    <!-- Portfolio items will be added by JavaScript -->
-                </div>
+                <h2>Готовый профессиональный контент</h2>
+                <p>HD фото, 3D-визуализации и технические спецификации всех коллекций для ваших презентаций.</p>
+                <p>Экономьте время на создание материалов для клиентов.</p>
+                <a href="#contact" class="btn">Получить материалы</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Process Section -->
-        <section class="section" id="process">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Как начать сотрудничество?</h2>
-                    <p>Всего 4 простых шага отделяют вас от начала прибыльного партнерства с TileMaster</p>
+    <!-- Contact Section -->
+    <section class="fullscreen-section" id="contact">
+        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Присоединиться" class="section-bg">
+        <div class="section-overlay"></div>
+        <div class="section-content">
+            <form class="contact-form" id="partnerForm">
+                <h2>Стать партнером TileMaster</h2>
+                <p>Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
+
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Регистрация</h3>
-                        <p>Заполните простую форму на нашем сайте и предоставьте информацию о своем опыте.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Верификация</h3>
-                        <p>Наш менеджер свяжется с вами для подтверждения данных и обсуждения условий.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Доступ</h3>
-                        <p>Получите персональный аккаунт с полным доступом ко всем материалам и инструментам.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Первый проект</h3>
-                        <p>Рекомендуйте нашу продукцию своим клиентам и получайте вознаграждение.</p>
-                    </div>
-                    <div class="steps-line"></div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-            </div>
-        </section>
 
-        <!-- Testimonials Section -->
-        <section class="section testimonials" id="reviews">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Что говорят наши партнеры</h2>
-                    <p>Отзывы дизайнеров, которые уже сотрудничают с TileMaster</p>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required>
                 </div>
-                <div class="testimonial-slider">
-                    <div class="testimonial active">
-                        <p class="testimonial-text">"Сотрудничество с TileMaster значительно упростило мою работу. Теперь я могу предложить клиентам не только дизайн, но и качественные материалы с
-                            гарантией. А комиссионные стали приятным дополнением к основному доходу."</p>
-                        <p class="testimonial-author">Анна Смирнова</p>
-                        <p class="testimonial-role">Дизайнер интерьеров, 7 лет опыта</p>
-                    </div>
-                    <div class="testimonial">
-                        <p class="testimonial-text">"Благодаря эксклюзивным коллекциям TileMaster мои проекты стали более уникальными. Клиенты ценят, когда дизайнер может предложить что-то
-                            действительно редкое и качественное."</p>
-                        <p class="testimonial-author">Дмитрий Ковалев</p>
-                        <p class="testimonial-role">Архитектор, студия "Пространство"</p>
-                    </div>
-                    <div class="testimonial">
-                        <p class="testimonial-text">"Персональный менеджер - это то, что отличает TileMaster от других. Все вопросы решаются быстро, а клиенты всегда довольны сервисом. За последний
-                            год 80% моих проектов были реализованы с их материалами."</p>
-                        <p class="testimonial-author">Елена Ветрова</p>
-                        <p class="testimonial-role">Дизайнер жилых интерьеров</p>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active" data-index="0"></div>
-                        <div class="slider-dot" data-index="1"></div>
-                        <div class="slider-dot" data-index="2"></div>
-                    </div>
+
+                <div class="form-group">
+                    <label for="experience">Опыт работы (лет)</label>
+                    <input type="number" id="experience" name="experience" min="0" required>
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section class="cta">
-            <div class="container">
-                <h2>Готовы увеличить свой доход с TileMaster?</h2>
-                <p>Присоединяйтесь к более чем 500 дизайнерам, которые уже получают дополнительную прибыль от сотрудничества с нами</p>
-                <a href="#contact" class="btn">Начать сотрудничество</a>
-            </div>
-        </section>
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Стать партнером</h2>
-                    <p>Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
-                </div>
-                <form class="contact-form" id="partnerForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="experience">Опыт работы (лет)</label>
-                        <input type="number" id="experience" name="experience" min="0" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="portfolio">Ссылка на портфолио или сайт</label>
-                        <input type="url" id="portfolio" name="portfolio">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Дополнительная информация</label>
-                        <textarea id="message" name="message"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Отправить заявку</button>
-                </form>
-            </div>
-        </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 TileMaster. Все права защищены.</p>
+            <p>Сотрудничество с лучшими дизайнерами интерьеров</p>
+        </div>
+    </footer>
 
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-column">
-                        <h3>TileMaster</h3>
-                        <p>Премиальная плитка и керамогранит для самых взыскательных проектов.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Для дизайнеров</h3>
-                        <ul>
-                            <li><a href="#">Условия сотрудничества</a></li>
-                            <li><a href="#">Каталог материалов</a></li>
-                            <li><a href="#">Обучение</a></li>
-                            <li><a href="#">Мероприятия</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Контакты</h3>
-                        <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Дизайнеров, 15</li>
-                            <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
-                            <li><i class="fas fa-envelope"></i> designers@tilemaster.ru</li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Полезное</h3>
-                        <ul>
-                            <li><a href="#">Блог</a></li>
-                            <li><a href="#">Тенденции</a></li>
-                            <li><a href="#">Галерея проектов</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p>&copy; 2023 TileMaster. Все права защищены.</p>
-                </div>
-            </div>
-        </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Elements
+            const sections = document.querySelectorAll('.fullscreen-section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            const header = document.getElementById('mainHeader');
 
-        <script>
-            // JavaScript код будет здесь
-            document.addEventListener('DOMContentLoaded', function() {
-                // Mobile menu toggle
-                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                const mainMenu = document.getElementById('mainMenu');
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1 // Уменьшаем порог срабатывания
+            };
 
-                mobileMenuBtn.addEventListener('click', function() {
-                    mainMenu.classList.toggle('show');
-                });
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animate section content
+                        const content = entry.target.querySelector('.section-content');
+                        if (content) content.classList.add('visible');
 
-                // Smooth scrolling for anchor links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        e.preventDefault();
+                        // Animate buttons
+                        const buttons = entry.target.querySelectorAll('.btn');
+                        buttons.forEach(btn => {
+                            if (!btn.classList.contains('visible')) {
+                                btn.classList.add('visible');
+                            }
+                        });
 
-                        if (this.getAttribute('href') === '#') return;
-
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            // Close mobile menu if open
-                            mainMenu.classList.remove('show');
-
-                            window.scrollTo({
-                                top: target.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
+                        // Zoom background
+                        const bg = entry.target.querySelector('.section-bg');
+                        if (bg && !bg.classList.contains('zoomed')) {
+                            bg.classList.add('zoomed');
                         }
-                    });
-                });
 
-                // Testimonial slider
-                const testimonials = document.querySelectorAll('.testimonial');
-                const dots = document.querySelectorAll('.slider-dot');
-                let currentTestimonial = 0;
+                        // Animate benefit cards and contact form
+                        const cards = entry.target.querySelectorAll('.benefit-card, .contact-form');
+                        cards.forEach(card => {
+                            if (!card.classList.contains('visible')) {
+                                card.classList.add('visible');
+                            }
+                        });
 
-                function showTestimonial(index) {
-                    testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-                    dots.forEach(dot => dot.classList.remove('active'));
-
-                    testimonials[index].classList.add('active');
-                    dots[index].classList.add('active');
-                    currentTestimonial = index;
-                }
-
-                dots.forEach(dot => {
-                    dot.addEventListener('click', function() {
-                        const index = parseInt(this.getAttribute('data-index'));
-                        showTestimonial(index);
-                    });
-                });
-
-                // Auto-rotate testimonials
-                setInterval(() => {
-                    let nextIndex = (currentTestimonial + 1) % testimonials.length;
-                    showTestimonial(nextIndex);
-                }, 5000);
-
-                // Portfolio grid
-                const portfolioGrid = document.getElementById('portfolioGrid');
-                const portfolioItems = [{
-                        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Лофт апартаменты',
-                        designer: 'Студия "Простор"'
-                    },
-                    {
-                        image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Ресторан "Модерн"',
-                        designer: 'Анна Смирнова'
-                    },
-                    {
-                        image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Загородный дом',
-                        designer: 'Дмитрий Ковалев'
-                    },
-                    {
-                        image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Квартира в центре',
-                        designer: 'Елена Ветрова'
-                    },
-                    {
-                        image: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Отель "Премиум"',
-                        designer: 'Студия "Интерьер"'
-                    },
-                    {
-                        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                        title: 'Пентхаус',
-                        designer: 'Алексей Петров'
+                        // Update navigation dots
+                        const sectionId = entry.target.id;
+                        navDots.forEach(dot => {
+                            dot.classList.toggle('active', dot.dataset.section === sectionId);
+                        });
                     }
-                ];
-
-                portfolioItems.forEach(item => {
-                    const portfolioItem = document.createElement('div');
-                    portfolioItem.className = 'portfolio-item';
-                    portfolioItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="portfolio-overlay">
-                        <h3>${item.title}</h3>
-                        <p>Дизайнер: ${item.designer}</p>
-                    </div>
-                `;
-                    portfolioGrid.appendChild(portfolioItem);
                 });
+            }, observerOptions);
 
-                // Form submission
-                const partnerForm = document.getElementById('partnerForm');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
 
-                partnerForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
+            // Остальной код остается без изменений
+            // Navigation dots click handler
+            navDots.forEach(dot => {
+                dot.addEventListener('click', function () {
+                    const sectionId = this.dataset.section;
+                    const section = document.getElementById(sectionId);
 
-                    // Here you would normally send the form data to the server
-                    // For this example, we'll just show an alert
-
-                    const formData = new FormData(this);
-                    const formObject = {};
-                    formData.forEach((value, key) => formObject[key] = value);
-
-                    console.log('Form submitted:', formObject);
-
-                    alert('Спасибо за вашу заявку! Наш менеджер свяжется с вами в ближайшее время.');
-                    this.reset();
-
-                    // Scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-
-                // Sticky header on scroll
-                window.addEventListener('scroll', function() {
-                    const header = document.querySelector('header');
-                    if (window.scrollY > 100) {
-                        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                    } else {
-                        header.style.boxShadow = 'none';
+                    if (section) {
+                        window.scrollTo({
+                            top: section.offsetTop,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
-        </script>
-    </body>
+
+            // Header scroll effect
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Form submission
+            const partnerForm = document.getElementById('partnerForm');
+
+            partnerForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Form data collection
+                const formData = new FormData(this);
+                const formObject = {};
+                formData.forEach((value, key) => formObject[key] = value);
+
+                console.log('Form submitted:', formObject);
+
+                // Show success message
+                alert('Спасибо за вашу заявку! Наш менеджер свяжется с вами в ближайшее время.');
+                this.reset();
+
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Initialize first section
+            const firstSection = document.querySelector('.fullscreen-section');
+            if (firstSection) {
+                const content = firstSection.querySelector('.section-content');
+                if (content) content.classList.add('visible');
+
+                const bg = firstSection.querySelector('.section-bg');
+                if (bg) bg.classList.add('zoomed');
+
+                const buttons = firstSection.querySelectorAll('.btn');
+                buttons.forEach(btn => btn.classList.add('visible'));
+
+                const cards = firstSection.querySelectorAll('.benefit-card, .contact-form');
+                cards.forEach(card => card.classList.add('visible'));
+            }
+        });
+    </script>
+</body>
 
 </html>
