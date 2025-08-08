@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Form submission
     const partnerForm = document.getElementById('partnerForm');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.querySelector('.close-modal');
 
     partnerForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -85,10 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const formObject = {};
         formData.forEach((value, key) => formObject[key] = value);
 
-        console.log('Form submitted:', formObject);
-
-        // Show success message
-        alert('Спасибо за вашу заявку! Наш менеджер свяжется с вами в ближайшее время.');
+        // Show modal instead of alert
+        successModal.classList.add('show');
         this.reset();
 
         // Scroll to top
@@ -96,6 +96,18 @@ document.addEventListener('DOMContentLoaded', function () {
             top: 0,
             behavior: 'smooth'
         });
+    });
+
+    // Close modal handlers
+    closeModal.addEventListener('click', function () {
+        successModal.classList.remove('show');
+    });
+
+    // Close when clicking outside modal
+    window.addEventListener('click', function (e) {
+        if (e.target === successModal) {
+            successModal.classList.remove('show');
+        }
     });
 
     // Initialize first section

@@ -7,7 +7,7 @@
         <title>{{ config('app.name') }} | Сотрудничество для дизайнеров</title>
         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/partnerships.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/partnerships1.css') }}">
     </head>
 
     <body>
@@ -36,8 +36,8 @@
             <img src="{{ asset('assets/images/partnerships/main.png') }}" alt="Дизайн интерьера" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
-                <h1 style="color: #e6a80e">Превратите ваши проекты в источник дохода</h1>
-                <p>Присоединяйтесь к сообществу дизайнеров <strong style="color: #e6a80e">{{ config('app.name') }}</strong> и получайте до 15% с каждого заказа ваших клиентов</p>
+                <h1>Превратите ваши проекты в источник дохода</h1>
+                <p>Присоединяйтесь к сообществу дизайнеров <strong>{{ config('app.name') }}</strong> и получайте до 15% с каждого заказа ваших клиентов</p>
                 <a href="#contact" class="btn">Начать сотрудничество</a>
                 <a href="#commission" class="btn btn-outline">Узнать подробности</a>
             </div>
@@ -143,7 +143,15 @@
             </div>
         </footer>
 
-        <script src="{{ asset('assets/js/partnerships.js') }}"></script>
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Спасибо за вашу заявку!</h3>
+                <p>Наш менеджер свяжется с вами в ближайшее время.</p>
+            </div>
+        </div>
+
+        <script src="{{ asset('assets/js/partnerships1.js') }}"></script>
     </body>
 
 </html>
