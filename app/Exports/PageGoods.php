@@ -64,7 +64,7 @@ class PageGoods implements WithEvents, WithTitle, FromView
                 ];
 
                 $sheet->getDelegate()->getStyle('A1:D1')->applyFromArray($styleText);
-                $sheet->getDelegate()->getStyle('E1:AA1')->applyFromArray($styleHead);
+                $sheet->getDelegate()->getStyle('E1:AB1')->applyFromArray($styleHead);
             }
         ];
     }
