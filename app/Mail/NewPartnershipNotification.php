@@ -19,7 +19,7 @@ class NewPartnershipNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.orders.new_call')
-            ->subject('Новая заявка на звонок ' . $this->call->name . ' ' . $this->call->phone);
+        return $this->view('emails.partnerships.notification')
+            ->subject('Новая заявка от дизайнера ' . $this->call->name);
     }
 }

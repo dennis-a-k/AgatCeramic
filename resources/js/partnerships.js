@@ -79,23 +79,44 @@ document.addEventListener('DOMContentLoaded', function () {
     const successModal = document.getElementById('successModal');
     const closeModal = document.querySelector('.close-modal');
 
-    partnerForm.addEventListener('submit', function (e) {
+    partnerForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        // Form data collection
-        const formData = new FormData(this);
-        const formObject = {};
-        formData.forEach((value, key) => formObject[key] = value);
+        const loader = document.getElementById('loader');
+        loader.style.display = 'flex';
 
-        // Show modal instead of alert
-        successModal.classList.add('show');
-        this.reset();
+        try {
+            const formData = new FormData(this);
+            const response = await fetch('/partnerships-call', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json'
+                }
+            });
 
-        // Scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+            const data = await response.json();
+
+            if (data.success) {
+                // Show modal on success
+                successModal.classList.add('show');
+                this.reset();
+
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                alert('Ошибка при отправке формы: ' + (data.message || 'Попробуйте снова'));
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Сетевая ошибка. Проверьте соединение.');
+        } finally {
+            loader.style.display = 'none';
+        }
     });
 
     // Close modal handlers

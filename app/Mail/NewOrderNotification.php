@@ -19,7 +19,7 @@ class NewOrderNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.orders.new_order')
+        return $this->view('emails.orders.notification')
             ->subject('Новый заказ № ' . $this->order->order_number);
     }
 }
