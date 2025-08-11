@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\NewPartnershipNotification;
+use App\Mail\PartnershipConfirmation;
 use App\Models\Partnership;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -45,6 +46,12 @@ class PartnershipsController extends Controller
         ]);
 
         try {
+            // Отправляем письмо клиенту
+            if ($call->email) {
+                Mail::to($call->email)
+                    ->send(new PartnershipConfirmation($call));
+            }
+
             // Отправляем письмо администратору
             $adminEmail = config('mail.admin_email');
             if ($adminEmail) {
@@ -55,7 +62,7 @@ class PartnershipsController extends Controller
             Log::error('Ошибка отправки email: ' . $e->getMessage());
         }
 
-        return back()->with('success', 'call-created');
+        return response()->json(['success' => true]);
     }
 
     public function updateStatus(Request $request, string $id)

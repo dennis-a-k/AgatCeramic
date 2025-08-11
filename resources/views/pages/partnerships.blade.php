@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ config('app.name') }} | Сотрудничество для дизайнеров</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/partnerships1.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/partnerships.css') }}">
     </head>
 
     <body>
@@ -112,9 +113,7 @@
             <img src="{{ asset('assets/images/partnerships/section-6.png') }}" alt="Присоединиться" class="section-bg">
             <div class="section-overlay"></div>
             <div class="section-content">
-                <form class="contact-form" id="partnerForm" method="POST" action="{{ route('call.partnerships') }}">
-                    @csrf
-
+                <form class="contact-form" id="partnerForm">
                     <h2 style="text-align: center">Стать партнером <span style="color: #b8860b">{{ config('app.name') }}</span></h2>
                     <p style="text-align: center">Заполните форму, и наш менеджер свяжется с вами для обсуждения условий сотрудничества</p>
 
@@ -153,7 +152,12 @@
             </div>
         </div>
 
-        <script src="{{ asset('assets/js/partnerships1.js') }}"></script>
+        <div id="loader" class="loader" style="display: none;">
+            <div class="spinner"></div>
+            <p>Отправка заявки...</p>
+        </div>
+
+        <script src="{{ asset('assets/js/partnerships.js') }}"></script>
     </body>
 
 </html>

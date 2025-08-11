@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewPartnershipNotification extends Mailable
+class PartnershipConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +19,7 @@ class NewPartnershipNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.partnerships.notification')
-            ->subject('Новая заявка от дизайнера ' . $this->call->name);
+        return $this->view('emails.partnerships.confirmation')
+            ->subject('Подтверждение заявки на сотрудничество с ' . config('app.name'));
     }
 }
