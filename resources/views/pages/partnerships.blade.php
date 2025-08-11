@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/partnerships.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/partnerships-app.css') }}">
     </head>
 
     <body>
@@ -157,7 +157,7 @@
             <p>Отправка заявки...</p>
         </div>
 
-        <script src="{{ asset('assets/js/partnerships.js') }}"></script>
+        <script src="{{ asset('assets/js/partnerships-app.js') }}"></script>
     </body>
 
 </html>
