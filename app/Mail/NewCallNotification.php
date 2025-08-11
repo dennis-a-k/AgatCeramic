@@ -19,7 +19,7 @@ class NewCallNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.orders.new_call')
+        return $this->view('emails.call.notification')
             ->subject('Новая заявка на звонок ' . $this->call->customer_name . ' ' . $this->call->customer_phone);
     }
 }
