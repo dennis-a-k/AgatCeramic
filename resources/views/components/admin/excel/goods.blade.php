@@ -19,6 +19,7 @@
             <th width="20" style="border:1px solid #8EAADB; background-color:#B4C6E7">Используется в качстве клея</th>
             <th width="20" style="border:1px solid #8EAADB; background-color:#B4C6E7">Тип смеси</th>
             <th width="20" style="border:1px solid #8EAADB; background-color:#B4C6E7">Ширина шва</th>
+            <th width="20" style="border:1px solid #8EAADB; background-color:#B4C6E7">Подкатегория</th>
             <th width="20" style="border:1px solid #8EAADB; background-color:#F2F7FF">Статус</th>
             <th width="20" style="border:1px solid #8EAADB; background-color:#F2F7FF">Распродажа</th>
             <th width="40" style="border:1px solid #8EAADB; background-color:#F2F7FF">Описание</th>
@@ -56,19 +57,24 @@
                         {{ $product->attributes['weight_kg'] }}
                     @endif
                 </th>
-                                <th>
+                <th>
                     @if (isset($product->attributes['glue']))
                         {{ $product->attributes['glue'] }}
                     @endif
                 </th>
-                                <th>
+                <th>
                     @if (isset($product->attributes['mixture_type']))
                         {{ $product->attributes['mixture_type'] }}
                     @endif
                 </th>
-                                <th>
+                <th>
                     @if (isset($product->attributes['seam']))
                         {{ $product->attributes['seam'] }}
+                    @endif
+                </th>
+                <th>
+                    @if (isset($product->subcategory))
+                        {{ $product->subcategory->title }}
                     @endif
                 </th>
                 <th>
