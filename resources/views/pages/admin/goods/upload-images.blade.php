@@ -1,25 +1,40 @@
 @extends('layouts.admin')
 
+@section('title', '| Загрузка изображений')
+
+@section('content-header')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-info">Массовая загрузка изображений товаров</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
-        <h1>Массовая загрузка изображений товаров</h1>
-
-        <div class="card mb-4">
-            <div class="card-body">
+        <div class="card card-success card-outline mb-4">
+            <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="card-title">Шаблон для загрузки</h5>
-                    <a href="{{ route('images.template.export') }}" class="btn btn-success">
+                    <div>
+                        <h3 class="card-title text-success">Шаблон для загрузки</h3>
+                        <p class="card-text">
+                            <small class="form-text text-muted">
+                                Используйте этот шаблон для заполнения данных о изображениях товаров.<br>
+                                Столбцы: Артикул, Номер картинки, Ссылка (ссылка на изображение или локальный путь).
+                            </small>
+                        </p>
+                    </div>
+                    <a href="{{ route('images.template.export') }}" class="btn btn-default">
                         <i class="fas fa-download"></i> Скачать шаблон
                     </a>
                 </div>
-                <p class="card-text">
-                    Используйте этот шаблон для заполнения данных о изображениях товаров.
-                    Столбцы: Артикул, Номер картинки, Ссылка (ссылка на изображение или локальный путь).
-                </p>
-            </div>
-        </div>
 
-        <div class="card">
+            </div>
             <div class="card-body">
                 <form action="{{ route('images.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -33,7 +48,7 @@
                         </small>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Загрузить изображения</button>
+                    <button type="submit" class="btn btn-info">Загрузить изображения</button>
                 </form>
             </div>
         </div>
@@ -51,7 +66,7 @@
                         </small>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Загрузить изображения</button>
+                    <button type="submit" class="btn btn-info">Загрузить изображения</button>
                 </form>
             </div>
         </div>
