@@ -13,4 +13,6 @@ Route::group([
     Route::get('/kleya-template-export', [ExcelController::class, 'kleyaTemplateExport'])->name('kleya.template.export');
     Route::get('/zatirka-template-export', [ExcelController::class, 'zatirkaTemplateExport'])->name('zatirka.template.export');
     Route::get('/plumbing-template-export', [ExcelController::class, 'plumbingTemplateExport'])->name('plumbing.template.export');
+    Route::post('/images-import', [ExcelController::class, 'importImages'])->name('images.import');
+    Route::get('/images-template-export', [ExcelController::class, 'imagesTemplateExport'])->name('images.template.export');
 });
