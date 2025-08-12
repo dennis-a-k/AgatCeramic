@@ -2,7 +2,7 @@
     <div class="product card h-100" style="border: none">
         @if ($sale == '1')
             <span class="badges">
-                <span class="new">Sale</span>
+                <span class="new">Распродажа</span>
             </span>
         @endif
 

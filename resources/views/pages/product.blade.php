@@ -36,7 +36,7 @@
                     <div class="product-details-content quickview-content ml-25px">
                         @if ($product->sale == '1')
                             <span class="badges">
-                                <span class="sale">Sale</span>
+                                <span class="sale">Распродажа</span>
                             </span>
                         @endif
 
