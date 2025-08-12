@@ -33,12 +33,10 @@
                         <i class="fas fa-download"></i> Скачать шаблон
                     </a>
                 </div>
-
             </div>
             <div class="card-body">
                 <form action="{{ route('images.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
                     <div class="form-group">
                         <label for="fileExcel">Excel файл с изображениями</label>
                         <input type="file" class="form-control-file" id="fileExcel" name="fileExcel" required>
@@ -47,7 +45,6 @@
                             Локальные пути могут быть абсолютными (например, <code>C:\images\image.jpg</code>) или относительными относительно корня проекта (например, <code>public/temp/image.jpg</code>)
                         </small>
                     </div>
-
                     <button type="submit" class="btn btn-info">Загрузить изображения</button>
                 </form>
             </div>
@@ -57,15 +54,36 @@
             <div class="card-body">
                 <form action="{{ route('admin.zip.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
                     <div class="form-group">
                         <label for="zipFile">ZIP архив с изображениями</label>
                         <input type="file" class="form-control-file" id="zipFile" name="zipFile" required>
+                        <div class="mt-3 mb-3 p-3 border rounded bg-light">
+                            <h5 class="text-success">Формат именования файлов:</h5>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="mr-3 font-weight-bold">Пример:</div>
+                                <div class="text-monospace bg-white p-2 rounded">
+                                    ART-123_0.jpg
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="mr-3 font-weight-bold">Где:</div>
+                                <div>
+                                    <ul class="list-unstyled">
+                                        <li><code>ART-123</code> - артикул товара</li>
+                                        <li><code>_</code> - разделитель (обязателен)</li>
+                                        <li><code>0</code> - порядковый номер изображения (начинается с 0)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning p-2">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Допустимые расширения: .jpg, .jpeg, .png, .webp
+                            </div>
+                        </div>
                         <small class="form-text text-muted">
-                            Файлы в архиве должны быть названы в формате: артикул_номер.jpg (например: ART-001_0.jpg)
+                            Файлы в архиве должны быть названы в формате: <code>артикул_номер.расширение</code> (например: ART-001_0.jpg)
                         </small>
                     </div>
-
                     <button type="submit" class="btn btn-info">Загрузить изображения</button>
                 </form>
             </div>
