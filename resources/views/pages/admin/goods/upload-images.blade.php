@@ -4,6 +4,40 @@
     <div class="container">
         <h1>Массовая загрузка изображений товаров</h1>
 
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Шаблон для загрузки</h5>
+                    <a href="{{ route('images.template.export') }}" class="btn btn-success">
+                        <i class="fas fa-download"></i> Скачать шаблон
+                    </a>
+                </div>
+                <p class="card-text">
+                    Используйте этот шаблон для заполнения данных о изображениях товаров.
+                    Столбцы: Артикул, Номер картинки, Ссылка (ссылка на изображение или локальный путь).
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('images.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="fileExcel">Excel файл с изображениями</label>
+                        <input type="file" class="form-control-file" id="fileExcel" name="fileExcel" required>
+                        <small class="form-text text-muted">
+                            Формат файла: столбцы Артикул, Номер картинки, Ссылка (ссылка на изображение или локальный путь).<br>
+                            Локальные пути могут быть абсолютными (например, <code>C:\images\image.jpg</code>) или относительными относительно корня проекта (например, <code>public/temp/image.jpg</code>)
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Загрузить изображения</button>
+                </form>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('admin.zip.import') }}" method="POST" enctype="multipart/form-data">
