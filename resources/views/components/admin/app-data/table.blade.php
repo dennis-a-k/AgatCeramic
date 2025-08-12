@@ -22,6 +22,16 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-secondary"><strong>Адрес:</strong></td>
+                <td>
+                    @if (!isset($data->adress))
+                        ---
+                    @else
+                        {{ $data->adress }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
                 <td class="text-secondary"><strong>Организация:</strong></td>
                 <td>
                     @if (!isset($data->organization))
@@ -108,16 +118,6 @@
                         ---
                     @else
                         {{ $data->r_s }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td class="text-secondary"><strong>Адрес:</strong></td>
-                <td>
-                    @if (!isset($data->adress))
-                        ---
-                    @else
-                        {{ $data->adress }}
                     @endif
                 </td>
             </tr>
