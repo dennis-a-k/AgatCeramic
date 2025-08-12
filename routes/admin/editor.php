@@ -10,4 +10,5 @@ Route::group([
     Route::get('/editor', [EditorGoodsController::class, 'index'])->name('editor');
     Route::post('/editor-import/{type}', [EditorGoodsController::class, 'import'])->name('editor.import');
     Route::get('/editor-export/{parametr?}', [EditorGoodsController::class, 'export'])->name('editor.export');
+    Route::get('/upload-images', [EditorGoodsController::class, 'showUploadImagesForm'])->name('upload.images');
 });

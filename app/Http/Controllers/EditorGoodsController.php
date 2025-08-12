@@ -53,4 +53,9 @@ class EditorGoodsController extends Controller
             'fileExcel' => 'required|file|mimes:xlsx,xls'
         ]);
     }
+
+    public function showUploadImagesForm()
+    {
+        return view('pages.admin.goods.upload-images');
+    }
 }
