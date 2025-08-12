@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container pb-4">
         <div class="card card-success card-outline mb-4">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
