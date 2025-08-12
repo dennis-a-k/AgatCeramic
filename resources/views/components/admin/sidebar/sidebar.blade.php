@@ -129,6 +129,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('upload.images') }}" class="nav-link">
+                        <i class="fas fa-images nav-icon"></i>
+                        <p>Загрузка фото</p>
+                    </a>
+                </li>
+
                 @if (auth()->user()->role === 'admin')
                     <li class="nav-header text-info"><strong>Пользователи</strong></li>
                     <li class="nav-item">
