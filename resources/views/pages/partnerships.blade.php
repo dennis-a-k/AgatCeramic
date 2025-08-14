@@ -5,6 +5,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ config('app.name') }} | Сотрудничество для дизайнеров</title>
+        <meta name="description"
+            content="{{ config('app.name') }} приглашает дизайнеров к сотрудничеству! Эксклюзивные условия, широкий ассортимент керамической плитки и керамогранита, профессиональная поддержка. Увеличьте возможности ваших проектов с нами!">
+        <meta property="og:title" content="Сотрудничество с дизайнерами | {{ config('app.name') }} – керамическая плитка и керамогранит">
+        <meta property="og:description"
+            content="{{ config('app.name') }} приглашает дизайнеров к сотрудничеству! Эксклюзивные условия, широкий ассортимент керамической плитки и керамогранита, профессиональная поддержка. Увеличьте возможности ваших проектов с нами!">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="{{ asset('assets/images/stock/logo.png') }}">
+        <meta property="og:site_name" content="{{ config('app.name') }}">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="{{ route('partnerships') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
