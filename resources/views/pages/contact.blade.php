@@ -42,8 +42,8 @@
                                     </div>
                                     <div class="info-box">
                                         <h5 class="title">Telegram/WhatsApp</h5>
-                                        <p><a itemprop="sameAs" href="https://t.me/{{ $appData->telegram ?? '---' }}">{{ '@' . $appData->telegram ?? '---' }}</a></p>
-                                        <p><a itemprop="sameAs" href="https://wa.me/{{ $appData->whatsapp ?? '---' }}">https://wa.me/{{ $appData->whatsapp ?? '---' }}</a></p>
+                                        <p><a itemprop="sameAs" href="https://t.me/{{ $appData->telegram ?? '---' }}" target="_blanc">{{ '@' . $appData->telegram ?? '---' }}</a></p>
+                                        <p><a itemprop="sameAs" href="https://wa.me/{{ $appData->whatsapp ?? '---' }}" target="_blanc">https://wa.me/{{ $appData->whatsapp ?? '---' }}</a></p>
                                     </div>
                                 </div>
                                 <div class="single-contact m-0">

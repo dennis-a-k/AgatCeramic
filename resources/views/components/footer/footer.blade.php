@@ -77,10 +77,10 @@
                             </div>
                             <ul class="link-follow">
                                 <li>
-                                    <a class="m-0" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                                    <a class="m-0" target="_blank" rel="noopener noreferrer" href="https://t.me/{{ $appData->telegram ?? '---' }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://wa.me/{{ $appData->whatsapp ?? '---' }}"><i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>

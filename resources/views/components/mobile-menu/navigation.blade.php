@@ -94,10 +94,10 @@
         <div class="offcanvas-social">
             <ul>
                 <li>
-                    <a href="#"><i class="fa fa-telegram"></i></a>
+                    <a href="https://t.me/{{ $appData->telegram ?? '---' }}" target="_blanc"><i class="fa fa-telegram"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://wa.me/{{ $appData->whatsapp ?? '---' }}" target="_blanc"><i class="fa fa-whatsapp"></i></a>
                 </li>
                 </li>
             </ul>
