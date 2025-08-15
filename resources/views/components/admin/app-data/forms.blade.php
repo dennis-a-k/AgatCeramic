@@ -37,24 +37,6 @@
                 </div>
             </form>
 
-            <form action="{{ route('data.update.adress') }}" method="POST" class="form-horizontal">
-                @csrf
-                <div class="form-group row">
-                    <label for="inputAdress" class="col-md-3 col-form-label">Адрес:</label>
-                    <div class="col-md-9 input-group">
-                        <input type="text" class="form-control" id="inputAdress" placeholder="Адрес организации" name="adress" value="{{ old('adress') }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-home"></span>
-                            </div>
-                        </div>
-                        <span class="input-group-append">
-                            <button type="submit" class="btn btn-info">Изменить</button>
-                        </span>
-                    </div>
-                </div>
-            </form>
-
             <form action="{{ route('data.update.telegram') }}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
@@ -100,6 +82,24 @@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-briefcase"></span>
+                            </div>
+                        </div>
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-info">Изменить</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+            <form action="{{ route('data.update.adress') }}" method="POST" class="form-horizontal">
+                @csrf
+                <div class="form-group row">
+                    <label for="inputAdress" class="col-md-3 col-form-label">Адрес:</label>
+                    <div class="col-md-9 input-group">
+                        <input type="text" class="form-control" id="inputAdress" placeholder="Адрес организации" name="adress" value="{{ old('adress') }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-home"></span>
                             </div>
                         </div>
                         <span class="input-group-append">

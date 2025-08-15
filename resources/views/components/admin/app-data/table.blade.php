@@ -7,7 +7,7 @@
                     @if (!isset($data->app_phone))
                         ---
                     @else
-                        {{ $data->app_phone }}
+                        {{ $data->appPhoneFormatted }}
                     @endif
                 </td>
             </tr>
@@ -22,22 +22,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-secondary"><strong>Адрес:</strong></td>
-                <td>
-                    @if (!isset($data->adress))
-                        ---
-                    @else
-                        {{ $data->adress }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
                 <td class="text-secondary"><strong>Telegram:</strong></td>
                 <td>
                     @if (!isset($data->telegram))
                         ---
                     @else
-                        {{ $data->telegram }}
+                        {{ '@' . $data->telegram }}
                     @endif
                 </td>
             </tr>
@@ -47,7 +37,7 @@
                     @if (!isset($data->whatsapp))
                         ---
                     @else
-                        {{ $data->whatsapp }}
+                        https://wa.me/{{ $data->whatsapp }}
                     @endif
                 </td>
             </tr>
@@ -58,6 +48,16 @@
                         ---
                     @else
                         {{ $data->organization }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td class="text-secondary"><strong>Адрес:</strong></td>
+                <td>
+                    @if (!isset($data->adress))
+                        ---
+                    @else
+                        {{ $data->adress }}
                     @endif
                 </td>
             </tr>
