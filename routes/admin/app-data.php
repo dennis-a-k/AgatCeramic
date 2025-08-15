@@ -20,4 +20,6 @@ Route::group([
     Route::post('/update-k_s', [AppDataController::class, 'updateK_s'])->name('data.update.k_s');
     Route::post('/update-r_s', [AppDataController::class, 'updateR_s'])->name('data.update.r_s');
     Route::post('/update-adress', [AppDataController::class, 'updateAdress'])->name('data.update.adress');
+    Route::post('/update-telegram', [AppDataController::class, 'updateTelegram'])->name('data.update.telegram');
+    Route::post('/update-whatsapp', [AppDataController::class, 'updateWhatsApp'])->name('data.update.whatsapp');
 });

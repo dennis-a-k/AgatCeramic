@@ -32,6 +32,26 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-secondary"><strong>Telegram:</strong></td>
+                <td>
+                    @if (!isset($data->telegram))
+                        ---
+                    @else
+                        {{ $data->telegram }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td class="text-secondary"><strong>WhatsApp:</strong></td>
+                <td>
+                    @if (!isset($data->whatsapp))
+                        ---
+                    @else
+                        {{ $data->whatsapp }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
                 <td class="text-secondary"><strong>Организация:</strong></td>
                 <td>
                     @if (!isset($data->organization))

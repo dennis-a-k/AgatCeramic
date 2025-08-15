@@ -23,6 +23,8 @@ class AppData extends Model
         'k_s',
         'r_s',
         'adress',
+        'telegram',
+        'whatsapp',
     ];
 
     protected function appPhoneFormatted(): Attribute

@@ -120,4 +120,22 @@ class AppDataController extends Controller
         );
         return redirect()->back()->with('status', 'adress-updated');
     }
+
+    public function updateTelegram(Request $request)
+    {
+        AppData::updateOrCreate(
+            ['id' => 1],
+            ['telegram' => $request->telegram],
+        );
+        return redirect()->back()->with('status', 'telegram-updated');
+    }
+
+    public function updateWhatsApp(Request $request)
+    {
+        AppData::updateOrCreate(
+            ['id' => 1],
+            ['whatsapp' => $request->whatsapp],
+        );
+        return redirect()->back()->with('status', 'whatsapp-updated');
+    }
 }

@@ -55,6 +55,42 @@
                 </div>
             </form>
 
+            <form action="{{ route('data.update.telegram') }}" method="POST" class="form-horizontal">
+                @csrf
+                <div class="form-group row">
+                    <label for="inputTelegram" class="col-md-3 col-form-label">Telegram:</label>
+                    <div class="col-md-9 input-group">
+                        <input type="text" class="form-control" id="inputTelegram" placeholder="Никнейм Telegram (без @)" name="telegram" value="{{ old('telegram') }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                        </div>
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-info">Изменить</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+            <form action="{{ route('data.update.whatsapp') }}" method="POST" class="form-horizontal">
+                @csrf
+                <div class="form-group row">
+                    <label for="inputWhatsApp" class="col-md-3 col-form-label">WhatsApp:</label>
+                    <div class="col-md-9 input-group">
+                        <input type="text" class="form-control" id="inputWhatsApp" placeholder="Тенлефон WhatsApp (без +)" name="whatsapp" value="{{ old('whatsapp') }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                        </div>
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-info">Изменить</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
             <form action="{{ route('data.update.organization') }}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
