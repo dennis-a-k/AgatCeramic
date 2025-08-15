@@ -46,4 +46,12 @@
     <div class="alert alert-success">
         Адрес организации успешно обновлён
     </div>
+@elseif (session('status') === 'telegram-updated')
+    <div class="alert alert-success">
+        Telegram успешно обновлён
+    </div>
+@elseif (session('status') === 'whatsapp-updated')
+    <div class="alert alert-success">
+        WhatsApp успешно обновлён
+    </div>
 @endif
