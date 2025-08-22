@@ -41,7 +41,7 @@
                                             </a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="{{ route('partnerships') }}">
+                                            <a class="single-link" href="{{ route('partnerships') }}" target="_blank">
                                                 Дизайнерам
                                             </a>
                                         </li>
