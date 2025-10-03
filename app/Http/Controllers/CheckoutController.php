@@ -96,11 +96,6 @@ class CheckoutController extends Controller
             if ($adminEmail) {
                 Mail::to($adminEmail)
                     ->send(new NewOrderNotification($order));
-                Log::info('All env vars: ' . json_encode($_ENV)); // Проверьте, есть ли ADMIN_EMAIL
-                $adminEmail = env('ADMIN_EMAIL');
-                $key_gen = env('APP_KEY');
-                Log::info('Admin email: "' . $adminEmail . '"');
-                Log::info('APP_KEY: "' . $key_gen . '"');
             }
         } catch (\Exception $e) {
             // Логируем ошибку, но позволяем процессу оформления заказа продолжиться
